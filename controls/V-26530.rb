@@ -39,7 +39,7 @@ control "V-26530" do
   Audit Policies -> Account Logon -> \"Audit Credential Validation\" with
   \"Failure\" selected."
   describe audit_policy do
-    its("Credential Validation") { should eq "Failure" }
+    its("Audit Credential Validation") { should eq "Failure" }
   end
 end
 

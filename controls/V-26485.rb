@@ -74,7 +74,7 @@ control "V-26485" do
       its('SeDenyInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-512" }
     end  
     describe security_policy do
-      its('SeDenyInteractiveLogonRightt') { should include "S-1-21-#{domain_sid}-519" }
+      its('SeDenyInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-519" }
     end 
   end
 

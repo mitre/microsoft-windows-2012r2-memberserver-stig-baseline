@@ -33,7 +33,7 @@ control "V-3469" do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Group Policy -> \"Turn off background
   refresh of Group Policy\" to \"Disabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\system\\") do
+  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\system") do
     it { should have_property "DisableBkGndGroupPolicy" }
     its("DisableBkGndGroupPolicy") { should cmp == 0 }
   end

@@ -38,7 +38,7 @@ control "V-36656" do
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Control
   Panel\\Desktop") do
     it { should have_property "ScreenSaveActive" }
-    its("ScreenSaveActive") { should cmp == 1}
+    its("ScreenSaveActive") { should cmp == 1 }
   end
 end
 
