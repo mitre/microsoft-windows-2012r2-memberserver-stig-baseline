@@ -40,25 +40,33 @@ control "V-32282" do
   SYSTEM - Full Control
   CREATOR OWNER - Full Control (Subkeys only)
   ALL APPLICATION PACKAGES - Read"
+  describe.one do
+    describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr /V 2') do
+      its('stdout') { should eq "         BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+    end
+
+    describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr CREATOR') do
+      its('stdout') { should eq "         CREATOR OWNER Allow  268435456\r\n" }
+    end
+
+    describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All') do
+      its('stdout') { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+    end
+    
+  end
+
+  describe.one do
+    describe command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr /V 2') do
+      its('stdout') { should eq "         BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+    end
+
+    describe command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr CREATOR') do
+      its('stdout') { should eq "         CREATOR OWNER Allow  268435456\r\n" }
+    end
+
+    describe command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All') do
+      its('stdout') { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+    end
+  end
   
-  describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "         BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
-  end
-
-  describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr CREATOR') do
-    its('stdout') { should eq "         CREATOR OWNER Allow  268435456\r\n" }
-  end
-
-  describe command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "Access : BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
-  end
-  
-  describe command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All | Findstr CREATOR') do
-    its('stdout') { should eq "         CREATOR OWNER Allow  268435456\r\n" }
-  end
-
 end
-
-  
-
- 

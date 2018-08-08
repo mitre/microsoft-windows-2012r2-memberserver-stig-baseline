@@ -58,7 +58,6 @@ control "V-3245" do
 
     [share_paths, share_names].each do |path1, name1|
 
-      puts "File share name:" + name1
       describe command("Get-Acl -Path '#{path1}' | Format-List | Findstr /i /C:'Everyone Allow'") do
         its('stdout') { should eq '' }
       end 

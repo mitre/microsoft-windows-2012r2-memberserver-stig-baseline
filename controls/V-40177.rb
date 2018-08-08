@@ -93,20 +93,17 @@ control "V-40177" do
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
   describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "NT AUTHORITY\\SYSTEM Allow  Read, Synchronize\r\n         BUILTIN\\Administrators Allow Modify, Synchronize\r\n         BUILTIN\\Users Allow ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow ReadAndExecute, Synchronize\r\n" }
+    its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
   end
   describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr CREATOR') do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
-  end
+  end 
 
   describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "NT AUTHORITY\\SYSTEM Allow  Read, Synchronize\r\n         BUILTIN\\Administrators Allow Modify, Synchronize\r\n         BUILTIN\\Users Allow ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow ReadAndExecute, Synchronize\r\n" }
+    its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
   end
   describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr CREATOR') do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
   end
  
 end
-
-
-

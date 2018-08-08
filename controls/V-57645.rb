@@ -34,8 +34,10 @@ control "V-57645" do
   employ encryption to protect the confidentiality and integrity of all
   information at rest."
 
-  describe command("manage-bde -status | Findstr /i /L /c:'Conversion Status'") do
-    its('stdout') { should eq "    Conversion Status:    Fully Encrypted\r\n" }
+  describe "Systems requiring data at rest protections must employ cryptographic
+  mechanisms to prevent unauthorized disclosure and modification of the
+  information at rest." do
+    skip "is a manual check"
   end
 end
 

@@ -80,8 +80,14 @@ control "V-40178" do
   Users - Create folders / append data - This folder and subfolders
   Users - Create files / write data - Subfolders only
   CREATOR OWNER - Full Control - Subfolders and files only"
-  describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "Access : CREATOR OWNER Allow   268435456         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow FullControl\r\n         BUILTIN\\Users Allow AppendData\r\n         BUILTIN\\Users Allow CreateFiles\r\n         BUILTIN\\Users Allow ReadAndExecute, Synchronize\r\n" }
-  end
+  describe.one do
+    describe command('Get-Acl -Path "C:\\" | Format-List | Findstr All') do
+      its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  AppendData\r\n         BUILTIN\\Users Allow  CreateFiles\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n" }
+    end
+
+    describe command('Get-Acl -Path "C:\\" | Format-List | Findstr All') do
+      its('stdout') { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  CreateFiles, AppendData, ReadAndExecute, Synchronize\r\n" }
+    end
+  end 
 end
 
