@@ -1,8 +1,8 @@
-name: disa_stig-JRE8
-title: InSpec Profile
-maintainer: The Authors
-copyright: The Authors
-copyright_email: you@example.com
-license: All Rights Reserved
-summary: An InSpec Compliance Profile
+name: windows_2012r2_memberserver_stig
+title: Windows 2012r2 Member Server STIG
+maintainer: MITRE InSpec Team
+copyright: MITRE InSpec Team
+copyright_email: inspec@mitre.org
+license: Apache 2.0
+summary: A suite of automated tests for secure implementation of member servers running Windows 2012r2
 version: 0.1.0
