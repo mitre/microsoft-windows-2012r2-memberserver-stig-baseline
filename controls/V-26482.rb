@@ -40,11 +40,8 @@ control "V-26482" do
   Systems that have the Hyper-V role will also have \"Virtual Machines\" given
   this user right.  If this needs to be added manually, enter it as \"NT Virtual
   Machine\\Virtual Machines\"."
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries)).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeCreateSymbolicLinkPrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeCreateSymbolicLinkPrivilege") { should eq ['S-1-5-32-544'] }
   end
 end
 

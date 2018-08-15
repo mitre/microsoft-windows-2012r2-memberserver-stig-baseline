@@ -36,12 +36,11 @@ control "V-1090" do
   Number of previous logons to cache (in case Domain Controller is not
   available)\" to \"4\" logons or less."
 
-  is_domain = command("wmic computersystem get domain1 | FINDSTR /V Domain").stdout.strip
-
+  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon") do
     it { should have_property "CachedLogonsCount" }
     its("CachedLogonsCount") { should cmp <= 4 }
   end
-  only_if {is_domain != " "}
+  only_if {is_domain != "WORKGROUP"}
 end 
 

@@ -1,8 +1,9 @@
 ACCOUNTS= attribute(
   'accounts',
-  description: 'List of authorized users in the Backup Operators Group.',
+  description: 'List accounts on system',
   default: %w[
-            Administrator
+            Admn
+            Gst
            ]
 )
 
@@ -17,7 +18,7 @@ control "V-1072" do
   tag "gid": "V-1072"
   tag "rid": "SV-52839r2_rule"
   tag "stig_id": "WN12-00-000012"
-  tag "fix_id": "F-86115r1_fix"
+  tag "fix_id": "F-86115r1_fix" 
   tag "cci": ["CCI-000764"]
   tag "nist": ["CCI-000764"]
   tag "nist": ["IA-2", "Rev_4"]

@@ -1,7 +1,7 @@
 ADMINISTRATOR_ACCOUNT = attribute(
   'administrator_account',
   description: 'List of authorized users in the local Administrators domain group',
-  default: 'Administrator'
+  default: 'Admn'
 )
 
 control "V-14225" do
@@ -61,7 +61,6 @@ control "V-14225" do
 
   require 'date'
   get_password_last_set = command("Net User #{ADMINISTRATOR_ACCOUNT} | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
-
   month = get_password_last_set[27..29]
   day = get_password_last_set[31..32]
   year = get_password_last_set[34..38]

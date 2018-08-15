@@ -43,11 +43,12 @@ control "V-26503" do
 
   Local Service
   Network Service"
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + ['S-1-5-19'] + ['S-1-5-20']).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeAssignPrimaryTokenPrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeAssignPrimaryTokenPrivilege") { should include 'S-1-5-20' }
+  end
+  describe security_policy do
+    its("SeAssignPrimaryTokenPrivilege") { should include 'S-1-5-19' }
   end
 end
+
 

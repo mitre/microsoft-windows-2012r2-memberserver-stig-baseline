@@ -1,8 +1,9 @@
- ADMINISTRATORS = attribute(
+ ADMINISTRATORS1 = attribute(
   'administrators',
   description: 'List of authorized users in the local Admionistrators group',
   default: %w[
-            Administrators
+            Admn
+            Administrator
            ]
 )
 
@@ -10,6 +11,7 @@
   'administrators_domain',
   description: 'List of authorized users in the local Admionistrators domain group',
   default: %w[
+            Admn
             Administrator
            ]
 )
@@ -84,15 +86,15 @@ control "V-1127" do
 
   Remove any standard user accounts."
   
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
+  is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
 
   if is_domain == 'WORKGROUP'
     administrator_group.each do |user|
         describe "#{user}" do
-          it { should be_in ADMINISTRATORS}
-        end  
+          it { should be_in ADMINISTRATORS1}
+        end            
       end 
   else  
     administrator_domain_group.each do |users|

@@ -41,6 +41,8 @@ control "V-43245" do
     it { should have_property "DisableAutomaticRestartSignOn" }
     its("DisableAutomaticRestartSignOn") { should cmp == 1 }
   end
-  only_if os['release'].to_i >= 6.3
+  only_if do
+    os['release'].to_i >= 6.3
+  end
 end
 

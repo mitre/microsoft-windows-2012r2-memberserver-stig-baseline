@@ -27,7 +27,7 @@ control "V-26577" do
   Technologies -> \"Set ISATAP State\" to \"Enabled: Disabled State\"."
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition") do
     it { should have_property "ISATAP_State" }
-    its("ISATAP_State") { should eq "Disabled" }
+    its("ISATAP_State") { should eq 0 }
   end
 end
 

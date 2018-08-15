@@ -68,7 +68,11 @@ control "V-36710" do
       its("AutoDownload") { should cmp == 2 }
     end
   end
-  only_if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
-  only_if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate').exists?
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  end
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate').exists?
+  end
 end
 

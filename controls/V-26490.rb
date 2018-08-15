@@ -47,11 +47,17 @@ control "V-26490" do
   Service
   Local Service
   Network Service"
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries) + ['S-1-5-6'] + ['S-1-5-19'] + ['S-1-5-20']).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeImpersonatePrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeImpersonatePrivilege") { should include 'S-1-5-6' }
+  end
+  describe security_policy do
+    its("SeImpersonatePrivilege") { should include 'S-1-5-19' }
+  end
+  describe security_policy do
+    its("SeImpersonatePrivilege") { should include 'S-1-5-20' }
+  end
+  describe security_policy do
+    its("SeImpersonatePrivilege") { should include 'S-1-5-32-544' }
   end
 end
 

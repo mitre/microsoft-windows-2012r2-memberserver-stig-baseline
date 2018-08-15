@@ -2,7 +2,6 @@
   'emergency_account',
   description: 'List of temporary accounts on the system',
   default: %w[
-            Temp
            ]
 )
 
@@ -93,6 +92,8 @@ control "V-57655" do
 
   emergency_accounts = EMERGENCY_ACCOUNT
 
+  if emergency_accounts != []
+
   emergency_accounts.each do |user|
 
     get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
@@ -151,6 +152,17 @@ control "V-57655" do
       end
     end
   end
+
+end
+else
+  describe "No emergency accounts exist" do
+    skip "check not applicable"
+  end
+
+
+
+
+
 end
 
 

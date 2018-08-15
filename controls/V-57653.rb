@@ -2,7 +2,7 @@ TEMP_ACCOUNT = attribute(
   'temp_account',
   description: 'List of temporary accounts on the system',
   default: %w[
-            Temp
+         
            ]
 )
 
@@ -84,6 +84,8 @@ control "V-57653" do
   Delete any temporary user accounts that are no longer necessary."
   temp_accounts = TEMP_ACCOUNT
 
+    
+  if temp_accounts != []
   temp_accounts.each do |user|
 
   get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
@@ -143,5 +145,18 @@ control "V-57653" do
       end
     end
   end
+
+
+end
+
+
+else
+  describe "No temp accounts exist" do
+    skip "check not applicable"
+  end
+
+
+
+
 end
 

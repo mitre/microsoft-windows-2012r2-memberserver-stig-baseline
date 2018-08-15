@@ -29,7 +29,7 @@ control "V-26529" do
   Use the AuditPol tool to review the current Audit Policy configuration:
   -Open a Command Prompt with elevated privileges (\"Run as Administrator\").
   -Enter \"AuditPol /get /category:*\".
-
+Auditpol.exe /get /category:*
   Compare the AuditPol settings with the following.  If the system does not audit
   the following, this is a finding.
 
@@ -38,8 +38,13 @@ control "V-26529" do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Logon -> \"Audit Credential Validation\" with
   \"Success\" selected."
-  describe audit_policy do
-    its("Credential Validation") { should eq "Success" }
+  describe.one do
+    describe audit_policy do
+      its("Credential Validation") { should eq "Success" }
+    end
+    describe audit_policy do
+      its("Credential Validation") { should eq "Success and Failure" }
+    end
   end
 end
 

@@ -26,12 +26,16 @@ control "V-1081" do
   This does not apply to system partitions such as the Recovery and EFI System
   Partition."
   tag "fix": "Format local volumes to use NTFS or ReFS."
-  describe.one do
-    describe command('wmic logicaldisk list /format:list | Findstr FileSystem=') do
-      its('stdout') { should eq "FileSystem=NTFS\r\n" }
-    end
-    describe command('wmic logicaldisk list /format:list | Findstr FileSystem=') do
-      its('stdout') { should eq "FileSystem=ReFS\r\n" }
+  get_volumes = command("wmic logicaldisk list /format:list | Findstr FileSystem=").stdout.strip.split("\n")
+  
+  get_volumes.each do |volume|
+      describe.one do
+      describe "#{volume}" do
+        it { should eq "FileSystem=NTFS\r"}
+      end  
+      describe "#{volume}" do
+        it { should eq "FileSystem=ReFS\r"}
+      end
     end
   end
 end

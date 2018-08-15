@@ -48,7 +48,7 @@ control "V-26359" do
   language of the banner text required in V-1089."
   describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
     it { should have_property "LegalNoticeCaption" }
-    its("LegalNoticeCaption") { should match(/^D(oD|OD) N(otice|OTICE) (and|AND) C(onsent|ONSENT) B(anner|ANNER), U\.?S\.? D(EPARTMENT|epartment) (OF|Of|of) D(EFENSE|efense) W(ARNING|arning) S(TATEMENT|tatement)$/) }
+    its("LegalNoticeCaption") { should eq ['DoD Notice and Consent Banner, US Department of Defense Warning
+  Statement, or a site-defined equivalent.'] }
   end
 end
-

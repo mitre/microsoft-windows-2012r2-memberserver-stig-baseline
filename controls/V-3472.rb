@@ -67,7 +67,7 @@ control "V-3472" do
     end
   end
   only_if do
-    registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CertSvc').exists?
+    registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters').exists?
   end
 end
 

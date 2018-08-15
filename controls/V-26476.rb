@@ -35,11 +35,11 @@ control "V-26476" do
 
   Administrators
   Local Service"
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries) + ['S-1-5-19']).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeSystemtimePrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeSystemtimePrivilege") { should include 'S-1-5-32-544' }
+  end
+  describe security_policy do
+    its("SeSystemtimePrivilege") { should include 'S-1-5-19' }
   end
 end
 

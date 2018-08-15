@@ -42,10 +42,10 @@ control "V-40200" do
   \"Failure\" selected."
   describe.one do
     describe audit_policy do
-      its('Central Policy Staging  ') { should eq 'Failure' }
+      its('Central Policy Staging') { should eq 'Failure' }
     end
     describe audit_policy do
-      its('Central Policy Staging  ') { should eq 'Success and Failure' }
+      its('Central Policy Staging') { should eq 'Success and Failure' }
     end
   end
 end

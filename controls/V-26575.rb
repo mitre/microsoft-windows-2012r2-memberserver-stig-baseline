@@ -27,7 +27,7 @@ control "V-26575" do
   Technologies -> \"Set 6to4 State\" to \"Enabled: Disabled State\"."
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition") do
     it { should have_property "6to4_State" }
-    its("6to4_State") { should eq "Disabled" }
+    its("6to4_State") { should eq 0 }
   end
 end
 

@@ -27,7 +27,7 @@ control "V-21961" do
   traffic through the internal network\" to \"Enabled: Enabled State\"."
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition") do
     it { should have_property "Force_Tunneling" }
-    its("Force_Tunneling") { should eq "Enabled" }
+    its("Force_Tunneling") { should eq 1 }
   end
 end
 

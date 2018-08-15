@@ -79,7 +79,7 @@ control "V-73523" do
 
   describe registry_key("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation") do
     it { should have_property "DependOnService" }
-    its("DependOnService") { should_not include 'MRxSmb10' }
+    its("DependOnService") { should_not eq 'MRxSmb10' }
   end
 end
 

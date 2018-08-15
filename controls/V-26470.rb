@@ -12,7 +12,7 @@ control "V-26470" do
   tag "gid": "V-26470"
   tag "rid": "SV-51499r3_rule"
   tag "stig_id": "WN12-UR-000002-MS"
-  tag "fix_id": "F-49518r2_fix"
+  tag "fix_id": "F-49518r2_fix" 
   tag "cci": ["CCE-24938-3", "CCI-000213"]
   tag "nist": ["CCE-24938-3", "CCI-000213"]
   tag "nist": ["AC-3", "Rev_4"]
@@ -50,11 +50,13 @@ control "V-26470" do
   Systems dedicated to managing Active Directory (AD admin platforms, see V-36436
   in the Active Directory Domain STIG), must only allow Administrators, removing
   the Authenticated Users group."
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries) + ['S-1-5-11']).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeNetworkLogonRight") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeNetworkLogonRight") { should include 'S-1-5-32-544' }
+  end
+  describe security_policy do
+    its("SeNetworkLogonRight") { should include 'S-1-5-11' }
   end
 end
+
+
 

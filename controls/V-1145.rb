@@ -46,8 +46,8 @@ control "V-1145" do
     its("AutoAdminLogon") { should cmp == 0 }
   end
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon") do
-    it { should_not have_property "DefaultPassword" }
-    its("DefaultPassword") { should cmp == '' }
+    it { should have_property "DefaultPassword" }
+    its("DefaultPassword") { should cmp == 0 }
   end
 end
 

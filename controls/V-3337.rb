@@ -24,8 +24,8 @@ control "V-3337" do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Allow anonymous SID/Name translation\" to \"Disabled\"."
-  describe wmi(namespace: 'root\\rsop\\computer', query: "SELECT Setting FROM RSOP_SecuritySettingBoolean WHERE KeyName='LSAAnonymousNameLookup' AND Precedence=1") do
-    its('setting') { should cmp 'False' }
+  describe security_policy do
+    its('LSAAnonymousNameLookup') { should eq 0 }
   end
 end
 

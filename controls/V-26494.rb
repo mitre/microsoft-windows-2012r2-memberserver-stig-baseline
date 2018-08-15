@@ -35,11 +35,7 @@ control "V-26494" do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Lock pages in memory\" to be defined but containing no entries (blank)."
-  a = (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries).each do |entry|
-    a.each do |entry|
-      describe security_policy do
-        its("SeLockMemoryPrivilege") { should_not include entry }
-      end
-    end
+  describe security_policy do
+    its("SeLockMemoryPrivilege") { should eq [] }
   end
 end

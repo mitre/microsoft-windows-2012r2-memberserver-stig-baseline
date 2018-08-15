@@ -98,6 +98,6 @@ control "V-26486" do
       its('SeDenyRemoteInteractiveLogonRight') { should include 'S-1-2-0' }
     end 
   end
-
+ 
 end
 

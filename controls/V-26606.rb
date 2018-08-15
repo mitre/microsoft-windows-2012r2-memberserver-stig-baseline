@@ -22,8 +22,15 @@ control "V-26606" do
 
   Telnet (tlntsvr)"
   tag "fix": "Remove or disable the Telnet (tlntsvr) service."
-  describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='tlntsvr'"}).params.values do
-    its("join") { should eq "Disabled" }
+  is_tlntsvr_installed = command("Get-Service simptcp").stdout.strip
+  if (is_tlntsvr_installed == '')
+    describe 'tlntsvr not installed' do
+      skip "control NA, tlntsvr is not installed"
+    end
+  else
+    describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='tlntsvr'"}).params.values do
+      its("join") { should eq "Disabled" }
+    end
   end
 end
 

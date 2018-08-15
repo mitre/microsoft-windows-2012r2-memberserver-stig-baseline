@@ -32,8 +32,10 @@ control "V-3340" do
   (blank)."
   describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters") do
     it { should have_property "NullSessionShares" }
-    its("NullSessionShares") { should match(/.+/) }
+    its("NullSessionShares") { should eq [''] }
   end
-  only_if registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters').exists?
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters').exists?
+  end
 end
 

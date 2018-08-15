@@ -33,11 +33,8 @@ control "V-26500" do
   \"Profile single process\" to only include the following accounts or groups:
 
   Administrators"
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries)).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeProfileSingleProcessPrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeProfileSingleProcessPrivilege") { should eq ['S-1-5-32-544'] }
   end
 end
 

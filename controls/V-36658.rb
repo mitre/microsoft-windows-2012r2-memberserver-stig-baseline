@@ -1,8 +1,9 @@
- ADMINISTRATORS = attribute(
+ ADMINISTRATORS2 = attribute(
   'administrators',
   description: 'List of authorized users in the local Admionistrators group',
   default: %w[
             Administrators
+            Admn
            ]
 )
 
@@ -31,7 +32,7 @@ control "V-36658" do
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_group.each do |user|
     describe "#{user}" do
-      it { should be_in ADMINISTRATORS}
+      it { should be_in ADMINISTRATORS2}
     end  
   end 
 end

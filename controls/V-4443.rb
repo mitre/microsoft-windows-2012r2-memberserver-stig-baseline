@@ -60,9 +60,43 @@ control "V-4443" do
   System\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration
   System\\CurrentControlSet\\Services\\Eventlog
   System\\CurrentControlSet\\Services\\Sysmonlog"
-  describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+
+  describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths") do
     it { should have_property "Machine" }
-    its("Machine") { should match(/^((Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows)|(System\\CurrentControlSet\\Control\\Print\\Printers)|(System\\CurrentControlSet\\Services\\Eventlog)|(Software\\Microsoft\\OLAP Server)|(Software\\Microsoft\\Windows NT\\CurrentVersion\\Print)|(System\\CurrentControlSet\\Control\\ContentIndex)|(System\\CurrentControlSet\\Control\\Terminal Server)|(System\\CurrentControlSet\\Control\\Terminal Server\\UserConfig)|(System\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration)|(Software\\Microsoft\\Windows NT\\CurrentVersion\\Perflib)|(System\\CurrentControlSet\\Services\\Sysmon[Ll]og)|())$/) }
   end
+  
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Control\\Print\\Printers"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Services\\Eventlog"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "Software\\Microsoft\\OLAP Server"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "Software\\Microsoft\\Windows NT\\CurrentVersion\\Print"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Control\\ContentIndex"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Control\\Terminal Server"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Control\\Terminal Server\\UserConfig"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "Software\\Microsoft\\Windows NT\\CurrentVersion\\Perflib"}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths") do
+      its("Machine") { should include "System\\CurrentControlSet\\Services\\SysmonLog"}
+    end
 end
 

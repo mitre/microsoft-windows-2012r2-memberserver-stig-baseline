@@ -36,6 +36,8 @@ control "V-43240" do
     it { should have_property "DontDisplayNetworkSelectionUI" }
     its("DontDisplayNetworkSelectionUI") { should cmp == 1 }
   end
-  only_if os['release'].to_i >= 6.3
+  only_if do
+    os['release'].to_i >= 6.3
+  end
 end
 

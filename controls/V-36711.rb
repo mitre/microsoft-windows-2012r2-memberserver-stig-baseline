@@ -37,6 +37,8 @@ control "V-36711" do
     it { should have_property "RemoveWindowsStore" }
     its("RemoveWindowsStore") { should cmp == 1 }
   end
-  only_if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  end
 end
 

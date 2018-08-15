@@ -46,7 +46,17 @@ control "V-3339" do
   Software\\Microsoft\\Windows NT\\CurrentVersion"
   describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths") do
     it { should have_property "Machine" }
-    its("Machine") { should match(/^((System\\CurrentControlSet\\Control\\ProductOptions)|(System\\CurrentControlSet\\Control\\Server Applications)|(Software\\Microsoft\\Windows NT\\CurrentVersion)|())$/) }
+  end
+  describe.one do
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths") do
+      its("Machine") { should eq ["System\\CurrentControlSet\\Control\\ProductOptions"]}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths") do
+      its("Machine") { should eq ["System\\CurrentControlSet\\Control\\Server Applications"]}
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths") do
+      its("Machine") { should eq ["Software\\Microsoft\\Windows NT\\CurrentVersion)"]}
+    end
   end
 end
 

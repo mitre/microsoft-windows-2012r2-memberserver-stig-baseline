@@ -56,7 +56,7 @@ control "V-26484" do
 
   if is_domain == 'WORKGROUP'
     describe security_policy do
-      its('SeDenyServiceLogonRight') { should eq [''] }
+      its('SeDenyServiceLogonRight') { should eq [ ] }
      end   
       
   else  

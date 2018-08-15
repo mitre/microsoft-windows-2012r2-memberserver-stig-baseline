@@ -40,9 +40,11 @@ control "V-6840" do
   tag "fix": "Configure all enabled user account passwords to expire.
 
   Uncheck \"Password never expires\" for all enabled user accounts in Active
-  Directory Users and Computers for domain accounts and Users in Computer
+  Directory Users and Computers for domain a
+  ccounts and Users in Computer
   Management for member servers and standalone systems. Document any exceptions
   with the ISSO."
+  
   describe command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False
   and LocalAccount=True' | FT Name, PasswordExpires, Disabled, LocalAccount | Findstr /V 'Name --'") do
     its('stdout') { should eq "" }

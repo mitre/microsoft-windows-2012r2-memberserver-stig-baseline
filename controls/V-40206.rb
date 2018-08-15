@@ -22,8 +22,16 @@ control "V-40206" do
   is a finding."
   tag "fix": "Configure the Startup Type for the Smart Card Removal Policy
   service to \"Automatic\"."
-  describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='SCPolicySvc'"}).params.values do
-    its("join") { should eq "Auto" }
+  is_SCPolicySvc_installed = command("Get-Service SCPolicySvc").stdout.strip
+  if (is_SCPolicySvc_installed == '')
+    describe 'SCPolicySvc not installed' do
+      skip "control NA, SCPolicySvc is not installed"
+    end
+  else
+    describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='SCPolicySvc'"}).params.values do
+      its("join") { should eq "Auto" }
+    end
   end
 end
 
+ 

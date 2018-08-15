@@ -41,6 +41,8 @@ control "V-36680" do
     it { should have_property "NoUseStoreOpenWith" }
     its("NoUseStoreOpenWith") { should cmp == 1 }
   end
-  only_if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer').exists?
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer').exists?
+  end
 end
 

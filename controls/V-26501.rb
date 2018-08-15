@@ -29,10 +29,11 @@ control "V-26501" do
   Administrators
   NT Service\WdiServ
   "
-  a = ((users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) + (users.where { username == 'Administrators'}.uids.entries + groups.where { name == 'Administrators'}.gids.entries) + (users.where { username == 'NT SERVICE\WdiServiceHost'}.uids.entries + groups.where { name == 'NT SERVICE\WdiServiceHost'}.gids.entries)).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeSystemProfilePrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its("SeSystemProfilePrivilege") { should include 'S-1-5-32-544' }
+  end
+  describe security_policy do
+    its("SeSystemProfilePrivilege") { should include 'S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420' }
   end
 end  
+

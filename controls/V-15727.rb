@@ -28,7 +28,7 @@ control "V-15727" do
   users from sharing files within their profile\" to \"Enabled\"."
   describe registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer") do
     it { should have_property "NoInPlaceSharing" }
-    its("NoInPlaceSharingr") { should cmp == 1 }
+    its("NoInPlaceSharing") { should == 1 }
   end
 end
 

@@ -84,15 +84,13 @@ control "V-1155" do
 
 
   is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-  administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
-  administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
-
+  
   if is_domain == 'WORKGROUP'
     describe security_policy do
       its('SeDenyNetworkLogonRight') { should include 'S-1-5-32-546' }
      end   
       
-  else  
+  else
     get_domain_sid = command("wmic useraccount get sid | FINDSTR /V SID | Select -First 2").stdout.strip
     domain_sid = get_domain_sid[9..40]
     describe security_policy do

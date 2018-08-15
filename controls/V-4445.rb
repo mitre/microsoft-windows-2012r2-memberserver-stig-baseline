@@ -38,7 +38,7 @@ control "V-4445" do
   settings: Optional subsystems\" to \"Blank\" (Configured with no entries)."
   describe registry_key("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\SubSystems") do
     it { should have_property "Optional" }
-    its("Optional") { should match(/.+/) }
+    its("Optional") { should eq [""] }
   end
 end
 

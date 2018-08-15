@@ -29,7 +29,7 @@ control "V-1121" do
   Open a \"Command Prompt\".
 
   Access the FTP site and review accessible directories with the following
-  commands:
+  commands: 
 
   Note: Returned results may vary depending on the FTP server software.
 
@@ -58,8 +58,8 @@ control "V-1121" do
   Windows directories, this is a finding."
   tag "fix": "Configure the system to only allow FTP access to specific folders
   containing the data to be available through the service."
-  is_ftp_intalled = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
-  if (is_ftp_intalled == 'False')
+  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
+  if (is_ftp_installed == 'False' || is_ftp_installed == '')
     describe 'FTP not installed' do
       skip "control NA"
     end
