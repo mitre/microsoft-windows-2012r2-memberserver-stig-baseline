@@ -51,10 +51,7 @@ control "V-26470" do
   in the Active Directory Domain STIG), must only allow Administrators, removing
   the Authenticated Users group."
   describe security_policy do
-    its("SeNetworkLogonRight") { should include 'S-1-5-32-544' }
-  end
-  describe security_policy do
-    its("SeNetworkLogonRight") { should include 'S-1-5-11' }
+    its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
   end
 end
 

@@ -43,10 +43,7 @@ control "V-26489" do
   Local Service
   Network Service"
   describe security_policy do
-    its("SeAuditPrivilege") { should include 'S-1-5-20' }
-  end
-  describe security_policy do
-    its("SeAuditPrivilege") { should include 'S-1-5-19' }
+    its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
   end
 end
 

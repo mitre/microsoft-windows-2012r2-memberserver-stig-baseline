@@ -47,11 +47,8 @@ control "V-26496" do
   groups:
 
   Administrators"
-  a = (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries) - (users.where { username.casecmp('Administrators') == 0}.uids.entries + groups.where { name.casecmp('Administrators') == 0}.gids.entries).uniq
-  a.each do |entry|
-    describe security_policy do
-      its("SeSecurityPrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its('SeLockMemoryPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 

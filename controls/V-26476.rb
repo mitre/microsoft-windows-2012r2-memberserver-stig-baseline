@@ -36,10 +36,7 @@ control "V-26476" do
   Administrators
   Local Service"
   describe security_policy do
-    its("SeSystemtimePrivilege") { should include 'S-1-5-32-544' }
-  end
-  describe security_policy do
-    its("SeSystemtimePrivilege") { should include 'S-1-5-19' }
+    its('SeTimeZonePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
   end
 end
 

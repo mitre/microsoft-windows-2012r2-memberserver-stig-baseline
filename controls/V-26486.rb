@@ -82,7 +82,7 @@ control "V-26486" do
 
   if is_domain == 'WORKGROUP'
     describe security_policy do
-      its('SeDenyRemoteInteractiveLogonRight') { should include 'S-1-5-32-546' }
+      its('SeDenyRemoteInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
      end   
       
   else  

@@ -29,11 +29,16 @@ control "V-26501" do
   Administrators
   NT Service\WdiServ
   "
-  describe security_policy do
-    its("SeSystemProfilePrivilege") { should include 'S-1-5-32-544' }
-  end
-  describe security_policy do
-    its("SeSystemProfilePrivilege") { should include 'S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420' }
-  end
+  describe.one do
+      describe security_policy do
+        its('SeSystemProfilePrivilege') { should eq ['S-1-5-32-544', 'S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420'] }
+      end
+      describe security_policy do
+        its('SeSystemProfilePrivilege') { should eq ['S-1-5-32-544'] }
+      end
+      describe security_policy do
+        its('SeSystemProfilePrivilege') { should eq ['S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420'] }
+      end
+    end
 end  
 

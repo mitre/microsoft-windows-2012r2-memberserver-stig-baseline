@@ -58,7 +58,7 @@ control "V-26483" do
 
   if is_domain == 'WORKGROUP'
     describe security_policy do
-      its('SeDenyBatchLogonRight') { should include 'S-1-5-32-546' }
+      its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
      end   
       
   else  

@@ -33,7 +33,5 @@ control "V-26487" do
     describe security_policy do
       its("SeEnableDelegationPrivilege"){ should eq [] }
   end
-    end
-  end
 end
 

@@ -44,11 +44,8 @@ control "V-26503" do
   Local Service
   Network Service"
   describe security_policy do
-    its("SeAssignPrimaryTokenPrivilege") { should include 'S-1-5-20' }
-  end
-  describe security_policy do
-    its("SeAssignPrimaryTokenPrivilege") { should include 'S-1-5-19' }
-  end
+      its('SeAssignPrimaryTokenPrivilege') { should eq ['S-1-5-20', 'S-1-5-19'] }
+    end
 end
 
 
