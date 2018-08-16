@@ -50,7 +50,7 @@ control "V-26473" do
   Services access must be restricted to the accounts that require it.  This must
   be documented with the ISSO."
   describe security_policy do 
-    its('SeInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
+    its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
   end 
 end
 

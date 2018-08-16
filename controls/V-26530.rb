@@ -40,7 +40,7 @@ control "V-26530" do
   \"Failure\" selected."
   describe.one do
     describe audit_policy do
-      its("Credential Validation") { should eq "Success" }
+      its("Credential Validation") { should eq "Failure" }
     end
     describe audit_policy do
       its("Credential Validation") { should eq "Success and Failure" }
