@@ -32,7 +32,8 @@ control "V-26487" do
   defined but containing no entries (blank)."
   (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries).each do |entry|
     describe security_policy do
-      its("SeEnableDelegationPrivilege") { should_not include entry }
+      its("SeEnableDelegationPrivilege"){ should eq [] }
+  end
     end
   end
 end
