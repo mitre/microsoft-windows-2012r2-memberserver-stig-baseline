@@ -30,7 +30,6 @@ control "V-26487" do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Enable computer and user accounts to be trusted for delegation\" to be
   defined but containing no entries (blank)."
-  (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries).each do |entry|
     describe security_policy do
       its("SeEnableDelegationPrivilege"){ should eq [] }
   end
