@@ -35,10 +35,8 @@ control "V-26479" do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Create a token object\" to be defined but containing no entries (blank)."
-  (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries).each do |entry|
     describe security_policy do
-      its("SeCreateTokenPrivilege") { should_not include entry }
-    end
+    its('SeCreateTokenPrivilege') { should eq [] }
   end
 end
 

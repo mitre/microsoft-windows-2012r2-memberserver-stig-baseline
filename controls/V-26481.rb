@@ -29,10 +29,8 @@ control "V-26481" do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Create permanent shared objects\" to be defined but containing no entries
   (blank)."
-  (users.where { username =~ /.*/}.uids.entries + groups.where { name =~ /.*/}.gids.entries).each do |entry|
-    describe security_policy do
-      its("SeCreatePermanentPrivilege") { should_not include entry }
-    end
+  describe security_policy do
+    its('SeCreatePermanentPrivilege') { should eq [] }
   end
 end
 
