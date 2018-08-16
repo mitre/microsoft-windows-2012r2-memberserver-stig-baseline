@@ -11,7 +11,6 @@ control "V-6831" do
   tag "stig_id": "WN12-SO-000012"
   tag "fix_id": "F-45860r1_fix"
   tag "cci": ["CCE-24465-7", "CCI-002418", "CCI-002421"]
-  tag "nist": ["CCE-24465-7", "CCI-002418", "CCI-002421"]
   tag "nist": ["SC-8", "Rev_4"]
   tag "nist": ["SC-8 (1)", "Rev_4"]
   tag "documentable": false

@@ -12,7 +12,6 @@ control "V-4108" do
   tag "stig_id": "WN12-SO-000049"
   tag "fix_id": "F-45849r2_fix"
   tag "cci": ["CCE-25110-8", "CCI-000139", "CCI-001855", "CCI-001858"]
-  tag "nist": ["CCE-25110-8", "CCI-000139", "CCI-001855", "CCI-001858"]
   tag "nist": ["AU-5 a", "Rev_4"]
   tag "nist": ["AU-5 (1)", "Rev_4"]
   tag "nist": ["AU-5 (2)", "Rev_4"]

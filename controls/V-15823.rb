@@ -11,7 +11,6 @@ control "V-15823" do
   tag "stig_id": "WN12-GE-000020"
   tag "fix_id": "F-85467r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Search all drives for *.p12 and *.pfx files.

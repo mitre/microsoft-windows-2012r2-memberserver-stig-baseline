@@ -14,7 +14,6 @@ control "V-1153" do
   tag "stig_id": "WN12-SO-000067"
   tag "fix_id": "F-45791r1_fix"
   tag "cci": ["CCE-24650-4", "CCI-000366"]
-  tag "nist": ["CCE-24650-4", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

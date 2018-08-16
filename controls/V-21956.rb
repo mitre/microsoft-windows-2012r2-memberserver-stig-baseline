@@ -11,7 +11,6 @@ control "V-21956" do
   tag "stig_id": "WN12-SO-000047"
   tag "fix_id": "F-46107r2_fix"
   tag "cci": ["CCE-25202-3", "CCI-002385"]
-  tag "nist": ["CCE-25202-3", "CCI-002385"]
   tag "nist": ["SC-5", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

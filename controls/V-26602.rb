@@ -9,7 +9,6 @@ control "V-26602" do
   tag "stig_id": "WN12-SV-000101"
   tag "fix_id": "F-74887r1_fix"
   tag "cci": ["CCE-23863-4", "CCI-000382"]
-  tag "nist": ["CCE-23863-4", "CCI-000382"]
   tag "nist": ["CM-7 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the server has the role of an FTP server, this is NA.

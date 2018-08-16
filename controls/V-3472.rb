@@ -14,7 +14,6 @@ control "V-3472" do
   tag "stig_id": "WN12-CC-000069"
   tag "fix_id": "F-45845r1_fix"
   tag "cci": ["CCE-23563-0", "CCI-001891"]
-  tag "nist": ["CCE-23563-0", "CCI-001891"]
   tag "nist": ["AU-8 (1) (a)", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the following registry values:

@@ -18,7 +18,6 @@ control "V-26542" do
   tag "stig_id": "WN12-AU-000048"
   tag "fix_id": "F-45920r1_fix"
   tag "cci": ["CCI-000067", "CCI-000172"]
-  tag "nist": ["CCI-000067", "CCI-000172"]
   tag "nist": ["AC-17 (1)", "Rev_4"]
   tag "nist": ["AU-12 c", "Rev_4"]
   tag "documentable": false

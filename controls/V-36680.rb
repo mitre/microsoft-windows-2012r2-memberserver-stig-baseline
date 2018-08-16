@@ -12,7 +12,6 @@ control "V-36680" do
   tag "stig_id": "WN12-CC-000030"
   tag "fix_id": "F-74883r1_fix"
   tag "cci": ["CCE-24981-3", "CCI-000366"]
-  tag "nist": ["CCE-24981-3", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "The Windows Store is not installed by default. If the

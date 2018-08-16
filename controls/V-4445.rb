@@ -17,7 +17,6 @@ control "V-4445" do
   tag "stig_id": "WN12-SO-000088"
   tag "fix_id": "F-45238r1_fix"
   tag "cci": ["CCE-24878-1", "CCI-000381"]
-  tag "nist": ["CCE-24878-1", "CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "third_party_tools": "HK"

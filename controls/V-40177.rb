@@ -16,7 +16,6 @@ control "V-40177" do
   tag "stig_id": "WN12-GE-000007"
   tag "fix_id": "F-45161r1_fix"
   tag "cci": ["CCI-002165"]
-  tag "nist": ["CCI-002165"]
   tag "nist": ["AC-3 (4)", "Rev_4"]
   tag "documentable": false
   tag "check": "The default permissions are adequate when the Security Option

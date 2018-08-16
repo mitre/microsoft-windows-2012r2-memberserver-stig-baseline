@@ -12,7 +12,6 @@ control "V-1099" do
   tag "stig_id": "WN12-AC-000001"
   tag "fix_id": "F-81027r1_fix"
   tag "cci": ["CCE-24768-4", "CCI-002238"]
-  tag "nist": ["CCE-24768-4", "CCI-002238"]
   tag "nist": ["AC-7 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

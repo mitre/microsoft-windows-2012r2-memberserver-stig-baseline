@@ -17,7 +17,6 @@ control "V-36734" do
   tag "stig_id": "WN12-GE-000023"
   tag "fix_id": "F-63425r1_fix"
   tag "cci": ["CCI-001233"]
-  tag "nist": ["CCI-001233"]
   tag "nist": ["SI-2 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the operating system employs automated mechanisms to

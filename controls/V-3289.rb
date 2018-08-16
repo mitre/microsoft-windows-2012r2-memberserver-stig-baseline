@@ -11,7 +11,6 @@ control "V-3289" do
   tag "stig_id": "WN12-GE-000022"
   tag "fix_id": "F-45130r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "This finding can be downgraded to a CAT

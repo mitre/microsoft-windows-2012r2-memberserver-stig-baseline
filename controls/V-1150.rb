@@ -13,8 +13,6 @@ control "V-1150" do
   tag "fix_id": "F-45789r2_fix"
   tag "cci": ["CCE-25602-4", "CCI-000192", "CCI-000193", "CCI-000194",
   "CCI-001619"]
-  tag "nist": ["CCE-25602-4", "CCI-000192", "CCI-000193", "CCI-000194",
-  "CCI-001619"]
   tag "nist": ["IA-5 (1) (a)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

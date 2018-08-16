@@ -18,7 +18,6 @@ control "V-78057" do
   tag "stig_id": "WN12-AU-000030"
   tag "fix_id": "F-84781r1_fix"
   tag "cci": ["CCI-000172", "CCI-001404"]
-  tag "nist": ["CCI-000172", "CCI-001404"]
   tag "nist": ["AC-2 (4)", "Rev_4"]
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory

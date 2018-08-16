@@ -9,7 +9,6 @@ control "V-26578" do
   tag "stig_id": "WN12-CC-000010"
   tag "fix_id": "F-45893r1_fix"
   tag "cci": ["CCE-25571-1", "CCI-000382"]
-  tag "nist": ["CCE-25571-1", "CCI-000382"]
   tag "nist": ["CM-7 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

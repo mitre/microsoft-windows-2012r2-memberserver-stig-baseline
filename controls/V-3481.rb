@@ -13,7 +13,6 @@ control "V-3481" do
   tag "stig_id": "WN12-UC-000013"
   tag "fix_id": "F-45847r1_fix"
   tag "cci": ["CCE-23890-7", "CCI-001812"]
-  tag "nist": ["CCE-23890-7", "CCI-001812"]
   tag "nist": ["CM-11 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

@@ -14,7 +14,6 @@ control "V-4447" do
   tag "stig_id": "WN12-CC-000130"
   tag "fix_id": "F-45858r2_fix"
   tag "cci": ["CCE-24788-2", "CCI-001453"]
-  tag "nist": ["CCE-24788-2", "CCI-001453"]
   tag "nist": ["AC-17 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

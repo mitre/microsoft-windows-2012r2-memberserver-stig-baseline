@@ -10,7 +10,6 @@ control "V-36671" do
   tag "stig_id": "WN12-AU-000201"
   tag "fix_id": "F-44693r2_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECRR-1"

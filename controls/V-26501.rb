@@ -13,7 +13,7 @@ control "V-26501" do
   tag "stig_id": "WN12-SO-000081"
   tag "cci": "CCI-001084"
   tag "cce": "CCE-23880-8"
-  #tag "nist": ["SC-18 (3)", "Rev_4"]
+  tag "nist": ["SC-18 (3)", "Rev_4"]
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run gpedit.msc.
 

@@ -11,7 +11,6 @@ control "V-3378" do
   tag "stig_id": "WN12-SO-000060"
   tag "fix_id": "F-45817r1_fix"
   tag "cci": ["CCE-22742-1", "CCI-001090"]
-  tag "nist": ["CCE-22742-1", "CCI-001090"]
   tag "nist": ["SC-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

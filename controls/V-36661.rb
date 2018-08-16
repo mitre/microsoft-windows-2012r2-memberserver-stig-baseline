@@ -11,7 +11,6 @@ control "V-36661" do
   tag "stig_id": "WN12-00-000010"
   tag "fix_id": "F-44708r2_fix"
   tag "cci": ["CCI-000205"]
-  tag "nist": ["CCI-000205"]
   tag "nist": ["IA-5 (1) (a)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "IAIA-1"

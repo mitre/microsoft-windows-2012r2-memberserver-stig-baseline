@@ -10,7 +10,6 @@ control "V-26581" do
   tag "stig_id": "WN12-CC-000086"
   tag "fix_id": "F-71605r2_fix"
   tag "cci": ["CCE-23743-8", "CCI-001849"]
-  tag "nist": ["CCE-23743-8", "CCI-001849"]
   tag "nist": ["AU-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is configured to write events directly to an

@@ -10,7 +10,6 @@ control "V-40204" do
   tag "stig_id": "WN12-CC-000136"
   tag "fix_id": "F-45188r2_fix"
   tag "cci": ["CCE-24504-3", "CCI-000366"]
-  tag "nist": ["CCE-24504-3", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

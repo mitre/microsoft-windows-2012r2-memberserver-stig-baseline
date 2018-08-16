@@ -18,7 +18,6 @@ control "V-73519" do
   tag "stig_id": "WN12-00-000170"
   tag "fix_id": "F-82945r1_fix"
   tag "cci": ["CCI-000381"]
-  tag "nist": ["CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "This requirement specifically applies to Windows 2012 but can

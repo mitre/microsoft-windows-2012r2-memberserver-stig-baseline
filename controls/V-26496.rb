@@ -16,8 +16,6 @@ control "V-26496" do
   tag "fix_id": "F-45965r2_fix"
   tag "cci": ["CCE-23456-7", "CCI-000162", "CCI-000163", "CCI-000164",
   "CCI-000171", "CCI-001914"]
-  tag "nist": ["CCE-23456-7", "CCI-000162", "CCI-000163", "CCI-000164",
-  "CCI-000171", "CCI-001914"]
   tag "nist": ["AU-9", "Rev_4"]
   tag "nist": ["AU-12 b", "Rev_4"]
   tag "nist": ["AU-12 (3)", "Rev_4"]

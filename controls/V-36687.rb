@@ -10,7 +10,6 @@ control "V-36687" do
   tag "stig_id": "WN12-CC-000052"
   tag "fix_id": "F-44733r1_fix"
   tag "cci": ["CCE-24092-9", "CCI-000381"]
-  tag "nist": ["CCE-24092-9", "CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

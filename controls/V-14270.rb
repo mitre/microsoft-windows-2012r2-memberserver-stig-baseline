@@ -10,7 +10,6 @@ control "V-14270" do
   tag "stig_id": "WN12-UC-000011"
   tag "fix_id": "F-45933r1_fix"
   tag "cci": ["CCE-25538-0", "CCI-000366"]
-  tag "nist": ["CCE-25538-0", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

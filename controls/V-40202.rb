@@ -19,7 +19,6 @@ control "V-40202" do
   tag "stig_id": "WN12-AU-000059"
   tag "fix_id": "F-45186r1_fix"
   tag "cci": ["CCI-000172"]
-  tag "nist": ["CCI-000172"]
   tag "nist": ["AU-12 c", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECAR-2, ECAR-3"

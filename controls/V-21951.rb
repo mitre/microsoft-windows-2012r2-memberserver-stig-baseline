@@ -11,7 +11,6 @@ control "V-21951" do
   tag "stig_id": "WN12-SO-000061"
   tag "fix_id": "F-46102r1_fix"
   tag "cci": ["CCE-25508-3", "CCI-000778"]
-  tag "nist": ["CCE-25508-3", "CCI-000778"]
   tag "nist": ["IA-3", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

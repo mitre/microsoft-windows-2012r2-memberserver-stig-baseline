@@ -14,7 +14,6 @@ control "V-36722" do
   tag "stig_id": "WN12-AU-000204"
   tag "fix_id": "F-44699r1_fix"
   tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164"]
-  tag "nist": ["CCI-000162", "CCI-000163", "CCI-000164"]
   tag "documentable": false
   tag "ia_controls": "ECTP-1"
   tag "check": "Verify the permissions on the Application event log

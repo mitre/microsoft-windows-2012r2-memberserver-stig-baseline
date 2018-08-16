@@ -23,7 +23,6 @@ control "V-26485" do
   tag "stig_id": "WN12-UR-000020-MS"
   tag "fix_id": "F-49929r1_fix"
   tag "cci": ["CCE-24460-8", "CCI-000213"]
-  tag "nist": ["CCE-24460-8", "CCI-000213"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

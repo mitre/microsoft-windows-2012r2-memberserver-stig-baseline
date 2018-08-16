@@ -15,7 +15,6 @@ control "V-26474" do
   tag "stig_id": "WN12-UR-000007"
   tag "fix_id": "F-45136r1_fix"
   tag "cci": ["CCE-25380-7", "CCI-002235"]
-  tag "nist": ["CCE-25380-7", "CCI-002235"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user

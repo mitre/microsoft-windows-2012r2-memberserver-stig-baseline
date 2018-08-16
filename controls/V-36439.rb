@@ -17,7 +17,6 @@ control "V-36439" do
   tag "stig_id": "WN12-RG-000003-MS"
   tag "fix_id": "F-81023r1_fix"
   tag "cci": ["CCI-001084"]
-  tag "nist": ["CCI-001084"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is not a member of a domain, this is NA.

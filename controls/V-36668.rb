@@ -18,7 +18,6 @@ control "V-36668" do
   tag "stig_id": "WN12-AU-000081"
   tag "fix_id": "F-44723r2_fix"
   tag "cci": ["CCI-000172"]
-  tag "nist": ["CCI-000172"]
   tag "nist": ["AU-12 c", "Rev_4"]
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory

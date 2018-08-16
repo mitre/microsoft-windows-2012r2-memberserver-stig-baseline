@@ -17,7 +17,6 @@ control "V-57721" do
   tag "stig_id": "WN12-AU-000213"
   tag "fix_id": "F-62927r2_fix"
   tag "cci": ["CCI-001494", "CCI-001495"]
-  tag "nist": ["CCI-001494", "CCI-001495"]
   tag "nist": ["AU-9", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the permissions on Event Viewer only allow

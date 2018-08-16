@@ -11,7 +11,6 @@ control "V-7002" do
   tag "stig_id": "WN12-GE-000015"
   tag "fix_id": "F-85581r1_fix"
   tag "cci": ["CCI-000764"]
-  tag "nist": ["CCI-000764"]
   tag "nist": ["IA-2", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the password required status for enabled user accounts.

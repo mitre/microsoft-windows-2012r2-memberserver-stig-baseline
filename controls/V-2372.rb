@@ -10,7 +10,6 @@ control "V-2372" do
   tag "stig_id": "WN12-AC-000009"
   tag "fix_id": "F-45806r1_fix"
   tag "cci": ["CCE-23951-7", "CCI-000196"]
-  tag "nist": ["CCE-23951-7", "CCI-000196"]
   tag "nist": ["IA-5 (1) (c)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

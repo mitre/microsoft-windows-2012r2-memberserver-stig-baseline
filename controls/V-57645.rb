@@ -22,7 +22,6 @@ control "V-57645" do
   tag "stig_id": "WN12-00-000020"
   tag "fix_id": "F-62849r3_fix"
   tag "cci": ["CCI-001199", "CCI-002475", "CCI-002476"]
-  tag "nist": ["CCI-001199", "CCI-002475", "CCI-002476"]
   tag "nist": ["SC-28 (1)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify systems that require additional protections due to

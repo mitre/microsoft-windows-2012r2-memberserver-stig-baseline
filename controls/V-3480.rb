@@ -12,7 +12,6 @@ control "V-3480" do
   tag "stig_id": "WN12-CC-000122"
   tag "fix_id": "F-46056r1_fix"
   tag "cci": ["CCE-24250-3", "CCI-001812"]
-  tag "nist": ["CCE-24250-3", "CCI-001812"]
   tag "nist": ["CM-11 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "Windows Media Player is not installed by default.  If it is not

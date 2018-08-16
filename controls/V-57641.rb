@@ -26,7 +26,6 @@ control "V-57641" do
   tag "stig_id": "WN12-00-000019"
   tag "fix_id": "F-62843r3_fix"
   tag "cci": ["CCI-002420", "CCI-002422"]
-  tag "nist": ["CCI-002420", "CCI-002422"]
   tag "nist": ["SC-8 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the data owner has a strict requirement for ensuring data

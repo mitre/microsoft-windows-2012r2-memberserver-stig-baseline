@@ -11,7 +11,6 @@ control "V-1081" do
   tag "stig_id": "WN12-GE-000005"
   tag "fix_id": "F-81015r1_fix"
   tag "cci": ["CCI-000213"]
-  tag "nist": ["CCI-000213"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Open \"Computer Management\".

@@ -11,7 +11,6 @@ control "V-36720" do
   tag "stig_id": "WN12-CC-000128"
   tag "fix_id": "F-44832r1_fix"
   tag "cci": ["CCE-23262-9", "CCI-002038"]
-  tag "nist": ["CCE-23262-9", "CCI-002038"]
   tag "nist": ["IA-11", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECLP-1"

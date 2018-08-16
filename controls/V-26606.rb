@@ -9,7 +9,6 @@ control "V-26606" do
   tag "stig_id": "WN12-SV-000105"
   tag "fix_id": "F-45255r1_fix"
   tag "cci": ["CCE-24474-9", "CCI-000382"]
-  tag "nist": ["CCE-24474-9", "CCI-000382"]
   tag "nist": ["CM-7 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

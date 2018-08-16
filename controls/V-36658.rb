@@ -7,7 +7,6 @@
            ]
 )
 
-
 control "V-36658" do
   title "Users with administrative privilege must be documented."
   desc  "Administrative accounts may perform any action on a system.  Users
@@ -20,7 +19,6 @@ control "V-36658" do
   tag "stig_id": "WN12-00-000004"
   tag "fix_id": "F-44704r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the necessary documentation that identifies the members

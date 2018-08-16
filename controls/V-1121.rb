@@ -11,7 +11,6 @@ control "V-1121" do
   tag "stig_id": "WN12-GE-000027"
   tag "fix_id": "F-81019r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If FTP is not installed on the system, this is NA.

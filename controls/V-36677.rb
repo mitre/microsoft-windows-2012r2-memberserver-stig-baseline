@@ -12,7 +12,6 @@ control "V-36677" do
   tag "stig_id": "WN12-CC-000018"
   tag "fix_id": "F-44727r1_fix"
   tag "cci": ["CCE-23727-1", "CCI-001812"]
-  tag "nist": ["CCE-23727-1", "CCI-001812"]
   tag "nist": ["CM-11 (2)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

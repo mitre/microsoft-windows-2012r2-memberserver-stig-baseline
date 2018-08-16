@@ -11,7 +11,6 @@ control "V-1112" do
   tag "stig_id": "WN12-GE-000014"
   tag "fix_id": "F-45780r2_fix"
   tag "cci": ["CCI-000795"]
-  tag "nist": ["CCI-000795"]
   tag "nist": ["IA-4 e", "Rev_4"]
   tag "documentable": false
   tag "check": "Run \"PowerShell\".

@@ -11,7 +11,6 @@ control "V-36656" do
   tag "stig_id": "WN12-UC-000001"
   tag "fix_id": "F-44833r2_fix"
   tag "cci": ["CCE-24055-6", "CCI-000060"]
-  tag "nist": ["CCE-24055-6", "CCI-000060"]
   tag "nist": ["AC-11 (1)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

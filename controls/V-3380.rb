@@ -12,7 +12,6 @@ control "V-3380" do
   tag "stig_id": "WN12-SO-000066"
   tag "fix_id": "F-45819r1_fix"
   tag "cci": ["CCE-25367-4", "CCI-001133"]
-  tag "nist": ["CCE-25367-4", "CCI-001133"]
   tag "nist": ["SC-10", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

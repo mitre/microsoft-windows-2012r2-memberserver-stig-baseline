@@ -11,7 +11,6 @@ control "V-36681" do
   tag "stig_id": "WN12-CC-000048"
   tag "fix_id": "F-44731r1_fix"
   tag "cci": ["CCE-24401-2", "CCI-000381"]
-  tag "nist": ["CCE-24401-2", "CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

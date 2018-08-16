@@ -11,8 +11,6 @@ control "V-26359" do
   tag "fix_id": "F-46047r1_fix"
   tag "cci": ["CCE-24020-0", "CCI-000048", "CCI-001384", "CCI-001385",
   "CCI-001386", "CCI-001387", "CCI-001388"]
-  tag "nist": ["CCE-24020-0", "CCI-000048", "CCI-001384", "CCI-001385",
-  "CCI-001386", "CCI-001387", "CCI-001388"]
   tag "nist": ["AC-8 a", "Rev_4"]
   tag "nist": ["AC-8 c 1", "Rev_4"]
   tag "nist": ["AC-8 c 2", "Rev_4"]

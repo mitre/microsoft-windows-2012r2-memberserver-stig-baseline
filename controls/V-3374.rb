@@ -10,7 +10,6 @@ control "V-3374" do
   tag "stig_id": "WN12-SO-000017"
   tag "fix_id": "F-45814r1_fix"
   tag "cci": ["CCE-25198-3", "CCI-002418", "CCI-002421"]
-  tag "nist": ["CCE-25198-3", "CCI-002418", "CCI-002421"]
   tag "nist": ["SC-8", "Rev_4"]
   tag "nist": ["CM-9 c", "Rev_4"]
   tag "documentable": false

@@ -13,7 +13,6 @@ control "V-3487" do
   tag "stig_id": "WN12-GE-000021"
   tag "fix_id": "F-45237r1_fix"
   tag "cci": ["CCI-000381"]
-  tag "nist": ["CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "Required services will vary between organizations, and on the

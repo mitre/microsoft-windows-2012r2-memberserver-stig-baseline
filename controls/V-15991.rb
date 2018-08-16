@@ -12,7 +12,6 @@ control "V-15991" do
   tag "stig_id": "WN12-SO-000086"
   tag "fix_id": "F-45241r1_fix"
   tag "cci": ["CCE-23295-9", "CCI-001084"]
-  tag "nist": ["CCE-23295-9", "CCI-001084"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECCD-1, ECCD-2"

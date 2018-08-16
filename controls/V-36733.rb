@@ -17,7 +17,6 @@ control "V-36733" do
   tag "stig_id": "WN12-00-000015"
   tag "fix_id": "F-63423r2_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Determine whether user-level information is backed up in

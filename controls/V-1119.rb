@@ -9,7 +9,6 @@ control "V-1119" do
   tag "stig_id": "WN12-GE-000010"
   tag "fix_id": "F-45784r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the local system boots directly into Windows.

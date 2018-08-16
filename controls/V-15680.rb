@@ -11,7 +11,6 @@ control "V-15680" do
   tag "stig_id": "WN12-CC-000049-MS"
   tag "fix_id": "F-66505r3_fix"
   tag "cci": ["CCE-23460-9", "CCI-000366"]
-  tag "nist": ["CCE-23460-9", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is a member of a domain, this is NA.

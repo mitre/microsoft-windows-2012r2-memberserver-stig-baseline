@@ -12,7 +12,6 @@ control "V-32272" do
   tag "stig_id": "WN12-PK-000001"
   tag "fix_id": "F-76901r2_fix"
   tag "cci": ["CCI-000185", "CCI-002470"]
-  tag "nist": ["CCI-000185", "CCI-002470"]
   tag "nist": ["SC-23 (5)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the DoD Root CA certificates are installed as Trusted

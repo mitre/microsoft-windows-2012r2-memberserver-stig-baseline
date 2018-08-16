@@ -10,7 +10,6 @@ control "V-21953" do
   tag "stig_id": "WN12-SO-000063"
   tag "fix_id": "F-46104r1_fix"
   tag "cci": ["CCE-25299-9", "CCI-000366"]
-  tag "nist": ["CCE-25299-9", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

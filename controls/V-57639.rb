@@ -24,7 +24,6 @@ control "V-57639" do
   tag "stig_id": "WN12-SO-000092"
   tag "fix_id": "F-62841r2_fix"
   tag "cci": ["CCI-000186"]
-  tag "nist": ["CCI-000186"]
   tag "nist": ["IA-5 (2) (b)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

@@ -12,7 +12,6 @@ control "V-16008" do
   tag "stig_id": "WN12-SO-000081"
   tag "fix_id": "F-46068r2_fix"
   tag "cci": ["CCE-23880-8", "CCI-001084"]
-  tag "nist": ["CCE-23880-8", "CCI-001084"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.

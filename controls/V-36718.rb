@@ -10,7 +10,6 @@ control "V-36718" do
   tag "stig_id": "WN12-CC-000126"
   tag "fix_id": "F-44830r1_fix"
   tag "cci": ["CCE-23637-2", "CCI-000877"]
-  tag "nist": ["CCE-23637-2", "CCI-000877"]
   tag "nist": ["MA-4 c", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

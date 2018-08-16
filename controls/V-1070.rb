@@ -12,7 +12,6 @@ control "V-1070" do
   tag "stig_id": "WN12-00-000001"
   tag "fix_id": "F-45764r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify servers are located in controlled access areas that are

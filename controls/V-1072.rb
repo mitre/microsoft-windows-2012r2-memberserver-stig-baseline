@@ -20,7 +20,6 @@ control "V-1072" do
   tag "stig_id": "WN12-00-000012"
   tag "fix_id": "F-86115r1_fix" 
   tag "cci": ["CCI-000764"]
-  tag "nist": ["CCI-000764"]
   tag "nist": ["IA-2", "Rev_4"]
   tag "documentable": false
   tag "check": "Determine whether any shared accounts exist. If no shared

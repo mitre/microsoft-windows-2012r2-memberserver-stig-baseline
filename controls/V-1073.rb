@@ -11,7 +11,6 @@ control "V-1073" do
   tag "stig_id": "WN12-GE-000001"
   tag "fix_id": "F-46115r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Run \"winver.exe\".

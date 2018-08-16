@@ -14,7 +14,6 @@ control "V-32282" do
   tag "stig_id": "WN12-RG-000002"
   tag "fix_id": "F-71731r1_fix"
   tag "cci": ["CCI-002235"]
-  tag "nist": ["CCI-002235"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Run \"Regedit\".

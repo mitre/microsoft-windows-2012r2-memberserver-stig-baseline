@@ -11,7 +11,6 @@ control "V-3245" do
   tag "stig_id": "WN12-GE-000018"
   tag "fix_id": "F-45807r4_fix"
   tag "cci": ["CCI-001090"]
-  tag "nist": ["CCI-001090"]
   tag "nist": ["SC-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If only system-created shares such as \"ADMIN$\", \"C$\", and

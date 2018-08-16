@@ -9,7 +9,6 @@ control "V-42420" do
   tag "stig_id": "WN12-FW-000001"
   tag "fix_id": "F-47956r2_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

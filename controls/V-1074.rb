@@ -10,7 +10,6 @@ control "V-1074" do
   tag "stig_id": "WN12-00-000100"
   tag "fix_id": "F-82943r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify an anti-virus solution is installed on the system. The

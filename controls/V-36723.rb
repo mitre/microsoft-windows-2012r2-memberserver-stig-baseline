@@ -14,7 +14,6 @@ control "V-36723" do
   tag "stig_id": "WN12-AU-000205"
   tag "fix_id": "F-44700r2_fix"
   tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164"]
-  tag "nist": ["CCI-000162", "CCI-000163", "CCI-000164"]
   tag "nist": ["AU-9", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECTP-1"

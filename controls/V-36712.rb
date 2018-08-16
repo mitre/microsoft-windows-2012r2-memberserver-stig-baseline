@@ -10,7 +10,6 @@ control "V-36712" do
   tag "stig_id": "WN12-CC-000123"
   tag "fix_id": "F-44827r1_fix"
   tag "cci": ["CCE-24431-9", "CCI-000877"]
-  tag "nist": ["CCE-24431-9", "CCI-000877"]
   tag "nist": ["MA-4 c", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "IAIA-1"

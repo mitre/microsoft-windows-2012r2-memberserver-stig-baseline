@@ -9,7 +9,6 @@ control "V-15727" do
   tag "stig_id": "WN12-UC-000012"
   tag "fix_id": "F-46066r1_fix"
   tag "cci": ["CCE-24063-0", "CCI-000366"]
-  tag "nist": ["CCE-24063-0", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

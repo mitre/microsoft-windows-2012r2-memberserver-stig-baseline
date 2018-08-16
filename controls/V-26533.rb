@@ -18,7 +18,6 @@ control "V-26533" do
   tag "stig_id": "WN12-AU-000015"
   tag "fix_id": "F-45936r1_fix"
   tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["CCI-000172", "CCI-002234"]
   tag "nist": ["AC-6 (9)", "Rev_4"]
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory

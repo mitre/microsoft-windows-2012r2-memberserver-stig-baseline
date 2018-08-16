@@ -13,7 +13,6 @@ control "V-32274" do
   tag "stig_id": "WN12-PK-000003"
   tag "fix_id": "F-78949r1_fix"
   tag "cci": ["CCI-000185", "CCI-002470"]
-  tag "nist": ["CCI-000185", "CCI-002470"]
   tag "nist": ["SC-23 (5)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the DoD Interoperability cross-certificates are

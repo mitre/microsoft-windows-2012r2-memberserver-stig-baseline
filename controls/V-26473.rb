@@ -14,7 +14,6 @@ control "V-26473" do
   tag "stig_id": "WN12-UR-000006-MS"
   tag "fix_id": "F-74893r1_fix"
   tag "cci": ["CCE-24406-1", "CCI-000213"]
-  tag "nist": ["CCE-24406-1", "CCI-000213"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

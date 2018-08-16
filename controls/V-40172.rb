@@ -10,7 +10,6 @@ control "V-40172" do
   tag "stig_id": "WN12-00-000016"
   tag "fix_id": "F-45156r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "CODB-2"

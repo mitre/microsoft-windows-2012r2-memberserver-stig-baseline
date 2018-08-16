@@ -11,7 +11,6 @@ control "V-26580" do
   tag "stig_id": "WN12-CC-000085"
   tag "fix_id": "F-71603r2_fix"
   tag "cci": ["CCE-24572-0", "CCI-001849"]
-  tag "nist": ["CCE-24572-0", "CCI-001849"]
   tag "nist": ["AU-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is configured to write events directly to an

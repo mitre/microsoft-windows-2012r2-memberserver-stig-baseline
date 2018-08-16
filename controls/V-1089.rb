@@ -12,8 +12,6 @@ control "V-1089" do
   tag "fix_id": "F-45771r3_fix"
   tag "cci": ["CCE-25355-9", "CCI-000048", "CCI-000050", "CCI-001384",
   "CCI-001385", "CCI-001386", "CCI-001387", "CCI-001388"]
-  tag "nist": ["CCE-25355-9", "CCI-000048", "CCI-000050", "CCI-001384",
-  "CCI-001385", "CCI-001386", "CCI-001387", "CCI-001388"]
   tag "nist": ["AC-8 a", "Rev_4"]
   tag "nist": ["AC-8 b", "Rev_4"]
   tag "nist": ["AC-8 c 1", "Rev_4"]

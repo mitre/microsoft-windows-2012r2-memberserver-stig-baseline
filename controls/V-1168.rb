@@ -20,7 +20,6 @@ control "V-1168" do
   tag "stig_id": "WN12-00-000009-01"
   tag "fix_id": "F-45181r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If no accounts are members of the Backup Operators group, this

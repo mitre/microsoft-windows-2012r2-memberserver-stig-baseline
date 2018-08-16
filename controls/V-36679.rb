@@ -13,7 +13,6 @@ control "V-36679" do
   tag "stig_id": "WN12-CC-000027"
   tag "fix_id": "F-44729r1_fix"
   tag "cci": ["CCE-25320-3", "CCI-000366"]
-  tag "nist": ["CCE-25320-3", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECVP-1"

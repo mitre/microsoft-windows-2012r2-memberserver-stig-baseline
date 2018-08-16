@@ -11,7 +11,6 @@ control "V-3454" do
   tag "stig_id": "WN12-CC-000100"
   tag "fix_id": "F-45825r1_fix"
   tag "cci": ["CCE-24932-6", "CCI-000068", "CCI-002890"]
-  tag "nist": ["CCE-24932-6", "CCI-000068", "CCI-002890"]
   tag "nist": ["AC-17 (2)", "Rev_4"]
   tag "nist": ["MA-4 (6)", "Rev_4"]
   tag "documentable": false

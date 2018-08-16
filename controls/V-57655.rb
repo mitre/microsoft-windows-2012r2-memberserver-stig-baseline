@@ -37,7 +37,6 @@ control "V-57655" do
   tag "stig_id": "WN12-GE-000057"
   tag "fix_id": "F-82985r1_fix"
   tag "cci": ["CCI-001682"]
-  tag "nist": ["CCI-001682"]
   tag "nist": ["AC-2 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "Determine if emergency administrator accounts are used and

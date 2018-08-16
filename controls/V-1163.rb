@@ -11,7 +11,6 @@ control "V-1163" do
   tag "stig_id": "WN12-SO-000013"
   tag "fix_id": "F-45797r2_fix"
   tag "cci": ["CCE-24414-5", "CCI-002418", "CCI-002421"]
-  tag "nist": ["CCE-24414-5", "CCI-002418", "CCI-002421"]
   tag "nist": ["SC-8", "Rev_4"]
   tag "nist": ["SC-8 (2)", "Rev_4"]
   tag "documentable": false

@@ -18,7 +18,6 @@ control "V-78063" do
   tag "stig_id": "WN12-AU-000106"
   tag "fix_id": "F-84799r1_fix"
   tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["CCI-000172", "CCI-002234"]
   tag "nist": ["AU-12 c", "Rev_4"]
   tag "nist": ["AC-6 (9)", "Rev_4"]
   tag "documentable": false

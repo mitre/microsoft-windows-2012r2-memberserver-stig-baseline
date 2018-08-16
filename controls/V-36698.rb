@@ -11,7 +11,6 @@ control "V-36698" do
   tag "stig_id": "WN12-CC-000075"
   tag "fix_id": "F-44814r1_fix"
   tag "cci": ["CCE-24801-3", "CCI-000381"]
-  tag "nist": ["CCE-24801-3", "CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "IAIA-1"

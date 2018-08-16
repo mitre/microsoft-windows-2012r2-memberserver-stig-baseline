@@ -12,7 +12,6 @@ control "V-36773" do
   tag "stig_id": "WN12-SO-000021"
   tag "fix_id": "F-44717r1_fix"
   tag "cci": ["CCE-23043-3", "CCI-000057"]
-  tag "nist": ["CCE-23043-3", "CCI-000057"]
   tag "nist": ["AC-11 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "PESL-1"

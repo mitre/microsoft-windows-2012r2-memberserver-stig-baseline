@@ -10,7 +10,6 @@ control "V-16000" do
   tag "stig_id": "WN12-CC-000134"
   tag "fix_id": "F-45247r2_fix"
   tag "cci": ["CCE-24260-2", "CCI-002314"]
-  tag "nist": ["CCE-24260-2", "CCI-002314"]
   tag "nist": ["AC-17 (1)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

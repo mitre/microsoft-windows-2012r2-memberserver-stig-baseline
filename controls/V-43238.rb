@@ -11,7 +11,6 @@ control "V-43238" do
   tag "stig_id": "WN12-CC-000138"
   tag "fix_id": "F-49190r1_fix"
   tag "cci": ["CCI-000381"]
-  tag "nist": ["CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "This requirement is NA for the initial release of Windows 2012.

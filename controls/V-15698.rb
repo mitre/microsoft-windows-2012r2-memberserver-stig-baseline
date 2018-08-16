@@ -12,7 +12,6 @@ control "V-15698" do
   tag "stig_id": "WN12-CC-000012"
   tag "fix_id": "F-46011r1_fix"
   tag "cci": ["CCE-23804-8", "CCI-000381"]
-  tag "nist": ["CCE-23804-8", "CCI-000381"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry values do not exist or are not

@@ -12,7 +12,6 @@ control "V-26070" do
   tag "stig_id": "WN12-RG-000001"
   tag "fix_id": "F-80413r1_fix"
   tag "cci": ["CCI-002235"]
-  tag "nist": ["CCI-002235"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Run \"Regedit\".

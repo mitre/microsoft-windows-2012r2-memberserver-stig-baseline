@@ -11,7 +11,6 @@ control "V-3382" do
   tag "stig_id": "WN12-SO-000069"
   tag "fix_id": "F-45821r1_fix"
   tag "cci": ["CCE-24783-3", "CCI-000366"]
-  tag "nist": ["CCE-24783-3", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

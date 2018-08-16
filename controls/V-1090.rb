@@ -14,7 +14,6 @@ control "V-1090" do
   tag "stig_id": "WN12-SO-000024"
   tag "fix_id": "F-66507r2_fix"
   tag "cci": ["CCE-24264-4", "CCI-000366"]
-  tag "nist": ["CCE-24264-4", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is not a member of a domain, this is NA.

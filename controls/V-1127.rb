@@ -48,7 +48,6 @@ control "V-1127" do
   tag "stig_id": "WN12-GE-000004-MS"
   tag "fix_id": "F-58527r1_fix"
   tag "cci": ["CCI-002235"]
-  tag "nist": ["CCI-002235"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECPA-1"

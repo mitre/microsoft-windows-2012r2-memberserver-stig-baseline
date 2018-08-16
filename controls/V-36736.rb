@@ -15,7 +15,6 @@ control "V-36736" do
   tag "stig_id": "WN12-GE-000025"
   tag "fix_id": "F-44713r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the system has software installed and running that

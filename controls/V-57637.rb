@@ -17,7 +17,6 @@ control "V-57637" do
   tag "stig_id": "WN12-00-000018"
   tag "fix_id": "F-66567r4_fix"
   tag "cci": ["CCI-001774"]
-  tag "nist": ["CCI-001774"]
   tag "nist": ["CM-7 (5) (b)", "Rev_4"]
   tag "documentable": false
   tag "check": "This is applicable to unclassified systems, for other systems

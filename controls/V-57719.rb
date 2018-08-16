@@ -11,7 +11,6 @@ control "V-57719" do
   tag "stig_id": "WN12-AU-000203-02"
   tag "fix_id": "F-62925r1_fix"
   tag "cci": ["CCI-001851"]
-  tag "nist": ["CCI-001851"]
   tag "nist": ["AU-4 (1)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the operating system, at a minimum, off-loads audit

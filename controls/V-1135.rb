@@ -11,7 +11,6 @@ configuration can permit access to devices and data beyond a user's need."
   tag "stig_id": "WN12-GE-000012"
   tag "fix_id": "F-45232r1_fix"
   tag "cci": ["CCI-000213"]
-  tag "nist": ["CCI-000213"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Open \"Devices and Printers\" in Control Panel or through

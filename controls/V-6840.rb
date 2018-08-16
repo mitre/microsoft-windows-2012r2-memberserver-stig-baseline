@@ -9,7 +9,6 @@ control "V-6840" do
   tag "stig_id": "WN12-GE-000016"
   tag "fix_id": "F-85579r1_fix"
   tag "cci": ["CCI-000199"]
-  tag "nist": ["CCI-000199"]
   tag "nist": ["IA-5 (1) (d)", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the password never expires status for enabled user

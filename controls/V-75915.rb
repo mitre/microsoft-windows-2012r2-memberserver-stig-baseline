@@ -14,7 +14,6 @@ control "V-75915" do
   tag "stig_id": "WN12-00-000190"
   tag "fix_id": "F-82553r1_fix"
   tag "cci": ["CCI-000366"]
-  tag "nist": ["CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the effective User Rights setting in Local Group Policy

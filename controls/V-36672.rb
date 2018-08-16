@@ -11,7 +11,6 @@ control "V-36672" do
   tag "stig_id": "WN12-AU-000203-01"
   tag "fix_id": "F-62923r1_fix"
   tag "cci": ["CCI-001851"]
-  tag "nist": ["CCI-001851"]
   tag "nist": ["AU-4 (1)", "Rev_4"]
   tag "documentable": false
   tag "check": "Determine if a process to back up log data to a different

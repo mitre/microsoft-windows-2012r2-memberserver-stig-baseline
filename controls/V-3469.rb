@@ -12,7 +12,6 @@ control "V-3469" do
   tag "stig_id": "WN12-CC-000029"
   tag "fix_id": "F-45832r1_fix"
   tag "cci": ["CCE-23622-4", "CCI-000366"]
-  tag "nist": ["CCE-23622-4", "CCI-000366"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Review the registry.
