@@ -39,7 +39,7 @@ configuration can permit access to devices and data beyond a user's need."
   get_shared_printer_status.each do |status|
     loc_colon = status.index(':')
     shared = status[loc_colon+2..loc_colon+7]
-
+ 
     if (shared == 'False')
       describe "Printer shared not enabled" do
         skip "control not applicable"

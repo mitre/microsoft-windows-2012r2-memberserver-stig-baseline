@@ -1,4 +1,4 @@
-control "V-1120" do
+lscontrol "V-1120" do
   title "File Transfer Protocol (FTP) servers must be configured to prevent
   anonymous logons."
   desc  "The FTP service allows remote users to access shared files and
@@ -8,7 +8,13 @@ control "V-1120" do
   that the userid and password will be captured on the network and give
   administrator access to an unauthorized user.
   "
-  impact 0.5
+  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
+  if (is_ftp_installed == 'False' || is_ftp_installed == '')
+    impact 0.0
+  end
+  else
+    impact 0.5
+  end
   tag "gtitle": "Prohibited FTP Logins"
   tag "gid": "V-1120"
   tag "rid": "SV-52106r2_rule"
@@ -56,7 +62,6 @@ control "V-1120" do
   If accounts with administrator privileges are used to access FTP, this is a CAT
   I finding."
   tag "fix": "Configure the FTP service to prevent anonymous logons."
-  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
   if (is_ftp_installed == 'False' || is_ftp_installed == '')
     describe 'FTP not installed' do
       skip "control NA"

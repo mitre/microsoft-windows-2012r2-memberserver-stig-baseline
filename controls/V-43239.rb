@@ -12,7 +12,12 @@ control "V-43239" do
   record the command line information with the process creation events in the
   log. This can provide additional detail when malware has run on a system.
   "
-  impact 0.5
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+  end
+  else
+    impact 0.5
+  end
   tag "gtitle": "WINCC-000139"
   tag "gid": "V-43239"
   tag "rid": "SV-56344r3_rule"

@@ -39,11 +39,12 @@ control "V-15713" do
     describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows Defender\\SpyNet") do
       it { should have_property "SpyNetReporting" }
       its("SpyNetReporting") { should cmp != 1 }
-    end
+    end 
+
     describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows Defender\\SpyNet") do
       it { should have_property "SpyNetReporting" }
       its("SpyNetReporting") { should cmp != 2 }
     end
-  end
+  end 
 end
 

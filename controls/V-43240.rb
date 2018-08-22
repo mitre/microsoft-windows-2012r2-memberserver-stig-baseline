@@ -3,7 +3,12 @@ control "V-43240" do
   logon screen (Windows 2012 R2)."
   desc  "Enabling interaction with the network selection UI allows users to
   change connections to available networks without signing into Windows."
-  impact 0.5
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+  end
+  else
+    impact 0.5
+  end
   tag "gtitle": "WINCC-000140"
   tag "gid": "V-43240"
   tag "rid": "SV-56346r2_rule"

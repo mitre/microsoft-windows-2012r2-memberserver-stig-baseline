@@ -4,7 +4,12 @@ control "V-43241" do
   desc  "Control of credentials and the system must be maintained within the
   enterprise.  Enabling this setting allows enterprise credentials to be used
   with modern style apps that support this, instead of Microsoft accounts."
-  impact 0.3
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+  end
+  else
+    impact 0.3
+  end
   tag "gtitle": "WINCC-000141"
   tag "gid": "V-43241"
   tag "rid": "SV-56353r2_rule"

@@ -5,7 +5,11 @@ control "V-36710" do
   Obtaining update components from an outside source may also potentially allow
   sensitive information outside of the enterprise.  Application updates must be
   obtained from an internal source."
-  impact 0.3
+  if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+    impact 0.3
+  else
+    impact 0.0
+  end
   tag "gtitle": "WINCC-000109"
   tag "gid": "V-36710"
   tag "rid": "SV-51750r2_rule"
@@ -58,20 +62,19 @@ control "V-36710" do
     describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore") do
       it { should have_property "AutoDownload" }
       its("AutoDownload") { should cmp == 2 }
-    end
+    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
   end
 
   if (os['release'].to_i < 6.3 )
     describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate") do
       it { should have_property "AutoDownload" }
       its("AutoDownload") { should cmp == 2 }
-    end
+    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
   end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
-  end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate').exists?
-  end
+  
+  describe "The system does not have Windows Store installed" do
+    skip "The system does not have Windows Store installed, this requirement is Not
+    Applicable."
+  end if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
 end
 

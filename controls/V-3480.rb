@@ -5,7 +5,11 @@ control "V-3480" do
   automatic check for updates performed by Windows Media Player must be disabled
   to ensure a constant platform and to prevent the introduction of
   unknown\\untested software on the system."
-  impact 0.5
+  if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "Media Player - Disable Automatic Updates"
   tag "gid": "V-3480"
   tag "rid": "SV-53130r1_rule"
@@ -33,6 +37,12 @@ control "V-3480" do
   describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer") do
     it { should have_property "DisableAutoUpdate" }
     its("DisableAutoUpdate") { should cmp == 1 }
-  end
+  end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+
+  describe "The system does not have Windows WindowsMediaPlayer installed" do
+    skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
+    Applicable."
+  end if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
 end
 
+ 

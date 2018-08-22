@@ -5,7 +5,11 @@ control "V-14236" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting controls the behavior of elevation when requested by a standard
   user account."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "UAC - User Elevation Prompt"
   tag "gid": "V-14236"
   tag "rid": "SV-52948r1_rule"

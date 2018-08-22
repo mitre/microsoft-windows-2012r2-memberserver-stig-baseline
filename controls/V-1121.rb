@@ -4,7 +4,13 @@ control "V-1121" do
   desc  "The FTP service allows remote users to access shared files and
   directories.  Access outside of the specific directories of shared data could
   provide access to system resources and compromise the system."
-  impact 0.7
+  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
+  if (is_ftp_installed == 'False' || is_ftp_installed == '')
+    impact 0.0
+  end
+  else
+    impact 0.7
+  end
   tag "gtitle": "FTP System File Access"
   tag "gid": "V-1121"
   tag "rid": "SV-52212r2_rule"
@@ -23,7 +29,7 @@ control "V-1121" do
   Select \"Sites\" under the server name.
 
   For any sites that reference FTP, view the Binding information for IP address
-  and port.  The standard port for FTP is 21, however this may be changed.
+  and port.  The sDirtandard port for FTP is 21, however this may be changed.
 
   Open a \"Command Prompt\".
 
@@ -57,7 +63,6 @@ control "V-1121" do
   Windows directories, this is a finding."
   tag "fix": "Configure the system to only allow FTP access to specific folders
   containing the data to be available through the service."
-  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
   if (is_ftp_installed == 'False' || is_ftp_installed == '')
     describe 'FTP not installed' do
       skip "control NA"

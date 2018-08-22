@@ -5,7 +5,11 @@ control "V-16008" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures whether Windows elevates all applications, or only
   signed ones."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.0
+  else
+    impact 0.5
+  end
   tag "gtitle": "UAC - Application Elevations"
   tag "gid": "V-16008"
   tag "rid": "SV-53142r1_rule"
@@ -33,11 +37,16 @@ control "V-16008" do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Only elevate executables that are signed and validated\" to
   \"Disabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "ValidateAdminCodeSignatures" }
-    its("ValidateAdminCodeSignatures") { should cmp == 0 }
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    describe "This system is a Server Core Installation, control is NA" do
+      skip "This system is a Server Core Installation, control is NA"
+    end
   end
-  only_if do registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "ValidateAdminCodeSignatures" }
+      its("ValidateAdminCodeSignatures") { should cmp == 0 }
+    end
   end
 end
 

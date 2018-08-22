@@ -5,7 +5,11 @@ control "V-14237" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting requires Windows to respond to application installation requests
   by prompting for credentials."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "UAC - Application Installations"
   tag "gid": "V-14237"
   tag "rid": "SV-52949r1_rule"

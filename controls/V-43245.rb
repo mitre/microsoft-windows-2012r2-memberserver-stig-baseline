@@ -6,7 +6,12 @@ control "V-43245" do
   ensure this is done in a secure fashion; however, disabling this will prevent
   the caching of credentials for this purpose and also ensure the user is aware
   of the restart."
-  impact 0.5
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+  end
+  else
+    impact 0.5
+  end
   tag "gtitle": "WINCC-000145"
   tag "gid": "V-43245"
   tag "rid": "SV-56355r2_rule"

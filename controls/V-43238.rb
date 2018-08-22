@@ -4,7 +4,12 @@ control "V-43238" do
   desc  "Slide shows that are displayed on the lock screen could display
   sensitive information to unauthorized personnel.  Turning off this feature will
   limit access to the information to a logged on user."
-  impact 0.5
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+  end
+  else
+    impact 0.5
+  end
   tag "gtitle": "WINCC-000138"
   tag "gid": "V-43238"
   tag "rid": "SV-56343r2_rule"
@@ -21,7 +26,7 @@ control "V-43238" do
 
   Registry Hive: HKEY_LOCAL_MACHINE
   Registry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\
-
+ 
   Value Name: NoLockScreenSlideshow
 
   Value Type: REG_DWORD

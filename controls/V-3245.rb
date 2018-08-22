@@ -66,6 +66,7 @@ control "V-3245" do
   if (share_names_string == 'ADMIN$,C$,IPC$') 
     describe "The default files shares exist" do
       skip "This control is NA"
+      impact 0.0
     end
   end
 end

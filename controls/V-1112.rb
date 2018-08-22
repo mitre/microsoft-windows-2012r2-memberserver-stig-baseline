@@ -80,7 +80,7 @@ control "V-1112" do
  
   if get_names == []
   describe 'No Outdated accounts' do 
-    skip 'control not applicable'
+    skip 'control not applicable - no outdated accounts'
 end
 end
 if get_names != []

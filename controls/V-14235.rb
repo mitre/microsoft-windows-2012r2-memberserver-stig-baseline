@@ -5,7 +5,11 @@ control "V-14235" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures the elevation requirements for logged on administrators
   to complete a task that requires raised privileges."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "UAC - Admin Elevation Prompt"
   tag "gid": "V-14235"
   tag "rid": "SV-52947r1_rule"

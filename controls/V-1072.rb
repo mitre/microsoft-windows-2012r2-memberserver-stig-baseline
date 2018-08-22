@@ -1,11 +1,12 @@
+
 ACCOUNTS= attribute(
   'accounts',
-  description: 'List accounts on system',
+  description: 'List shared accounts on system',
   default: %w[
-            Admn
-            Gst
+          Temp
            ]
 )
+
 
 control "V-1072" do
   title "Shared user accounts must not be permitted on the system."
@@ -13,7 +14,11 @@ control "V-1072" do
   same user identification) do not provide adequate identification and
   authentication.  There is no way to provide for nonrepudiation or individual
   accountability for system access and resource usage."
-  impact 0.5
+   if ACCOUNTS == []
+    impact 0.0
+  else
+    impact 0.5
+  end
   tag "gtitle": "Shared User Accounts"
   tag "gid": "V-1072"
   tag "rid": "SV-52839r2_rule"
@@ -40,9 +45,14 @@ control "V-1072" do
   get_accounts = command("net user | Findstr /v 'command -- accounts'").stdout.strip.split(' ')
   get_accounts.each do |user|
     describe user do
-      it { should be_in ACCOUNTS}
-    end  
+      it { should_not be_in ACCOUNTS}
+    end  if ACCOUNTS == []
   end 
+
+  describe "The system does not have any shared accounts, control is NA" do
+    skip "The system does not have any shared accounts, controls is NA"
+  end if ACCOUNTS != []
+
 end
 
 

@@ -6,7 +6,11 @@ control "V-14239" do
   This setting configures Windows to only allow applications installed in a
   secure location on the file system, such as the Program Files or the
   Windows\\System32 folders, to run with elevated privileges."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "UAC - UIAccess Application Elevation"
   tag "gid": "V-14239"
   tag "rid": "SV-52950r1_rule"

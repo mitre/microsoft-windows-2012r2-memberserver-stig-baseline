@@ -4,7 +4,11 @@ control "V-14240" do
   desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting enables UAC."
-  impact 0.5
+  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+    impact 0.5
+  else
+    impact 0.0
+  end
   tag "gtitle": "UAC - All Admin Approval Mode"
   tag "gid": "V-14240"
   tag "rid": "SV-52951r1_rule"

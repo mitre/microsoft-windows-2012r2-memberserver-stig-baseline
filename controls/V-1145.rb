@@ -31,7 +31,7 @@ control "V-1145" do
   (AutoAdminLogon) Enable Automatic Logon (not recommended)\" to \"Disabled\".
 
   Ensure no passwords are stored in the \"DefaultPassword\" registry value noted
-  below:
+  below: 
 
   Registry Hive: HKEY_LOCAL_MACHINE
   Registry Path: \\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\
