@@ -48,6 +48,5 @@ control "V-15991" do
       it { should have_property "EnableUIADesktopToggle" }
       its("EnableUIADesktopToggle") { should cmp == 0 }
     end
-  end
 end
 

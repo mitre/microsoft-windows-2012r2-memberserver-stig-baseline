@@ -8,7 +8,6 @@ control "V-43245" do
   of the restart."
   if (os['release'].to_i < 6.3 )
     impact 0.0
-  end
   else
     impact 0.5
   end

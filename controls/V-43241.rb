@@ -6,7 +6,6 @@ control "V-43241" do
   with modern style apps that support this, instead of Microsoft accounts."
   if (os['release'].to_i < 6.3 )
     impact 0.0
-  end
   else
     impact 0.3
   end

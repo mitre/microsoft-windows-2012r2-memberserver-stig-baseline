@@ -6,7 +6,6 @@ control "V-43238" do
   limit access to the information to a logged on user."
   if (os['release'].to_i < 6.3 )
     impact 0.0
-  end
   else
     impact 0.5
   end

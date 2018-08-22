@@ -1,4 +1,4 @@
-lscontrol "V-1120" do
+control "V-1120" do
   title "File Transfer Protocol (FTP) servers must be configured to prevent
   anonymous logons."
   desc  "The FTP service allows remote users to access shared files and
@@ -11,7 +11,6 @@ lscontrol "V-1120" do
   is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
   if (is_ftp_installed == 'False' || is_ftp_installed == '')
     impact 0.0
-  end
   else
     impact 0.5
   end
@@ -28,31 +27,31 @@ lscontrol "V-1120" do
   Determine the IP address and port number assigned to FTP sites from
   documentation or configuration.
 
-  If Microsoft FTP is used, open \"Internet Information Services (IIS) Manager\".
+  If Microsoft FTP is used, open Internet Information Services (IIS) Manager.
 
-  Select \"Sites\" under the server name.
+  Select Sites under the server name.
 
   For any sites that reference FTP, view the Binding information for IP address
   and port.  The standard port for FTP is 21, however this may be changed.
 
-  Open a \"Command Prompt\".
+  Open a Command Prompt.
 
-  Attempt to log on as the user \"anonymous\" with the following commands:
+  Attempt to log on as the user anonymous with the following commands:
 
   Note: Returned results may vary depending on the FTP server software.
 
-  C:\\> \"ftp\"
-  ftp> \"Open IP Address Port\"
+  C:\\> ftp
+  ftp> Open IP Address Port
   (Substituting [IP Address] and [Port] with the information previously
   identified.  If no IP Address was listed in the Binding, attempt using
-  \"localhost\".)
+  localhost.)
   (Connected to IP Address
   220 Microsoft FTP Service)
 
-  User (IP Address): \"anonymous\"
+  User (IP Address): anonymous
   (331 Anonymous access allowed, send identity (e-mail name) as password.)
 
-  Password: \"password\"
+  Password: password
   (230 User logged in.)
   ftp>
 
@@ -68,4 +67,3 @@ lscontrol "V-1120" do
     end
   end
 end
-

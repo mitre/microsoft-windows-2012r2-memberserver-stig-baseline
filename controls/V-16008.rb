@@ -47,6 +47,5 @@ control "V-16008" do
       it { should have_property "ValidateAdminCodeSignatures" }
       its("ValidateAdminCodeSignatures") { should cmp == 0 }
     end
-  end
 end
 

@@ -42,7 +42,6 @@ control "V-15687" do
     it { should have_property "GroupPrivacyAcceptance" }
     its("GroupPrivacyAcceptance") { should cmp == 1 }
   end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
-  end
 
    describe "The system does not have Windows WindowsMediaPlayer installed" do
     skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not

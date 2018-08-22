@@ -7,7 +7,6 @@ control "V-1121" do
   is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
   if (is_ftp_installed == 'False' || is_ftp_installed == '')
     impact 0.0
-  end
   else
     impact 0.7
   end
