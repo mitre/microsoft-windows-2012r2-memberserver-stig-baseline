@@ -3,7 +3,7 @@ ACCOUNTS= attribute(
   'accounts',
   description: 'List shared accounts on system',
   default: %w[
-          Temp
+
            ]
 )
 
