@@ -28,16 +28,19 @@ inspec exec https://gitlab.mitre.org/inspec/windows_2012r2_memberserver_stig/rep
 Another option is to download the profile then run it, this allows you to edit specific instructions and view the profile code.
 ``` bash
 # Clone Inspec Profile
-$ git clone https://gitlab.mitre.org/inspec/windows_2012r2_memberserver_stig.git
+$ git clone https://gitlab.mitre.org/inspec/apache_server_baseline.git
 
 # Run profile locally (assuming you have not changed directories since cloning)
-$ inspec exec windows_2012r2_memberserver_stig
+# This will display compliance level at the prompt, and generate a JSON file 
+# for export called output.json
+$ inspec exec windows_2012r2_memberserver_stig --reporter cli json:output.json
 
-# Run profile locally with custom settings defined in attributes.yml
-$ inspec exec windows_2012r2_memberserver_stig --attrs attributes.yml
+# Run profile with custom settings defined in attributes.yml against the target 
+# server example.com. 
+$ inspec exec windows_2012r2_memberserver_stig -t ssh://user@password:example.com --attrs attributes.yml --reporter cli json:output.json
 
-# Alternatively, run a single test
-$ inspec exec windows_2012r2_memberserver_stig --controls a_control_name
+# Run profile with: custom attributes, ssh keyed into a custom target, and sudo.
+$ inspec exec windows_2012r2_memberserver_stig -t ssh://user@hostname -i /path/to/key --sudo --attrs attributes.yml --reporter cli json:output.json
 ```
 
 
