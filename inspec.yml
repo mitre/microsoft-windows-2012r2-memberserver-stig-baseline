@@ -4,5 +4,9 @@ maintainer: MITRE InSpec Team
 copyright: MITRE InSpec Team
 copyright_email: inspec@mitre.org
 license: Apache 2.0
-summary: A suite of automated tests for secure implementation of member servers running Windows 2012r2
+summary: Inspec profile testing STIG compliance of Windows Member Server 2012r2
+description: >
+  Inspec testing for Windows 2012r2 member servers per the IASE DISA Windows
+  2012r2 v2r12 STIG at 
+  https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip
 version: 0.1.0
