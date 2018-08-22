@@ -25,9 +25,6 @@ control "V-26604" do
   service."
   is_p2pimsvc_installed = command("Get-Service p2pimsvc").stdout.strip
   if (is_p2pimsvc_installed == '')
-    describe 'p2pimsvc not installed' do
-      skip "control NA, p2pimsvc is not installed"
-    end
   else
     describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='p2pimsvc'"}).params.values do
       its("join") { should eq "Disabled" }
