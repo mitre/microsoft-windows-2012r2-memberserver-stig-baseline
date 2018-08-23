@@ -24,8 +24,13 @@ control "V-26604" do
   tag "fix": "Remove or disable the Peer Networking Identity Manager (p2pimsvc)
   service."
   is_p2pimsvc_installed = command("Get-Service p2pimsvc").stdout.strip
-  if (is_p2pimsvc_installed == '')
-  else
+  describe.one do
+    describe is_p2pimsvc_installed do
+      it {should eq 'False'}
+    end
+    describe is_p2pimsvc_installed do
+      it {should eq ''}
+    end
     describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='p2pimsvc'"}).params.values do
       its("join") { should eq "Disabled" }
     end

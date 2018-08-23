@@ -7,7 +7,7 @@ control "V-1112" do
   impact 0.3
   tag "gtitle": "Dormant Accounts"
   tag "gid": "V-1112"
-  tag "rid": "SV-52854r4_rule"
+  tag "rid": "SV-52854r4_rule" 
   tag "stig_id": "WN12-GE-000014"
   tag "fix_id": "F-45780r2_fix"
   tag "cci": ["CCI-000795"]
@@ -69,20 +69,16 @@ control "V-1112" do
 
  
   users.each do |user|
-    get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' sid | Findstr /v SID").stdout.strip
+    get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' sid',' Disabled | Findstr /v SID").stdout.strip
     get_last = get_sids[get_sids.length-3, 3]
+    get_disabled = get_sids[0,4]
     loc_colon = get_sids.index(' ')
     names = get_sids[0,loc_colon]
-    if (get_last != '500'  && get_last != '501')
+    if (get_last != '500'  && get_last != '501' && get_disabled != 'TRUE')
       get_names.push(names)
      end
   end
- 
-  if get_names == []
-  describe 'No Outdated accounts' do 
-    skip 'control not applicable - no outdated accounts'
-end
-end
+
 if get_names != []
  get_names.each do |user|
 
@@ -122,3 +118,4 @@ if get_names != []
 end
   end 
 end
+

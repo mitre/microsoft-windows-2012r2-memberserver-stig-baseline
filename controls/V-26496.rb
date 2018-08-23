@@ -46,7 +46,7 @@ control "V-26496" do
 
   Administrators"
   describe security_policy do
-    its('SeLockMemoryPrivilege') { should eq ['S-1-5-32-544'] }
+    its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
   end
 end
 

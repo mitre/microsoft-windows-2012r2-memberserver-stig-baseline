@@ -21,7 +21,7 @@ control "V-3472" do
   Registry Hive: HKEY_LOCAL_MACHINE
   Registry Path: \\Software\\Policies\\Microsoft\\W32time\\Parameters\\
 
-  Value Name: Type
+  Value Name: Type 
   Type: REG_SZ
   Value: Possible values are NoSync, NTP, NT5DS, AllSync
 
@@ -31,7 +31,7 @@ control "V-3472" do
   Type: REG_SZ
   Value: \"address of the time server\"
 
-  If the following, this is a finding:
+  If the following, this is a f inding:
   \"Type\" has a value of \"NTP\" or \"Allsync\" AND the \"NTPServer\" value is
   set to \"time.windows.com\" or other unauthorized server.
 
@@ -64,9 +64,6 @@ control "V-3472" do
     describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters') do
       its('NTPServer') { should_not cmp == 'time.windows.com' }
     end
-  end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters').exists?
   end
 end
 

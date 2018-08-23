@@ -29,14 +29,13 @@ control "V-26602" do
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
   is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
-  if (is_ftp_installed == 'False' || is_ftp_installed == '')
-    describe 'Ftp not installed' do
-      skip "control NA, Ftp is not installed"
+  describe.one do
+    describe is_ftp_installed do
+      it {should eq 'False'}
     end
-  else
     describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='ftpsvc'"}).params.values do
       its("join") { should eq "Disabled" }
     end
   end
 end 
-
+ 

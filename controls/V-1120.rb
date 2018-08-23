@@ -61,9 +61,8 @@ control "V-1120" do
   If accounts with administrator privileges are used to access FTP, this is a CAT
   I finding."
   tag "fix": "Configure the FTP service to prevent anonymous logons."
-  if (is_ftp_installed == 'False' || is_ftp_installed == '')
-    describe 'FTP not installed' do
-      skip "control NA"
-    end
+  describe 'File Transfer Protocol (FTP) servers must be configured to prevent
+  anonymous logons' do
+    skip "is a manual check"
   end
 end

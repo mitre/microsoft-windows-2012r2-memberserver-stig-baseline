@@ -62,10 +62,9 @@ control "V-1121" do
   Windows directories, this is a finding."
   tag "fix": "Configure the system to only allow FTP access to specific folders
   containing the data to be available through the service."
-  if (is_ftp_installed == 'False' || is_ftp_installed == '')
-    describe 'FTP not installed' do
-      skip "control NA"
-    end
+  describe 'File Transfer Protocol (FTP) servers must be configured to prevent
+  anonymous logons' do
+    skip "is a manual check"
   end
 end
 

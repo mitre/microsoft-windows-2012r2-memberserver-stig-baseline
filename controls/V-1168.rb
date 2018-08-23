@@ -15,7 +15,7 @@ control "V-1168" do
   group must be maintained."
    backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
    if backup_operators_group == []
-    impact = 0.0
+    impact 0.0
   else
     impact 0.5
   end
@@ -36,7 +36,6 @@ control "V-1168" do
   is a finding."
   tag "fix": "Create the necessary documentation that identifies the members of
   the Backup Operators group."
-
  
   if backup_operators_group != []
     backup_operators_group.each do |user|
@@ -44,6 +43,7 @@ control "V-1168" do
         it { should be_in BACKUP_OPERATORS}
       end  
     end 
+  end
 end
 
  

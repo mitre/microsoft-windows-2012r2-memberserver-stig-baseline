@@ -4,7 +4,7 @@ control "V-26494" do
   desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
-  The \"Lock pages in memory\" user right allows physical memory to be
+  The \"Lock pages in memory\" user right allows physical memory  to be
   assigned to processes, which could cause performance issues or a DoS.
   "
   impact 0.5

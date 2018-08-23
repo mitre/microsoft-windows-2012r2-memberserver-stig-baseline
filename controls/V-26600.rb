@@ -22,11 +22,15 @@ control "V-26600" do
   tag "fix": "Remove or disable the Fax (fax) service."
 
   is_fax_installed = command("Get-WindowsFeature Fax | Select -Expand Installed").stdout.strip
-  if (is_fax_installed == 'False' || is_fax_installed == '')
-  else
+  describe.one do
+    describe is_fax_installed do
+      it {should eq 'False'}
+    end
     describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='Fax'"}).params.values do
       its("join") { should eq "Disabled" }
     end
   end
 end
+
+
 

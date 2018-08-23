@@ -22,8 +22,13 @@ control "V-26605" do
   Simple TCP/IP Services (simptcp)"
   tag "fix": "Remove or disable the Simple TCP/IP Services (simptcp) service."
   is_simptcp_installed = command("Get-Service simptcp").stdout.strip
-  if (is_simptcp_installed == '')
-  else
+  describe.one do
+    describe is_simptcp_installed do
+      it {should eq 'False'}
+    end
+    describe is_simptcp_installed do
+      it {should eq ''}
+    end
     describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='simptcp'"}).params.values do
       its("join") { should eq "Disabled" }
     end
