@@ -1,9 +1,14 @@
+is_p2pimsvc_installed = command("Get-Service p2pimsvc").stdout.strip
 control "V-26604" do
   title "The Peer Networking Identity Manager service must be disabled if
   installed."
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
-  impact 0.5
+  if is_p2pimsvc_installed == 'False' || is_p2pimsvc_installed == ''
+    impact 0.0
+  else
+    impact 0.5
+  end
   tag "gtitle": "Peer Networking Identity Manager Service Disabled"
   tag "gid": "V-26604"
   tag "rid": "SV-52238r2_rule"
@@ -23,17 +28,15 @@ control "V-26604" do
   Peer Networking Identity Manager (p2pimsvc)"
   tag "fix": "Remove or disable the Peer Networking Identity Manager (p2pimsvc)
   service."
-  is_p2pimsvc_installed = command("Get-Service p2pimsvc").stdout.strip
-  describe.one do
-    describe is_p2pimsvc_installed do
-      it {should eq 'False'}
-    end
-    describe is_p2pimsvc_installed do
-      it {should eq ''}
-    end
-    describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='p2pimsvc'"}).params.values do
-      its("join") { should eq "Disabled" }
-    end
-  end
+  describe wmi({
+  class: 'win32_service',
+  filter: "name like '%p2pimsvc%'"
+  }) do
+    its('StartMode') { should cmp 'Disabled' }
+  end if is_p2pimsvc_installed == 'True'
+
+  describe "The system does not have p2pimsvc installed" do
+    skip "The system does not have p2pimsvc installed, this requirement is Not Applicable."
+  end if is_p2pimsvc_installed == 'False' || is_p2pimsvc_installed == ''
 end
 

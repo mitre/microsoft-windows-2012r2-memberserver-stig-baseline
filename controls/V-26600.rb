@@ -1,8 +1,13 @@
+is_fax_installed = command("Get-WindowsFeature Fax | Select -Expand Installed").stdout.strip
 control "V-26600" do
   title "The Fax service must be disabled if installed."
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
-  impact 0.5
+  if is_fax_installed == 'False'
+    impact 0.0
+  else
+    impact 0.5
+  end
   tag "gtitle": "Fax Service Disabled "
   tag "gid": "V-26600"
   tag "rid": "SV-52236r2_rule"
@@ -21,16 +26,16 @@ control "V-26600" do
   Fax (fax)"
   tag "fix": "Remove or disable the Fax (fax) service."
 
-  is_fax_installed = command("Get-WindowsFeature Fax | Select -Expand Installed").stdout.strip
-  describe.one do
-    describe is_fax_installed do
-      it {should eq 'False'}
-    end
-    describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='Fax'"}).params.values do
-      its("join") { should eq "Disabled" }
-    end
-  end
-end
+  describe wmi({
+  class: 'win32_service',
+  filter: "name like '%Fax%'"
+  }) do
+    its('StartMode') { should cmp 'Disabled' }
+  end if is_fax_installed == 'True'
 
+  describe "The system does not have Fax installed" do
+    skip "The system does not have Fax installed, this requirement is Not Applicable."
+  end if is_fax_installed == 'False'
+end
 
 

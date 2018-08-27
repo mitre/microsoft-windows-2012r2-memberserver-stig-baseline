@@ -1,8 +1,13 @@
+is_tlntsvr_installed = command("Get-Service tlntsvr").stdout.strip
 control "V-26606" do
   title "The Telnet service must be disabled if installed."
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
-  impact 0.5
+  if is_tlntsvr_installed == 'False' || is_tlntsvr_installed == ''
+    impact 0.0
+  else
+    impact 0.5
+  end
   tag "gtitle": "Telnet Service Disabled"
   tag "gid": "V-26606"
   tag "rid": "SV-52240r2_rule"
@@ -21,17 +26,15 @@ control "V-26606" do
 
   Telnet (tlntsvr)"
   tag "fix": "Remove or disable the Telnet (tlntsvr) service."
-  is_tlntsvr_installed = command("Get-Service simptcp").stdout.strip
-  describe.one do
-    describe is_tlntsvr_installed do
-      it {should eq 'False'}
-    end
-    describe is_tlntsvr_installed do
-      it {should eq ''}
-    end
-    describe wmi({:namespace=>"root\\cimv2", :query=>"SELECT startmode FROM Win32_Service WHERE name='tlntsvr'"}).params.values do
-      its("join") { should eq "Disabled" }
-    end
-  end
+  describe wmi({
+  class: 'win32_service',
+  filter: "name like '%tlntsvr%'"
+  }) do
+    its('StartMode') { should cmp 'Disabled' }
+  end if is_tlntsvr_installed == 'True'
+
+  describe "The system does not have tlntsvr installed" do
+    skip "The system does not have tlntsvr installed, this requirement is Not Applicable."
+  end if is_tlntsvr_installed == 'False' || is_tlntsvr_installed == ''
 end
 
