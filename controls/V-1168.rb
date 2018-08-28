@@ -43,6 +43,10 @@ control "V-1168" do
         it { should be_in BACKUP_OPERATORS}
       end  
     end 
+   else
+    describe 'Backup Operators Group Empty' do
+      skip 'The control is N/A as there are no users in the Backup Operators group'
+    end   
   end
 end
 
