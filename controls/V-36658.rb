@@ -1,8 +1,7 @@
- ADMINISTRATORS2 = attribute(
+ ADMINISTRATORS = attribute(
   'administrators',
   description: 'List of authorized users in the local Admionistrators group',
   default: %w[
-            Administrators
             Admn
            ]
 )
