@@ -86,7 +86,6 @@ control "V-57653" do
 
   Delete any temporary user accounts that are no longer necessary."
   temp_accounts = TEMP_ACCOUNT
-
     
   if temp_accounts != []
   temp_accounts.each do |user|
@@ -151,8 +150,9 @@ control "V-57653" do
 
 
 end
-
-
+else
+  describe "No temporary accounts on this system, control not applicable" do
+    skip "No temporary accounts on this system, control not applicable"
+  end
 
 end
-

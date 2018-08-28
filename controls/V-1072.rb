@@ -1,7 +1,7 @@
 
 SHARED_ACCOUNTS= attribute(
   'shared_accounts',
-  description: 'List of shared accounts',
+  description: 'List of shared accounts on the system',
   default: %w[
            
            ]
