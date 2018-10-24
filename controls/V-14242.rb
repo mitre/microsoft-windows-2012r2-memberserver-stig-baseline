@@ -34,17 +34,17 @@ control "V-14242" do
   tag "fix": "UAC requirements are NA on Server Core installations.
 
   Configure the policy value for Computer Configuration -> Windows Settings ->
-  Security Settings -> Local Policies -> Security Options -> \"User Account
+  Security Settings -> Local Policies -> Security Options -> \"User Account 
   Control: Virtualize file and registry write failures to per-user locations\" to
   \"Enabled\"."
   if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
     describe "This system is a Server Core Installation, control is NA" do
       skip "This system is a Server Core Installation control is NA"
     end
-  end
   else
     describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
       it { should have_property "EnableVirtualization" }
       its("EnableVirtualization") { should cmp == 1 }
     end
+  end
 end

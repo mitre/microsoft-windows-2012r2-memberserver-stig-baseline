@@ -41,11 +41,11 @@ control "V-16008" do
     describe "This system is a Server Core Installation, control is NA" do
       skip "This system is a Server Core Installation, control is NA"
     end
-  end
   else
     describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
       it { should have_property "ValidateAdminCodeSignatures" }
       its("ValidateAdminCodeSignatures") { should cmp == 0 }
     end
+  end
 end
 

@@ -15,7 +15,7 @@ control "V-3245" do
  
     share_names.push(names)
     loc_colon = share.index(':')
-    path = share[40..50]
+    path = share[9..50]
     share_paths.push(path)
   end
 
