@@ -8,7 +8,7 @@ control "V-16020" do
   disabled so information is not passed to the vendor.
   "
   impact 0.5
-  tag "gtitle": "Windows Customer Experience Improvement Program "
+  tag "gtitle": "Windows Customer Experience Improvement Program"
   tag "gid": "V-16020"
   tag "rid": "SV-53143r1_rule"
   tag "stig_id": "WN12-CC-000045"

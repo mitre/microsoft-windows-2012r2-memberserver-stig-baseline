@@ -1,7 +1,7 @@
 control "V-15701" do
   title "A system restore point must be created when a new device driver is
   installed."
-  desc  "A system restore point allows a rollback if an issue is  encountered
+  desc  "A system restore point allows a rollback if an issue is encountered
   when a new device driver is installed."
   impact 0.3
   tag "gtitle": "Device Install – Drivers System Restore Point"

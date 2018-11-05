@@ -9,7 +9,7 @@ control "V-14225" do
   built-in Administrator account must be changed at least annually or when any
   member of the administrative team leaves the organization.
 
-  Organizations that use an automated tool, such Microsoft's Local
+  Organizations that use an automated tool, such as Microsoft's Local
   Administrator Password Solution (LAPS), on domain-joined systems can configure
   this to occur more frequently. LAPS will change the password every \"30\" days
   by default.

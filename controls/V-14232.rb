@@ -1,7 +1,7 @@
 control "V-14232" do
   title "IPSec Exemptions must be limited."
   desc  "IPSec exemption filters allow specific traffic that may be needed by
-  the system  for such things as Kerberos  authentication.  This setting
+  the system for such things as Kerberos authentication.  This setting
   configures Windows for specific IPSec exemptions."
   impact 0.3
   tag "gtitle": "IPSec Exemptions"

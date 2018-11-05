@@ -3,7 +3,7 @@ control "V-26501" do
   desc  "
     Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.
 
-    Accounts with the Profile system performance user right can monitor system processes performance.  An attacker could potentially use this to id
+    Accounts with the Profile system performance user right can monitor system processes performance.  An attacker could potentially use this to identify processes to attack.
   "
   impact 0.5
   tag "severity": "medium"

@@ -5,7 +5,7 @@ control "V-15699" do
   Functions such as these may allow unauthorized connections to a system and the
   potential for sensitive information to be compromised."
   impact 0.5
-  tag "gtitle": "Network – Windows Connect Now Wizards "
+  tag "gtitle": "Network – Windows Connect Now Wizards"
   tag "gid": "V-15699"
   tag "rid": "SV-53089r1_rule"
   tag "stig_id": "WN12-CC-000013"

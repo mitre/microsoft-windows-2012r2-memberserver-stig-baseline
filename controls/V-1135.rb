@@ -38,7 +38,7 @@ control "V-1135" do
   \"All APPLICATION PACKAGES\" and \"CREATOR OWNER\" are not considered standard
   user accounts for this requirement."
   tag "fix": "Configure the permissions on shared printers to restrict standard
-  users to  only have Print permissions.  This is typically given through the
+  users to only have Print permissions.  This is typically given through the
   Everyone group by default."
   describe "Nonadministrative user accounts or groups must only have print
   permissions on printer shares." do

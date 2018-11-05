@@ -4,7 +4,7 @@ control "V-15697" do
   discovered and located on a network.  Disabling this helps protect the system
   from potentially being discovered and connected to by unauthorized devices."
   impact 0.5
-  tag "gtitle": "Network – Responder Driver "
+  tag "gtitle": "Network – Responder Driver"
   tag "gid": "V-15697"
   tag "rid": "SV-53081r1_rule"
   tag "stig_id": "WN12-CC-000002"

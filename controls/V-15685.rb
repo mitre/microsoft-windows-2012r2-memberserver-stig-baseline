@@ -4,7 +4,7 @@ control "V-15685" do
   administrators.  This setting prevents users from changing installation options
   that may bypass security features."
   impact 0.5
-  tag "gtitle": "Windows Installer – User Control "
+  tag "gtitle": "Windows Installer – User Control"
   tag "gid": "V-15685"
   tag "rid": "SV-53061r1_rule"
   tag "stig_id": "WN12-CC-000115"
