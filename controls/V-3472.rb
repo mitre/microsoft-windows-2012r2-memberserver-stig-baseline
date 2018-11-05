@@ -31,7 +31,7 @@ control "V-3472" do
   Type: REG_SZ
   Value: \"address of the time server\"
 
-  If the following, this is a f inding:
+  If the following, this is a finding:
   \"Type\" has a value of \"NTP\" or \"Allsync\" AND the \"NTPServer\" value is
   set to \"time.windows.com\" or other unauthorized server.
 
@@ -56,7 +56,6 @@ control "V-3472" do
   \"Enabled\", and configure the \"NtpServer\" field to point to an authorized
   time server."
 
-  describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters') do
       its('Type') { should_not cmp == 'NTP' }
       its('Type') { should_not cmp == 'AllSync' }
@@ -64,6 +63,5 @@ control "V-3472" do
     describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters') do
       its('NTPServer') { should_not cmp == 'time.windows.com' }
     end
-  end
 end
 

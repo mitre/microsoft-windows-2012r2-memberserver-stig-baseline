@@ -6,7 +6,7 @@ control "V-15698" do
   connected to a system, there is potential for sensitive information to be
   compromised."
   impact 0.5
-  tag "gtitle": "Network – WCN Wireless Configuration "
+  tag "gtitle": "Network – WCN Wireless Configuration"
   tag "gid": "V-15698"
   tag "rid": "SV-53085r1_rule"
   tag "stig_id": "WN12-CC-000012"

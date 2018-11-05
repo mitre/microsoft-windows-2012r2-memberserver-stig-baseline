@@ -14,7 +14,7 @@ control "V-15687" do
   else
     impact 0.0
   end
-  tag "gtitle": "Media Player – First Use Dialog Boxes "
+  tag "gtitle": "Media Player – First Use Dialog Boxes"
   tag "gid": "V-15687"
   tag "rid": "SV-53069r1_rule"
   tag "stig_id": "WN12-CC-000121"

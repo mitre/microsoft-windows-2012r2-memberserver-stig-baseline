@@ -1,7 +1,7 @@
 control "V-15672" do
   title "Event Viewer Events.asp links must be turned off."
   desc  "Viewing events is a function of administrators, who must not access
-  the internet with privileged accounts.  This setting will disable  Events.asp
+  the internet with privileged accounts.  This setting will disable Events.asp
   hyperlinks in Event Viewer to prevent links to the internet from within events."
   impact 0.3
   tag "gtitle": "Event Viewer Events.asp Links"

@@ -28,7 +28,7 @@ control "V-1121" do
   Select \"Sites\" under the server name.
 
   For any sites that reference FTP, view the Binding information for IP address
-  and port.  The sDirtandard port for FTP is 21, however this may be changed.
+  and port.  The standard port for FTP is 21, however this may be changed.
 
   Open a \"Command Prompt\".
 

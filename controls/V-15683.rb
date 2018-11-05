@@ -1,10 +1,10 @@
 control "V-15683" do
   title "File Explorer shell protocol must run in protected mode."
-  desc  "The shell protocol will  limit the set of folders applications can
+  desc  "The shell protocol will limit the set of folders applications can
   open when run in protected mode.  Restricting files an application can open to
   a limited set of folders increases the security of Windows."
   impact 0.5
-  tag "gtitle": "Windows Explorer – Shell Protocol Protected Mode "
+  tag "gtitle": "Windows Explorer – Shell Protocol Protected Mode"
   tag "gid": "V-15683"
   tag "rid": "SV-53045r1_rule"
   tag "stig_id": "WN12-CC-000091"

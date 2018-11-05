@@ -5,10 +5,10 @@ control "V-14237" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting requires Windows to respond to application installation requests
   by prompting for credentials."
-  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
-    impact 0.5
-  else
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
     impact 0.0
+  else
+    impact 0.5
   end
   tag "gtitle": "UAC - Application Installations"
   tag "gid": "V-14237"
@@ -30,18 +30,22 @@ control "V-14237" do
   Value Name: EnableInstallerDetection
 
   Value Type: REG_DWORD
-  Value: 1"
+  Value: 1" 
   tag "fix": "UAC requirements are NA on Server Core installations.
 
   Configure the policy value for Computer Configuration -> Windows Settings ->
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Detect application installations and prompt for elevation\" to
   \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "EnableInstallerDetection" }
-    its("EnableInstallerDetection") { should cmp == 1 }
-  end
-  only_if do registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    describe "This system is a Server Core Installation, control is NA" do
+      skip "This system is a Server Core Installation control is NA"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "EnableInstallerDetection" }
+      its("EnableInstallerDetection") { should cmp == 1 }
+    end
   end
 end
 

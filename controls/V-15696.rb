@@ -5,7 +5,7 @@ control "V-15696" do
   this helps protect the system from potentially discovering and connecting to
   unauthorized devices."
   impact 0.5
-  tag "gtitle": "Network – Mapper I/O Driver "
+  tag "gtitle": "Network – Mapper I/O Driver"
   tag "gid": "V-15696"
   tag "rid": "SV-53072r1_rule"
   tag "stig_id": "WN12-CC-000001"

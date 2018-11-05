@@ -5,7 +5,7 @@ control "V-15700" do
   connections by unauthorized devices.  This setting configures remote access to
   the Plug and Play interface and must be disabled."
   impact 0.5
-  tag "gtitle": "Device Install – PnP Interface Remote Access "
+  tag "gtitle": "Device Install – PnP Interface Remote Access"
   tag "gid": "V-15700"
   tag "rid": "SV-53094r1_rule"
   tag "stig_id": "WN12-CC-000019"

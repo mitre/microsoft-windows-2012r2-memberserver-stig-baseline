@@ -29,13 +29,13 @@ control "V-1081" do
   
   get_volumes.each do |volume|
       describe.one do
-      describe "#{volume}" do
-        it { should eq "FileSystem=NTFS\r"}
-      end  
-      describe "#{volume}" do
-        it { should eq "FileSystem=ReFS\r"}
+        describe "#{volume}" do
+          it { should eq "FileSystem=NTFS\r"}
+        end  
+        describe "#{volume}" do
+          it { should eq "FileSystem=ReFS\r"}
+        end
       end
-    end
   end
 end
 

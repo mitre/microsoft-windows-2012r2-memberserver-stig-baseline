@@ -5,10 +5,10 @@ control "V-14235" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures the elevation requirements for logged on administrators
   to complete a task that requires raised privileges."
-  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
-    impact 0.5
-  else
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
     impact 0.0
+  else
+    impact 0.5
   end
   tag "gtitle": "UAC - Admin Elevation Prompt"
   tag "gid": "V-14235"
@@ -29,7 +29,7 @@ control "V-14235" do
 
   Value Name: ConsentPromptBehaviorAdmin
 
-  Value Type: REG_DWORD
+  Value Type: REG_DWORD 
   Value: 4 (Prompt for consent)
   3 (Prompt for credentials)
   2 (Prompt for consent on the secure desktop)
@@ -43,15 +43,19 @@ control "V-14235" do
 
   More secure options for this setting would also be acceptable (e.g., Prompt for
   credentials, Prompt for consent (or credentials) on the secure desktop)."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "ConsentPromptBehaviorAdmin" }
-    its("ConsentPromptBehaviorAdmin") { should cmp <= 4 }
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    describe "This system is a Server Core Installation, control is NA" do
+      skip "This system is a Server Core Installation control is NA"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "ConsentPromptBehaviorAdmin" }
+      its("ConsentPromptBehaviorAdmin") { should cmp <= 4 }
+    end
+    describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "ConsentPromptBehaviorAdmin" }
+      its("ConsentPromptBehaviorAdmin") { should cmp > 0 }
+    end
   end
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "ConsentPromptBehaviorAdmin" }
-    its("ConsentPromptBehaviorAdmin") { should cmp > 0 }
-  end
-  only_if do registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
-  end  
 end
 

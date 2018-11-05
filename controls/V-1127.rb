@@ -1,21 +1,6 @@
- ADMINISTRATORS1 = attribute(
-  'administrators',
-  description: 'List of authorized users in the local Admionistrators group',
-  default: %w[
-            Admn
-            Administrator
-           ]
-)
-
- ADMINISTRATORS_DOMAIN = attribute(
-  'administrators_domain',
-  description: 'List of authorized users in the local Admionistrators domain group',
-  default: %w[
-            Admn
-            Administrator
-           ]
-)
-
+ADMINISTRATORS = attribute('administrators')
+ADMINISTRATORS_DOMAIN = attribute('administrators_domain')
+ 
 control "V-1127" do
   title "Only administrators responsible for the member server must have
   Administrator rights on the system."

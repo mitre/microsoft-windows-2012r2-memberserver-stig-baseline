@@ -5,10 +5,10 @@ control "V-14234" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures the built-in Administrator account so that it runs in
   Admin Approval Mode."
-  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
-    impact 0.5
-  else
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
     impact 0.0
+  else
+    impact 0.5
   end
   tag "gtitle": "UAC - Admin Approval Mode"
   tag "gid": "V-14234"
@@ -27,7 +27,7 @@ control "V-14234" do
   Registry Path:
   \\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\
 
-  Value Name: FilterAdministratorToken
+  Value Name: FilterAdministratorToken 
 
   Value Type: REG_DWORD
   Value: 1"
@@ -37,11 +37,15 @@ control "V-14234" do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Admin Approval Mode for the Built-in Administrator account\" to
   \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "FilterAdministratorToken" }
-    its("FilterAdministratorToken") { should cmp == 1 }
-  end
-  only_if do registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    describe "This system is a Server Core Installation, control is NA" do
+      skip "This system is a Server Core Installation control is NA"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "FilterAdministratorToken" }
+      its("FilterAdministratorToken") { should cmp == 1 }
+    end
   end
 end
 
