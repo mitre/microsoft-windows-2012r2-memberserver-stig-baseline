@@ -1,8 +1,4 @@
-ADMINISTRATOR_ACCOUNT = attribute(
-  'administrator_account',
-  description: 'List of authorized users in the local Administrators domain group',
-  default: 'Admn'
-)
+ADMINISTRATOR_ACCOUNT = attribute('administrators')
 
 control "V-14225" do
   title "Windows 2012/2012 R2 password for the built-in Administrator account

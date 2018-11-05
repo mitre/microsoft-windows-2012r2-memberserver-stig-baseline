@@ -1,9 +1,4 @@
- EMERGENCY_ACCOUNT = attribute(
-  'emergency_account',
-  description: 'List of emergency accounts on the system',
-  default: %w[
-           ]
-)
+EMERGENCY_ACCOUNT = attribute('emergency_account')
 
 control "V-57655" do
   title "Windows 2012 / 2012 R2 must automatically remove or disable emergency

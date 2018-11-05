@@ -1,11 +1,5 @@
- ADMINISTRATORS = attribute(
-  'administrators',
-  description: 'List of authorized users in the local Admionistrators group',
-  default: %w[
-            Admn
-           ]
-)
-
+ADMINISTRATORS = attribute('administrators') 
+ 
 control "V-36659" do
   title "Users with Administrative privileges must have separate accounts for
   administrative duties and normal operational tasks."

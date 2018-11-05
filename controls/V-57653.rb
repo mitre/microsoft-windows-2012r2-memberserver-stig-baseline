@@ -1,10 +1,4 @@
-TEMP_ACCOUNT = attribute(
-  'temp_account',
-  description: 'List of temporary accounts on the system',
-  default: %w[
-         
-           ]
-)
+TEMP_ACCOUNT = attribute('temp_account')
 
 control "V-57653" do
   title "Windows 2012 / 2012 R2 must automatically remove or disable temporary

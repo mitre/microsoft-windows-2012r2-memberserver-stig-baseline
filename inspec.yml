@@ -10,3 +10,32 @@ description: >
   2012r2 v2r12 STIG at 
   https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip
 version: 0.1.0
+
+attributes:
+  - name: shared_accounts
+    description: 'List of shared accounts on the system'
+    default: []
+
+ - name: backup_operators
+    description: 'List of authorized users in the Backup Operators Group'
+    default: []
+
+- name: administrators
+    description: 'List of authorized users in the local Administrators group'
+    default: ['Admn']
+
+- name: administrator_domain
+    description: 'List of authorized users in the local Administrators domain group'
+    default: ['Admn']
+
+- name: temp_account
+    description: 'List of temporary accounts on the system'
+    default: []
+
+- name: emergency_account
+    description: 'List of emergency accounts on the system'
+    default: []
+
+
+
+

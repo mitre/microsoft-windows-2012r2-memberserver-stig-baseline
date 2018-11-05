@@ -1,10 +1,4 @@
-BACKUP_OPERATORS= attribute(
-  'backup_operators',
-  description: 'List of authorized users in the Backup Operators Group.',
-  default: %w[
-            
-           ]
-)
+BACKUP_OPERATORS = attribute('backup_operators')
 
 control "V-1168" do
   title "Members of the Backup Operators group must be documented."

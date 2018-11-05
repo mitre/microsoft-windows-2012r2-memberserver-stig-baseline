@@ -1,11 +1,4 @@
-
-SHARED_ACCOUNTS= attribute(
-  'shared_accounts',
-  description: 'List of shared accounts on the system',
-  default: %w[
-           
-           ]
-)
+SHARED_ACCOUNTS = attribute('shared_accounts')
 
 control "V-1072" do
   title "Shared user accounts must not be permitted on the system."

@@ -1,10 +1,4 @@
- ADMINISTRATORS = attribute(
-  'administrators',
-  description: 'List of authorized users in the local Admionistrators group',
-  default: %w[
-            Admn
-           ]
-)
+ADMINISTRATORS = attribute('administrators')
 
 control "V-36658" do
   title "Users with administrative privilege must be documented."
