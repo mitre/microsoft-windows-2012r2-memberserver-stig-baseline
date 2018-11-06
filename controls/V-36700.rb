@@ -9,7 +9,8 @@ control "V-36700" do
   tag "rid": "SV-51740r1_rule"
   tag "stig_id": "WN12-CC-000076"
   tag "fix_id": "F-44815r1_fix"
-  tag "cci": ["CCE-23228-0", "CCI-000206"]
+  tag "cci": ["CCI-000206"]
+  tag "cce": ["CCE-23228-0"]
   tag "nist": ["IA-6", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "IAIA-1"

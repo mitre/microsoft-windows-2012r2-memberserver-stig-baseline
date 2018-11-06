@@ -13,7 +13,8 @@ control "V-26492" do
   tag "rid": "SV-52118r2_rule"
   tag "stig_id": "WN12-UR-000027"
   tag "fix_id": "F-45143r1_fix"
-  tag "cci": ["CCE-24911-0", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24911-0"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -39,8 +40,13 @@ control "V-26492" do
   groups:
 
   Administrators"
-  describe security_policy do
-    its("SeIncreaseBasePriorityPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeIncreaseBasePriorityPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeIncreaseBasePriorityPrivilege") { should eq [] }
+    end
   end
 end
 

@@ -9,7 +9,8 @@ control "V-15999" do
   tag "rid": "SV-52229r2_rule"
   tag "stig_id": "WN12-CC-000135"
   tag "fix_id": "F-45246r2_fix"
-  tag "cci": ["CCE-24708-0", "CCI-002314"]
+  tag "cci": ["CCI-002314"]
+  tag "cce": ["CCE-24708-0"]
   tag "nist": ["AC-17 (1)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

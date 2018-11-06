@@ -11,7 +11,8 @@ control "V-21954" do
   tag "rid": "SV-53179r2_rule"
   tag "stig_id": "WN12-SO-000064"
   tag "fix_id": "F-66513r3_fix"
-  tag "cci": ["CCE-24147-1", "CCI-000803"]
+  tag "cci": ["CCI-000803"]
+  tag "cce": ["CCE-24147-1"]
   tag "nist": ["IA-7", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify whether the registry key below exists.  If it does not

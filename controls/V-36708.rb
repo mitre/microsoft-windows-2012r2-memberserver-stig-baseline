@@ -9,7 +9,8 @@ control "V-36708" do
   tag "rid": "SV-51748r2_rule"
   tag "stig_id": "WN12-CC-000095"
   tag "fix_id": "F-44823r2_fix"
-  tag "cci": ["CCE-25343-5", "CCI-000381"]
+  tag "cci": ["CCI-000381"]
+  tag "cce": ["CCE-25343-5"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

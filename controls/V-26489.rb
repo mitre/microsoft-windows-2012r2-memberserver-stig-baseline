@@ -14,7 +14,8 @@ control "V-26489" do
   tag "rid": "SV-52116r2_rule"
   tag "stig_id": "WN12-UR-000024"
   tag "fix_id": "F-45141r1_fix"
-  tag "cci": ["CCE-24048-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24048-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -41,8 +42,19 @@ control "V-26489" do
 
   Local Service
   Network Service"
-  describe security_policy do
-    its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
+  describe.one do
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq ['S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeAuditPrivilege') { should eq [] }
+    end
   end
 end
 

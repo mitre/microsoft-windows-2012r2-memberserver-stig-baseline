@@ -22,7 +22,8 @@ control "V-26484" do
   tag "rid": "SV-51504r1_rule"
   tag "stig_id": "WN12-UR-000019-MS"
   tag "fix_id": "F-44654r1_fix"
-  tag "cci": ["CCE-23117-5", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cce": ["CCE-23117-5"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

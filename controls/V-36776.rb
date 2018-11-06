@@ -8,7 +8,8 @@ control "V-36776" do
   tag "rid": "SV-51762r1_rule"
   tag "stig_id": "WN12-UC-000005"
   tag "fix_id": "F-44837r1_fix"
-  tag "cci": ["CCE-25048-0", "CCI-000381"]
+  tag "cci": ["CCI-000381"]
+  tag "cce": ["CCE-25048-0"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

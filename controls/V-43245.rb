@@ -6,11 +6,7 @@ control "V-43245" do
   ensure this is done in a secure fashion; however, disabling this will prevent
   the caching of credentials for this purpose and also ensure the user is aware
   of the restart."
-  if (os['release'].to_i < 6.3 )
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "WINCC-000145"
   tag "gid": "V-43245"
   tag "rid": "SV-56355r2_rule"
@@ -40,12 +36,16 @@ control "V-43245" do
   Templates -> Windows Components -> Windows Logon Options -> \"Sign-in last
   interactive user automatically after a system-initiated restart\" to
   \"Disabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "DisableAutomaticRestartSignOn" }
-    its("DisableAutomaticRestartSignOn") { should cmp == 1 }
-  end
-  only_if do
-    os['release'].to_i >= 6.3
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+    describe "System is not Windows 2012, control is NA" do
+      skip "System is not Windows 2012, control is NA"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "DisableAutomaticRestartSignOn" }
+      its("DisableAutomaticRestartSignOn") { should cmp == 1 }
+    end
   end
 end
 

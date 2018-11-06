@@ -14,7 +14,8 @@ control "V-26480" do
   tag "rid": "SV-52114r2_rule"
   tag "stig_id": "WN12-UR-000013"
   tag "fix_id": "F-45139r1_fix"
-  tag "cci": ["CCE-23850-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-23850-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -45,8 +46,58 @@ control "V-26480" do
   Service
   Local Service
   Network Service"
-  describe security_policy do
-    its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+  describe.one do
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-20', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-20', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeCreateGlobalPrivilege') { should eq [] }
+    end
   end
 end
 

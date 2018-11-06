@@ -11,7 +11,8 @@ control "V-36697" do
   tag "rid": "SV-51738r1_rule"
   tag "stig_id": "WN12-CC-000070"
   tag "fix_id": "F-44813r1_fix"
-  tag "cci": ["CCE-23960-8", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-23960-8"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

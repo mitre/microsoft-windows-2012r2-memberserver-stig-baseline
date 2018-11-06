@@ -14,7 +14,8 @@ control "V-15703" do
   tag "rid": "SV-53115r1_rule"
   tag "stig_id": "WN12-CC-000026"
   tag "fix_id": "F-46041r1_fix"
-  tag "cci": ["CCE-24804-7", "CCI-001812"]
+  tag "cci": ["CCI-001812"]
+  tag "cce": ["CCE-24804-7"]
   tag "nist": ["CM-11 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

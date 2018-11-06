@@ -7,12 +7,7 @@ control "V-1168" do
   users to circumvent the file access restrictions present on NTFS disk drives
   for backup and restore purposes.  Visibility of members of the Backup Operators
   group must be maintained."
-   backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
-   if backup_operators_group == []
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "Members of the Backup Operators Group"
   tag "gid": "V-1168"
   tag "rid": "SV-52156r2_rule"
@@ -30,7 +25,7 @@ control "V-1168" do
   is a finding."
   tag "fix": "Create the necessary documentation that identifies the members of
   the Backup Operators group."
- 
+  backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   if backup_operators_group != []
     backup_operators_group.each do |user|
       describe user do
@@ -38,6 +33,7 @@ control "V-1168" do
       end  
     end 
    else
+    impact 0.0
     describe 'Backup Operators Group Empty' do
       skip 'The control is N/A as there are no users in the Backup Operators group'
     end   

@@ -13,7 +13,8 @@ control "V-26488" do
   tag "rid": "SV-53050r1_rule"
   tag "stig_id": "WN12-UR-000023"
   tag "fix_id": "F-45976r1_fix"
-  tag "cci": ["CCE-24734-6", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24734-6"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -32,8 +33,13 @@ control "V-26488" do
   or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeRemoteShutdownPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeRemoteShutdownPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeRemoteShutdownPrivilege") { should eq ['S-1-5-32-544'] }
+    end
   end
 end
 

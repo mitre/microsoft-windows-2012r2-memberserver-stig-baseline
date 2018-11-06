@@ -4,12 +4,7 @@ control "V-1135" do
   desc  "Windows shares are a means by which files, folders, printers, and
   other resources can be published for network users to access.  Improper
   configuration can permit access to devices and data beyond a user's need."
-  get_printers = command("Get-Printer | Format-List | Findstr /v 'Name ---'")
-  if get_printers == ''
-    impact 0.0
-  else
-    impact 0.3
-  end
+  impact 0.3
   tag "gtitle": "Printer Share Permissions"
   tag "gid": "V-1135" 
   tag "rid": "SV-52213r1_rule"
@@ -40,9 +35,13 @@ control "V-1135" do
   tag "fix": "Configure the permissions on shared printers to restrict standard
   users to only have Print permissions.  This is typically given through the
   Everyone group by default."
-  describe "Nonadministrative user accounts or groups must only have print
-  permissions on printer shares." do
-    skip "This is a manual control"
+  get_printers = command("Get-Printer | Format-List | Findstr /v 'Name ---'")
+  if get_printers == ''
+    impact 0.0
+    describe "Nonadministrative user accounts or groups must only have print
+    permissions on printer shares." do
+      skip "This is a manual control"
+    end
   end
 end
 

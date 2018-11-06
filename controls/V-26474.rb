@@ -14,7 +14,8 @@ control "V-26474" do
   tag "rid": "SV-52111r2_rule"
   tag "stig_id": "WN12-UR-000007"
   tag "fix_id": "F-45136r1_fix"
-  tag "cci": ["CCE-25380-7", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cci": ["CCE-25380-7"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -40,8 +41,13 @@ control "V-26474" do
   groups:
 
   Administrators"
-  describe security_policy do
-    its("SeBackupPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeBackupPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeBackupPrivilege") { should eq [] }
+    end
   end
 end
 

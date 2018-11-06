@@ -14,25 +14,25 @@ version: 0.1.0
 attributes:
   - name: shared_accounts
     description: 'List of shared accounts on the system'
-    default: []
+    default: ['tmp']
 
- - name: backup_operators
+  - name: backup_operators
     description: 'List of authorized users in the Backup Operators Group'
     default: []
 
-- name: administrators
+  - name: administrators
     description: 'List of authorized users in the local Administrators group'
     default: ['Admn']
 
-- name: administrator_domain
+  - name: administrators_domain
     description: 'List of authorized users in the local Administrators domain group'
     default: ['Admn']
 
-- name: temp_account
+  - name: temp_account
     description: 'List of temporary accounts on the system'
     default: []
 
-- name: emergency_account
+  - name: emergency_account
     description: 'List of emergency accounts on the system'
     default: []
 

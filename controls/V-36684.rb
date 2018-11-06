@@ -9,7 +9,8 @@ control "V-36684" do
   tag "rid": "SV-51611r1_rule"
   tag "stig_id": "WN12-CC-000051"
   tag "fix_id": "F-44732r1_fix"
-  tag "cci": ["CCE-23305-6", "CCI-000381"]
+  tag "cci": ["CCI-000381"]
+  tag "cce": ["CCE-23305-6"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

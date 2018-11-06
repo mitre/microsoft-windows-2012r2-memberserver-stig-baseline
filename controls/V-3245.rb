@@ -4,27 +4,7 @@ control "V-3245" do
   desc  "Shares on a system provide network access.  To prevent exposing
   sensitive information, where shares are necessary, permissions must be
   reconfigured to give the minimum access to those accounts that require it."
-  share_names = []
-  share_paths = []
-  get = command('Get-WMIObject -Query "SELECT * FROM Win32_Share" | Findstr /V "Name --"').stdout.strip.split("\n")
-
-  get.each do |share|
-    loc_space = share.index(' ')
- 
-    names = share[0..loc_space-1]
- 
-    share_names.push(names)
-    loc_colon = share.index(':')
-    path = share[9..50]
-    share_paths.push(path)
-  end
-
-  share_names_string = share_names.join(",")
-  if (share_names_string == 'ADMIN$,C$,IPC$') 
-      impact 0.0
-  else
   impact 0.5
-end
   tag "gtitle": "File share ACLs"
   tag "gid": "V-3245"
   tag "rid": "SV-52881r3_rule"
@@ -58,6 +38,23 @@ end
 
   Remove any unnecessary non-system-created shares."
   
+  share_names = []
+  share_paths = []
+  get = command('Get-WMIObject -Query "SELECT * FROM Win32_Share" | Findstr /V "Name --"').stdout.strip.split("\n")
+
+  get.each do |share|
+    loc_space = share.index(' ')
+ 
+    names = share[0..loc_space-1]
+ 
+    share_names.push(names)
+    loc_colon = share.index(':')
+    path = share[9..50]
+    share_paths.push(path)
+  end
+
+  share_names_string = share_names.join(",")
+
   if (share_names_string != 'ADMIN$,C$,IPC$')
 
     [share_paths, share_names].each do |path1, name1|
@@ -69,10 +66,9 @@ end
   end
 
   if (share_names_string == 'ADMIN$,C$,IPC$') 
+    impact 0.0
     describe "The default files shares exist" do
       skip "This control is NA"
     end
+  end
 end
-end
-
-

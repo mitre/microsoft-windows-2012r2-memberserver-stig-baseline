@@ -14,7 +14,8 @@ control "V-26487" do
   tag "rid": "SV-51500r1_rule"
   tag "stig_id": "WN12-UR-000022-MS"
   tag "fix_id": "F-44649r1_fix"
-  tag "cci": ["CCE-25270-0", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-25270-0"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -29,8 +30,8 @@ control "V-26487" do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Enable computer and user accounts to be trusted for delegation\" to be
   defined but containing no entries (blank)."
-    describe security_policy do
-      its("SeEnableDelegationPrivilege"){ should eq [] }
+  describe security_policy do
+    its("SeEnableDelegationPrivilege") { should eq [] }
   end
 end
 

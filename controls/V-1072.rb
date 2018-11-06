@@ -1,3 +1,4 @@
+
 SHARED_ACCOUNTS = attribute('shared_accounts')
 
 control "V-1072" do
@@ -6,11 +7,7 @@ control "V-1072" do
   same user identification) do not provide adequate identification and
   authentication.  There is no way to provide for nonrepudiation or individual
   accountability for system access and resource usage."
-   if SHARED_ACCOUNTS == []
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "Shared User Accounts"
   tag "gid": "V-1072"
   tag "rid": "SV-52839r2_rule"
@@ -35,16 +32,18 @@ control "V-1072" do
   reason for the account, who has access to the account, and how the risk of
   using the shared account is mitigated to include monitoring account activity."
   get_accounts = command("net user | Findstr /v 'command -- accounts'").stdout.strip.split(' ')
-  get_accounts.each do |user|
-    describe user do
-      it { should_not be_in SHARED_ACCOUNTS}
-    end  if SHARED_ACCOUNTS != []
-  end 
+  
 
-  describe "The system does not have any shared accounts, control is NA" do
-    skip "The system does not have any shared accounts, controls is NA"
-  end if SHARED_ACCOUNTS == []
-
+   if SHARED_ACCOUNTS.empty?
+    impact 0.0
+    describe "The system does not have any shared accounts, control is NA" do
+      skip "The system does not have any shared accounts, controls is NA"
+    end 
+  else
+    get_accounts.each do |user|
+      describe user do
+        it { should_not be_in SHARED_ACCOUNTS}
+      end
+    end 
+  end
 end
-
-

@@ -13,7 +13,8 @@ control "V-3338" do
   tag "rid": "SV-51497r2_rule"
   tag "stig_id": "WN12-SO-000055-MS"
   tag "fix_id": "F-44296r2_fix"
-  tag "cci": ["CCE-25466-4", "CCI-001090"]
+  tag "cci": ["CCI-001090"]
+  tag "cce": ["CCE-25466-4"]
   tag "nist": ["SC-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

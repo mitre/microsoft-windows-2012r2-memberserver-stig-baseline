@@ -10,7 +10,8 @@ control "V-1164" do
   tag "rid": "SV-52872r3_rule"
   tag "stig_id": "WN12-SO-000014"
   tag "fix_id": "F-45798r2_fix"
-  tag "cci": ["CCE-24812-0", "CCI-002418", "CCI-002421"]
+  tag "cci": ["CCI-002418", "CCI-002421"]
+  tag "cce": ["CCE-24812-0"]
   tag "nist": ["SC-8", "Rev_4"]
   tag "nist": ["SC-8 (2)", "Rev_4"]
   tag "documentable": false

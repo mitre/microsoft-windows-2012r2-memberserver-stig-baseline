@@ -14,7 +14,8 @@ control "V-26498" do
   tag "rid": "SV-53029r1_rule"
   tag "stig_id": "WN12-UR-000034"
   tag "fix_id": "F-45955r1_fix"
-  tag "cci": ["CCE-25533-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-25533-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -33,8 +34,13 @@ control "V-26498" do
   or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeSystemEnvironmentPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeSystemEnvironmentPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeSystemEnvironmentPrivilege") { should eq [] }
+    end
   end
 end
 

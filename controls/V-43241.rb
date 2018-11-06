@@ -4,11 +4,7 @@ control "V-43241" do
   desc  "Control of credentials and the system must be maintained within the
   enterprise.  Enabling this setting allows enterprise credentials to be used
   with modern style apps that support this, instead of Microsoft accounts."
-  if (os['release'].to_i < 6.3 )
-    impact 0.0
-  else
-    impact 0.3
-  end
+  impact 0.3
   tag "gtitle": "WINCC-000141"
   tag "gid": "V-43241"
   tag "rid": "SV-56353r2_rule"
@@ -36,12 +32,16 @@ control "V-43241" do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> App Runtime -> \"Allow Microsoft accounts to
   be optional\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "MSAOptional" }
-    its("MSAOptional") { should cmp == 1 }
-  end
-  only_if do
-    os['release'].to_i >= 6.3
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+    describe "System is not Windows 2012, control is NA" do
+      skip "System is not Windows 2012, control is NA"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
+      it { should have_property "MSAOptional" }
+      its("MSAOptional") { should cmp == 1 }
+    end
   end
 end
 

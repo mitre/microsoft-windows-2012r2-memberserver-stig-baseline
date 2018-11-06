@@ -10,7 +10,8 @@ control "V-36657" do
   tag "rid": "SV-51760r1_rule"
   tag "stig_id": "WN12-UC-000003"
   tag "fix_id": "F-44835r1_fix"
-  tag "cci": ["CCE-24680-1", "CCI-000056"]
+  tag "cci": ["CCI-000056"]
+  tag "cce": ["CCE-24680-1"]
   tag "nist": ["AC-11 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "PESL-1"

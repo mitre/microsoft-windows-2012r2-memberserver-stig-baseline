@@ -11,7 +11,8 @@ control "V-14241" do
   tag "rid": "SV-52952r1_rule"
   tag "stig_id": "WN12-SO-000084"
   tag "fix_id": "F-45878r2_fix"
-  tag "cci": ["CCE-23656-2", "CCI-001084"]
+  tag "cci": ["CCI-001084"]
+  tag "cce": ["CCE-23656-2"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.

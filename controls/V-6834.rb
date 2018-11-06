@@ -11,7 +11,8 @@ control "V-6834" do
   tag "rid": "SV-52937r1_rule"
   tag "stig_id": "WN12-SO-000058"
   tag "fix_id": "F-45863r1_fix"
-  tag "cci": ["CCE-24564-7", "CCI-001090"]
+  tag "cci": ["CCI-001090"]
+  tag "cce": ["CCE-24564-7"]
   tag "nist": ["SC-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

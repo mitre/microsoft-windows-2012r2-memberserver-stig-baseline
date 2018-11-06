@@ -10,7 +10,8 @@ control "V-3376" do
   tag "rid": "SV-52889r1_rule"
   tag "stig_id": "WN12-SO-000053"
   tag "fix_id": "F-45815r1_fix"
-  tag "cci": ["CCE-23358-5", "CCI-002038"]
+  tag "cci": ["CCI-002038"]
+  tag "cce": ["CCE-23358-5"]
   tag "nist": ["IA-11", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

@@ -15,7 +15,8 @@ control "V-1102" do
   tag "rid": "SV-52108r2_rule"
   tag "stig_id": "WN12-UR-000003"
   tag "fix_id": "F-45133r1_fix"
-  tag "cci": ["CCE-25043-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-25043-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user

@@ -19,7 +19,8 @@ control "V-15687" do
   tag "rid": "SV-53069r1_rule"
   tag "stig_id": "WN12-CC-000121"
   tag "fix_id": "F-45995r1_fix"
-  tag "cci": ["CCE-25014-2", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-25014-2"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "Windows Media Player is not installed by default.  If it is not
