@@ -13,7 +13,8 @@ control "V-26494" do
   tag "rid": "SV-52119r2_rule"
   tag "stig_id": "WN12-UR-000029"
   tag "fix_id": "F-45144r1_fix"
-  tag "cci": ["CCE-23829-5", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-23829-5"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user

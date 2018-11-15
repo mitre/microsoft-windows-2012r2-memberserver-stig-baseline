@@ -24,11 +24,7 @@ control "V-57655" do
   with enterprise-level authentication/access mechanisms that meet or exceed
   access control policy requirements.
   "
-  if EMERGENCY_ACCOUNT == []
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "WINGE-000057"
   tag "gid": "V-57655"
   tag "rid": "SV-72065r3_rule"
@@ -150,11 +146,12 @@ control "V-57655" do
       end
     end
 
-else
-  describe "No emergency accounts exist" do
-    skip "check not applicable"
+  else
+    impact 0.0
+    describe "No emergency accounts exist" do
+      skip "check not applicable"
+    end
   end
-end
 end
 
 

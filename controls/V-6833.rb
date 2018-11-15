@@ -11,7 +11,8 @@ control "V-6833" do
   tag "rid": "SV-52936r2_rule"
   tag "stig_id": "WN12-SO-000032"
   tag "fix_id": "F-45862r1_fix"
-  tag "cci": ["CCE-23716-4", "CCI-002418", "CCI-002421"]
+  tag "cci": ["CCI-002418", "CCI-002421"]
+  tag "cce": ["CCE-23716-4"]
   tag "nist": ["SC-8", "Rev_4"]
   tag "nist": ["SC-8 (1)", "Rev_4"]
   tag "documentable": false

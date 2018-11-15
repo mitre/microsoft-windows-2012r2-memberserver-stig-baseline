@@ -14,7 +14,8 @@ control "V-26479" do
   tag "rid": "SV-52113r2_rule"
   tag "stig_id": "WN12-UR-000012"
   tag "fix_id": "F-45138r1_fix"
-  tag "cci": ["CCE-23939-2", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-23939-2"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -34,7 +35,7 @@ control "V-26479" do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Create a token object\" to be defined but containing no entries (blank)."
-    describe security_policy do
+  describe security_policy do
     its('SeCreateTokenPrivilege') { should eq [] }
   end
 end

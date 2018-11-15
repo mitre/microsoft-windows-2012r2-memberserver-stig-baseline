@@ -10,7 +10,8 @@ control "V-6836" do
   tag "rid": "SV-52938r2_rule"
   tag "stig_id": "WN12-AC-000007"
   tag "fix_id": "F-45864r1_fix"
-  tag "cci": ["CCE-25317-9", "CCI-000205"]
+  tag "cci": ["CCI-000205"]
+  tag "cce": ["CCE-25317-9"]
   tag "nist": ["IA-5 (1) (a)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

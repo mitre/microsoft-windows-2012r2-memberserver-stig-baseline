@@ -12,7 +12,8 @@ control "V-1173" do
   tag "rid": "SV-52877r1_rule"
   tag "stig_id": "WN12-SO-000076"
   tag "fix_id": "F-45803r1_fix"
-  tag "cci": ["CCE-24633-0", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-24633-0"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

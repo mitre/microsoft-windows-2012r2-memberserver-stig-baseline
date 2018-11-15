@@ -13,7 +13,8 @@ control "V-26473" do
   tag "rid": "SV-83319r1_rule"
   tag "stig_id": "WN12-UR-000006-MS"
   tag "fix_id": "F-74893r1_fix"
-  tag "cci": ["CCE-24406-1", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cci": ["CCE-24406-1"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -48,8 +49,13 @@ control "V-26473" do
   with administrative or management functions, if required.  Remote Desktop
   Services access must be restricted to the accounts that require it.  This must
   be documented with the ISSO."
-  describe security_policy do 
-    its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
-  end 
+  describe.one do
+    describe security_policy do 
+      its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
+    end 
+    describe security_policy do 
+      its('SeRemoteInteractiveLogonRight') { should eq [] }
+    end 
+  end
 end
 

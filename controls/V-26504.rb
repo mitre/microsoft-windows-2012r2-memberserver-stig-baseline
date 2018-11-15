@@ -14,7 +14,8 @@ control "V-26504" do
   tag "rid": "SV-52122r2_rule"
   tag "stig_id": "WN12-UR-000040"
   tag "fix_id": "F-45147r1_fix"
-  tag "cci": ["CCE-25518-2", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-25518-2"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -40,8 +41,13 @@ control "V-26504" do
   groups:
 
   Administrators"
-  describe security_policy do
-    its("SeRestorePrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeRestorePrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeRestorePrivilege") { should eq [] }
+    end
   end
 end
 

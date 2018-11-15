@@ -22,7 +22,8 @@ control "V-26485" do
   tag "rid": "SV-51508r2_rule"
   tag "stig_id": "WN12-UR-000020-MS"
   tag "fix_id": "F-49929r1_fix"
-  tag "cci": ["CCE-24460-8", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cce": ["CCE-24460-8"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -62,9 +63,14 @@ control "V-26485" do
   administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
 
   if is_domain == 'WORKGROUP'
-    describe security_policy do
-      its('SeDenyInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
-     end   
+    describe.one do
+      describe security_policy do
+        its('SeDenyInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
+      end
+      describe security_policy do
+        its('SeDenyInteractiveLogonRight') { should eq [] }
+      end  
+    end   
       
   else  
     get_domain_sid = command("wmic useraccount get sid | FINDSTR /V SID | Select -First 2").stdout.strip

@@ -8,7 +8,8 @@ control "V-40206" do
   tag "rid": "SV-52165r2_rule"
   tag "stig_id": "WN12-SV-000106"
   tag "fix_id": "F-45191r1_fix"
-  tag "cci": ["CCE-24365-9", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-24365-9"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

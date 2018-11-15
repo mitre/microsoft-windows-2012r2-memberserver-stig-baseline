@@ -7,18 +7,14 @@ control "V-1090" do
   credential cache is well-protected, if a system is attacked, an unauthorized
   individual may isolate the password to a domain user account using a
   password-cracking program and gain access to the domain."
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-   if is_domain == "WORKGROUP"
-    impact 0.0
-  else
-    impact 0.3
-  end
+  impact 0.3
   tag "gtitle": "Caching of logon credentials"
   tag "gid": "V-1090"
   tag "rid": "SV-52846r2_rule"
   tag "stig_id": "WN12-SO-000024"
   tag "fix_id": "F-66507r2_fix"
-  tag "cci": ["CCE-24264-4", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-24264-4"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is not a member of a domain, this is NA.
@@ -39,15 +35,18 @@ control "V-1090" do
   Security Settings >> Local Policies >> Security Options >> \"Interactive Logon:
   Number of previous logons to cache (in case Domain Controller is not
   available)\" to \"4\" logons or less."
-
+  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
   
   describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon") do
     it { should have_property "CachedLogonsCount" }
     its("CachedLogonsCount") { should cmp <= 4 }
   end if is_domain != "WORKGROUP"
 
-  describe "The system does is not a member of a domain, control is NA" do
-    skip "The system does is not a member of a domain, control is NA"
-  end if is_domain == "WORKGROUP"
+  if is_domain == "WORKGROUP"
+    impact 0.0
+    describe "The system does is not a member of a domain, control is NA" do
+      skip "The system does is not a member of a domain, control is NA"
+    end
+  end
 end 
 

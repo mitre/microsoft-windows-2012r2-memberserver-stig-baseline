@@ -5,17 +5,14 @@ control "V-14242" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures non-UAC-compliant applications to run in virtualized
   file and registry entries in per-user locations, allowing them to run."
-  if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "UAC - Non UAC Compliant Application Virtualization"
   tag "gid": "V-14242"
   tag "rid": "SV-52953r1_rule"
   tag "stig_id": "WN12-SO-000085"
   tag "fix_id": "F-45879r2_fix"
-  tag "cci": ["CCE-24231-3", "CCI-001084"]
+  tag "cci": ["CCI-001084"]
+  tag "cce": ["CCE-24231-3"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
@@ -38,6 +35,7 @@ control "V-14242" do
   Control: Virtualize file and registry write failures to per-user locations\" to
   \"Enabled\"."
   if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    impact 0.0
     describe "This system is a Server Core Installation, control is NA" do
       skip "This system is a Server Core Installation control is NA"
     end

@@ -10,7 +10,8 @@ control "V-1113" do
   tag "rid": "SV-52855r1_rule"
   tag "stig_id": "WN12-SO-000003"
   tag "fix_id": "F-45781r1_fix"
-  tag "cci": ["CCE-24387-3", "CCI-000804"]
+  tag "cci": ["CCI-000804"]
+  tag "cci": ["CCE-24387-3"]
   tag "nist": ["IA-8", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.

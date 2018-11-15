@@ -20,11 +20,7 @@ control "V-57653" do
   with enterprise-level authentication/access mechanisms that meet or exceed
   access control policy requirements.
   "
-  if TEMP_ACCOUNT == []
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "WINGE-000056"
   tag "gid": "V-57653"
   tag "rid": "SV-72063r2_rule"
@@ -143,6 +139,7 @@ control "V-57653" do
     end
   
   else
+    impact 0.0
     describe "No temporary accounts on this system, control not applicable" do
       skip "No temporary accounts on this system, control not applicable"
     end

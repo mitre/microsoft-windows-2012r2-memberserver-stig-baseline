@@ -8,12 +8,7 @@ control "V-1120" do
   that the userid and password will be captured on the network and give
   administrator access to an unauthorized user.
   "
-  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
-  if (is_ftp_installed == 'False' || is_ftp_installed == '')
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "Prohibited FTP Logins"
   tag "gid": "V-1120"
   tag "rid": "SV-52106r2_rule"
@@ -61,8 +56,12 @@ control "V-1120" do
   If accounts with administrator privileges are used to access FTP, this is a CAT
   I finding."
   tag "fix": "Configure the FTP service to prevent anonymous logons."
-  describe 'File Transfer Protocol (FTP) servers must be configured to prevent
-  anonymous logons' do
-    skip "is a manual check"
+  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
+  if (is_ftp_installed == 'False' || is_ftp_installed == '')
+    impact 0.0
+    describe 'File Transfer Protocol (FTP) servers must be configured to prevent
+    anonymous logons' do
+      skip "is a manual check"
+    end
   end
 end

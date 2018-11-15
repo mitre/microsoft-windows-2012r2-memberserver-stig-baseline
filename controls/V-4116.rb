@@ -12,7 +12,8 @@ control "V-4116" do
   tag "rid": "SV-52928r2_rule"
   tag "stig_id": "WN12-SO-000043"
   tag "fix_id": "F-45854r3_fix"
-  tag "cci": ["CCE-23715-6", "CCI-002385"]
+  tag "cci": ["CCI-002385"]
+  tag "cce": ["CCE-23715-6"]
   tag "nist": ["SC-5", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

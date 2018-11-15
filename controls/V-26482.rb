@@ -13,7 +13,8 @@ control "V-26482" do
   tag "rid": "SV-53054r2_rule"
   tag "stig_id": "WN12-UR-000015"
   tag "fix_id": "F-66511r1_fix"
-  tag "cci": ["CCE-24549-8", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24549-8"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -39,8 +40,13 @@ control "V-26482" do
   Systems that have the Hyper-V role will also have \"Virtual Machines\" given
   this user right.  If this needs to be added manually, enter it as \"NT Virtual
   Machine\\Virtual Machines\"."
-  describe security_policy do
-    its("SeCreateSymbolicLinkPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeCreateSymbolicLinkPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeCreateSymbolicLinkPrivilege") { should eq [] }
+    end
   end
 end
 

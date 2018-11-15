@@ -14,7 +14,8 @@ control "V-26503" do
   tag "rid": "SV-52121r2_rule"
   tag "stig_id": "WN12-UR-000039"
   tag "fix_id": "F-45146r1_fix"
-  tag "cci": ["CCE-24555-5", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24555-5"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -42,9 +43,20 @@ control "V-26503" do
 
   Local Service
   Network Service"
-  describe security_policy do
+  describe.one do
+    describe security_policy do
       its('SeAssignPrimaryTokenPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
     end
+    describe security_policy do
+      its('SeAssignPrimaryTokenPrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeAssignPrimaryTokenPrivilege') { should eq ['S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeAssignPrimaryTokenPrivilege') { should eq [] }
+    end
+  end
 end
 
 

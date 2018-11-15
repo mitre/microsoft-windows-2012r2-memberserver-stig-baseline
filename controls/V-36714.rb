@@ -9,7 +9,8 @@ control "V-36714" do
   tag "rid": "SV-51754r1_rule"
   tag "stig_id": "WN12-CC-000125"
   tag "fix_id": "F-44829r1_fix"
-  tag "cci": ["CCE-25263-5", "CCI-000877"]
+  tag "cci": ["CCI-000877"]
+  tag "cce": ["CCE-25263-5"]
   tag "nist": ["MA-4 c", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "IAIA-1"

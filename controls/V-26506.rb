@@ -13,7 +13,8 @@ control "V-26506" do
   tag "rid": "SV-52123r2_rule"
   tag "stig_id": "WN12-UR-000042"
   tag "fix_id": "F-45148r1_fix"
-  tag "cci": ["CCE-25585-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-25585-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -39,8 +40,13 @@ control "V-26506" do
   accounts or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeTakeOwnershipPrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeTakeOwnershipPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeTakeOwnershipPrivilege") { should eq [] }
+    end
   end
 end
 

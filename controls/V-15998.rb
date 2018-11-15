@@ -1,6 +1,6 @@
 control "V-15998" do
   title "Users must be prevented from mapping local LPT ports and redirecting
-  data from the Remote Desktop Session Host to local LPT ports.  (Remote Desktop
+  data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop
   Services Role)."
   desc  "Preventing the redirection of Remote Desktop session data to a client
   computer's LPT ports helps reduce possible exposure of sensitive data."
@@ -10,7 +10,8 @@ control "V-15998" do
   tag "rid": "SV-52226r2_rule"
   tag "stig_id": "WN12-CC-000133"
   tag "fix_id": "F-45244r2_fix"
-  tag "cci": ["CCE-24381-6", "CCI-002314"]
+  tag "cci": ["CCI-002314"]
+  tag "cce": ["CCE-24381-6"]
   tag "nist": ["AC-17 (1)", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

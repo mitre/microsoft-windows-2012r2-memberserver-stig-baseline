@@ -9,7 +9,8 @@ control "V-36718" do
   tag "rid": "SV-51755r2_rule"
   tag "stig_id": "WN12-CC-000126"
   tag "fix_id": "F-44830r1_fix"
-  tag "cci": ["CCE-23637-2", "CCI-000877"]
+  tag "cci": ["CCI-000877"]
+  tag "cce": ["CCE-23637-2"]
   tag "nist": ["MA-4 c", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

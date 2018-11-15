@@ -40,8 +40,13 @@ control "V-26535" do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Management -> \"Audit Security Group Management\"
   with \"Success\" selected."
-  describe audit_policy do
-    its("Security Group Management") { should eq "Success" }
+  describe.one do
+    describe audit_policy do
+      its("Security Group Management") { should eq "Success" }
+    end
+    describe audit_policy do
+      its("Security Group Management") { should eq "Success and Failure" }
+    end
   end
 end
 

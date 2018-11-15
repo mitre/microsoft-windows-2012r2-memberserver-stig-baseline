@@ -9,7 +9,8 @@ control "V-14253" do
   tag "rid": "SV-52988r2_rule"
   tag "stig_id": "WN12-CC-000064-MS"
   tag "fix_id": "F-45914r2_fix"
-  tag "cci": ["CCE-24152-1", "CCI-001967"]
+  tag "cci": ["CCI-001967"]
+  tag "cce": ["CCE-24152-1"]
   tag "nist": ["IA-3 (1)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

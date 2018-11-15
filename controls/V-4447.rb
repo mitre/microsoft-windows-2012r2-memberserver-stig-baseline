@@ -13,7 +13,8 @@ control "V-4447" do
   tag "rid": "SV-52932r2_rule"
   tag "stig_id": "WN12-CC-000130"
   tag "fix_id": "F-45858r2_fix"
-  tag "cci": ["CCE-24788-2", "CCI-001453"]
+  tag "cci": ["CCI-001453"]
+  tag "cce": ["CCE-24788-2"]
   tag "nist": ["AC-17 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

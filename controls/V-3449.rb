@@ -9,7 +9,8 @@ control "V-3449" do
   tag "rid": "SV-52216r2_rule"
   tag "stig_id": "WN12-CC-000131"
   tag "fix_id": "F-45235r2_fix"
-  tag "cci": ["CCE-23328-8", "CCI-000054"]
+  tag "cci": ["CCI-000054"]
+  tag "cce": ["CCE-23328-8"]
   tag "nist": ["AC-10", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECLO-1, ECLO-2"

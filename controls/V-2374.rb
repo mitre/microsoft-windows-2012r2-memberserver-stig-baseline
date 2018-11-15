@@ -12,7 +12,8 @@ control "V-2374" do
   tag "rid": "SV-52879r2_rule"
   tag "stig_id": "WN12-CC-000074"
   tag "fix_id": "F-45805r1_fix"
-  tag "cci": ["CCE-23878-2", "CCI-001764"]
+  tag "cci": ["CCI-001764"]
+  tag "cce": ["CCE-23878-2"]
   tag "nist": ["CM-7 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

@@ -9,7 +9,8 @@ control "V-26582" do
   tag "rid": "SV-52963r2_rule"
   tag "stig_id": "WN12-CC-000087"
   tag "fix_id": "F-71607r2_fix"
-  tag "cci": ["CCE-24411-1", "CCI-001849"]
+  tag "cci": ["CCI-001849"]
+  tag "cce": ["CCE-24411-1"]
   tag "nist": ["AU-4", "Rev_4"]
   tag "documentable": false
   tag "check": "If the system is configured to write events directly to an

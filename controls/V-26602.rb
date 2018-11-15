@@ -1,19 +1,15 @@
-is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
 control "V-26602" do
   title "The Microsoft FTP service must not be installed unless required."
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
-  if is_ftp_installed == 'False'
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "Microsoft FTP Service Disabled"
   tag "gid": "V-26602"
   tag "rid": "SV-52237r4_rule"
   tag "stig_id": "WN12-SV-000101"
   tag "fix_id": "F-74887r1_fix"
-  tag "cci": ["CCE-23863-4", "CCI-000382"]
+  tag "cci": ["CCI-000382"]
+  tag "cce": ["CCE-23863-4"]
   tag "nist": ["CM-7 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the server has the role of an FTP server, this is NA.
@@ -33,7 +29,7 @@ control "V-26602" do
   Select the appropriate server on the \"Server Selection\" page, click \"Next\".
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
-
+  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
   describe wmi({
   class: 'win32_service',
   filter: "name like '%ftpsvc%'"
@@ -41,8 +37,10 @@ control "V-26602" do
     its('StartMode') { should cmp 'Disabled' }
   end if is_ftp_installed == 'True'
 
-  describe "The system does not have Ftp installed" do
-    skip "The system does not have Ftp installed, this requirement is Not Applicable."
-  end if is_ftp_installed == 'False'
+  if is_ftp_installed == 'False'
+    describe "The system does not have Ftp installed" do
+      skip "The system does not have Ftp installed, this requirement is Not Applicable."
+    end
+  end
 end 
  

@@ -10,7 +10,8 @@ control "V-36681" do
   tag "rid": "SV-51610r1_rule"
   tag "stig_id": "WN12-CC-000048"
   tag "fix_id": "F-44731r1_fix"
-  tag "cci": ["CCE-24401-2", "CCI-000381"]
+  tag "cci": ["CCI-000381"]
+  tag "cce": ["CCE-24401-2"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "ia_controls": "ECSC-1"

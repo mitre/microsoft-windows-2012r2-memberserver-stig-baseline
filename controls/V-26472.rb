@@ -13,7 +13,8 @@ control "V-26472" do
   tag "rid": "SV-52110r2_rule"
   tag "stig_id": "WN12-UR-000005"
   tag "fix_id": "F-45135r1_fix"
-  tag "cci": ["CCE-25228-8", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cci": ["CCE-25228-8"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -38,8 +39,13 @@ control "V-26472" do
   \"Allow log on locally\" to only include the following accounts or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeInteractiveLogonRight") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeInteractiveLogonRight") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeInteractiveLogonRight") { should eq [] }
+    end
   end
 end
  

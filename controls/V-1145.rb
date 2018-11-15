@@ -10,7 +10,8 @@ control "V-1145" do
   tag "rid": "SV-52107r2_rule"
   tag "stig_id": "WN12-SO-000036"
   tag "fix_id": "F-45132r1_fix"
-  tag "cci": ["CCE-24927-6", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-24927-6"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If the DefaultName or DefaultDomainName in

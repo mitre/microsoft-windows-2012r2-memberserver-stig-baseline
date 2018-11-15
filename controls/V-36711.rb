@@ -5,11 +5,7 @@ control "V-36711" do
   information.  Installation of applications must be controlled by the
   enterprise.  Turning off access to the Windows Store will limit access to
   publicly available applications."
-  if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
-    impact 0.5
-  else
-    impact 0.0
-  end
+  impact 0.5
   tag "gtitle": "WINCC-000110"
   tag "gid": "V-36711"
   tag "rid": "SV-51751r2_rule"
@@ -41,9 +37,12 @@ control "V-36711" do
     its("RemoveWindowsStore") { should cmp == 1 }
   end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
 
-  describe "The system does not have Windows Store installed" do
-    skip "The system does not have Windows Store installed, this requirement is Not
-    Applicable."
-  end if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+    impact 0.0
+    describe "The system does not have Windows Store installed" do
+      skip "The system does not have Windows Store installed, this requirement is Not
+      Applicable."
+    end
+  end
 end
 

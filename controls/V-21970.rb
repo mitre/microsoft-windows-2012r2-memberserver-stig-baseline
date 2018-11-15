@@ -14,7 +14,8 @@ control "V-21970" do
   tag "rid": "SV-53128r1_rule"
   tag "stig_id": "WN12-CC-000068"
   tag "fix_id": "F-46054r1_fix"
-  tag "cci": ["CCE-25080-3", "CCI-000381"]
+  tag "cci": ["CCI-000381"]
+  tag "cce": ["CCE-25080-3"]
   tag "nist": ["CM-7 a", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

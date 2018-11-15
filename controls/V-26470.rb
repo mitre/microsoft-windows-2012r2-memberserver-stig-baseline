@@ -13,7 +13,8 @@ control "V-26470" do
   tag "rid": "SV-51499r3_rule"
   tag "stig_id": "WN12-UR-000002-MS"
   tag "fix_id": "F-49518r2_fix" 
-  tag "cci": ["CCE-24938-3", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cci": ["CCE-24938-3"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -49,8 +50,19 @@ control "V-26470" do
   Systems dedicated to managing Active Directory (AD admin platforms, see V-36436
   in the Active Directory Domain STIG), must only allow Administrators, removing
   the Authenticated Users group."
-  describe security_policy do
-    its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeNetworkLogonRight') { should eq ['S-1-5-11'] }
+    end
+    describe security_policy do
+      its('SeNetworkLogonRight') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeNetworkLogonRight') { should eq [] }
+    end
   end
 end
 

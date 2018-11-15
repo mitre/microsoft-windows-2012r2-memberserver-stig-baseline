@@ -14,7 +14,8 @@ control "V-26490" do
   tag "rid": "SV-52117r2_rule"
   tag "stig_id": "WN12-UR-000025"
   tag "fix_id": "F-45142r1_fix"
-  tag "cci": ["CCE-24477-2", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24477-2"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
@@ -46,8 +47,58 @@ control "V-26490" do
   Service
   Local Service
   Network Service"
-  describe security_policy do
-    its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+  describe.one do
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-20', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-20', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-32-544', 'S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-20'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq ['S-1-5-6'] }
+    end
+    describe security_policy do
+      its('SeImpersonatePrivilege') { should eq [] }
+    end
   end
 end
 

@@ -12,7 +12,8 @@ control "V-26478" do
   tag "rid": "SV-53063r1_rule"
   tag "stig_id": "WN12-UR-000011"
   tag "fix_id": "F-45989r1_fix"
-  tag "cci": ["CCE-23972-3", "CCI-002235"]
+  tag "cci": ["CCE-23972-3"]
+  tag "cce": ["CCE-23972-3"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -30,8 +31,13 @@ control "V-26478" do
   \"Create a pagefile\" to only include the following accounts or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeCreatePagefilePrivilege") { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its("SeCreatePagefilePrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeCreatePagefilePrivilege") { should eq [] }
+    end
   end
 end
 

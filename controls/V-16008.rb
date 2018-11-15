@@ -5,17 +5,14 @@ control "V-16008" do
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures whether Windows elevates all applications, or only
   signed ones."
-  if  registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "UAC - Application Elevations"
   tag "gid": "V-16008"
   tag "rid": "SV-53142r1_rule"
   tag "stig_id": "WN12-SO-000081"
   tag "fix_id": "F-46068r2_fix"
-  tag "cci": ["CCE-23880-8", "CCI-001084"]
+  tag "cci": ["CCI-001084"]
+  tag "cce": ["CCE-23880-8"]
   tag "nist": ["SC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
@@ -38,6 +35,7 @@ control "V-16008" do
   Control: Only elevate executables that are signed and validated\" to
   \"Disabled\"."
   if (registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1))
+    impact 0.0
     describe "This system is a Server Core Installation, control is NA" do
       skip "This system is a Server Core Installation, control is NA"
     end

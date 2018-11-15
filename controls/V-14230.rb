@@ -15,7 +15,8 @@ control "V-14230" do
   tag "rid": "SV-52944r1_rule"
   tag "stig_id": "WN12-SO-000009"
   tag "fix_id": "F-45870r1_fix"
-  tag "cci": ["CCE-24252-9", "CCI-000169"]
+  tag "cci": ["CCI-000169"]
+  tag "cce": ["CCE-24252-9"]
   tag "nist": ["AU-12 a", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

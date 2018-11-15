@@ -22,7 +22,8 @@ control "V-26483" do
   tag "rid": "SV-51502r1_rule"
   tag "stig_id": "WN12-UR-000018-MS"
   tag "fix_id": "F-44652r1_fix"
-  tag "cci": ["CCE-25215-5", "CCI-000213"]
+  tag "cci": ["CCI-000213"]
+  tag "cce": ["CCE-25215-5"]
   tag "nist": ["AC-3", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -56,8 +57,13 @@ control "V-26483" do
   administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
 
   if is_domain == 'WORKGROUP'
-    describe security_policy do
-      its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
+    describe.one do
+      describe security_policy do
+        its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
+       end
+       describe security_policy do
+        its('SeDenyBatchLogonRight') { should eq [] }
+       end
      end   
       
   else  

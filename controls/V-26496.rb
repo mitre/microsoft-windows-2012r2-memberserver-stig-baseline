@@ -14,8 +14,9 @@ control "V-26496" do
   tag "rid": "SV-53039r3_rule"
   tag "stig_id": "WN12-UR-000032"
   tag "fix_id": "F-45965r2_fix"
-  tag "cci": ["CCE-23456-7", "CCI-000162", "CCI-000163", "CCI-000164",
+  tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164",
   "CCI-000171", "CCI-001914"]
+  tag "cce": ["CCE-23456-7"]
   tag "nist": ["AU-9", "Rev_4"]
   tag "nist": ["AU-12 b", "Rev_4"]
   tag "nist": ["AU-12 (3)", "Rev_4"]
@@ -45,8 +46,13 @@ control "V-26496" do
   groups:
 
   Administrators"
-  describe security_policy do
-    its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
+  describe.one do
+    describe security_policy do
+      its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeSecurityPrivilege') { should eq [] }
+    end
   end
 end
 

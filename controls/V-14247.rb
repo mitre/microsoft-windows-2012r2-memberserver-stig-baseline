@@ -10,7 +10,8 @@ control "V-14247" do
   tag "rid": "SV-52958r1_rule"
   tag "stig_id": "WN12-CC-000096"
   tag "fix_id": "F-45884r1_fix"
-  tag "cci": ["CCE-23787-5", "CCI-002038"]
+  tag "cci": ["CCI-002038"]
+  tag "cce": ["CCE-23787-5"]
   tag "nist": ["IA-11", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

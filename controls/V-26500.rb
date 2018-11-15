@@ -14,7 +14,8 @@ control "V-26500" do
   tag "rid": "SV-53022r1_rule"
   tag "stig_id": "WN12-UR-000036"
   tag "fix_id": "F-45948r1_fix"
-  tag "cci": ["CCE-23844-4", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-23844-4"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -32,8 +33,13 @@ control "V-26500" do
   \"Profile single process\" to only include the following accounts or groups:
 
   Administrators"
-  describe security_policy do
-    its("SeProfileSingleProcessPrivilege") { should eq ['S-1-5-32-544'] }
-  end
+  describe.one do
+    describe security_policy do
+      its("SeProfileSingleProcessPrivilege") { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its("SeProfileSingleProcessPrivilege") { should eq [] }
+    end
+  end 
 end
 

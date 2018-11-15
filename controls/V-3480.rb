@@ -5,17 +5,14 @@ control "V-3480" do
   automatic check for updates performed by Windows Media Player must be disabled
   to ensure a constant platform and to prevent the introduction of
   unknown\\untested software on the system."
-  if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
-    impact 0.5
-  else
-    impact 0.0
-  end
+  impact 0.5
   tag "gtitle": "Media Player - Disable Automatic Updates"
   tag "gid": "V-3480"
   tag "rid": "SV-53130r1_rule"
   tag "stig_id": "WN12-CC-000122"
   tag "fix_id": "F-46056r1_fix"
-  tag "cci": ["CCE-24250-3", "CCI-001812"]
+  tag "cci": ["CCI-001812"]
+  tag "cce": ["CCE-24250-3"]
   tag "nist": ["CM-11 (2)", "Rev_4"]
   tag "documentable": false
   tag "check": "Windows Media Player is not installed by default.  If it is not
@@ -39,10 +36,13 @@ control "V-3480" do
     its("DisableAutoUpdate") { should cmp == 1 }
   end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
 
-  describe "The system does not have Windows WindowsMediaPlayer installed" do
-    skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
-    Applicable."
-  end if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+  if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+    impact 0.0
+    describe "The system does not have Windows WindowsMediaPlayer installed" do
+      skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
+      Applicable."
+    end 
+  end
 end
 
  

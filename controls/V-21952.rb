@@ -8,7 +8,8 @@ control "V-21952" do
   tag "rid": "SV-53177r1_rule"
   tag "stig_id": "WN12-SO-000062"
   tag "fix_id": "F-46103r1_fix"
-  tag "cci": ["CCE-25531-5", "CCI-000366"]
+  tag "cci": ["CCI-000366"]
+  tag "cce": ["CCE-25531-5"]
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not

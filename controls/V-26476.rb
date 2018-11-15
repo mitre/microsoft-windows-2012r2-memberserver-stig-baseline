@@ -14,7 +14,8 @@ control "V-26476" do
   tag "rid": "SV-53118r1_rule"
   tag "stig_id": "WN12-UR-000009"
   tag "fix_id": "F-46044r1_fix"
-  tag "cci": ["CCE-24185-1", "CCI-002235"]
+  tag "cci": ["CCI-002235"]
+  tag "cce": ["CCE-24185-1"]
   tag "nist": ["AC-6 (10)", "Rev_4"]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
@@ -34,8 +35,19 @@ control "V-26476" do
 
   Administrators
   Local Service"
-  describe security_policy do
-    its('SeTimeZonePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
-  end
+  describe.one do
+    describe security_policy do
+      its('SeTimeZonePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeTimeZonePrivilege') { should eq ['S-1-5-19'] }
+    end
+    describe security_policy do
+      its('SeTimeZonePrivilege') { should eq ['S-1-5-32-544'] }
+    end
+    describe security_policy do
+      its('SeTimeZonePrivilege') { should eq [] }
+    end
+end
 end
 

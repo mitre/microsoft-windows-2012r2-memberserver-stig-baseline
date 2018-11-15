@@ -9,12 +9,7 @@ control "V-36439" do
   administrator accounts will prevent the elevated privileges of these accounts
   from being used over the network.
   "
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-   if is_domain == "WORKGROUP"
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "Local admin accounts filtered token policy enabled on domain
   systems."
   tag "gid": "V-36439"
@@ -56,8 +51,11 @@ control "V-36439" do
     its("LocalAccountTokenFilterPolicy") { should cmp == 0 }
   end if is_domain != "WORKGROUP"
 
-  describe "The system does is not a member of a domain, control is NA" do
-    skip "The system does is not a member of a domain, control is NA"
-  end if is_domain == "WORKGROUP"
+  if is_domain == "WORKGROUP"
+    impact 0.0
+    describe "The system does is not a member of a domain, control is NA" do
+      skip "The system does is not a member of a domain, control is NA"
+    end 
+  end
 end
 
