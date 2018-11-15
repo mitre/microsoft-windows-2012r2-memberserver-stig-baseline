@@ -16,7 +16,7 @@ control "V-36451" do
 
   The policy should define specific exceptions for local service
   administration.  These exceptions may include HTTP(S)-based tools that are used
-  fromor the administration of the local system, services, or attached devices.
+  from the administration of the local system, services, or attached devices.
 
   Technical means such as application whitelisting can be used to enforce the
   policy to ensure compliance.

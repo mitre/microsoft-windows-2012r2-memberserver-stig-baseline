@@ -5,7 +5,7 @@ control "V-36722" do
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.  The
-  Application event log may be  susceptible to tampering if proper permissions
+  Application event log may be susceptible to tampering if proper permissions
   are not applied."
   impact 0.5
   tag "gtitle": "WINAU-000204"

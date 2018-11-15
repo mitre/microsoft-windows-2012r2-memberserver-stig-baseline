@@ -20,7 +20,7 @@ control "V-36736" do
   tag "check": "Verify the system has software installed and running that
   provides certificate validation and revocation checking.  If it does not, this
   is a finding."
-  tag "fix": "Install software that  provides certificate validation and
+  tag "fix": "Install software that provides certificate validation and
   revocation checking."
   describe "Server systems must be located in a controlled area" do
     skip "The system must query the certification authority to determine whether

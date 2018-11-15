@@ -3,7 +3,7 @@ control "V-26600" do
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
   impact 0.5
-  tag "gtitle": "Fax Service Disabled "
+  tag "gtitle": "Fax Service Disabled"
   tag "gid": "V-26600"
   tag "rid": "SV-52236r2_rule"
   tag "stig_id": "WN12-SV-000100"
