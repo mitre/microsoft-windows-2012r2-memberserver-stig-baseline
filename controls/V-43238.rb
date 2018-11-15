@@ -4,11 +4,7 @@ control "V-43238" do
   desc  "Slide shows that are displayed on the lock screen could display
   sensitive information to unauthorized personnel.  Turning off this feature will
   limit access to the information to a logged on user."
-  if (os['release'].to_i < 6.3 )
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "WINCC-000138"
   tag "gid": "V-43238"
   tag "rid": "SV-56343r2_rule"
@@ -36,9 +32,17 @@ control "V-43238" do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Control Panel -> Personalization -> \"Prevent enabling lock screen
   slide show\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization") do
-    it { should have_property "NoLockScreenSlideshow" }
-    its("NoLockScreenSlideshow") { should cmp == 1 }
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+    describe "Control not applicable" do
+      skip "This requirement is NA for the initial release of Windows 2012"
+  else
+    impact 0.5
+  
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization") do
+      it { should have_property "NoLockScreenSlideshow" }
+      its("NoLockScreenSlideshow") { should cmp == 1 }
+    end
   end
 end
 

@@ -4,12 +4,7 @@ control "V-15680" do
   password to access a system.  The simple logon screen or Welcome screen
   displays  usernames for selection, providing part of the necessary logon
   information."
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-   if is_domain == "WORKGROUP"
-    impact 0.0
-  else
-    impact 0.3
-  end
+  impact 0.3
   tag "gtitle": "Classic Logon"
   tag "gid": "V-15680"
   tag "rid": "SV-53036r2_rule"
@@ -36,7 +31,7 @@ control "V-15680" do
 
   Configure the policy value for Computer Configuration >> Administrative
   Templates >> System >> Logon >> \"Always use classic logon\" to \"Enabled\"."
-  
+  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
   if is_domain == 'WORKGROUP'
     describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
       it { should have_property "LogonType" }
@@ -44,6 +39,7 @@ control "V-15680" do
     end
   
   else  
+    impact 0.0
     describe 'System is a member of a domain' do
       skip 'The system is a member of a domain, this is NA'
     end

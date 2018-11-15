@@ -12,11 +12,7 @@ control "V-43239" do
   record the command line information with the process creation events in the
   log. This can provide additional detail when malware has run on a system.
   "
-  if (os['release'].to_i < 6.3 )
-    impact 0.0
-  else
-    impact 0.5
-  end
+  impact 0.5
   tag "gtitle": "WINCC-000139"
   tag "gid": "V-43239"
   tag "rid": "SV-56344r3_rule"
@@ -42,9 +38,16 @@ control "V-43239" do
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> System >> Audit Process Creation >> \"Include
   command line in process creation events\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit") do
-    it { should have_property "ProcessCreationIncludeCmdLine_Enabled" }
-    its("ProcessCreationIncludeCmdLine_Enabled") { should cmp == 1 }
+  if (os['release'].to_i < 6.3 )
+    impact 0.0
+    describe "Control not applicable" do
+      skip "This requirement is NA for the initial release of Windows 2012"
+    end
+  else
+    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit") do
+      it { should have_property "ProcessCreationIncludeCmdLine_Enabled" }
+      its("ProcessCreationIncludeCmdLine_Enabled") { should cmp == 1 }
+    end
   end
 end
 

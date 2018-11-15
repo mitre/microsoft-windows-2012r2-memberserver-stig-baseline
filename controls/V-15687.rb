@@ -9,11 +9,7 @@ control "V-15687" do
   Installation options on first use of Windows Media Player, which could enable
   some communication with the vendor.
   "
-  if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
-    impact 0.3
-  else
-    impact 0.0
-  end
+  impact 0.3
   tag "gtitle": "Media Player – First Use Dialog Boxes"
   tag "gid": "V-15687"
   tag "rid": "SV-53069r1_rule"
@@ -44,10 +40,13 @@ control "V-15687" do
     its("GroupPrivacyAcceptance") { should cmp == 1 }
   end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
 
-   describe "The system does not have Windows WindowsMediaPlayer installed" do
-    skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
-    Applicable."
-  end if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+   if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+    impact 0.0
+     describe "The system does not have Windows WindowsMediaPlayer installed" do
+      skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
+      Applicable."
+    end
+  end
 
 end
 
