@@ -21,7 +21,7 @@ control "V-26359" do
   configured as specified, this is a finding:
 
   Registry Hive: HKEY_LOCAL_MACHINE
-  Registry Path:
+  Registry Path: 
   \\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\
 
   Value Name: LegalNoticeCaption

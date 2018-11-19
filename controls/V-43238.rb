@@ -36,6 +36,7 @@ control "V-43238" do
     impact 0.0
     describe "Control not applicable" do
       skip "This requirement is NA for the initial release of Windows 2012"
+    end
   else
     impact 0.5
   
