@@ -2,7 +2,7 @@
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure							|Dan Haynes|*|17|
 ||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|*|
-||InSpec syntax checker|Dan Haynes|*|1,15|
+||InSpec syntax checker|Dan Haynes|*|1, 15|
 ||Local commands focused on target not the runner|Dan Haynes|10/26/2018|*|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|*|*|*|
 ||Descriptive output for findings details|*|*|*|
