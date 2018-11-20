@@ -44,8 +44,8 @@ control "V-1090" do
 
   if is_domain == "WORKGROUP"
     impact 0.0
-    describe "The system does is not a member of a domain, control is NA" do
-      skip "The system does is not a member of a domain, control is NA"
+    describe "The system is not a member of a domain, control is NA" do
+      skip "The system is not a member of a domain, control is NA"
     end
   end
 end 
