@@ -17,6 +17,7 @@
 
 
 [1] https://www.inspec.io/docs/reference/profiles/
+
 [2] https://www.inspec.io/docs/reference/style/ (see "Avoid Shelling Out")
 
 Another tip is to cat all the controls into a single file so you don't have to open every individaul file and try to keep track of where you are and which one is next.
