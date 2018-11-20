@@ -8,7 +8,7 @@
 ||Descriptive output for findings details|*|*|*|
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |*|*|*|
-||Spelling grammar|Dan Haynes|*|4|
+||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes|*|4|
 ||Removing debugging documentation and code|Dan Haynes|*|*|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges|*|*|*|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes|*|*|
