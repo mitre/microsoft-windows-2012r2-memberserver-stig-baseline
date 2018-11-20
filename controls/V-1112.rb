@@ -121,8 +121,8 @@ control "V-1112" do
     end
   end 
 
-  describe "The system does not have any inactive_accounts, control is NA" do
-    skip "The system does not have any inactive_accounts, controls is NA"
+  describe "The system does not have any inactive accounts, control is NA" do
+    skip "The system does not have any inactive accounts, controls is NA"
   end if inactive_accounts == []
 
   if inactive_accounts == []
