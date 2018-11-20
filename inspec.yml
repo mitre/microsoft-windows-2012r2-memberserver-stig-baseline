@@ -1,7 +1,7 @@
 name: windows_2012r2_memberserver_stig
 title: Windows 2012r2 Member Server STIG
-maintainer: MITRE InSpec Team
-copyright: MITRE InSpec Team
+maintainer: The MITRE Corporation
+copyright: The MITRE Corporation
 copyright_email: inspec@mitre.org
 license: Apache-2.0
 summary: Inspec profile testing STIG compliance of Windows Member Server 2012r2
@@ -13,26 +13,32 @@ version: 0.1.0
 
 attributes:
   - name: shared_accounts
+    type: array
     description: 'List of shared accounts on the system'
-    default: ['tmp']
+    default: []
 
   - name: backup_operators
+    type: array
     description: 'List of authorized users in the Backup Operators Group'
     default: []
 
   - name: administrators
+    type: array
     description: 'List of authorized users in the local Administrators group'
-    default: ['Admn']
+    default: []
 
   - name: administrators_domain
+    type: array
     description: 'List of authorized users in the local Administrators domain group'
-    default: ['Admn']
+    default: []
 
   - name: temp_account
+    type: array
     description: 'List of temporary accounts on the system'
     default: []
 
   - name: emergency_account
+    type: array
     description: 'List of emergency accounts on the system'
     default: []
 
