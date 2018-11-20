@@ -77,7 +77,7 @@ control "V-1127" do
   if is_domain == 'WORKGROUP'
     administrator_group.each do |user|
         describe "#{user}" do
-          it { should be_in ADMINISTRATORS1}
+          it { should be_in ADMINISTRATORS}
         end            
       end 
   else  
