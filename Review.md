@@ -9,7 +9,7 @@
 ||Descriptive output for findings details (review JSON for findings information that may be confusing to SCA like NilCLass, etc.)|Dan Haynes|*|21|
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |*|*|*|
-||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes (reviewed all controls)|*|4, 9|
+||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes (reviewed all controls)|*|4, 9, 23|
 ||Removing debugging documentation and code|Dan Haynes (reviewed all controls)|*|*|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges (e.g., code fails to reach a describe statement for every control. inspec check can do this. It will say no defined tests)|Dan Haynes (reviewed all controls)|*|19|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes (reviewed all controls)|*|*|
