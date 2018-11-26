@@ -10,7 +10,7 @@
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |*|*|*|
 ||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes (reviewed all controls)|*|4, 9, 23|
-||Removing debugging documentation and code|Dan Haynes (reviewed all controls)|*|*|
+||Removing debugging documentation and code|Dan Haynes (reviewed all controls)|11/20/2018|*|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges (e.g., code fails to reach a describe statement for every control. inspec check can do this. It will say no defined tests)|Dan Haynes (reviewed all controls)|*|19|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes (reviewed all controls)|11/20/2018|*|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|Eugene Aronne|11/16/2018|*|
