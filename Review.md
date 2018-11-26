@@ -1,4 +1,4 @@
-| Check          | Sub-check                                                                         | Who | Completion Date | Issue #'s |
+| Check          | Sub-check                                                                         | Who | Completion Date *** | Issue #'s |
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure	[1]						|Dan Haynes (reviewed all controls)|*|16, 17, 18|
 ||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|7|
@@ -22,3 +22,5 @@
 [2] https://www.inspec.io/docs/reference/style/ (see "Avoid Shelling Out")
 
 Another tip is to cat all the controls into a single file so you don't have to open every individaul file and try to keep track of where you are and which one is next.
+
+*** A completion date is entered in a row when all non-enhancement issues are resolved for that review row.
