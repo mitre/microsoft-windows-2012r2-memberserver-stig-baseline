@@ -5,7 +5,7 @@
 ||InSpec syntax checker|Dan Haynes (reviewed all controls)|11/19/2018|1, 15|
 ||Local commands focused on target not the runner [2]|Dan Haynes (reviewed all controls)|10/26/2018|*|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Eugene Aronne|11/27/2018|6, 11, 12, 13, 20|
-||Control robustness (can the control be improved to make it less brittle - not necessarily a blocker on initial releases)|Dan Haynes (reviewed all controls)|*|3, 5, 8, 14|
+||Control robustness (can the control be improved to make it less brittle - not necessarily a blocker on initial releases)|Dan Haynes (reviewed all controls)|11/27/2018|3, 5, 8, 14|
 ||Descriptive output for findings details (review JSON for findings information that may be confusing to SCA like NilCLass, etc.)|Dan Haynes|*|21|
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |*|*|*|
