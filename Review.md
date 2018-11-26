@@ -1,7 +1,7 @@
 | Check          | Sub-check                                                                         | Who | Completion Date *** | Issue #'s |
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure	[1]						|Dan Haynes (reviewed all controls)|11/19/2018|16, 17, 18|
-||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|7|
+||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|Eugene Aronne|11/27/2018|7|
 ||InSpec syntax checker|Dan Haynes (reviewed all controls)|11/19/2018|1, 15|
 ||Local commands focused on target not the runner [2]|Dan Haynes (reviewed all controls)|10/26/2018|*|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|*|*|6, 11, 12, 13, 20|
