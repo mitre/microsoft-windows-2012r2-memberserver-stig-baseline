@@ -25,11 +25,11 @@ control "V-15505" do
   tag "fix": "Deploy the McAfee Agent as detailed in accordance with the DoD
   HBSS STIG."
   describe.one do
-    describe command("Get-Service -DisplayName 'McAfee Agent Service' | Findstr /v 'status --'") do
-     its('stdout') { should match /Running[\s\w\W]*/}
+    describe service('McAfee Agent Service') do
+      it { should be_running }
     end
-    describe command("Get-Service -DisplayName 'McAfee Framework Service' | Findstr /v 'status --'") do
-     its('stdout') { should match /Running[\s\w\W]*/}
+    describe service('McAfee Framework Service') do
+      it { should be_running }
     end
   end
 end

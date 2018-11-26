@@ -52,11 +52,11 @@ control "V-26070" do
   Administrators - Full Control
   Users - Read
   ALL APPLICATION PACKAGES - Read"
-  describe command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" | Format-List | Findstr All') do
-   its('stdout') { should eq "Access : NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+  describe "The registry permissions for HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\" do
+    subject { command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" | Format-List | Findstr All').stdout }
+    it { should eq "Access : NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
   end
 end
-
 
 
 

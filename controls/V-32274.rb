@@ -85,10 +85,11 @@ control "V-32274" do
   The FBCA Cross-Certificate Remover tool and user guide is available on IASE at
   http://iase.disa.mil/pki-pke/Pages/tools.aspx."
 
-  describe command('Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where {$_.Issuer -Like
+  describe "The installed DoD certificate" do
+    subject { command('Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where {$_.Issuer -Like
     "*DoD Interoperability*" -and $_.Subject -Like "*DoD*"} | FL Subject,
-    Issuer, Thumbprint') do
-    its('stdout') { should eq "\r\n\r\nSubject    : CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : 22BBE981F0694D246CC1472ED2B021DC8540A22F\r\n\r\nSubject    : CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : FFAD03329B9E527A43EEC66A56F9CBB5393E6E13\r\n\r\nSubject    : CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : FCE1B1E25374DD94F5935BEB86CA643D8C8D1FF4\r\n\r\n\r\n\r\n" }
+    Issuer, Thumbprint').stdout }
+    it { should eq "\r\n\r\nSubject    : CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : 22BBE981F0694D246CC1472ED2B021DC8540A22F\r\n\r\nSubject    : CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : FFAD03329B9E527A43EEC66A56F9CBB5393E6E13\r\n\r\nSubject    : CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : FCE1B1E25374DD94F5935BEB86CA643D8C8D1FF4\r\n\r\n\r\n\r\n" }
   end
 end
 
