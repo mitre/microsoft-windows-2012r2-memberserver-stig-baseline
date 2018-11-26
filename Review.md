@@ -12,9 +12,9 @@
 ||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes (reviewed all controls)|*|4, 9, 23|
 ||Removing debugging documentation and code|Dan Haynes (reviewed all controls)|*|*|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges (e.g., code fails to reach a describe statement for every control. inspec check can do this. It will say no defined tests)|Dan Haynes (reviewed all controls)|*|19|
-||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes (reviewed all controls)|*|*|
+||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes (reviewed all controls)|11/20/2018|*|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|Eugene Aronne|11/16/2018|*|
-||Check for “stuck” situations (e.g., profile goes on forever due to infinite loop, very large data sets, etc.)|Dan Haynes (reviewed all controls)|*|22|
+||Check for “stuck” situations (e.g., profile goes on forever due to infinite loop, very large data sets, etc.)|Dan Haynes (reviewed all controls)|11/20/2018|22|
 
 
 [1] https://www.inspec.io/docs/reference/profiles/
