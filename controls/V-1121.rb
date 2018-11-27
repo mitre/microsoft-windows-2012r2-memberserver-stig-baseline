@@ -59,6 +59,10 @@ control 'V-1121' do
   containing the data to be available through the service."
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
   if is_ftp_installed == 'False'
+    describe 'FTP is not installed' do
+      skip 'Control not applicable'
+    end
+  else
     describe 'File Transfer Protocol (FTP) servers must be configured to prevent
     anonymous logons' do
       skip 'is a manual check'

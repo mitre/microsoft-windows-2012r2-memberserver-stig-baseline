@@ -38,6 +38,10 @@ control 'V-1135' do
   get_printers = command("Get-Printer | Format-List | Findstr /v 'Name ---'")
   if get_printers == ''
     impact 0.0
+    describe 'There are no printers configured' do
+      skip 'This control is not applicable'
+    end
+  else
     describe "Nonadministrative user accounts or groups must only have print
     permissions on printer shares." do
       skip 'This is a manual control'

@@ -49,5 +49,10 @@ control 'V-7002' do
       its('stdout') { should_not eq "Password required            No\r\n" }
     end
   end
-
+  if users.empty?
+    impact 0.0
+    describe 'There are no system users' do
+      skip 'This control is not applicable'
+    end
+  end
 end

@@ -31,4 +31,10 @@ control 'V-36659' do
       it { should be_in ADMINISTRATORS }
     end
   end
+  if administrator_group.empty?
+    impact 0.0
+    describe 'There are no users with administrative privileges' do
+      skip 'This control is not applicable'
+    end
+  end
 end

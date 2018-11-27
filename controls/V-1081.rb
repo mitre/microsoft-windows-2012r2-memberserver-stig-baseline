@@ -40,4 +40,10 @@ control 'V-1081' do
       end
     end
   end
+  if get_volumes.empty?
+    impact 0.0
+    describe 'There are no local volumes' do
+      skip 'This control is not applicable'
+    end
+  end
 end

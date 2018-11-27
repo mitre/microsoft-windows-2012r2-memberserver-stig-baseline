@@ -23,17 +23,17 @@ control 'V-26600' do
   tag "fix": 'Remove or disable the Fax (fax) service.'
   is_fax_installed = command('Get-WindowsFeature Fax | Select -Expand Installed').stdout.strip
 
-  describe wmi({
-                 class: 'win32_service',
-  filter: "name like '%Fax%'"
-               }) do
-    its('StartMode') { should cmp 'Disabled' }
-  end if is_fax_installed == 'True'
-
   if is_fax_installed == 'False'
     impact 0.0
     describe 'The system does not have Fax installed' do
       skip 'The system does not have Fax installed, this requirement is Not Applicable.'
+    end
+  else
+    describe wmi({
+                   class: 'win32_service',
+    filter: "name like '%Fax%'"
+                 }) do
+      its('StartMode') { should cmp 'Disabled' }
     end
   end
 end

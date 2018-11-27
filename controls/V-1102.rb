@@ -37,9 +37,7 @@ control 'V-1102' do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Act as part of the operating system\" to be defined but containing no entries
   (blank)."
-  (users.where { username =~ /.*/ }.uids.entries + groups.where { name =~ /.*/ }.gids.entries).each do |entry|
-    describe security_policy do
-      its('SeTcbPrivilege') { should_not include entry }
-    end
+  describe security_policy do
+    its('SeTcbPrivilege') { should_not include entry }
   end
 end

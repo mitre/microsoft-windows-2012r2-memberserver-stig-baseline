@@ -70,5 +70,10 @@ control 'V-36662' do
       end
     end
   end
-
+  if users.empty?
+    impact 0.0
+    describe 'There are no system users' do
+      skip 'This control is not applicable'
+    end
+  end
 end

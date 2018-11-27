@@ -30,16 +30,17 @@ control 'V-26602' do
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
-  describe wmi({
-                 class: 'win32_service',
-  filter: "name like '%ftpsvc%'"
-               }) do
-    its('StartMode') { should cmp 'Disabled' }
-  end if is_ftp_installed == 'True'
 
   if is_ftp_installed == 'False'
     describe 'The system does not have Ftp installed' do
       skip 'The system does not have Ftp installed, this requirement is Not Applicable.'
+    end
+  else
+    describe wmi({
+                   class: 'win32_service',
+    filter: "name like '%ftpsvc%'"
+                 }) do
+      its('StartMode') { should cmp 'Disabled' }
     end
   end
 end

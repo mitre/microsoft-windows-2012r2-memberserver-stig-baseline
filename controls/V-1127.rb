@@ -87,5 +87,10 @@ control 'V-1127' do
       end
     end
   end
-
+  if administrator_group.empty? || administrator_domain_group.empty?
+    impact 0.0
+    describe 'There are no adminstrator accounts on this system' do
+      skip 'This control is not applicable'
+    end
+  end
 end
