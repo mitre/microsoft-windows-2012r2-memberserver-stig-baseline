@@ -1,19 +1,19 @@
-control "V-21954" do
+control 'V-21954' do
   title "The use of DES encryption suites must not be allowed for Kerberos
   encryption."
-  desc  "Certain encryption types are no longer considered secure.  By default,
+  desc "Certain encryption types are no longer considered secure.  By default,
   Windows 2012/R2 does not use the DES encryption suites.  If the configuration
   of allowed Kerberos encryption suites is needed, the DES encryption suites must
   not be included."
   impact 0.5
-  tag "gtitle": "Kerberos Encryption Types"
-  tag "gid": "V-21954"
-  tag "rid": "SV-53179r2_rule"
-  tag "stig_id": "WN12-SO-000064"
-  tag "fix_id": "F-66513r3_fix"
-  tag "cci": ["CCI-000803"]
-  tag "cce": ["CCE-24147-1"]
-  tag "nist": ["IA-7", "Rev_4"]
+  tag "gtitle": 'Kerberos Encryption Types'
+  tag "gid": 'V-21954'
+  tag "rid": 'SV-53179r2_rule'
+  tag "stig_id": 'WN12-SO-000064'
+  tag "fix_id": 'F-66513r3_fix'
+  tag "cci": ['CCI-000803']
+  tag "cce": ['CCE-24147-1']
+  tag "nist": ['IA-7', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify whether the registry key below exists.  If it does not
   exist or the value is \"0\", this is not a finding.
@@ -77,7 +77,7 @@ control "V-21954" do
       its('SupportedEncryptionTypes') { should eq 0 }
     end
   end
-  only_if do registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists? 
+  only_if do
+    registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists?
   end
 end
-

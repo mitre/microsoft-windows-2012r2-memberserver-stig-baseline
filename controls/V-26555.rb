@@ -1,7 +1,7 @@
-control "V-26555" do
+control 'V-26555' do
   title "The system must be configured to audit System - Security System
   Extension successes."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,14 +12,14 @@ control "V-26555" do
   loaded by the security subsystem.
   "
   impact 0.5
-  tag "gtitle": "Audit - Security System Extension - Success"
-  tag "gid": "V-26555"
-  tag "rid": "SV-52974r1_rule"
-  tag "stig_id": "WN12-AU-000109"
-  tag "fix_id": "F-45900r1_fix"
-  tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["AU-12 c", "Rev_4"]
-  tag "nist": ["AC-6 (9)", "Rev_4"]
+  tag "gtitle": 'Audit - Security System Extension - Success'
+  tag "gid": 'V-26555'
+  tag "rid": 'SV-52974r1_rule'
+  tag "stig_id": 'WN12-AU-000109'
+  tag "fix_id": 'F-45900r1_fix'
+  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "nist": ['AU-12 c', 'Rev_4']
+  tag "nist": ['AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -40,11 +40,10 @@ control "V-26555" do
   \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its("Security System Extension") { should eq "Success" }
+      its('Security System Extension') { should eq 'Success' }
     end
     describe audit_policy do
-      its("Security System Extension") { should eq "Success and Failure" }
+      its('Security System Extension') { should eq 'Success and Failure' }
     end
   end
 end
-

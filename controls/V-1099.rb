@@ -1,19 +1,19 @@
-control "V-1099" do
+control 'V-1099' do
   title "Windows 2012 account lockout duration must be configured to 15 minutes
   or greater."
-  desc  "The account lockout feature, when enabled, prevents brute-force
+  desc "The account lockout feature, when enabled, prevents brute-force
   password attacks on the system. This parameter specifies the period of time
   that an account will remain locked after the specified number of failed logon
   attempts."
   impact 0.5
-  tag "gtitle": "Lockout Duration"
-  tag "gid": "V-1099"
-  tag "rid": "SV-52850r2_rule"
-  tag "stig_id": "WN12-AC-000001"
-  tag "fix_id": "F-81027r1_fix"
-  tag "cci": ["CCI-002238"]
-  tag "cce": ["CCE-24768-4"]
-  tag "nist": ["AC-7 b", "Rev_4"]
+  tag "gtitle": 'Lockout Duration'
+  tag "gid": 'V-1099'
+  tag "rid": 'SV-52850r2_rule'
+  tag "stig_id": 'WN12-AC-000001'
+  tag "fix_id": 'F-81027r1_fix'
+  tag "cci": ['CCI-002238']
+  tag "cce": ['CCE-24768-4']
+  tag "nist": ['AC-7 b', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -41,4 +41,3 @@ control "V-1099" do
     end
   end
 end
-

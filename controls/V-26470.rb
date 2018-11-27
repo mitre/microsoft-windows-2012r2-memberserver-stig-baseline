@@ -1,21 +1,21 @@
-control "V-26470" do
+control 'V-26470' do
   title "Unauthorized accounts must not have the Access this computer from the
   network user right on member servers."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   Accounts with the \"Access this computer from the network\" user right may
   access resources on the system, and must be limited to those that require it.
   "
   impact 0.5
-  tag "gtitle": "Access this computer from the network"
-  tag "gid": "V-26470"
-  tag "rid": "SV-51499r3_rule"
-  tag "stig_id": "WN12-UR-000002-MS"
-  tag "fix_id": "F-49518r2_fix" 
-  tag "cci": ["CCI-000213"]
-  tag "cci": ["CCE-24938-3"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'Access this computer from the network'
+  tag "gid": 'V-26470'
+  tag "rid": 'SV-51499r3_rule'
+  tag "stig_id": 'WN12-UR-000002-MS'
+  tag "fix_id": 'F-49518r2_fix'
+  tag "cci": ['CCI-000213']
+  tag "cci": ['CCE-24938-3']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -65,6 +65,3 @@ control "V-26470" do
     end
   end
 end
-
-
-

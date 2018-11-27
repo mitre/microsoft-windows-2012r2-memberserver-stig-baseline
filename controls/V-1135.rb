@@ -1,17 +1,17 @@
-control "V-1135" do
+control 'V-1135' do
   title "Nonadministrative user accounts or groups must only have print
   permissions on printer shares."
   desc  "Windows shares are a means by which files, folders, printers, and
   other resources can be published for network users to access.  Improper
   configuration can permit access to devices and data beyond a user's need."
   impact 0.3
-  tag "gtitle": "Printer Share Permissions"
-  tag "gid": "V-1135" 
-  tag "rid": "SV-52213r1_rule"
-  tag "stig_id": "WN12-GE-000012"
-  tag "fix_id": "F-45232r1_fix" 
-  tag "cci": ["CCI-000213"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'Printer Share Permissions'
+  tag "gid": 'V-1135'
+  tag "rid": 'SV-52213r1_rule'
+  tag "stig_id": 'WN12-GE-000012'
+  tag "fix_id": 'F-45232r1_fix'
+  tag "cci": ['CCI-000213']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "documentable": false
   tag "check": "Open \"Devices and Printers\" in Control Panel or through
   Search.
@@ -40,8 +40,7 @@ control "V-1135" do
     impact 0.0
     describe "Nonadministrative user accounts or groups must only have print
     permissions on printer shares." do
-      skip "This is a manual control"
+      skip 'This is a manual control'
     end
   end
 end
-

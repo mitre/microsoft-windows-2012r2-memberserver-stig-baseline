@@ -1,5 +1,5 @@
-control "V-26478" do
-  title "Unauthorized accounts must not have the Create a pagefile user right."
+control 'V-26478' do
+  title 'Unauthorized accounts must not have the Create a pagefile user right.'
   desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
@@ -7,14 +7,14 @@ control "V-26478" do
   pagefile, which could affect system performance.
   "
   impact 0.5
-  tag "gtitle": "Create a pagefile"
-  tag "gid": "V-26478"
-  tag "rid": "SV-53063r1_rule"
-  tag "stig_id": "WN12-UR-000011"
-  tag "fix_id": "F-45989r1_fix"
-  tag "cci": ["CCE-23972-3"]
-  tag "cce": ["CCE-23972-3"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Create a pagefile'
+  tag "gid": 'V-26478'
+  tag "rid": 'SV-53063r1_rule'
+  tag "stig_id": 'WN12-UR-000011'
+  tag "fix_id": 'F-45989r1_fix'
+  tag "cci": ['CCE-23972-3']
+  tag "cce": ['CCE-23972-3']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -33,11 +33,10 @@ control "V-26478" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeCreatePagefilePrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeCreatePagefilePrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeCreatePagefilePrivilege") { should eq [] }
+      its('SeCreatePagefilePrivilege') { should eq [] }
     end
   end
 end
-

@@ -1,22 +1,22 @@
-control "V-1089" do
+control 'V-1089' do
   title "The required legal notice must be configured to display before console
   logon."
   desc  "Failure to display the logon banner prior to a logon attempt will
   negate legal proceedings resulting from unauthorized access to system
   resources."
   impact 0.5
-  tag "gtitle": "Legal Notice Display"
-  tag "gid": "V-1089"
-  tag "rid": "SV-52845r3_rule"
-  tag "stig_id": "WN12-SO-000022"
-  tag "fix_id": "F-45771r3_fix"
-  tag "cci": ["CCE-25355-9", "CCI-000048", "CCI-000050", "CCI-001384",
-  "CCI-001385", "CCI-001386", "CCI-001387", "CCI-001388"]
-  tag "nist": ["AC-8 a", "Rev_4"]
-  tag "nist": ["AC-8 b", "Rev_4"]
-  tag "nist": ["AC-8 c 1", "Rev_4"]
-  tag "nist": ["AC-8 c 2", "Rev_4"]
-  tag "nist": ["AC-8 c 3", "Rev_4"]
+  tag "gtitle": 'Legal Notice Display'
+  tag "gid": 'V-1089'
+  tag "rid": 'SV-52845r3_rule'
+  tag "stig_id": 'WN12-SO-000022'
+  tag "fix_id": 'F-45771r3_fix'
+  tag "cci": ['CCE-25355-9', 'CCI-000048', 'CCI-000050', 'CCI-001384',
+              'CCI-001385', 'CCI-001386', 'CCI-001387', 'CCI-001388']
+  tag "nist": ['AC-8 a', 'Rev_4']
+  tag "nist": ['AC-8 b', 'Rev_4']
+  tag "nist": ['AC-8 c 1', 'Rev_4']
+  tag "nist": ['AC-8 c 2', 'Rev_4']
+  tag "nist": ['AC-8 c 3', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -87,9 +87,10 @@ control "V-1089" do
   by attorneys, psychotherapists, or clergy, and their assistants.  Such
   communications and work product are private and confidential.  See User
   Agreement for details."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "LegalNoticeText" }
-    its("LegalNoticeText") { should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+    it { should have_property 'LegalNoticeText' }
+    its('LegalNoticeText') {
+      should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is
     provided for USG-authorized use only.
 
     By using this IS (which includes any device attached to this IS), you consent
@@ -114,11 +115,13 @@ control "V-1089" do
     communications, or work product, related to personal representation or services
     by attorneys, psychotherapists, or clergy, and their assistants.  Such
     communications and work product are private and confidential.  See User
-    Agreement for details."]}
-  end 
-  describe "The required legal notice" do
-    subject { registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System").LegalNoticeText }
-    it { should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+    Agreement for details."]
+    }
+  end
+  describe 'The required legal notice' do
+    subject { registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeText }
+    it {
+      should eq ["You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
 
     By using this IS (which includes any device attached to this IS), you consent
     to the following conditions:
@@ -142,7 +145,7 @@ control "V-1089" do
     communications, or work product, related to personal representation or services
     by attorneys, psychotherapists, or clergy, and their assistants.  Such
     communications and work product are private and confidential.  See User
-    Agreement for details."]}
+    Agreement for details."]
+    }
   end
 end
-

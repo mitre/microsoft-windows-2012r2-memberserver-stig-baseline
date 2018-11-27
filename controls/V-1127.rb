@@ -1,10 +1,10 @@
 ADMINISTRATORS = attribute('administrators')
 ADMINISTRATORS_DOMAIN = attribute('administrators_domain')
- 
-control "V-1127" do
+
+control 'V-1127' do
   title "Only administrators responsible for the member server must have
   Administrator rights on the system."
-  desc  "An account that does not have Administrator duties must not have
+  desc "An account that does not have Administrator duties must not have
   Administrator rights.  Such rights would allow the account to bypass or modify
   required security restrictions on that machine and make it vulnerable to attack.
 
@@ -27,15 +27,15 @@ control "V-1127" do
   group.
   "
   impact 0.7
-  tag "gtitle": "Restricted Administrator Group Membership"
-  tag "gid": "V-1127"
-  tag "rid": "SV-51511r3_rule"
-  tag "stig_id": "WN12-GE-000004-MS"
-  tag "fix_id": "F-58527r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Restricted Administrator Group Membership'
+  tag "gid": 'V-1127'
+  tag "rid": 'SV-51511r3_rule'
+  tag "stig_id": 'WN12-GE-000004-MS'
+  tag "fix_id": 'F-58527r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
-  tag "ia_controls": "ECPA-1"
+  tag "ia_controls": 'ECPA-1'
   tag "check": "Review the local Administrators group.  Only the appropriate
   administrator groups or accounts responsible for administration of the system
   may be members of the group.
@@ -69,25 +69,23 @@ control "V-1127" do
   Directory Domain STIG).
 
   Remove any standard user accounts."
-  
+
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
 
   if is_domain == 'WORKGROUP'
     administrator_group.each do |user|
-        describe "#{user}" do
-          it { should be_in ADMINISTRATORS}
-        end            
-      end 
-  else  
+      describe user.to_s do
+        it { should be_in ADMINISTRATORS }
+      end
+    end
+  else
     administrator_domain_group.each do |users|
-      describe "#{users}" do
-        it { should be_in ADMINISTRATORS_DOMAIN}
-      end  
-    end 
+      describe users.to_s do
+        it { should be_in ADMINISTRATORS_DOMAIN }
+      end
+    end
   end
-  
-end
 
- 
+end

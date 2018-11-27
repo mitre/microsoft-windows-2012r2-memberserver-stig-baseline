@@ -1,4 +1,4 @@
-control "V-1153" do
+control 'V-1153' do
   title "The LanMan authentication level must be set to send NTLMv2 response
   only, and to refuse LM and NTLM."
   desc  "The Kerberos v5 authentication protocol is the default for
@@ -8,14 +8,14 @@ control "V-1153" do
   applications that still use it.  It is also used to authenticate logons to
   stand-alone computers that are running later versions."
   impact 0.7
-  tag "gtitle": "LanMan Authentication Level"
-  tag "gid": "V-1153"
-  tag "rid": "SV-52865r1_rule"
-  tag "stig_id": "WN12-SO-000067"
-  tag "fix_id": "F-45791r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "cce": ["CCE-24650-4"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'LanMan Authentication Level'
+  tag "gid": 'V-1153'
+  tag "rid": 'SV-52865r1_rule'
+  tag "stig_id": 'WN12-SO-000067'
+  tag "fix_id": 'F-45791r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "cce": ['CCE-24650-4']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -31,9 +31,8 @@ control "V-1153" do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: LAN Manager authentication level\" to \"Send NTLMv2
   response only. Refuse LM & NTLM\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa") do
-    it { should have_property "LmCompatibilityLevel" }
-    its("LmCompatibilityLevel") { should cmp == 5 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
+    it { should have_property 'LmCompatibilityLevel' }
+    its('LmCompatibilityLevel') { should cmp == 5 }
   end
 end
-

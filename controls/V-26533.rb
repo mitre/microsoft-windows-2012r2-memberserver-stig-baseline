@@ -1,7 +1,7 @@
-control "V-26533" do
+control 'V-26533' do
   title "The system must be configured to audit Account Management - Other
   Account Management Events successes."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,13 +12,13 @@ control "V-26533" do
   password hash or the Password Policy Checking API being called.
   "
   impact 0.5
-  tag "gtitle": "Audit - Other Account Management Events - Success"
-  tag "gid": "V-26533"
-  tag "rid": "SV-53009r1_rule"
-  tag "stig_id": "WN12-AU-000015"
-  tag "fix_id": "F-45936r1_fix"
-  tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["AC-6 (9)", "Rev_4"]
+  tag "gtitle": 'Audit - Other Account Management Events - Success'
+  tag "gid": 'V-26533'
+  tag "rid": 'SV-53009r1_rule'
+  tag "stig_id": 'WN12-AU-000015'
+  tag "fix_id": 'F-45936r1_fix'
+  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "nist": ['AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -39,11 +39,10 @@ control "V-26533" do
   Events\" with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its("Other Account Management Events") { should eq "Success" }
+      its('Other Account Management Events') { should eq 'Success' }
     end
     describe audit_policy do
-      its("Other Account Management Events") { should eq "Success and Failure" }
+      its('Other Account Management Events') { should eq 'Success and Failure' }
     end
   end
 end
-

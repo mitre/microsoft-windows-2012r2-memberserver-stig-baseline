@@ -1,7 +1,7 @@
-control "V-32282" do
+control 'V-32282' do
   title "Standard user accounts must only have Read permissions to the Active
   Setup\\Installed Components registry key."
-  desc  "Permissions on the Active Setup\\Installed Components registry key
+  desc "Permissions on the Active Setup\\Installed Components registry key
   must only allow privileged accounts to add or change registry values.  If
   standard user accounts have these permissions, there is a potential for
   programs to run with elevated privileges when a privileged user logs on to the
@@ -9,12 +9,12 @@ control "V-32282" do
   impact 0.7
   tag "gtitle": "WINRG-000001 Active Setup\\Installed Components Registry
   Permissions"
-  tag "gid": "V-32282"
-  tag "rid": "SV-52956r3_rule"
-  tag "stig_id": "WN12-RG-000002"
-  tag "fix_id": "F-71731r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gid": 'V-32282'
+  tag "rid": 'SV-52956r3_rule'
+  tag "stig_id": 'WN12-RG-000002'
+  tag "fix_id": 'F-71731r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Run \"Regedit\".
   Navigate to the following registry keys and review the permissions:
@@ -40,15 +40,13 @@ control "V-32282" do
   CREATOR OWNER - Full Control (Subkeys only)
   ALL APPLICATION PACKAGES - Read"
 
-  describe "The registry key permissions for HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" do
+  describe 'The registry key permissions for HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\' do
     subject { command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All').stdout }
     it { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
   end
 
-  describe "The registry key permissions for HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" do
+  describe 'The registry key permissions for HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\' do
     subject { command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All').stdout }
     it { should eq "Access : BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         CREATOR OWNER Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
   end
 end
-
-  

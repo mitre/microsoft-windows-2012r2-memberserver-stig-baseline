@@ -1,28 +1,28 @@
-control "V-3472" do
+control 'V-3472' do
   title "If the time service is configured, it must use an authorized time
   server."
-  desc  "The Windows Time Service controls time synchronization settings.  Time
+  desc "The Windows Time Service controls time synchronization settings.  Time
   synchronization is essential for authentication and auditing purposes.  If the
   Windows Time Service is used, it must synchronize with a secure, authorized
   time source.   Domain-joined systems are automatically configured to
   synchronize with domain controllers.  If an NTP server is configured, it must
   synchronize with a secure, authorized time source."
   impact 0.3
-  tag "gtitle": "Windows Time Service - Configure NTP Client"
-  tag "gid": "V-3472"
-  tag "rid": "SV-52919r2_rule"
-  tag "stig_id": "WN12-CC-000069"
-  tag "fix_id": "F-45845r1_fix"
-  tag "cci": ["CCI-001891"]
-  tag "cce": ["CCE-23563-0"]
-  tag "nist": ["AU-8 (1) (a)", "Rev_4"]
+  tag "gtitle": 'Windows Time Service - Configure NTP Client'
+  tag "gid": 'V-3472'
+  tag "rid": 'SV-52919r2_rule'
+  tag "stig_id": 'WN12-CC-000069'
+  tag "fix_id": 'F-45845r1_fix'
+  tag "cci": ['CCI-001891']
+  tag "cce": ['CCE-23563-0']
+  tag "nist": ['AU-8 (1) (a)', 'Rev_4']
   tag "documentable": false
   tag "check": "Review the following registry values:
 
   Registry Hive: HKEY_LOCAL_MACHINE
   Registry Path: \\Software\\Policies\\Microsoft\\W32time\\Parameters\\
 
-  Value Name: Type 
+  Value Name: Type
   Type: REG_SZ
   Value: Possible values are NoSync, NTP, NT5DS, AllSync
 
@@ -64,4 +64,3 @@ control "V-3472" do
     its('NTPServer') { should_not cmp == 'time.windows.com' }
   end
 end
-

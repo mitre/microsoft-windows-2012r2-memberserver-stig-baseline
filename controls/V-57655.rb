@@ -1,9 +1,9 @@
 EMERGENCY_ACCOUNT = attribute('emergency_account')
 
-control "V-57655" do
+control 'V-57655' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable emergency
   accounts after the crisis is resolved or within 72 hours."
-  desc  "Emergency administrator accounts are privileged accounts which are
+  desc "Emergency administrator accounts are privileged accounts which are
   established in response to crisis situations where the need for rapid account
   activation is required. Therefore, emergency account activation may bypass
   normal account authorization processes. If these accounts are automatically
@@ -25,13 +25,13 @@ control "V-57655" do
   access control policy requirements.
   "
   impact 0.5
-  tag "gtitle": "WINGE-000057"
-  tag "gid": "V-57655"
-  tag "rid": "SV-72065r3_rule"
-  tag "stig_id": "WN12-GE-000057"
-  tag "fix_id": "F-82985r1_fix"
-  tag "cci": ["CCI-001682"]
-  tag "nist": ["AC-2 (2)", "Rev_4"]
+  tag "gtitle": 'WINGE-000057'
+  tag "gid": 'V-57655'
+  tag "rid": 'SV-72065r3_rule'
+  tag "stig_id": 'WN12-GE-000057'
+  tag "fix_id": 'F-82985r1_fix'
+  tag "cci": ['CCI-001682']
+  tag "nist": ['AC-2 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "Determine if emergency administrator accounts are used and
   identify any that exist. If none exist, this is NA.
@@ -95,23 +95,23 @@ control "V-57655" do
       day_account_expires = get_account_expires[32..33]
       year_account_expires = get_account_expires[35..39]
 
-      if (get_account_expires[30] == '/')
-        month_account_expires = get_account_expires[28..29] 
-        if (get_account_expires[32] == '/')
+      if get_account_expires[30] == '/'
+        month_account_expires = get_account_expires[28..29]
+        if get_account_expires[32] == '/'
           day_account_expires = get_account_expires[31]
         end
-        if (get_account_expires[32] != '/')
+        if get_account_expires[32] != '/'
           day_account_expires = get_account_expires[31..32]
         end
-        if (get_account_expires[33] == '/')
+        if get_account_expires[33] == '/'
           year_account_expires = get_account_expires[34..37]
         end
-        if (get_account_expires[33] != '/')
+        if get_account_expires[33] != '/'
           year_account_expires = get_account_expires[33..37]
-        end     
+        end
       end
 
-      date_expires = day_account_expires +  "/" + month_account_expires + "/" + year_account_expires
+      date_expires = day_account_expires + '/' + month_account_expires + '/' + year_account_expires
 
       get_password_last_set = command("Net User #{user}  | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
 
@@ -119,40 +119,36 @@ control "V-57655" do
       day = get_password_last_set[31..32]
       year = get_password_last_set[34..38]
 
-      if (get_password_last_set[32] == '/')
+      if get_password_last_set[32] == '/'
         month = get_password_last_set[27..29]
         day = get_password_last_set[31]
         year = get_password_last_set[33..37]
       end
-      date = day +  "/" + month + "/" + year
+      date = day + '/' + month + '/' + year
 
       date_expires_minus_password_last_set = DateTime.parse(date_expires).mjd - DateTime.parse(date).mjd
 
       account_expires = get_account_expires[27..33]
 
-      if (account_expires == 'Never')
+      if account_expires == 'Never'
         describe "#{user}'s account expires" do
           describe account_expires do
             it { should_not == 'Never' }
-          end 
+          end
         end
       end
-      if (account_expires != 'Never')
-        describe "#{user}'s account expires" do
-          describe date_expires_minus_password_last_set do
-            it { should cmp <= 72 }
-          end 
+      next unless account_expires != 'Never'
+      describe "#{user}'s account expires" do
+        describe date_expires_minus_password_last_set do
+          it { should cmp <= 72 }
         end
       end
     end
 
   else
     impact 0.0
-    describe "No emergency accounts exist" do
-      skip "check not applicable"
+    describe 'No emergency accounts exist' do
+      skip 'check not applicable'
     end
   end
 end
-
-
-

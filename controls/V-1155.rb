@@ -1,9 +1,9 @@
-control "V-1155" do
+control 'V-1155' do
   title "The Deny access to this computer from the network user right on member
   servers must be configured to prevent access from highly privileged domain
   accounts and local accounts on domain systems, and from unauthenticated access
   on all systems."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   The \"Deny access to this computer from the network\" user right defines
@@ -21,14 +21,14 @@ control "V-1155" do
   access.
   "
   impact 0.5
-  tag "gtitle": "Deny Access from the Network"
-  tag "gid": "V-1155"
-  tag "rid": "SV-51501r5_rule"
-  tag "stig_id": "WN12-UR-000017-MS"
-  tag "fix_id": "F-77607r2_fix"
-  tag "cci": ["CCI-000213"]
-  tag "cce": ["CCE-24188-5"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'Deny Access from the Network'
+  tag "gid": 'V-1155'
+  tag "rid": 'SV-51501r5_rule'
+  tag "stig_id": 'WN12-UR-000017-MS'
+  tag "fix_id": 'F-77607r2_fix'
+  tag "cci": ['CCI-000213']
+  tag "cce": ['CCE-24188-5']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -82,23 +82,21 @@ control "V-1155" do
   Microsoft Security Advisory Patch 2871997 adds the new security groups to
   Windows Server 2012."
 
+  is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-  
   if is_domain == 'WORKGROUP'
     describe security_policy do
       its('SeDenyNetworkLogonRight') { should include 'S-1-5-32-546' }
-     end   
-      
+    end
+
   else
-    get_domain_sid = command("wmic useraccount get sid | FINDSTR /V SID | Select -First 2").stdout.strip
+    get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
     domain_sid = get_domain_sid[9..40]
     describe security_policy do
       its('SeDenyNetworkLogonRight') { should include "S-1-21-#{domain_sid}-512" }
-    end  
+    end
     describe security_policy do
       its('SeDenyNetworkLogonRight') { should include "S-1-21-#{domain_sid}-519" }
-    end 
+    end
   end
 end
-

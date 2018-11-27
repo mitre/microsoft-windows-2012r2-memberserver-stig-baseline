@@ -1,4 +1,4 @@
-control "V-26479" do
+control 'V-26479' do
   title "Unauthorized accounts must not have the Create a token object user
   right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -9,14 +9,14 @@ control "V-26479" do
   system.
   "
   impact 0.7
-  tag "gtitle": "Create a token object"
-  tag "gid": "V-26479"
-  tag "rid": "SV-52113r2_rule"
-  tag "stig_id": "WN12-UR-000012"
-  tag "fix_id": "F-45138r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-23939-2"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Create a token object'
+  tag "gid": 'V-26479'
+  tag "rid": 'SV-52113r2_rule'
+  tag "stig_id": 'WN12-UR-000012'
+  tag "fix_id": 'F-45138r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-23939-2']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to a CAT III if the following conditions are met:
@@ -39,4 +39,3 @@ control "V-26479" do
     its('SeCreateTokenPrivilege') { should eq [] }
   end
 end
-

@@ -1,7 +1,7 @@
-control "V-26474" do
+control 'V-26474' do
   title "Unauthorized accounts must not have the back up files and directories
   user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   Accounts with the \"Back up files and directories\" user right can
@@ -9,14 +9,14 @@ control "V-26474" do
   data.
   "
   impact 0.5
-  tag "gtitle": "Back up files and directories"
-  tag "gid": "V-26474"
-  tag "rid": "SV-52111r2_rule"
-  tag "stig_id": "WN12-UR-000007"
-  tag "fix_id": "F-45136r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cci": ["CCE-25380-7"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Back up files and directories'
+  tag "gid": 'V-26474'
+  tag "rid": 'SV-52111r2_rule'
+  tag "stig_id": 'WN12-UR-000007'
+  tag "fix_id": 'F-45136r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cci": ['CCE-25380-7']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -43,11 +43,10 @@ control "V-26474" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeBackupPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeBackupPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeBackupPrivilege") { should eq [] }
+      its('SeBackupPrivilege') { should eq [] }
     end
   end
 end
-

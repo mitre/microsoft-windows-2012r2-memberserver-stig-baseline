@@ -1,7 +1,7 @@
-control "V-26503" do
+control 'V-26503' do
   title "Unauthorized accounts must not have the Replace a process level token
   user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   The \"Replace a process level token\" user right allows one process or
@@ -9,14 +9,14 @@ control "V-26503" do
   token.  A user with this right could use this to impersonate another account.
   "
   impact 0.5
-  tag "gtitle": "Replace a process level token"
-  tag "gid": "V-26503"
-  tag "rid": "SV-52121r2_rule"
-  tag "stig_id": "WN12-UR-000039"
-  tag "fix_id": "F-45146r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24555-5"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Replace a process level token'
+  tag "gid": 'V-26503'
+  tag "rid": 'SV-52121r2_rule'
+  tag "stig_id": 'WN12-UR-000039'
+  tag "fix_id": 'F-45146r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24555-5']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -58,5 +58,3 @@ control "V-26503" do
     end
   end
 end
-
-

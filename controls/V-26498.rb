@@ -1,7 +1,7 @@
-control "V-26498" do
+control 'V-26498' do
   title "Unauthorized accounts must not have the Modify firmware environment
   values user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   Accounts with the \"Modify firmware environment values\" user right can
@@ -9,14 +9,14 @@ control "V-26498" do
   hardware failures or a DoS.
   "
   impact 0.5
-  tag "gtitle": "Modify firmware environment values"
-  tag "gid": "V-26498"
-  tag "rid": "SV-53029r1_rule"
-  tag "stig_id": "WN12-UR-000034"
-  tag "fix_id": "F-45955r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-25533-1"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Modify firmware environment values'
+  tag "gid": 'V-26498'
+  tag "rid": 'SV-53029r1_rule'
+  tag "stig_id": 'WN12-UR-000034'
+  tag "fix_id": 'F-45955r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-25533-1']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -36,11 +36,10 @@ control "V-26498" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeSystemEnvironmentPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeSystemEnvironmentPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeSystemEnvironmentPrivilege") { should eq [] }
+      its('SeSystemEnvironmentPrivilege') { should eq [] }
     end
   end
 end
-

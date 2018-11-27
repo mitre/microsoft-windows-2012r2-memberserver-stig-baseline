@@ -1,17 +1,17 @@
-control "V-43238" do
+control 'V-43238' do
   title "The display of slide shows on the lock screen must be disabled
   (Windows 2012 R2)."
-  desc  "Slide shows that are displayed on the lock screen could display
+  desc "Slide shows that are displayed on the lock screen could display
   sensitive information to unauthorized personnel.  Turning off this feature will
   limit access to the information to a logged on user."
   impact 0.5
-  tag "gtitle": "WINCC-000138"
-  tag "gid": "V-43238"
-  tag "rid": "SV-56343r2_rule"
-  tag "stig_id": "WN12-CC-000138"
-  tag "fix_id": "F-49190r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'WINCC-000138'
+  tag "gid": 'V-43238'
+  tag "rid": 'SV-56343r2_rule'
+  tag "stig_id": 'WN12-CC-000138'
+  tag "fix_id": 'F-49190r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "documentable": false
   tag "check": "This requirement is NA for the initial release of Windows 2012.
    It is applicable to Windows 2012 R2.
@@ -21,7 +21,7 @@ control "V-43238" do
 
   Registry Hive: HKEY_LOCAL_MACHINE
   Registry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\
- 
+
   Value Name: NoLockScreenSlideshow
 
   Value Type: REG_DWORD
@@ -32,18 +32,17 @@ control "V-43238" do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Control Panel -> Personalization -> \"Prevent enabling lock screen
   slide show\" to \"Enabled\"."
-  if (os['release'].to_i < 6.3 )
+  if os['release'].to_i < 6.3
     impact 0.0
-    describe "Control not applicable" do
-      skip "This requirement is NA for the initial release of Windows 2012"
+    describe 'Control not applicable' do
+      skip 'This requirement is NA for the initial release of Windows 2012'
     end
   else
     impact 0.5
-  
-    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization") do
-      it { should have_property "NoLockScreenSlideshow" }
-      its("NoLockScreenSlideshow") { should cmp == 1 }
+
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization') do
+      it { should have_property 'NoLockScreenSlideshow' }
+      its('NoLockScreenSlideshow') { should cmp == 1 }
     end
   end
 end
-

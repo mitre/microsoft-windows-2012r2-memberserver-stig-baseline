@@ -1,7 +1,7 @@
-control "V-26496" do
+control 'V-26496' do
   title "Unauthorized accounts must not have the Manage auditing and security
   log user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   Accounts with the \"Manage auditing and security log\" user right can
@@ -9,17 +9,17 @@ control "V-26496" do
   to clear evidence of tampering.
   "
   impact 0.5
-  tag "gtitle": "Manage auditing and security log"
-  tag "gid": "V-26496"
-  tag "rid": "SV-53039r3_rule"
-  tag "stig_id": "WN12-UR-000032"
-  tag "fix_id": "F-45965r2_fix"
-  tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164",
-  "CCI-000171", "CCI-001914"]
-  tag "cce": ["CCE-23456-7"]
-  tag "nist": ["AU-9", "Rev_4"]
-  tag "nist": ["AU-12 b", "Rev_4"]
-  tag "nist": ["AU-12 (3)", "Rev_4"]
+  tag "gtitle": 'Manage auditing and security log'
+  tag "gid": 'V-26496'
+  tag "rid": 'SV-53039r3_rule'
+  tag "stig_id": 'WN12-UR-000032'
+  tag "fix_id": 'F-45965r2_fix'
+  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164',
+              'CCI-000171', 'CCI-001914']
+  tag "cce": ['CCE-23456-7']
+  tag "nist": ['AU-9', 'Rev_4']
+  tag "nist": ['AU-12 b', 'Rev_4']
+  tag "nist": ['AU-12 (3)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -55,4 +55,3 @@ control "V-26496" do
     end
   end
 end
-

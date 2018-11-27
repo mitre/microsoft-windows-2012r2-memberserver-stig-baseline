@@ -1,7 +1,7 @@
-control "V-26493" do
+control 'V-26493' do
   title "Unauthorized accounts must not have the Load and unload device drivers
   user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   The \"Load and unload device drivers\" user right allows device drivers to
@@ -9,14 +9,14 @@ control "V-26493" do
   install malicious code by an attacker.
   "
   impact 0.5
-  tag "gtitle": "Load and unload device drivers"
-  tag "gid": "V-26493"
-  tag "rid": "SV-53043r1_rule"
-  tag "stig_id": "WN12-UR-000028"
-  tag "fix_id": "F-45969r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24779-1"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Load and unload device drivers'
+  tag "gid": 'V-26493'
+  tag "rid": 'SV-53043r1_rule'
+  tag "stig_id": 'WN12-UR-000028'
+  tag "fix_id": 'F-45969r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24779-1']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -36,11 +36,10 @@ control "V-26493" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeLoadDriverPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeLoadDriverPrivilege") { should eq [] }
+      its('SeLoadDriverPrivilege') { should eq [] }
     end
   end
 end
-

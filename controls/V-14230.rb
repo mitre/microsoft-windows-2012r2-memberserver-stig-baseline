@@ -1,5 +1,5 @@
-control "V-14230" do
-  title "Audit policy using subcategories must be enabled."
+control 'V-14230' do
+  title 'Audit policy using subcategories must be enabled.'
   desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
@@ -10,14 +10,14 @@ control "V-14230" do
   capabilities.
   "
   impact 0.5
-  tag "gtitle": "Audit Policy Subcategory Setting"
-  tag "gid": "V-14230"
-  tag "rid": "SV-52944r1_rule"
-  tag "stig_id": "WN12-SO-000009"
-  tag "fix_id": "F-45870r1_fix"
-  tag "cci": ["CCI-000169"]
-  tag "cce": ["CCE-24252-9"]
-  tag "nist": ["AU-12 a", "Rev_4"]
+  tag "gtitle": 'Audit Policy Subcategory Setting'
+  tag "gid": 'V-14230'
+  tag "rid": 'SV-52944r1_rule'
+  tag "stig_id": 'WN12-SO-000009'
+  tag "fix_id": 'F-45870r1_fix'
+  tag "cci": ['CCI-000169']
+  tag "cce": ['CCE-24252-9']
+  tag "nist": ['AU-12 a', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -33,9 +33,8 @@ control "V-14230" do
   Settings -> Security Settings -> Local Policies -> Security Options -> \"Audit:
   Force audit policy subcategory settings (Windows Vista or later) to override
   audit policy category settings\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa") do
-    it { should have_property "scenoapplylegacyauditpolicy" }
-    its("scenoapplylegacyauditpolicy") { should cmp == 1 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
+    it { should have_property 'scenoapplylegacyauditpolicy' }
+    its('scenoapplylegacyauditpolicy') { should cmp == 1 }
   end
 end
-

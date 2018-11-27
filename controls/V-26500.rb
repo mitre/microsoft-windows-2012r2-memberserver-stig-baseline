@@ -1,4 +1,4 @@
-control "V-26500" do
+control 'V-26500' do
   title "Unauthorized accounts must not have the Profile single process user
   right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -9,14 +9,14 @@ control "V-26500" do
   identify processes to attack.
   "
   impact 0.5
-  tag "gtitle": "Profile single process"
-  tag "gid": "V-26500"
-  tag "rid": "SV-53022r1_rule"
-  tag "stig_id": "WN12-UR-000036"
-  tag "fix_id": "F-45948r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-23844-4"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Profile single process'
+  tag "gid": 'V-26500'
+  tag "rid": 'SV-53022r1_rule'
+  tag "stig_id": 'WN12-UR-000036'
+  tag "fix_id": 'F-45948r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-23844-4']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -35,11 +35,10 @@ control "V-26500" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeProfileSingleProcessPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeProfileSingleProcessPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeProfileSingleProcessPrivilege") { should eq [] }
+      its('SeProfileSingleProcessPrivilege') { should eq [] }
     end
-  end 
+  end
 end
-

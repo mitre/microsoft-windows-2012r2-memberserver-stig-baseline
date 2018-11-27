@@ -1,7 +1,7 @@
-control "V-26539" do
+control 'V-26539' do
   title "The system must be configured to audit Detailed Tracking - Process
   Creation successes."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,13 +12,13 @@ control "V-26539" do
   the source.
   "
   impact 0.5
-  tag "gtitle": "Audit - Process Creation - Success"
-  tag "gid": "V-26539"
-  tag "rid": "SV-52999r1_rule"
-  tag "stig_id": "WN12-AU-000023"
-  tag "fix_id": "F-45926r1_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'Audit - Process Creation - Success'
+  tag "gid": 'V-26539'
+  tag "rid": 'SV-52999r1_rule'
+  tag "stig_id": 'WN12-AU-000023'
+  tag "fix_id": 'F-45926r1_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
   must be set to \"Enabled\" (V-14230) for the detailed auditing subcategories to
@@ -38,11 +38,10 @@ control "V-26539" do
   \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its("Process Creation") { should eq "Success" }
+      its('Process Creation') { should eq 'Success' }
     end
     describe audit_policy do
-      its("Process Creation") { should eq "Success and Failure" }
+      its('Process Creation') { should eq 'Success and Failure' }
     end
   end
 end
-

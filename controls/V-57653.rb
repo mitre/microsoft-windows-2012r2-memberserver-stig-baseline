@@ -1,9 +1,9 @@
 TEMP_ACCOUNT = attribute('temp_account')
 
-control "V-57653" do
+control 'V-57653' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable temporary
   user accounts after 72 hours."
-  desc  "If temporary user accounts remain active when no longer needed or for
+  desc "If temporary user accounts remain active when no longer needed or for
   an excessive period, these accounts may be used to gain unauthorized access. To
   mitigate this risk, automated termination of all temporary accounts must be set
   upon account creation.
@@ -21,20 +21,20 @@ control "V-57653" do
   access control policy requirements.
   "
   impact 0.5
-  tag "gtitle": "WINGE-000056"
-  tag "gid": "V-57653"
-  tag "rid": "SV-72063r2_rule"
-  tag "stig_id": "WN12-GE-000056"
-  tag "fix_id": "F-82983r1_fix"
-  tag "cci": ["CCI-000016"]
-  tag "nist": ["AC-2 (2)", "Rev_4"]
+  tag "gtitle": 'WINGE-000056'
+  tag "gid": 'V-57653'
+  tag "rid": 'SV-72063r2_rule'
+  tag "stig_id": 'WN12-GE-000056'
+  tag "fix_id": 'F-82983r1_fix'
+  tag "cci": ['CCI-000016']
+  tag "nist": ['AC-2 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "Determine if temporary user accounts are used and identify any
   that exist. If none exist, this is NA.
 
   Review temporary user accounts for expiration dates.
 
-  Open \"PowerShell\". 
+  Open \"PowerShell\".
 
   Domain Controllers:
 
@@ -72,11 +72,11 @@ control "V-57653" do
 
   Local accounts can be configured to expire with the command \"Net user
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the temporary
-  user account. 
+  user account.
 
   Delete any temporary user accounts that are no longer necessary."
   temp_accounts = TEMP_ACCOUNT
-    
+
   if temp_accounts != []
     temp_accounts.each do |user|
 
@@ -86,24 +86,24 @@ control "V-57653" do
       day_account_expires = get_account_expires[32..33]
       year_account_expires = get_account_expires[35..39]
 
-      if (get_account_expires[30] == '/')
-        month_account_expires = get_account_expires[28..29] 
-        if (get_account_expires[32] == '/')
+      if get_account_expires[30] == '/'
+        month_account_expires = get_account_expires[28..29]
+        if get_account_expires[32] == '/'
           day_account_expires = get_account_expires[31]
         end
-        if (get_account_expires[32] != '/')
+        if get_account_expires[32] != '/'
           day_account_expires = get_account_expires[31..32]
         end
-        if (get_account_expires[33] == '/')
+        if get_account_expires[33] == '/'
           year_account_expires = get_account_expires[34..37]
         end
-        if (get_account_expires[33] != '/')
+        if get_account_expires[33] != '/'
           year_account_expires = get_account_expires[33..37]
         end
-          
+
       end
 
-      date_expires = day_account_expires +  "/" + month_account_expires + "/" + year_account_expires
+      date_expires = day_account_expires + '/' + month_account_expires + '/' + year_account_expires
 
       get_password_last_set = command("Net User #{user}  | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
 
@@ -111,37 +111,36 @@ control "V-57653" do
       day = get_password_last_set[31..32]
       year = get_password_last_set[34..38]
 
-      if (get_password_last_set[32] == '/')
+      if get_password_last_set[32] == '/'
         month = get_password_last_set[27..29]
         day = get_password_last_set[31]
         year = get_password_last_set[33..37]
       end
-      date = day +  "/" + month + "/" + year
+      date = day + '/' + month + '/' + year
 
       date_expires_minus_password_last_set = DateTime.parse(date_expires).mjd - DateTime.parse(date).mjd
 
       account_expires = get_account_expires[27..33]
 
-      if (account_expires == 'Never')
+      if account_expires == 'Never'
         describe "#{user}'s account expires" do
           describe account_expires do
             it { should_not == 'Never' }
-          end 
+          end
         end
       end
-      if (account_expires != 'Never')
-        describe "#{user}'s account expires" do
-          describe date_expires_minus_password_last_set do
-            it { should cmp <= 72 }
-          end 
+      next unless account_expires != 'Never'
+      describe "#{user}'s account expires" do
+        describe date_expires_minus_password_last_set do
+          it { should cmp <= 72 }
         end
       end
     end
-  
+
   else
     impact 0.0
-    describe "No temporary accounts on this system, control not applicable" do
-      skip "No temporary accounts on this system, control not applicable"
+    describe 'No temporary accounts on this system, control not applicable' do
+      skip 'No temporary accounts on this system, control not applicable'
     end
   end
 end

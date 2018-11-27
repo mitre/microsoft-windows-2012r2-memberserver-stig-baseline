@@ -1,17 +1,17 @@
-control "V-7002" do
-  title "Windows 2012/2012 R2 accounts must be configured to require passwords."
+control 'V-7002' do
+  title 'Windows 2012/2012 R2 accounts must be configured to require passwords.'
   desc  "The lack of password protection enables anyone to gain access to the
   information system, which opens a backdoor opportunity for intruders to
   compromise the system as well as other resources.  Accounts on a system must
   require passwords."
   impact 0.7
-  tag "gtitle": "Password Requirement"
-  tag "gid": "V-7002"
-  tag "rid": "SV-52940r2_rule"
-  tag "stig_id": "WN12-GE-000015"
-  tag "fix_id": "F-85581r1_fix"
-  tag "cci": ["CCI-000764"]
-  tag "nist": ["IA-2", "Rev_4"]
+  tag "gtitle": 'Password Requirement'
+  tag "gid": 'V-7002'
+  tag "rid": 'SV-52940r2_rule'
+  tag "stig_id": 'WN12-GE-000015'
+  tag "fix_id": 'F-85581r1_fix'
+  tag "cci": ['CCI-000764']
+  tag "nist": ['IA-2', 'Rev_4']
   tag "documentable": false
   tag "check": "Review the password required status for enabled user accounts.
 
@@ -42,13 +42,12 @@ control "V-7002" do
   The password required flag can be set by entering the following on a command
   line: \"Net user [username] /passwordreq:yes\", substituting [username] with
   the name of the user account."
-   users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
+  users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
-   users.each do |user|
-     describe command("net user #{user} | Findstr required") do
-        its('stdout') { should_not eq "Password required            No\r\n" }
-      end
-   end
+  users.each do |user|
+    describe command("net user #{user} | Findstr required") do
+      its('stdout') { should_not eq "Password required            No\r\n" }
+    end
+  end
 
 end
-

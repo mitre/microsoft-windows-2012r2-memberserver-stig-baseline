@@ -1,18 +1,18 @@
-control "V-3374" do
-  title "The system must be configured to require a strong session key."
+control 'V-3374' do
+  title 'The system must be configured to require a strong session key.'
   desc  "A computer connecting to a domain controller will establish a secure
   channel.  Requiring strong session keys enforces 128-bit encryption between
   systems."
   impact 0.5
-  tag "gtitle": "Strong Session Key"
-  tag "gid": "V-3374"
-  tag "rid": "SV-52888r2_rule"
-  tag "stig_id": "WN12-SO-000017"
-  tag "fix_id": "F-45814r1_fix"
-  tag "cci": ["CCI-002418", "CCI-002421"]
-  tag "cce": ["CCE-25198-3"]
-  tag "nist": ["SC-8", "Rev_4"]
-  tag "nist": ["CM-9 c", "Rev_4"]
+  tag "gtitle": 'Strong Session Key'
+  tag "gid": 'V-3374'
+  tag "rid": 'SV-52888r2_rule'
+  tag "stig_id": 'WN12-SO-000017'
+  tag "fix_id": 'F-45814r1_fix'
+  tag "cci": ['CCI-002418', 'CCI-002421']
+  tag "cce": ['CCE-25198-3']
+  tag "nist": ['SC-8', 'Rev_4']
+  tag "nist": ['CM-9 c', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -30,9 +30,8 @@ control "V-3374" do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options -> \"Domain
   member: Require strong (Windows 2000 or Later) session key\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters") do
-    it { should have_property "RequireStrongKey" }
-    its("RequireStrongKey") { should cmp == 1 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
+    it { should have_property 'RequireStrongKey' }
+    its('RequireStrongKey') { should cmp == 1 }
   end
 end
-

@@ -1,4 +1,4 @@
-control "V-26535" do
+control 'V-26535' do
   title "The system must be configured to audit Account Management - Security
   Group Management successes."
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -12,16 +12,16 @@ control "V-26535" do
   changing security groups, including changes in group members.
   "
   impact 0.5
-  tag "gtitle": "Audit - Security Group Management - Success"
-  tag "gid": "V-26535"
-  tag "rid": "SV-53007r2_rule"
-  tag "stig_id": "WN12-AU-000017"
-  tag "fix_id": "F-45934r1_fix"
-  tag "cci": ["CCI-000018", "CCI-000172", "CCI-001403", "CCI-001404",
-  "CCI-001405", "CCI-002130", "CCI-002234"]
-  tag "nist": ["AC-2 (4)", "Rev_4"]
-  tag "nist": ["AU-12 c", "Rev_4"]
-  tag "nist": ["AC-6 (9)", "Rev_4"]
+  tag "gtitle": 'Audit - Security Group Management - Success'
+  tag "gid": 'V-26535'
+  tag "rid": 'SV-53007r2_rule'
+  tag "stig_id": 'WN12-AU-000017'
+  tag "fix_id": 'F-45934r1_fix'
+  tag "cci": ['CCI-000018', 'CCI-000172', 'CCI-001403', 'CCI-001404',
+              'CCI-001405', 'CCI-002130', 'CCI-002234']
+  tag "nist": ['AC-2 (4)', 'Rev_4']
+  tag "nist": ['AU-12 c', 'Rev_4']
+  tag "nist": ['AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -42,11 +42,10 @@ control "V-26535" do
   with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its("Security Group Management") { should eq "Success" }
+      its('Security Group Management') { should eq 'Success' }
     end
     describe audit_policy do
-      its("Security Group Management") { should eq "Success and Failure" }
+      its('Security Group Management') { should eq 'Success and Failure' }
     end
   end
 end
-

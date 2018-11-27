@@ -1,18 +1,18 @@
-control "V-36710" do
+control 'V-36710' do
   title "Automatic download of updates from the Windows Store must be turned
   off."
-  desc  "Uncontrolled system updates can introduce issues to a system.
+  desc "Uncontrolled system updates can introduce issues to a system.
   Obtaining update components from an outside source may also potentially allow
   sensitive information outside of the enterprise.  Application updates must be
   obtained from an internal source."
   impact 0.3
-  tag "gtitle": "WINCC-000109"
-  tag "gid": "V-36710"
-  tag "rid": "SV-51750r2_rule"
-  tag "stig_id": "WN12-CC-000109"
-  tag "fix_id": "F-62329r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'WINCC-000109'
+  tag "gid": 'V-36710'
+  tag "rid": 'SV-51750r2_rule'
+  tag "stig_id": 'WN12-CC-000109'
+  tag "fix_id": 'F-62329r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "The Windows Store is not installed by default.  If the
   \\Windows\\WinStore directory does not exist, this is NA.
@@ -54,26 +54,25 @@ control "V-36710" do
   Templates -> Windows Components -> Store -> \"Turn off Automatic Download of
   updates\" to \"Enabled\"."
 
-  if (os['release'].to_i >= 6.3 )
-    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore") do
-      it { should have_property "AutoDownload" }
-      its("AutoDownload") { should cmp == 2 }
+  if os['release'].to_i >= 6.3
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
+      it { should have_property 'AutoDownload' }
+      its('AutoDownload') { should cmp == 2 }
     end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
   end
 
-  if (os['release'].to_i < 6.3 )
-    describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate") do
-      it { should have_property "AutoDownload" }
-      its("AutoDownload") { should cmp == 2 }
+  if os['release'].to_i < 6.3
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
+      it { should have_property 'AutoDownload' }
+      its('AutoDownload') { should cmp == 2 }
     end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
   end
 
   if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
     impact 0.0
-    describe "The system does not have Windows Store installed" do
+    describe 'The system does not have Windows Store installed' do
       skip "The system does not have Windows Store installed, this requirement is Not
       Applicable."
     end
   end
 end
-

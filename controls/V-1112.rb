@@ -1,17 +1,17 @@
-control "V-1112" do
+control 'V-1112' do
   title "Outdated or unused accounts must be removed from the system or
   disabled."
-  desc  "Outdated or unused accounts provide penetration points that may go
+  desc "Outdated or unused accounts provide penetration points that may go
   undetected.  Inactive accounts must be deleted if no longer necessary or, if
   still required, disabled until needed."
   impact 0.3
-  tag "gtitle": "Dormant Accounts"
-  tag "gid": "V-1112"
-  tag "rid": "SV-52854r4_rule" 
-  tag "stig_id": "WN12-GE-000014"
-  tag "fix_id": "F-45780r2_fix"
-  tag "cci": ["CCI-000795"]
-  tag "nist": ["IA-4 e", "Rev_4"]
+  tag "gtitle": 'Dormant Accounts'
+  tag "gid": 'V-1112'
+  tag "rid": 'SV-52854r4_rule'
+  tag "stig_id": 'WN12-GE-000014'
+  tag "fix_id": 'F-45780r2_fix'
+  tag "cci": ['CCI-000795']
+  tag "nist": ['IA-4 e', 'Rev_4']
   tag "documentable": false
   tag "check": "Run \"PowerShell\".
 
@@ -65,18 +65,17 @@ control "V-1112" do
   get_sids = []
   get_names = []
   names = []
-  sids = []
   inactive_accounts = []
- 
+
   users.each do |user|
     get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' sid',' Disabled | Findstr /v SID").stdout.strip
     get_last = get_sids[get_sids.length-3, 3]
-    get_disabled = get_sids[0,4]
+    get_disabled = get_sids[0, 4]
     loc_colon = get_sids.index(' ')
-    names = get_sids[0,loc_colon]
-    if (get_last != '500'  && get_last != '501' && get_disabled != 'TRUE')
+    names = get_sids[0, loc_colon]
+    if get_last != '500' && get_last != '501' && get_disabled != 'TRUE'
       get_names.push(names)
-     end
+    end
   end
 
   if get_names != []
@@ -86,19 +85,20 @@ control "V-1112" do
 
       last_logon = get_last_logon[29..33]
 
-      if (last_logon != 'Never')
+      if last_logon != 'Never'
         month = get_last_logon[28..29]
         day = get_last_logon[31..32]
         year = get_last_logon[34..37]
 
-        if (get_last_logon[32] == '/')
+        if get_last_logon[32] == '/'
           month = get_last_logon[28..29]
           day = get_last_logon[31]
           year = get_last_logon[33..37]
         end
-        date = day +  "/" + month + "/" + year
+        date = day + '/' + month + '/' + year
 
         date_last_logged_on = DateTime.now.mjd - DateTime.parse(date).mjd
+
         if date_last_logged_on >35
           inactive_accounts.push(user)
         end
@@ -106,27 +106,28 @@ control "V-1112" do
         describe "#{user}'s last logon" do
           describe date_last_logged_on do
             it { should cmp <= 35 }
-          end 
+          end
         end if inactive_accountsac != []
       end
 
-      if (last_logon == 'Never')
-        date_last_logged_on = 'Never'
-        describe "#{user}'s last logon" do
-          describe date_last_logged_on do
-            it { should_not == 'Never' }
-          end 
+      if inactive_accountsac != []
+        if last_logon == 'Never'
+          date_last_logged_on = 'Never'
+          describe "#{user}'s last logon" do
+            describe date_last_logged_on do
+              it { should_not == 'Never' }
+            end
+          end
         end
-      end if inactive_accountsac != []
+      end
     end
-  end 
+  end
 
-  describe "The system does not have any inactive accounts, control is NA" do
-    skip "The system does not have any inactive accounts, controls is NA"
+  describe 'The system does not have any inactive accounts, control is NA' do
+    skip 'The system does not have any inactive accounts, controls is NA'
   end if inactive_accounts == []
 
   if inactive_accounts == []
     impact 0.0
   end
 end
-

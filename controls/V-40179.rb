@@ -1,7 +1,7 @@
-control "V-40179" do
+control 'V-40179' do
   title "Permissions for Windows installation directory must conform to minimum
   requirements."
-  desc  "Changing the system's file and directory permissions allows the
+  desc "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
@@ -10,14 +10,14 @@ control "V-40179" do
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": "WNGE-000008"
-  tag "gid": "V-40179"
-  tag "rid": "SV-52137r3_rule"
-  tag "stig_id": "WN12-GE-000008"
-  tag "fix_id": "F-45163r1_fix"
-  tag "cci": ["CCI-001499", "CCI-002165"]
-  tag "nist": ["CM-5 (6)", "Rev_4"]
-  tag "nist": ["AC-3 (4)", "Rev_4"]
+  tag "gtitle": 'WNGE-000008'
+  tag "gid": 'V-40179'
+  tag "rid": 'SV-52137r3_rule'
+  tag "stig_id": 'WN12-GE-000008'
+  tag "fix_id": 'F-45163r1_fix'
+  tag "cci": ['CCI-001499', 'CCI-002165']
+  tag "nist": ['CM-5 (6)', 'Rev_4']
+  tag "nist": ['AC-3 (4)', 'Rev_4']
   tag "documentable": false
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to

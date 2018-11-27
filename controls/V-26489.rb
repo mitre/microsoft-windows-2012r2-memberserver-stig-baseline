@@ -1,4 +1,4 @@
-control "V-26489" do
+control 'V-26489' do
   title "Unauthorized accounts must not have the Generate security audits user
   right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -9,14 +9,14 @@ control "V-26489" do
   service accounts defined.
   "
   impact 0.5
-  tag "gtitle": "Generate security audits"
-  tag "gid": "V-26489"
-  tag "rid": "SV-52116r2_rule"
-  tag "stig_id": "WN12-UR-000024"
-  tag "fix_id": "F-45141r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24048-1"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Generate security audits'
+  tag "gid": 'V-26489'
+  tag "rid": 'SV-52116r2_rule'
+  tag "stig_id": 'WN12-UR-000024'
+  tag "fix_id": 'F-45141r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24048-1']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -57,4 +57,3 @@ control "V-26489" do
     end
   end
 end
-

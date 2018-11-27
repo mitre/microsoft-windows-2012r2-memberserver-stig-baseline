@@ -1,7 +1,7 @@
-control "V-40177" do
+control 'V-40177' do
   title "Permissions for program file directories must conform to minimum
   requirements."
-  desc  "Changing the system's file and directory permissions allows the
+  desc "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
@@ -10,13 +10,13 @@ control "V-40177" do
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": "WNGE-000007"
-  tag "gid": "V-40177"
-  tag "rid": "SV-52135r3_rule" 
-  tag "stig_id": "WN12-GE-000007"
-  tag "fix_id": "F-45161r1_fix"
-  tag "cci": ["CCI-002165"]
-  tag "nist": ["AC-3 (4)", "Rev_4"]
+  tag "gtitle": 'WNGE-000007'
+  tag "gid": 'V-40177'
+  tag "rid": 'SV-52135r3_rule'
+  tag "stig_id": 'WN12-GE-000007'
+  tag "fix_id": 'F-45161r1_fix'
+  tag "cci": ['CCI-002165']
+  tag "nist": ['AC-3 (4)', 'Rev_4']
   tag "documentable": false
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to
@@ -96,7 +96,7 @@ control "V-40177" do
   end
   describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr CREATOR') do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
-  end 
+  end
 
   describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr /V 2') do
     its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
@@ -104,5 +104,5 @@ control "V-40177" do
   describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr CREATOR') do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
   end
- 
+
 end

@@ -1,8 +1,8 @@
-control "V-36439" do
+control 'V-36439' do
   title "Local administrator accounts must have their privileged token filtered
   to prevent elevated privileges from being used over the network on domain
   systems."
-  desc  "A compromised local administrator account can provide means for an
+  desc "A compromised local administrator account can provide means for an
   attacker to move laterally between domain systems.
 
   With User Account Control enabled, filtering the privileged token for local
@@ -12,12 +12,12 @@ control "V-36439" do
   impact 0.5
   tag "gtitle": "Local admin accounts filtered token policy enabled on domain
   systems."
-  tag "gid": "V-36439"
-  tag "rid": "SV-51590r3_rule"
-  tag "stig_id": "WN12-RG-000003-MS"
-  tag "fix_id": "F-81023r1_fix"
-  tag "cci": ["CCI-001084"]
-  tag "nist": ["SC-3", "Rev_4"]
+  tag "gid": 'V-36439'
+  tag "rid": 'SV-51590r3_rule'
+  tag "stig_id": 'WN12-RG-000003-MS'
+  tag "fix_id": 'F-81023r1_fix'
+  tag "cci": ['CCI-001084']
+  tag "nist": ['SC-3', 'Rev_4']
   tag "documentable": false
   tag "check": "If the system is not a member of a domain, this is NA.
   If the following registry value does not exist or is not configured as
@@ -45,17 +45,16 @@ control "V-36439" do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  is_domain = command("wmic computersystem get domain | FINDSTR /V Domain").stdout.strip
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System") do
-    it { should have_property "LocalAccountTokenFilterPolicy" }
-    its("LocalAccountTokenFilterPolicy") { should cmp == 0 }
-  end if is_domain != "WORKGROUP"
+  is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+    it { should have_property 'LocalAccountTokenFilterPolicy' }
+    its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
+  end if is_domain != 'WORKGROUP'
 
-  if is_domain == "WORKGROUP"
+  if is_domain == 'WORKGROUP'
     impact 0.0
-    describe "The system does is not a member of a domain, control is NA" do
-      skip "The system does is not a member of a domain, control is NA"
-    end 
+    describe 'The system does is not a member of a domain, control is NA' do
+      skip 'The system does is not a member of a domain, control is NA'
+    end
   end
 end
-

@@ -1,7 +1,7 @@
-control "V-73519" do
+control 'V-73519' do
   title "The Server Message Block (SMB) v1 protocol must be disabled on the SMB
   server."
-  desc  "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
+  desc "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
   MD5 is known to be vulnerable to a number of attacks such as collision and
   preimage attacks as well as not being FIPS compliant.
 
@@ -12,13 +12,13 @@ control "V-73519" do
   attached devices may only support SMBv1.
   "
   impact 0.5
-  tag "gtitle": "WIN00-000170"
-  tag "gid": "V-73519"
-  tag "rid": "SV-88193r2_rule"
-  tag "stig_id": "WN12-00-000170"
-  tag "fix_id": "F-82945r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'WIN00-000170'
+  tag "gid": 'V-73519'
+  tag "rid": 'SV-88193r2_rule'
+  tag "stig_id": 'WN12-00-000170'
+  tag "fix_id": 'F-82945r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "documentable": false
   tag "check": "This requirement specifically applies to Windows 2012 but can
   also be used for Windows 2012 R2.
@@ -46,9 +46,8 @@ control "V-73519" do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters") do
-    it { should have_property "SMB1" }
-    its("SMB1") { should cmp == 0 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
+    it { should have_property 'SMB1' }
+    its('SMB1') { should cmp == 0 }
   end
 end
-

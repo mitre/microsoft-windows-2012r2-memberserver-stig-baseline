@@ -1,5 +1,5 @@
-control "V-26542" do
-  title "The system must be configured to audit Logon/Logoff - Logon failures."
+control 'V-26542' do
+  title 'The system must be configured to audit Logon/Logoff - Logon failures.'
   desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
@@ -12,14 +12,14 @@ control "V-26542" do
   accessed.
   "
   impact 0.5
-  tag "gtitle": "Audit - Logon - Failure"
-  tag "gid": "V-26542"
-  tag "rid": "SV-52993r2_rule"
-  tag "stig_id": "WN12-AU-000048"
-  tag "fix_id": "F-45920r1_fix"
-  tag "cci": ["CCI-000067", "CCI-000172"]
-  tag "nist": ["AC-17 (1)", "Rev_4"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'Audit - Logon - Failure'
+  tag "gid": 'V-26542'
+  tag "rid": 'SV-52993r2_rule'
+  tag "stig_id": 'WN12-AU-000048'
+  tag "fix_id": 'F-45920r1_fix'
+  tag "cci": ['CCI-000067', 'CCI-000172']
+  tag "nist": ['AC-17 (1)', 'Rev_4']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -39,11 +39,10 @@ control "V-26542" do
   Audit Policies -> Logon/Logoff -> \"Audit Logon\" with \"Failure\" selected."
   describe.one do
     describe audit_policy do
-      its("Logon") { should eq "Failure" }
+      its('Logon') { should eq 'Failure' }
     end
     describe audit_policy do
-      its("Logon") { should eq "Success and Failure" }
+      its('Logon') { should eq 'Success and Failure' }
     end
   end
 end
-

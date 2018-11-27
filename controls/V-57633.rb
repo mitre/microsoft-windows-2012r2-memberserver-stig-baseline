@@ -1,7 +1,7 @@
-control "V-57633" do
+control 'V-57633' do
   title "The system must be configured to audit Policy Change - Authorization
   Policy Change successes."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks. Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,13 +12,13 @@ control "V-57633" do
   rights, such as Create a token object.
   "
   impact 0.5
-  tag "gtitle": "WINAU-000089"
-  tag "gid": "V-57633"
-  tag "rid": "SV-72043r1_rule"
-  tag "stig_id": "WN12-AU-000089"
-  tag "fix_id": "F-62835r1_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'WINAU-000089'
+  tag "gid": 'V-57633'
+  tag "rid": 'SV-72043r1_rule'
+  tag "stig_id": 'WN12-AU-000089'
+  tag "fix_id": 'F-62835r1_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -39,11 +39,10 @@ control "V-57633" do
   \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its("Authorization Policy Change") { should eq "Success" }
+      its('Authorization Policy Change') { should eq 'Success' }
     end
     describe audit_policy do
-      its("Authorization Policy Change") { should eq "Success and Failure" }
+      its('Authorization Policy Change') { should eq 'Success and Failure' }
     end
   end
 end
-

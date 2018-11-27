@@ -1,7 +1,7 @@
-control "V-57637" do
+control 'V-57637' do
   title "The operating system must employ a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs."
-  desc  "Utilizing a whitelist provides a configuration management method for
+  desc "Utilizing a whitelist provides a configuration management method for
   allowing the execution of only authorized software. Using only authorized
   software decreases risk by limiting the number of potential vulnerabilities.
 
@@ -11,13 +11,13 @@ control "V-57637" do
   is commonly referred to as whitelisting.
   "
   impact 0.5
-  tag "gtitle": "WIN00-000018"
-  tag "gid": "V-57637"
-  tag "rid": "SV-72047r4_rule"
-  tag "stig_id": "WN12-00-000018"
-  tag "fix_id": "F-66567r4_fix"
-  tag "cci": ["CCI-001774"]
-  tag "nist": ["CM-7 (5) (b)", "Rev_4"]
+  tag "gtitle": 'WIN00-000018'
+  tag "gid": 'V-57637'
+  tag "rid": 'SV-72047r4_rule'
+  tag "stig_id": 'WN12-00-000018'
+  tag "fix_id": 'F-66567r4_fix'
+  tag "cci": ['CCI-001774']
+  tag "nist": ['CM-7 (5) (b)', 'Rev_4']
   tag "documentable": false
   tag "check": "This is applicable to unclassified systems, for other systems
   this is NA.
@@ -75,7 +75,6 @@ control "V-57637" do
   https://www.nsa.gov/ia/mitigation_guidance/security_configuration_guides/operating_systems.shtml"
   describe "he operating system must employ a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs" do
-    skip "is a manual check"
+    skip 'is a manual check'
   end
 end
-

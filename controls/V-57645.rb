@@ -1,8 +1,8 @@
-control "V-57645" do
+control 'V-57645' do
   title "Systems requiring data at rest protections must employ cryptographic
   mechanisms to prevent unauthorized disclosure and modification of the
   information at rest."
-  desc  "This requirement addresses protection of user-generated data, as well
+  desc "This requirement addresses protection of user-generated data, as well
   as operating system-specific configuration data. Organizations may choose to
   employ different mechanisms to achieve confidentiality and integrity
   protections, as appropriate, in accordance with the security category and/or
@@ -16,13 +16,13 @@ control "V-57645" do
   data structures (e.g., files, records, or fields).
   "
   impact 0.5
-  tag "gtitle": "WIN00-000020"
-  tag "gid": "V-57645"
-  tag "rid": "SV-72055r1_rule"
-  tag "stig_id": "WN12-00-000020"
-  tag "fix_id": "F-62849r3_fix"
-  tag "cci": ["CCI-001199", "CCI-002475", "CCI-002476"]
-  tag "nist": ["SC-28 (1)", "Rev_4"]
+  tag "gtitle": 'WIN00-000020'
+  tag "gid": 'V-57645'
+  tag "rid": 'SV-72055r1_rule'
+  tag "stig_id": 'WN12-00-000020'
+  tag "fix_id": 'F-62849r3_fix'
+  tag "cci": ['CCI-001199', 'CCI-002475', 'CCI-002476']
+  tag "nist": ['SC-28 (1)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify systems that require additional protections due to
   factors such as inadequate physical protection or sensitivity of the data
@@ -36,7 +36,6 @@ control "V-57645" do
   describe "Systems requiring data at rest protections must employ cryptographic
   mechanisms to prevent unauthorized disclosure and modification of the
   information at rest." do
-    skip "is a manual check"
+    skip 'is a manual check'
   end
 end
-

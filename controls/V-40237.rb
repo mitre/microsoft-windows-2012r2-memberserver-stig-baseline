@@ -1,25 +1,25 @@
-control "V-40237" do
+control 'V-40237' do
   title "The US DoD CCEB Interoperability Root CA cross-certificate must be
   installed into the Untrusted Certificates Store on unclassified systems."
-  desc  "To ensure users do not experience denial of service when performing
+  desc "To ensure users do not experience denial of service when performing
   certificate-based authentication to DoD websites due to the system chaining to
   a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA
   cross-certificate must be installed in the Untrusted Certificate Store. This
   requirement only applies to unclassified systems."
   impact 0.5
-  tag "gtitle": "WINPK-000004"
-  tag "gid": "V-40237"
-  tag "rid": "SV-52196r4_rule"
-  tag "stig_id": "WN12-PK-000004"
-  tag "fix_id": "F-76905r2_fix"
-  tag "cci": ["CCI-000185", "CCI-002470"]
-  tag "nist": ["IA-5 (2) (a)", "Rev_4"]
-  tag "nist": ["SC-23 (5)", "Rev_4"]
+  tag "gtitle": 'WINPK-000004'
+  tag "gid": 'V-40237'
+  tag "rid": 'SV-52196r4_rule'
+  tag "stig_id": 'WN12-PK-000004'
+  tag "fix_id": 'F-76905r2_fix'
+  tag "cci": ['CCI-000185', 'CCI-002470']
+  tag "nist": ['IA-5 (2) (a)', 'Rev_4']
+  tag "nist": ['SC-23 (5)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the US DoD CCEB Interoperability Root CA
   cross-certificate is installed on unclassified systems as an Untrusted
   Certificate.
- 
+
   Run \"PowerShell\" as an administrator.
   Execute the following command:
   Get-ChildItem -Path Cert:Localmachine\\disallowed | Where Issuer -Like \"*CCEB
@@ -67,11 +67,12 @@ control "V-40237" do
 
   The FBCA Cross-Certificate Remover tool and user guide is available on IASE at
   http://iase.disa.mil/pki-pke/Pages/tools.aspx."
-  describe "The installed DoD CCEB Interoperability Root CA cross-certificate" do
-    subject { command('Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where $_.Issuer -Like
+  describe 'The installed DoD CCEB Interoperability Root CA cross-certificate' do
+    subject {
+      command('Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where $_.Issuer -Like
     "*CCEB Interoperability*" | FL Subject,
-    Issuer, Thumbprint').stdout }
+    Issuer, Thumbprint').stdout
+    }
     it { should eq "\r\n\r\nSubject    : CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=US DoD CCEB Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : 22BBE981F0694D246CC1472ED2B021DC8540A22F\r\n\r\nSubject    : CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nIssuer     : CN=US DoD CCEB Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US\r\nThumbprint : FFAD03329B9E527A43EEC66A56F9CBB5393E6E13\r\n\r\n\r\n\r\n" }
   end
 end
-

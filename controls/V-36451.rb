@@ -1,4 +1,4 @@
-control "V-36451" do
+control 'V-36451' do
   title "Administrative accounts must not be used with applications that access
   the Internet, such as web browsers, or with potential Internet sources, such as
   email."
@@ -22,13 +22,13 @@ control "V-36451" do
   policy to ensure compliance.
   "
   impact 0.7
-  tag "gtitle": "Accounts with administrative privileges Internet access"
-  tag "gid": "V-36451"
-  tag "rid": "SV-51578r2_rule"
-  tag "stig_id": "WN12-00-000008"
-  tag "fix_id": "F-81021r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'Accounts with administrative privileges Internet access'
+  tag "gid": 'V-36451'
+  tag "rid": 'SV-51578r2_rule'
+  tag "stig_id": 'WN12-00-000008'
+  tag "fix_id": 'F-81021r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "Determine whether administrative accounts are prevented from
   using applications that access the Internet, such as web browsers, or with
@@ -63,7 +63,6 @@ control "V-36451" do
   describe "Administrative accounts must not be used with applications that access
   the Internet, such as web browsers, or with potential Internet sources, such as
   email" do
-    skip "is a manual check"
+    skip 'is a manual check'
   end
 end
-

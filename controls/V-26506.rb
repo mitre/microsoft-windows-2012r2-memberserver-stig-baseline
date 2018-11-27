@@ -1,4 +1,4 @@
-control "V-26506" do
+control 'V-26506' do
   title "Unauthorized accounts must not have the Take ownership of files or
   other objects user right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -8,14 +8,14 @@ control "V-26506" do
   can take ownership of objects and make changes.
   "
   impact 0.5
-  tag "gtitle": "Take ownership of files or other objects"
-  tag "gid": "V-26506"
-  tag "rid": "SV-52123r2_rule"
-  tag "stig_id": "WN12-UR-000042"
-  tag "fix_id": "F-45148r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-25585-1"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Take ownership of files or other objects'
+  tag "gid": 'V-26506'
+  tag "rid": 'SV-52123r2_rule'
+  tag "stig_id": 'WN12-UR-000042'
+  tag "fix_id": 'F-45148r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-25585-1']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -42,11 +42,10 @@ control "V-26506" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeTakeOwnershipPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeTakeOwnershipPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeTakeOwnershipPrivilege") { should eq [] }
+      its('SeTakeOwnershipPrivilege') { should eq [] }
     end
   end
 end
-

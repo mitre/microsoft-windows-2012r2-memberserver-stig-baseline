@@ -1,4 +1,4 @@
-control "V-26480" do
+control 'V-26480' do
   title "Unauthorized accounts must not have the Create global objects user
   right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -9,14 +9,14 @@ control "V-26480" do
   users' sessions.
   "
   impact 0.5
-  tag "gtitle": "Create global objects"
-  tag "gid": "V-26480"
-  tag "rid": "SV-52114r2_rule"
-  tag "stig_id": "WN12-UR-000013"
-  tag "fix_id": "F-45139r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-23850-1"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Create global objects'
+  tag "gid": 'V-26480'
+  tag "rid": 'SV-52114r2_rule'
+  tag "stig_id": 'WN12-UR-000013'
+  tag "fix_id": 'F-45139r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-23850-1']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -100,5 +100,3 @@ control "V-26480" do
     end
   end
 end
-
-

@@ -1,16 +1,16 @@
-control "V-4110" do
-  title "The system must be configured to prevent IP source routing."
+control 'V-4110' do
+  title 'The system must be configured to prevent IP source routing.'
   desc  "Configuring the system to disable IP source routing protects against
   spoofing."
   impact 0.3
-  tag "gtitle": "Disable IP Source Routing"
-  tag "gid": "V-4110"
-  tag "rid": "SV-52924r1_rule"
-  tag "stig_id": "WN12-SO-000038"
-  tag "fix_id": "F-45850r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "cce": ["CCE-24968-0"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'Disable IP Source Routing'
+  tag "gid": 'V-4110'
+  tag "rid": 'SV-52924r1_rule'
+  tag "stig_id": 'WN12-SO-000038'
+  tag "fix_id": 'F-45850r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "cce": ['CCE-24968-0']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -30,9 +30,8 @@ control "V-4110" do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  describe registry_key("HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters") do
-    it { should have_property "DisableIPSourceRouting" }
-    its("DisableIPSourceRouting") { should cmp == 2 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
+    it { should have_property 'DisableIPSourceRouting' }
+    its('DisableIPSourceRouting') { should cmp == 2 }
   end
 end
-

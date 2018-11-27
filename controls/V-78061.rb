@@ -1,7 +1,7 @@
-control "V-78061" do
+control 'V-78061' do
   title "Windows Server 2012/2012 R2 must be configured to audit System - Other
   System Events successes."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks. Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,14 +12,14 @@ control "V-78061" do
   operations and the Windows Firewall service.
   "
   impact 0.5
-  tag "gtitle": "WINAU-000907"
-  tag "gid": "V-78061"
-  tag "rid": "SV-92773r1_rule"
-  tag "stig_id": "WN12-AU-000105"
-  tag "fix_id": "F-84791r1_fix"
-  tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["AU-12 c", "Rev_4"]
-  tag "nist": ["AC-6 (9)", "Rev_4"]
+  tag "gtitle": 'WINAU-000907'
+  tag "gid": 'V-78061'
+  tag "rid": 'SV-92773r1_rule'
+  tag "stig_id": 'WN12-AU-000105'
+  tag "fix_id": 'F-84791r1_fix'
+  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "nist": ['AU-12 c', 'Rev_4']
+  tag "nist": ['AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -49,4 +49,3 @@ control "V-78061" do
     end
   end
 end
-

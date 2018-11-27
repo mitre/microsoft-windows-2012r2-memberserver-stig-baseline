@@ -1,5 +1,5 @@
-control "V-15674" do
-  title "The Internet File Association service must be turned off."
+control 'V-15674' do
+  title 'The Internet File Association service must be turned off.'
   desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
@@ -8,14 +8,14 @@ control "V-15674" do
   Web service to find an application.
     "
   impact 0.5
-  tag "gtitle": "Internet File Association Service "
-  tag "gid": "V-15674"
-  tag "rid": "SV-53021r1_rule"
-  tag "stig_id": "WN12-CC-000038"
-  tag "fix_id": "F-45947r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "cce": ["CCE-24899-7"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'Internet File Association Service '
+  tag "gid": 'V-15674'
+  tag "rid": 'SV-53021r1_rule'
+  tag "stig_id": 'WN12-CC-000038'
+  tag "fix_id": 'F-45947r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "cce": ['CCE-24899-7']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -32,9 +32,8 @@ control "V-15674" do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off Internet File Association
   service\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer") do
-    it { should have_property "NoInternetOpenWith" }
-    its("NoInternetOpenWith") { should cmp == 1 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
+    it { should have_property 'NoInternetOpenWith' }
+    its('NoInternetOpenWith') { should cmp == 1 }
   end
 end
-

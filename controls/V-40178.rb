@@ -1,7 +1,7 @@
-control "V-40178" do
+control 'V-40178' do
   title "Permissions for system drive root directory (usually C:\\) must
   conform to minimum requirements."
-  desc  "Changing the system's file and directory permissions allows the
+  desc "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
@@ -10,13 +10,13 @@ control "V-40178" do
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": "WNGE-000006"
-  tag "gid": "V-40178"
-  tag "rid": "SV-52136r3_rule"
-  tag "stig_id": "WN12-GE-000006"
-  tag "fix_id": "F-45162r1_fix" 
-  tag "cci": ["CCI-002165"]
-  tag "nist": ["AC-3 (4)", "Rev_4"]
+  tag "gtitle": 'WNGE-000006'
+  tag "gid": 'V-40178'
+  tag "rid": 'SV-52136r3_rule'
+  tag "stig_id": 'WN12-GE-000006'
+  tag "fix_id": 'F-45162r1_fix'
+  tag "cci": ['CCI-002165']
+  tag "nist": ['AC-3 (4)', 'Rev_4']
   tag "documentable": false
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to
@@ -87,6 +87,5 @@ control "V-40178" do
     describe command('Get-Acl -Path "C:\\" | Format-List | Findstr All') do
       its('stdout') { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  CreateFiles, AppendData, ReadAndExecute, Synchronize\r\n" }
     end
-  end 
+  end
 end
-

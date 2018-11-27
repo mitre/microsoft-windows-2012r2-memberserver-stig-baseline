@@ -1,17 +1,17 @@
-control "V-2372" do
-  title "Reversible password encryption must be disabled."
+control 'V-2372' do
+  title 'Reversible password encryption must be disabled.'
   desc  "Storing passwords using reversible encryption is essentially the same
   as storing clear-text versions of the passwords.  For this reason, this policy
   must never be enabled."
   impact 0.7
-  tag "gtitle": "Reversible Password Encryption"
-  tag "gid": "V-2372"
-  tag "rid": "SV-52880r1_rule"
-  tag "stig_id": "WN12-AC-000009"
-  tag "fix_id": "F-45806r1_fix"
-  tag "cci": ["CCI-000196"]
-  tag "cce": ["CCE-23951-7"]
-  tag "nist": ["IA-5 (1) (c)", "Rev_4"]
+  tag "gtitle": 'Reversible Password Encryption'
+  tag "gid": 'V-2372'
+  tag "rid": 'SV-52880r1_rule'
+  tag "stig_id": 'WN12-AC-000009'
+  tag "fix_id": 'F-45806r1_fix'
+  tag "cci": ['CCI-000196']
+  tag "cce": ['CCE-23951-7']
+  tag "nist": ['IA-5 (1) (c)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -25,7 +25,6 @@ control "V-2372" do
   Settings -> Security Settings -> Account Policies -> Password Policy -> \"Store
   password using reversible encryption\" to \"Disabled\"."
   describe security_policy do
-    its("ClearTextPassword") { should eq 0 }
+    its('ClearTextPassword') { should eq 0 }
   end
 end
-

@@ -1,22 +1,22 @@
 BACKUP_OPERATORS = attribute('backup_operators')
-control "V-40198" do
+control 'V-40198' do
   title "Members of the Backup Operators group must have separate accounts for
   backup duties and normal operational tasks."
-  desc  "Backup Operators are able to read and write to any file in the system,
+  desc "Backup Operators are able to read and write to any file in the system,
   regardless of the rights assigned to it.  Backup and restore rights permit
   users to circumvent the file access restrictions present on NTFS disk drives
   for backup and restore purposes.  Members of the Backup Operators group must
   have separate logon accounts for performing backup duties."
   impact 0.5
-  tag "gtitle": "WN00-000009-02"
-  tag "gid": "V-40198"
-  tag "rid": "SV-52157r2_rule"
-  tag "stig_id": "WN12-00-000009-02"
-  tag "fix_id": "F-45183r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'WN00-000009-02'
+  tag "gid": 'V-40198'
+  tag "rid": 'SV-52157r2_rule'
+  tag "stig_id": 'WN12-00-000009-02'
+  tag "fix_id": 'F-45183r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
-  tag "ia_controls": "ECLP-1"
+  tag "ia_controls": 'ECLP-1'
   tag "check": "If no accounts are members of the Backup Operators group, this
   is NA.
 
@@ -36,8 +36,8 @@ control "V-40198" do
   else
     backup_operators_group.each do |user|
       describe user do
-        it { should be_in BACKUP_OPERATORS}
+        it { should be_in BACKUP_OPERATORS }
       end  if backup_operators_group == []
-    end 
+    end
   end
 end

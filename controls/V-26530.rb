@@ -1,7 +1,7 @@
-control "V-26530" do
+control 'V-26530' do
   title "The system must be configured to audit Account Logon - Credential
   Validation failures."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,13 +12,13 @@ control "V-26530" do
   credentials for a user account logon.
   "
   impact 0.5
-  tag "gtitle": "Audit - Credential Validation  - Failure"
-  tag "gid": "V-26530"
-  tag "rid": "SV-53011r2_rule"
-  tag "stig_id": "WN12-AU-000002"
-  tag "fix_id": "F-45938r1_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'Audit - Credential Validation  - Failure'
+  tag "gid": 'V-26530'
+  tag "rid": 'SV-53011r2_rule'
+  tag "stig_id": 'WN12-AU-000002'
+  tag "fix_id": 'F-45938r1_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -39,13 +39,10 @@ control "V-26530" do
   \"Failure\" selected."
   describe.one do
     describe audit_policy do
-      its("Credential Validation") { should eq "Failure" }
+      its('Credential Validation') { should eq 'Failure' }
     end
     describe audit_policy do
-      its("Credential Validation") { should eq "Success and Failure" }
+      its('Credential Validation') { should eq 'Success and Failure' }
     end
   end
 end
-
-
-

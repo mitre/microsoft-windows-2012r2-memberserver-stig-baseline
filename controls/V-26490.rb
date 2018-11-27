@@ -1,7 +1,7 @@
-control "V-26490" do
+control 'V-26490' do
   title "Unauthorized accounts must not have the Impersonate a client after
   authentication user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   The \"Impersonate a client after authentication\" user right allows a
@@ -9,14 +9,14 @@ control "V-26490" do
   attacker could potentially use this to elevate privileges.
   "
   impact 0.5
-  tag "gtitle": "Impersonate a client after authentication"
-  tag "gid": "V-26490"
-  tag "rid": "SV-52117r2_rule"
-  tag "stig_id": "WN12-UR-000025"
-  tag "fix_id": "F-45142r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24477-2"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Impersonate a client after authentication'
+  tag "gid": 'V-26490'
+  tag "rid": 'SV-52117r2_rule'
+  tag "stig_id": 'WN12-UR-000025'
+  tag "fix_id": 'F-45142r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24477-2']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -101,4 +101,3 @@ control "V-26490" do
     end
   end
 end
-

@@ -1,7 +1,7 @@
-control "V-36667" do
+control 'V-36667' do
   title "The system must be configured to audit Object Access - Removable
   Storage failures."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,13 +12,13 @@ control "V-36667" do
   access attempts on file system objects on removable storage devices.
   "
   impact 0.5
-  tag "gtitle": "WINAU-000016"
-  tag "gid": "V-36667"
-  tag "rid": "SV-51604r2_rule"
-  tag "stig_id": "WN12-AU-000082"
-  tag "fix_id": "F-44725r2_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'WINAU-000016'
+  tag "gid": 'V-36667'
+  tag "rid": 'SV-51604r2_rule'
+  tag "stig_id": 'WN12-AU-000082'
+  tag "fix_id": 'F-44725r2_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -51,4 +51,3 @@ control "V-36667" do
     end
   end
 end
-

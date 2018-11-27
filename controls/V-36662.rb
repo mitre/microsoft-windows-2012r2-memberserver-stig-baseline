@@ -1,19 +1,19 @@
-control "V-36662" do
+control 'V-36662' do
   title "Windows 2012/2012 R2 manually managed application account passwords
   must be changed at least annually or when a system administrator with knowledge
   of the password leaves the organization."
-  desc  "Setting application accounts to expire may cause applications to stop
+  desc "Setting application accounts to expire may cause applications to stop
   functioning. However, not changing them on a regular basis exposes them to
   attack. If managed service accounts are used, this alleviates the need to
   manually change application account passwords."
   impact 0.5
-  tag "gtitle": "WIN00-000010-02"
-  tag "gid": "V-36662"
-  tag "rid": "SV-51580r3_rule"
-  tag "stig_id": "WN12-00-000011"
-  tag "fix_id": "F-85585r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'WIN00-000010-02'
+  tag "gid": 'V-36662'
+  tag "rid": 'SV-51580r3_rule'
+  tag "stig_id": 'WN12-00-000011'
+  tag "fix_id": 'F-85585r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "Determine if manually managed application/service accounts
   exist. If none exist, this is NA.
@@ -53,7 +53,7 @@ control "V-36662" do
 
   users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
-   users.each do |user|
+  users.each do |user|
 
     get_password_last_set = command("Net User #{user}  | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
 
@@ -61,15 +61,14 @@ control "V-36662" do
     day = get_password_last_set[31..32]
     year = get_password_last_set[34..38]
 
-    date = day +  "/" + month + "/" + year
+    date = day + '/' + month + '/' + year
 
     date_password_last_set = DateTime.now.mjd - DateTime.parse(date).mjd
-     describe "#{user}'s data password last set" do
-        describe date_password_last_set do
-          it { should cmp <= 365}
-        end 
+    describe "#{user}'s data password last set" do
+      describe date_password_last_set do
+        it { should cmp <= 365 }
       end
-   end
+    end
+  end
 
-end 
-
+end

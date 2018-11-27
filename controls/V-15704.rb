@@ -1,7 +1,7 @@
-control "V-15704" do
+control 'V-15704' do
   title "Errors in handwriting recognition on tablet PCs must not be reported
   to Microsoft."
-  desc  "Some features may communicate with the vendor, sending system
+  desc "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
   outside the enterprise and uncontrolled updates to the system.
@@ -9,14 +9,14 @@ control "V-15704" do
   being reported to Microsoft.
   "
   impact 0.3
-  tag "gtitle": "Handwriting Recognition Error Reporting"
-  tag "gid": "V-15704"
-  tag "rid": "SV-53116r1_rule"
-  tag "stig_id": "WN12-CC-000035"
-  tag "fix_id": "F-46042r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "cce": ["CCE-25580-2"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'Handwriting Recognition Error Reporting'
+  tag "gid": 'V-15704'
+  tag "rid": 'SV-53116r1_rule'
+  tag "stig_id": 'WN12-CC-000035'
+  tag "fix_id": 'F-46042r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "cce": ['CCE-25580-2']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -33,9 +33,8 @@ control "V-15704" do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off handwriting recognition error
   reporting\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\HandwritingErrorReports") do
-    it { should have_property "PreventHandwritingErrorReports" }
-    its("PreventHandwritingErrorReports") { should cmp == 1 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\HandwritingErrorReports') do
+    it { should have_property 'PreventHandwritingErrorReports' }
+    its('PreventHandwritingErrorReports') { should cmp == 1 }
   end
 end
-

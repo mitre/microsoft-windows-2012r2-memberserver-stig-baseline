@@ -1,4 +1,4 @@
-control "V-26482" do
+control 'V-26482' do
   title "Unauthorized accounts must not have the Create symbolic links user
   right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -8,14 +8,14 @@ control "V-26482" do
   to other objects, which could potentially expose the system to attack.
   "
   impact 0.5
-  tag "gtitle": "Create symbolic links"
-  tag "gid": "V-26482"
-  tag "rid": "SV-53054r2_rule"
-  tag "stig_id": "WN12-UR-000015"
-  tag "fix_id": "F-66511r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24549-8"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Create symbolic links'
+  tag "gid": 'V-26482'
+  tag "rid": 'SV-53054r2_rule'
+  tag "stig_id": 'WN12-UR-000015'
+  tag "fix_id": 'F-66511r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24549-8']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -42,11 +42,10 @@ control "V-26482" do
   Machine\\Virtual Machines\"."
   describe.one do
     describe security_policy do
-      its("SeCreateSymbolicLinkPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeCreateSymbolicLinkPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeCreateSymbolicLinkPrivilege") { should eq [] }
+      its('SeCreateSymbolicLinkPrivilege') { should eq [] }
     end
   end
 end
-

@@ -1,7 +1,7 @@
-control "V-57721" do
+control 'V-57721' do
   title "Event Viewer must be protected from unauthorized modification and
   deletion."
-  desc  "Protecting audit information also includes identifying and protecting
+  desc "Protecting audit information also includes identifying and protecting
   the tools used to view and manipulate log data. Therefore, protecting audit
   tools is necessary to prevent unauthorized operation on audit information.
 
@@ -11,13 +11,13 @@ control "V-57721" do
   regarding the modification or deletion of audit tools.
   "
   impact 0.5
-  tag "gtitle": "WINAU-000213"
-  tag "gid": "V-57721"
-  tag "rid": "SV-72135r2_rule"
-  tag "stig_id": "WN12-AU-000213"
-  tag "fix_id": "F-62927r2_fix"
-  tag "cci": ["CCI-001494", "CCI-001495"]
-  tag "nist": ["AU-9", "Rev_4"]
+  tag "gtitle": 'WINAU-000213'
+  tag "gid": 'V-57721'
+  tag "rid": 'SV-72135r2_rule'
+  tag "stig_id": 'WN12-AU-000213'
+  tag "fix_id": 'F-62927r2_fix'
+  tag "cci": ['CCI-001494', 'CCI-001495']
+  tag "nist": ['AU-9', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the permissions on Event Viewer only allow
   TrustedInstaller permissions to change or modify.  If any groups or accounts
@@ -35,12 +35,10 @@ control "V-57721" do
   The default permissions below satisfy this requirement.
   TrustedInstaller - Full Control
   Administrators, SYSTEM, Users, ALL APPLICATION PACKAGES - Read & Execute"
-  get_system_root = command("env | Findstr SYSTEMROOT").stdout.strip
+  get_system_root = command('env | Findstr SYSTEMROOT').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
   describe command("Get-Acl -Path '#{system_root}\\SYSTEM32\\Eventvwr.exe' | Format-List | Findstr All") do
-   its('stdout') { should eq "Access : NT AUTHORITY\\SYSTEM Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Administrators Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
+    its('stdout') { should eq "Access : NT AUTHORITY\\SYSTEM Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Administrators Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
   end
 end
-
-

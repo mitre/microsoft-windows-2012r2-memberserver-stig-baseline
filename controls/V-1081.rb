@@ -1,17 +1,17 @@
-control "V-1081" do
-  title "Local volumes must use a format that supports NTFS attributes."
+control 'V-1081' do
+  title 'Local volumes must use a format that supports NTFS attributes.'
   desc  "The ability to set access permissions and auditing is critical to
   maintaining the security and proper access controls of a system. To support
   this, local volumes must be formatted using a file system that supports NTFS
   attributes."
   impact 0.7
-  tag "gtitle": "NTFS Requirement"
-  tag "gid": "V-1081"
-  tag "rid": "SV-52843r3_rule"
-  tag "stig_id": "WN12-GE-000005"
-  tag "fix_id": "F-81015r1_fix"
-  tag "cci": ["CCI-000213"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'NTFS Requirement'
+  tag "gid": 'V-1081'
+  tag "rid": 'SV-52843r3_rule'
+  tag "stig_id": 'WN12-GE-000005'
+  tag "fix_id": 'F-81015r1_fix'
+  tag "cci": ['CCI-000213']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "documentable": false
   tag "check": "Open \"Computer Management\".
 
@@ -24,21 +24,20 @@ control "V-1081" do
 
   This does not apply to system partitions such as the Recovery and EFI System
   Partition."
-  tag "fix": "Format local volumes to use NTFS or ReFS."
+  tag "fix": 'Format local volumes to use NTFS or ReFS.'
   get_volumes = command("wmic logicaldisk get FileSystem | findstr /r /v '^$' |Findstr /v 'FileSystem'").stdout.strip.split("\r\n")
 
   get_volumes.each do |volume|
     volumes = volume.strip
     describe.one do
-      describe "The format local volumes" do
+      describe 'The format local volumes' do
         subject { volumes }
-        it { should eq "NTFS"}
-      end  
-      describe "The format local volumes" do
+        it { should eq 'NTFS' }
+      end
+      describe 'The format local volumes' do
         subject { volumes }
-        it { should eq "ReFS"}
-      end    
-    end    
+        it { should eq 'ReFS' }
+      end
+    end
   end
 end
-

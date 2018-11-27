@@ -1,19 +1,19 @@
-control "V-36680" do
-  title "Access to the Windows Store must be turned off."
+control 'V-36680' do
+  title 'Access to the Windows Store must be turned off.'
   desc  "Uncontrolled installation of applications can introduce various
   issues, including system instability, and allow access to sensitive
   information.  Installation of applications must be controlled by the
   enterprise.  Turning off access to the Windows Store will limit access to
   publicly available applications."
   impact 0.5
-  tag "gtitle": "WINCC-000030"
-  tag "gid": "V-36680"
-  tag "rid": "SV-51609r2_rule"
-  tag "stig_id": "WN12-CC-000030"
-  tag "fix_id": "F-74883r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "cce": ["CCE-24981-3"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'WINCC-000030'
+  tag "gid": 'V-36680'
+  tag "rid": 'SV-51609r2_rule'
+  tag "stig_id": 'WN12-CC-000030'
+  tag "fix_id": 'F-74883r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "cce": ['CCE-24981-3']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "The Windows Store is not installed by default. If the
   \\Windows\\WinStore directory does not exist, this is NA.
@@ -37,12 +37,11 @@ control "V-36680" do
   This is located under \"User Interfaces and Infrastructure\" in the \"Add Roles
   and Features Wizard\".  The \\Windows\\WinStore directory may need to be
   manually deleted after this."
-  describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer") do
-    it { should have_property "NoUseStoreOpenWith" }
-    its("NoUseStoreOpenWith") { should cmp == 1 }
+  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
+    it { should have_property 'NoUseStoreOpenWith' }
+    its('NoUseStoreOpenWith') { should cmp == 1 }
   end
   only_if do
     registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer').exists?
   end
 end
-

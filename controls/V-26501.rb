@@ -1,19 +1,19 @@
-control "V-26501" do
-  title "Unauthorized accounts must not have the Profile system performance user right."
+control 'V-26501' do
+  title 'Unauthorized accounts must not have the Profile system performance user right.'
   desc  "
     Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.
 
     Accounts with the Profile system performance user right can monitor system processes performance.  An attacker could potentially use this to identify processes to attack.
   "
   impact 0.5
-  tag "severity": "medium"
-  tag "gtitle": "UAC - Application Elevations"
-  tag "gid": "V-26501"
-  tag "rid": "SV-53019r1_rule"
-  tag "stig_id": "WN12-SO-000081"
-  tag "cci": "CCI-001084"
-  tag "cce": "CCE-23880-8"
-  tag "nist": ["SC-18 (3)", "Rev_4"]
+  tag "severity": 'medium'
+  tag "gtitle": 'UAC - Application Elevations'
+  tag "gid": 'V-26501'
+  tag "rid": 'SV-53019r1_rule'
+  tag "stig_id": 'WN12-SO-000081'
+  tag "cci": 'CCI-001084'
+  tag "cce": 'CCE-23880-8'
+  tag "nist": ['SC-18 (3)', 'Rev_4']
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run gpedit.msc.
 
@@ -43,5 +43,4 @@ control "V-26501" do
       its('SeSystemProfilePrivilege') { should eq [] }
     end
   end
-end  
-
+end

@@ -1,7 +1,7 @@
-control "V-73805" do
+control 'V-73805' do
   title "The Server Message Block (SMB) v1 protocol must be disabled on Windows
   2012 R2."
-  desc  "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
+  desc "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
   MD5 is known to be vulnerable to a number of attacks such as collision and
   preimage attacks as well as not being FIPS compliant.
 
@@ -12,13 +12,13 @@ control "V-73805" do
   attached devices may only support SMBv1.
   "
   impact 0.5
-  tag "gtitle": "WIN00-000160"
-  tag "gid": "V-73805"
-  tag "rid": "SV-88471r2_rule"
-  tag "stig_id": "WN12-00-000160"
-  tag "fix_id": "F-80261r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'WIN00-000160'
+  tag "gid": 'V-73805'
+  tag "rid": 'SV-88471r2_rule'
+  tag "stig_id": 'WN12-00-000160'
+  tag "fix_id": 'F-80261r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "documentable": false
   tag "check": "This requirement applies to Windows 2012 R2, it is NA for
   Windows 2012 (see V-73519 and V-73523 for 2012 requirements).
@@ -48,8 +48,7 @@ control "V-73805" do
   De-select \"SMB 1.0/CIFS File Sharing Support\".
 
   The system must be restarted for the changes to take effect."
-   describe command('Get-WindowsOptionalFeature -Online | Where FeatureName -eq SMB1Protocol') do
+  describe command('Get-WindowsOptionalFeature -Online | Where FeatureName -eq SMB1Protocol') do
     its('stdout') { should_not eq "\r\n\r\nFeatureName : SMB1Protocol\r\nState       : Enabled\r\n\r\n\r\n\r\n" }
-   end
+  end
 end
-

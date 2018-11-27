@@ -1,21 +1,21 @@
-control "V-26492" do
+control 'V-26492' do
   title "Unauthorized accounts must not have the Increase scheduling priority
   user right."
-  desc  "Inappropriate granting of user rights can provide system,
+  desc "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
   Accounts with the \"Increase scheduling priority\" user right can change a
   scheduling priority causing performance issues or a DoS.
   "
   impact 0.5
-  tag "gtitle": "Increase scheduling priority"
-  tag "gid": "V-26492"
-  tag "rid": "SV-52118r2_rule"
-  tag "stig_id": "WN12-UR-000027"
-  tag "fix_id": "F-45143r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "cce": ["CCE-24911-0"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'Increase scheduling priority'
+  tag "gid": 'V-26492'
+  tag "rid": 'SV-52118r2_rule'
+  tag "stig_id": 'WN12-UR-000027'
+  tag "fix_id": 'F-45143r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "cce": ['CCE-24911-0']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -42,11 +42,10 @@ control "V-26492" do
   Administrators"
   describe.one do
     describe security_policy do
-      its("SeIncreaseBasePriorityPrivilege") { should eq ['S-1-5-32-544'] }
+      its('SeIncreaseBasePriorityPrivilege') { should eq ['S-1-5-32-544'] }
     end
     describe security_policy do
-      its("SeIncreaseBasePriorityPrivilege") { should eq [] }
+      its('SeIncreaseBasePriorityPrivilege') { should eq [] }
     end
   end
 end
-

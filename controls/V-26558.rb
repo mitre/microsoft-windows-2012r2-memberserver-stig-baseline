@@ -1,7 +1,7 @@
-control "V-26558" do
+control 'V-26558' do
   title "The system must be configured to audit System - System Integrity
   failures."
-  desc  "Maintaining an audit trail of system activity logs can help identify
+  desc "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
@@ -12,14 +12,14 @@ control "V-26558" do
   security subsystem.
   "
   impact 0.5
-  tag "gtitle": "Audit - System Integrity - Failure"
-  tag "gid": "V-26558"
-  tag "rid": "SV-52971r1_rule"
-  tag "stig_id": "WN12-AU-000112"
-  tag "fix_id": "F-45897r1_fix"
-  tag "cci": ["CCI-000172", "CCI-002234"]
-  tag "nist": ["AU-12 c", "Rev_4"]
-  tag "nist": ["AC-6 (9)", "Rev_4"]
+  tag "gtitle": 'Audit - System Integrity - Failure'
+  tag "gid": 'V-26558'
+  tag "rid": 'SV-52971r1_rule'
+  tag "stig_id": 'WN12-AU-000112'
+  tag "fix_id": 'F-45897r1_fix'
+  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "nist": ['AU-12 c', 'Rev_4']
+  tag "nist": ['AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
@@ -40,11 +40,10 @@ control "V-26558" do
   selected."
   describe.one do
     describe audit_policy do
-      its("System Integrity") { should eq "Failure" }
+      its('System Integrity') { should eq 'Failure' }
     end
     describe audit_policy do
-      its("System Integrity") { should eq "Success and Failure" }
+      its('System Integrity') { should eq 'Success and Failure' }
     end
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-1121" do
+control 'V-1121' do
   title "File Transfer Protocol (FTP) servers must be configured to prevent
   access to the system drive."
-  desc  "The FTP service allows remote users to access shared files and
+  desc "The FTP service allows remote users to access shared files and
   directories.  Access outside of the specific directories of shared data could
   provide access to system resources and compromise the system."
   impact 0.7
-  tag "gtitle": "FTP System File Access"
-  tag "gid": "V-1121"
-  tag "rid": "SV-52212r2_rule"
-  tag "stig_id": "WN12-GE-000027"
-  tag "fix_id": "F-81019r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'FTP System File Access'
+  tag "gid": 'V-1121'
+  tag "rid": 'SV-52212r2_rule'
+  tag "stig_id": 'WN12-GE-000027'
+  tag "fix_id": 'F-81019r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "documentable": false
   tag "check": "If FTP is not installed on the system, this is NA.
 
@@ -28,7 +28,7 @@ control "V-1121" do
   Open a \"Command Prompt\".
 
   Access the FTP site and review accessible directories with the following
-  commands: 
+  commands:
 
   Note: Returned results may vary depending on the FTP server software.
 
@@ -57,12 +57,11 @@ control "V-1121" do
   Windows directories, this is a finding."
   tag "fix": "Configure the system to only allow FTP access to specific folders
   containing the data to be available through the service."
-  is_ftp_installed = command("Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed").stdout.strip
-  if (is_ftp_installed == 'False' || is_ftp_installed == '')
+  is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
+  if is_ftp_installed == 'False'
     describe 'File Transfer Protocol (FTP) servers must be configured to prevent
     anonymous logons' do
-      skip "is a manual check"
+      skip 'is a manual check'
     end
   end
 end
-
