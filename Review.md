@@ -7,11 +7,11 @@
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Eugene Aronne|11/26/2018|6, 11, 12, 13, 20|
 ||Control robustness (can the control be improved to make it less brittle - not necessarily a blocker on initial releases)|Dan Haynes (reviewed all controls)|11/26/2018|3, 5, 8, 14|
 ||Descriptive output for findings details (review JSON for findings information that may be confusing to SCA like NilCLass, etc.)|Dan Haynes|*|21|
-||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
-||Consistency across other profile conventions |*|*|*|
+||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|Eugene Aronne|11/29/2018|*|
+||Consistency across other profile conventions |Eugene Aronne|11/29/2018|*|
 ||Spelling, grammar,linting (e.g., rubocop, etc.)|Dan Haynes (reviewed all controls)|*|4, 9, 23|
 ||Removing debugging documentation and code|Dan Haynes (reviewed all controls)|11/20/2018|*|
-| Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges (e.g., code fails to reach a describe statement for every control. inspec check can do this. It will say no defined tests)|Dan Haynes (reviewed all controls)|*|19|
+| Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges (e.g., code fails to reach a describe statement for every control. inspec check can do this. It will say no defined tests)|Dan Haynes (reviewed all controls)|11/27/2018|19|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|Dan Haynes (reviewed all controls)|11/20/2018|*|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|Eugene Aronne|11/16/2018|*|
 ||Check for “stuck” situations (e.g., profile goes on forever due to infinite loop, very large data sets, etc.)|Dan Haynes (reviewed all controls)|11/20/2018|22|
