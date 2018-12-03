@@ -49,6 +49,6 @@ control 'V-73805' do
 
   The system must be restarted for the changes to take effect."
   describe command('Get-WindowsOptionalFeature -Online | Where FeatureName -eq SMB1Protocol') do
-    its('stdout') { should_not eq "\r\n\r\nFeatureName : SMB1Protocol\r\nState       : Enabled\r\n\r\n\r\n\r\n" }
+    its('stdout') { should_not eq "\r\n\r\nFeature Name : SMB1Protocol\r\nState        : Enabled\r\n\r\n\r\n\r\n" }
   end
 end
