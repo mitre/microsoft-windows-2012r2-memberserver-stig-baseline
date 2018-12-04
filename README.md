@@ -1,4 +1,4 @@
-# windows_2012r2_memberserver_stig
+# microsoft-windows_2012r2_memberserver_stig
 
 InSpec profile testing secure configuration of Windows 2012r2 member servers.
 
