@@ -73,8 +73,6 @@ Style/GuardClause:
   Enabled: false
 Style/IfUnlessModifier:
   Enabled: false
-Style/MethodMissing:
-  Enabled: false
 Style/MultilineIfModifier:
   Enabled: false
 Style/NegatedIf:
