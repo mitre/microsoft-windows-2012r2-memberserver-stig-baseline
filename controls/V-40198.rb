@@ -1,4 +1,3 @@
-BACKUP_OPERATORS = attribute('backup_operators')
 control 'V-40198' do
   title "Members of the Backup Operators group must have separate accounts for
   backup duties and normal operational tasks."
@@ -36,7 +35,7 @@ control 'V-40198' do
   else
     backup_operators_group.each do |user|
       describe user do
-        it { should be_in BACKUP_OPERATORS }
+        it { should be_in attribute('backup_operators') }
       end  if backup_operators_group == []
     end
   end

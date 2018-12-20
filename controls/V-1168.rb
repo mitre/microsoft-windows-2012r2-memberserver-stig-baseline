@@ -1,5 +1,3 @@
-BACKUP_OPERATORS = attribute('backup_operators')
-
 control 'V-1168' do
   title 'Members of the Backup Operators group must be documented.'
   desc  "Backup Operators are able to read and write to any file in the system,
@@ -29,7 +27,7 @@ control 'V-1168' do
   if backup_operators_group != []
     backup_operators_group.each do |user|
       describe user do
-        it { should be_in BACKUP_OPERATORS }
+        it { should be_in attribute('backup_operators') }
       end
     end
   else

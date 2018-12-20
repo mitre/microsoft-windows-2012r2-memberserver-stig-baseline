@@ -1,6 +1,3 @@
-ADMINISTRATORS = attribute('administrators')
-ADMINISTRATORS_DOMAIN = attribute('administrators_domain')
-
 control 'V-1127' do
   title "Only administrators responsible for the member server must have
   Administrator rights on the system."
@@ -77,13 +74,13 @@ control 'V-1127' do
   if is_domain == 'WORKGROUP'
     administrator_group.each do |user|
       describe user.to_s do
-        it { should be_in ADMINISTRATORS }
+        it { should be_in attribute('administrators') }
       end
     end
   else
     administrator_domain_group.each do |users|
       describe users.to_s do
-        it { should be_in ADMINISTRATORS_DOMAIN }
+        it { should be_in attribute('administrators_domain') }
       end
     end
   end
