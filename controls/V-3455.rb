@@ -1,4 +1,4 @@
-control 'V-3455' do
+control "V-3455" do
   title "Remote Desktop Services must be configured to use session-specific
   temporary folders."
   desc  "If a communal temporary folder is used for remote desktop sessions, it
@@ -6,15 +6,24 @@ control 'V-3455' do
   setting is enabled, only one temporary folder is used for all remote desktop
   sessions.  Per session temporary folders must be established."
   impact 0.5
-  tag "gtitle": 'TS/RDS - Do Not Use Temp Folders'
-  tag "gid": 'V-3455'
-  tag "rid": 'SV-52900r1_rule'
-  tag "stig_id": 'WN12-CC-000104'
-  tag "fix_id": 'F-45826r1_fix'
+  tag "gtitle": "TS/RDS - Do Not Use Temp Folders"
+  tag "gid": "V-3455"
+  tag "rid": "SV-52900r1_rule"
+  tag "stig_id": "WN12-CC-000104"
+  tag "fix_id": "F-45826r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24042-4']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3455' do
     its('PerSessionTempDir') { should cmp == 1 }
   end
 end
+

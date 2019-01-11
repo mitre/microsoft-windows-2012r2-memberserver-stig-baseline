@@ -1,20 +1,29 @@
-control 'V-4112' do
+control "V-4112" do
   title "The system must be configured to disable the Internet Router Discovery
   Protocol (IRDP)."
-  desc "The Internet Router Discovery Protocol (IRDP) is used to detect and
+  desc  "The Internet Router Discovery Protocol (IRDP) is used to detect and
   configure default gateway addresses on the computer.  If a router is
   impersonated on a network, traffic could be routed through the compromised
   system."
   impact 0.3
-  tag "gtitle": 'Disable Router Discovery'
-  tag "gid": 'V-4112'
-  tag "rid": 'SV-52926r1_rule'
-  tag "stig_id": 'WN12-SO-000044'
-  tag "fix_id": 'F-45852r2_fix'
+  tag "gtitle": "Disable Router Discovery"
+  tag "gid": "V-4112"
+  tag "rid": "SV-52926r1_rule"
+  tag "stig_id": "WN12-SO-000044"
+  tag "fix_id": "F-45852r2_fix"
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-23677-8']
   tag "nist": ['SC-5', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,5 +44,6 @@ control 'V-4112' do
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'PerformRouterDiscovery' }
     its('PerformRouterDiscovery') { should cmp == 0 }
-  end
+  ends
 end
+

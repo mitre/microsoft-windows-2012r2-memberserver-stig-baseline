@@ -1,20 +1,28 @@
-control 'V-15998' do
+control "V-15998" do
   title "Users must be prevented from mapping local LPT ports and redirecting
-  data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop
+  data from the Remote Desktop Session Host to local LPT ports.  (Remote Desktop
   Services Role)."
-  desc "Preventing the redirection of Remote Desktop session data to a client
+  desc  "Preventing the redirection of Remote Desktop session data to a client
   computer's LPT ports helps reduce possible exposure of sensitive data."
   impact 0.5
-  tag "gtitle": "TS/RDS \xE2\x80\x93 LPT Port Redirection"
-  tag "gid": 'V-15998'
-  tag "rid": 'SV-52226r2_rule'
-  tag "stig_id": 'WN12-CC-000133'
-  tag "fix_id": 'F-45244r2_fix'
+  tag "gtitle": "TS/RDS – LPT Port Redirection"
+  tag "gid": "V-15998"
+  tag "rid": "SV-52226r2_rule"
+  tag "stig_id": "WN12-CC-000133"
+  tag "fix_id": "F-45244r2_fix"
   tag "cci": ['CCI-002314']
   tag "cce": ['CCE-24381-6']
   tag "nist": ['AC-17 (1)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECSC-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECSC-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +42,4 @@ control 'V-15998' do
     its('fDisableLPT') { should cmp == 1 }
   end
 end
+

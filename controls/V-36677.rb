@@ -1,21 +1,29 @@
-control 'V-36677' do
+control "V-36677" do
   title "Optional component installation and component repair must be prevented
   from using Windows Update."
-  desc "Uncontrolled system updates can introduce issues to a system.
+  desc  "Uncontrolled system updates can introduce issues to a system.
   Obtaining update components from an outside source may also potentially provide
   sensitive information outside of the enterprise.  Optional component
   installation or repair must be obtained from an internal source."
   impact 0.3
-  tag "gtitle": 'WINCC-000018'
-  tag "gid": 'V-36677'
-  tag "rid": 'SV-51606r1_rule'
-  tag "stig_id": 'WN12-CC-000018'
-  tag "fix_id": 'F-44727r1_fix'
+  tag "gtitle": "WINCC-000018"
+  tag "gid": "V-36677"
+  tag "rid": "SV-51606r1_rule"
+  tag "stig_id": "WN12-CC-000018"
+  tag "fix_id": "F-44727r1_fix"
   tag "cci": ['CCI-001812']
   tag "cce": ['CCE-23727-1']
   tag "nist": ['CM-11 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECSC-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECSC-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +44,4 @@ control 'V-36677' do
     its('UseWindowsUpdate') { should cmp == 2 }
   end
 end
+

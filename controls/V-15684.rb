@@ -1,18 +1,27 @@
-control 'V-15684' do
+control "V-15684" do
   title "Users must be notified if a web-based program attempts to install
   software."
-  desc "Users must be aware of attempted program installations.  This setting
+  desc  "Users must be aware of attempted program installations.  This setting
   ensures users are notified if a web-based program attempts to install software."
   impact 0.5
-  tag "gtitle": "Windows Installer \xE2\x80\x93 IE Security Prompt"
-  tag "gid": 'V-15684'
-  tag "rid": 'SV-53056r2_rule'
-  tag "stig_id": 'WN12-CC-000117'
-  tag "fix_id": 'F-45982r1_fix'
+  tag "gtitle": "Windows Installer – IE Security Prompt"
+  tag "gid": "V-15684"
+  tag "rid": "SV-53056r2_rule"
+  tag "stig_id": "WN12-CC-000117"
+  tag "fix_id": "F-45982r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23886-5']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-15684' do
     its('SafeForScripting') { should cmp == 0 }
   end
 end
+

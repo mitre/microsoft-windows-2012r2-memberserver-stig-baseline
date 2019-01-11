@@ -1,19 +1,28 @@
-control 'V-1171' do
-  title 'Ejection of removable NTFS media must be restricted to Administrators.'
+control "V-1171" do
+  title "Ejection of removable NTFS media must be restricted to Administrators."
   desc  "Removable hard drives, if they are not properly configured, can be
   formatted and ejected by users who are not members of the Administrators Group.
    Formatting and ejecting removable NTFS media must only be done by
   administrators."
   impact 0.5
-  tag "gtitle": 'Format and Eject Removable Media'
-  tag "gid": 'V-1171'
-  tag "rid": 'SV-52875r1_rule'
-  tag "stig_id": 'WN12-SO-000011'
-  tag "fix_id": 'F-45801r1_fix'
+  tag "gtitle": "Format and Eject Removable Media"
+  tag "gid": "V-1171"
+  tag "rid": "SV-52875r1_rule"
+  tag "stig_id": "WN12-SO-000011"
+  tag "fix_id": "F-45801r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25217-1']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-1171' do
     its('AllocateDASD') { should cmp == 0 }
   end
 end
+

@@ -1,20 +1,29 @@
-control 'V-16008' do
+control "V-16008" do
   title "Windows must elevate all applications in User Account Control, not
   just signed ones."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures whether Windows elevates all applications, or only
   signed ones."
   impact 0.5
-  tag "gtitle": 'UAC - Application Elevations'
-  tag "gid": 'V-16008'
-  tag "rid": 'SV-53142r1_rule'
-  tag "stig_id": 'WN12-SO-000081'
-  tag "fix_id": 'F-46068r2_fix'
+  tag "gtitle": "UAC - Application Elevations"
+  tag "gid": "V-16008"
+  tag "rid": "SV-53142r1_rule"
+  tag "stig_id": "WN12-SO-000081"
+  tag "fix_id": "F-46068r2_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23880-8']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -46,3 +55,4 @@ control 'V-16008' do
     end
   end
 end
+

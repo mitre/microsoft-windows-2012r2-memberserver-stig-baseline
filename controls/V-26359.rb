@@ -1,14 +1,14 @@
-control 'V-26359' do
-  title 'The Windows dialog box title for the legal banner must be configured.'
+control "V-26359" do
+  title "The Windows dialog box title for the legal banner must be configured."
   desc  "Failure to display the logon banner prior to a logon attempt will
   negate legal proceedings resulting from unauthorized access to system
   resources."
   impact 0.3
-  tag "gtitle": 'Legal Banner Dialog Box Title'
-  tag "gid": 'V-26359'
-  tag "rid": 'SV-53121r2_rule'
-  tag "stig_id": 'WN12-SO-000023'
-  tag "fix_id": 'F-46047r1_fix'
+  tag "gtitle": "Legal Banner Dialog Box Title"
+  tag "gid": "V-26359"
+  tag "rid": "SV-53121r2_rule"
+  tag "stig_id": "WN12-SO-000023"
+  tag "fix_id": "F-46047r1_fix"
   tag "cci": ['CCI-000048', 'CCI-001384', 'CCI-001385',
               'CCI-001386', 'CCI-001387', 'CCI-001388']
   tag "cce": ['CCE-24020-0']
@@ -16,7 +16,16 @@ control 'V-26359' do
   tag "nist": ['AC-8 c 1', 'Rev_4']
   tag "nist": ['AC-8 c 2', 'Rev_4']
   tag "nist": ['AC-8 c 3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -53,3 +62,4 @@ control 'V-26359' do
     }
   end
 end
+

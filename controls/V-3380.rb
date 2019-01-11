@@ -1,20 +1,29 @@
-control 'V-3380' do
+control "V-3380" do
   title "The system must be configured to force users to log off when their
   allowed logon hours expire."
-  desc "Limiting logon hours can help protect data by only allowing access
+  desc  "Limiting logon hours can help protect data by only allowing access
   during specified times.  This setting controls whether or not users are forced
   to log off when their allowed logon hours expire.  If logon hours are set for
   users, this must be enforced."
   impact 0.5
-  tag "gtitle": 'Force Logoff When Logon Hours Expire'
-  tag "gid": 'V-3380'
-  tag "rid": 'SV-52893r1_rule'
-  tag "stig_id": 'WN12-SO-000066'
-  tag "fix_id": 'F-45819r1_fix'
+  tag "gtitle": "Force Logoff When Logon Hours Expire"
+  tag "gid": "V-3380"
+  tag "rid": "SV-52893r1_rule"
+  tag "stig_id": "WN12-SO-000066"
+  tag "fix_id": "F-45819r1_fix"
   tag "cci": ['CCI-001133']
   tag "cce": ['CCE-25367-4']
   tag "nist": ['SC-10', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -30,3 +39,4 @@ control 'V-3380' do
     its('ForceLogoffWhenHourExpire') { should eq 1 }
   end
 end
+

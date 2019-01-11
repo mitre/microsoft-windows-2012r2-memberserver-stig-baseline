@@ -1,20 +1,29 @@
-control 'V-1172' do
-  title 'Users must be warned in advance of their passwords expiring.'
+control "V-1172" do
+  title "Users must be warned in advance of their passwords expiring."
   desc  "Creating strong passwords that can be remembered by users requires
   some thought.  By giving the user advance warning, the user has time to
   construct a sufficiently strong password.  This setting configures the system
   to display a warning to users telling them how many days are left before their
   password expires."
   impact 0.3
-  tag "gtitle": 'Password Expiration Warning'
-  tag "gid": 'V-1172'
-  tag "rid": 'SV-52876r1_rule'
-  tag "stig_id": 'WN12-SO-000025'
-  tag "fix_id": 'F-45802r1_fix'
+  tag "gtitle": "Password Expiration Warning"
+  tag "gid": "V-1172"
+  tag "rid": "SV-52876r1_rule"
+  tag "stig_id": "WN12-SO-000025"
+  tag "fix_id": "F-45802r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23704-0']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-1172' do
     its('PasswordExpiryWarning') { should cmp >= 14 }
   end
 end
+

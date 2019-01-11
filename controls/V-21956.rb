@@ -1,19 +1,28 @@
-control 'V-21956' do
+control "V-21956" do
   title "IPv6 TCP data retransmissions must be configured to prevent resources
   from becoming exhausted."
-  desc "Configuring Windows to limit the number of times that IPv6 TCP
+  desc  "Configuring Windows to limit the number of times that IPv6 TCP
   retransmits unacknowledged data segments before aborting the attempt helps
   prevent resources from becoming exhausted."
   impact 0.3
-  tag "gtitle": 'IPv6 TCP Data Retransmissions'
-  tag "gid": 'V-21956'
-  tag "rid": 'SV-53181r2_rule'
-  tag "stig_id": 'WN12-SO-000047'
-  tag "fix_id": 'F-46107r2_fix'
+  tag "gtitle": "IPv6 TCP Data Retransmissions"
+  tag "gid": "V-21956"
+  tag "rid": "SV-53181r2_rule"
+  tag "stig_id": "WN12-SO-000047"
+  tag "fix_id": "F-46107r2_fix"
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-25202-3']
   tag "nist": ['SC-5', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-21956' do
     its('TcpMaxDataRetransmissions') { should cmp <= 3 }
   end
 end
+

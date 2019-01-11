@@ -1,19 +1,27 @@
-control 'V-15999' do
+control "V-15999" do
   title "Users must be prevented from redirecting Plug and Play devices to the
   Remote Desktop Session Host.  (Remote Desktop Services Role)."
-  desc "Preventing the redirection of Plug and Play devices in Remote Desktop
+  desc  "Preventing the redirection of Plug and Play devices in Remote Desktop
   sessions helps reduce possible exposure of sensitive data."
   impact 0.5
-  tag "gtitle": 'TS/RDS - PNP Device Redirection'
-  tag "gid": 'V-15999'
-  tag "rid": 'SV-52229r2_rule'
-  tag "stig_id": 'WN12-CC-000135'
-  tag "fix_id": 'F-45246r2_fix'
+  tag "gtitle": "TS/RDS - PNP Device Redirection"
+  tag "gid": "V-15999"
+  tag "rid": "SV-52229r2_rule"
+  tag "stig_id": "WN12-CC-000135"
+  tag "fix_id": "F-45246r2_fix"
   tag "cci": ['CCI-002314']
   tag "cce": ['CCE-24708-0']
   tag "nist": ['AC-17 (1)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECSC-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECSC-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +41,4 @@ control 'V-15999' do
     its('fDisablePNPRedir') { should cmp == 1 }
   end
 end
+

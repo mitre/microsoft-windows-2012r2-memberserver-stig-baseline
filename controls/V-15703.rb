@@ -1,7 +1,7 @@
-control 'V-15703' do
+control "V-15703" do
   title "Users must not be prompted to search Windows Update for device
   drivers."
-  desc "Some features may communicate with the vendor, sending system
+  desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
   outside the enterprise and uncontrolled updates to the system.
@@ -9,15 +9,24 @@ control 'V-15703' do
   for device drivers.
   "
   impact 0.3
-  tag "gtitle": "Driver Install \xE2\x80\x93 Device Driver Search Prompt"
-  tag "gid": 'V-15703'
-  tag "rid": 'SV-53115r1_rule'
-  tag "stig_id": 'WN12-CC-000026'
-  tag "fix_id": 'F-46041r1_fix'
+  tag "gtitle": "Driver Install – Device Driver Search Prompt"
+  tag "gid": "V-15703"
+  tag "rid": "SV-53115r1_rule"
+  tag "stig_id": "WN12-CC-000026"
+  tag "fix_id": "F-46041r1_fix"
   tag "cci": ['CCI-001812']
   tag "cce": ['CCE-24804-7']
   tag "nist": ['CM-11 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-15703' do
     its('DontPromptForWindowsUpdate') { should cmp == 1 }
   end
 end
+

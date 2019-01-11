@@ -1,18 +1,27 @@
-control 'V-72753' do
-  title 'WDigest Authentication must be disabled.'
+control "V-72753" do
+  title "WDigest Authentication must be disabled."
   desc  "When the WDigest Authentication protocol is enabled, plain text
   passwords are stored in the Local Security Authority Subsystem Service (LSASS)
   exposing them to theft.  This setting will prevent WDigest from storing
   credentials in memory."
   impact 0.5
-  tag "gtitle": 'WINCC-000150'
-  tag "gid": 'V-72753'
-  tag "rid": 'SV-87391r1_rule'
-  tag "stig_id": 'WN12-CC-000150'
-  tag "fix_id": 'F-79163r1_fix'
-  tag "cci": ['CCI-000381']
+  tag "gtitle": "WINCC-000150"
+  tag "gid": "V-72753"
+  tag "rid": "SV-87391r1_rule"
+  tag "stig_id": "WN12-CC-000150"
+  tag "fix_id": "F-79163r1_fix"
+  tag "cci": ["CCI-000381"]
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding.
 
@@ -43,3 +52,4 @@ control 'V-72753' do
     its('UseLogonCredential') { should cmp == 0 }
   end
 end
+

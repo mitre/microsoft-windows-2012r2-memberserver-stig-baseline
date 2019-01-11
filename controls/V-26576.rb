@@ -1,17 +1,26 @@
-control 'V-26576' do
-  title 'The IP-HTTPS IPv6 transition technology must be disabled.'
+control "V-26576" do
+  title "The IP-HTTPS IPv6 transition technology must be disabled."
   desc  "IPv6 transition technologies, which tunnel packets through other
   protocols, do not provide visibility."
   impact 0.5
-  tag "gtitle": 'IP-HTTPS State'
-  tag "gid": 'V-26576'
-  tag "rid": 'SV-52969r1_rule'
-  tag "stig_id": 'WN12-CC-000008'
-  tag "fix_id": 'F-45895r1_fix'
+  tag "gtitle": "IP-HTTPS State"
+  tag "gid": "V-26576"
+  tag "rid": "SV-52969r1_rule"
+  tag "stig_id": "WN12-CC-000008"
+  tag "fix_id": "F-45895r1_fix"
   tag "cci": ['CCI-000381']
   tag "cci": ['CCE-25651-1']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-26576' do
     its('IPHTTPS_ClientState') { should cmp == 3 }
   end
 end
+

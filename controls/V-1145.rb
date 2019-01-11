@@ -1,22 +1,28 @@
-control 'V-1145' do
-  title 'Automatic logons must be disabled.'
+control "V-1145" do
+  title "Automatic logons must be disabled."
   desc  "Allowing a system to automatically log on when the machine is booted
   could give access to any unauthorized individual who restarts the computer.
   Automatic logon with administrator privileges would give full access to an
   unauthorized individual."
   impact 0.5
-  tag "gtitle": 'Disable Automatic Logon'
-  tag "gid": 'V-1145'
-  tag "rid": 'SV-52107r2_rule'
-  tag "stig_id": 'WN12-SO-000036'
-  tag "fix_id": 'F-45132r1_fix'
+  tag "gtitle": "Disable Automatic Logon"
+  tag "gid": "V-1145"
+  tag "rid": "SV-52107r2_rule"
+  tag "stig_id": "WN12-SO-000036"
+  tag "fix_id": "F-45132r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24927-6']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "severity_override_guidance": "If the DefaultName or DefaultDomainName in
-  the same registry path contain an administrator account name and the
-  DefaultPassword contains a value, this is a CAT I finding."
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -50,3 +56,4 @@ control 'V-1145' do
     its('DefaultPassword') { should cmp == 0 }
   end
 end
+

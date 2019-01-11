@@ -1,22 +1,30 @@
-control 'V-36723' do
+control "V-36723" do
   title "Permissions for the Security event log must prevent access by
   nonprivileged accounts."
-  desc "Maintaining an audit trail of system activity logs can help identify
+  desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.  The
   Security event log may disclose sensitive information or be  susceptible to
   tampering if proper permissions are not applied."
   impact 0.5
-  tag "gtitle": 'WINAU-000205'
-  tag "gid": 'V-36723'
-  tag "rid": 'SV-51571r1_rule'
-  tag "stig_id": 'WN12-AU-000205'
-  tag "fix_id": 'F-44700r2_fix'
-  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164']
+  tag "gtitle": "WINAU-000205"
+  tag "gid": "V-36723"
+  tag "rid": "SV-51571r1_rule"
+  tag "stig_id": "WN12-AU-000205"
+  tag "fix_id": "F-44700r2_fix"
+  tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164"]
   tag "nist": ['AU-9', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECTP-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECTP-1"
   tag "check": "Verify the permissions on the Security event log
   (Security.evtx).  Standard user accounts or groups must not have access.  The
   default permissions listed below satisfy this requirement:
@@ -49,3 +57,4 @@ control 'V-36723' do
     its('stdout') { should eq "Access : NT SERVICE\\EventLog Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n" }
   end
 end
+

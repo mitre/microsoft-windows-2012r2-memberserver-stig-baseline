@@ -1,20 +1,29 @@
-control 'V-3373' do
+control "V-3373" do
   title "The maximum age for machine account passwords must be set to
   requirements."
-  desc "Computer account passwords are changed automatically on a regular
+  desc  "Computer account passwords are changed automatically on a regular
   basis.  This setting controls the maximum password age that a machine account
   may have.  This setting must be set to no more than 30 days, ensuring the
   machine changes its password monthly."
   impact 0.3
-  tag "gtitle": 'Maximum Machine Account Password Age'
-  tag "gid": 'V-3373'
-  tag "rid": 'SV-52887r1_rule'
-  tag "stig_id": 'WN12-SO-000016'
-  tag "fix_id": 'F-45813r1_fix'
+  tag "gtitle": "Maximum Machine Account Password Age"
+  tag "gid": "V-3373"
+  tag "rid": "SV-52887r1_rule"
+  tag "stig_id": "WN12-SO-000016"
+  tag "fix_id": "F-45813r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23596-0']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -38,3 +47,4 @@ control 'V-3373' do
     its('MaximumPasswordAge') { should cmp > 0 }
   end
 end
+

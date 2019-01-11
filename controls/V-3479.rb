@@ -1,5 +1,5 @@
-control 'V-3479' do
-  title 'The system must be configured to use Safe DLL Search Mode.'
+control "V-3479" do
+  title "The system must be configured to use Safe DLL Search Mode."
   desc  "The default search behavior, when an application calls a function in a
   Dynamic Link Library (DLL), is to search the current directory, followed by the
   directories contained in the system's path environment variable.  An
@@ -8,15 +8,24 @@ control 'V-3479' do
   system to search the %Systemroot% for the DLL before searching the current
   directory or the rest of the path."
   impact 0.5
-  tag "gtitle": 'Safe DLL Search Mode'
-  tag "gid": 'V-3479'
-  tag "rid": 'SV-52920r1_rule'
-  tag "stig_id": 'WN12-SO-000045'
-  tag "fix_id": 'F-45846r2_fix'
+  tag "gtitle": "Safe DLL Search Mode"
+  tag "gid": "V-3479"
+  tag "rid": "SV-52920r1_rule"
+  tag "stig_id": "WN12-SO-000045"
+  tag "fix_id": "F-45846r2_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23462-5']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -38,3 +47,4 @@ control 'V-3479' do
     its('SafeDllSearchMode') { should cmp == 1 }
   end
 end
+

@@ -1,24 +1,33 @@
-control 'V-40179' do
+control "V-40179" do
   title "Permissions for Windows installation directory must conform to minimum
   requirements."
-  desc "Changing the system's file and directory permissions allows the
+  desc  "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
-  The default permissions are adequate when the Security Option \"Network
+      The default permissions are adequate when the Security Option \"Network
   access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": 'WNGE-000008'
-  tag "gid": 'V-40179'
-  tag "rid": 'SV-52137r3_rule'
-  tag "stig_id": 'WN12-GE-000008'
-  tag "fix_id": 'F-45163r1_fix'
+  tag "gtitle": "WNGE-000008"
+  tag "gid": "V-40179"
+  tag "rid": "SV-52137r3_rule"
+  tag "stig_id": "WN12-GE-000008"
+  tag "fix_id": "F-45163r1_fix"
   tag "cci": ['CCI-001499', 'CCI-002165']
   tag "nist": ['CM-5 (6)', 'Rev_4']
   tag "nist": ['AC-3 (4)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).  If the default ACLs are maintained and the referenced
@@ -93,3 +102,4 @@ control 'V-40179' do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n         NT AUTHORITY\\SYSTEM Allow  268435456\r\n         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  268435456\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  -1610612736\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  268435456\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  -1610612736\r\n" }
   end
 end
+

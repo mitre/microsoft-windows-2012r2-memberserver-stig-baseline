@@ -1,17 +1,26 @@
-control 'V-21952' do
-  title 'NTLM must be prevented from falling back to a Null session.'
+control "V-21952" do
+  title "NTLM must be prevented from falling back to a Null session."
   desc  "NTLM sessions that are allowed to fall back to Null (unauthenticated)
   sessions may gain unauthorized access."
   impact 0.5
-  tag "gtitle": 'NTLM NULL Session Fallback'
-  tag "gid": 'V-21952'
-  tag "rid": 'SV-53177r1_rule'
-  tag "stig_id": 'WN12-SO-000062'
-  tag "fix_id": 'F-46103r1_fix'
+  tag "gtitle": "NTLM NULL Session Fallback"
+  tag "gid": "V-21952"
+  tag "rid": "SV-53177r1_rule"
+  tag "stig_id": "WN12-SO-000062"
+  tag "fix_id": "F-46103r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25531-5']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -30,3 +39,4 @@ control 'V-21952' do
     its('allownullsessionfallback') { should cmp == 0 }
   end
 end
+

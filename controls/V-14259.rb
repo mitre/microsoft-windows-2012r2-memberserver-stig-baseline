@@ -1,5 +1,5 @@
-control 'V-14259' do
-  title 'Printing over HTTP must be prevented.'
+control "V-14259" do
+  title "Printing over HTTP must be prevented."
   desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
@@ -9,15 +9,24 @@ control 'V-14259' do
   Internet.
   "
   impact 0.5
-  tag "gtitle": 'Printing Over HTTP'
-  tag "gid": 'V-14259'
-  tag "rid": 'SV-52997r1_rule'
-  tag "stig_id": 'WN12-CC-000039'
-  tag "fix_id": 'F-45924r1_fix'
+  tag "gtitle": "Printing Over HTTP"
+  tag "gid": "V-14259"
+  tag "rid": "SV-52997r1_rule"
+  tag "stig_id": "WN12-CC-000039"
+  tag "fix_id": "F-45924r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-24832-8']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -37,3 +46,4 @@ control 'V-14259' do
     its('DisableHTTPPrinting') { should cmp == 1 }
   end
 end
+

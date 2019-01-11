@@ -1,19 +1,27 @@
-control 'V-36712' do
+control "V-36712" do
   title "The Windows Remote Management (WinRM) client must not use Basic
   authentication."
-  desc "Basic authentication uses plain text passwords that could be used to
+  desc  "Basic authentication uses plain text passwords that could be used to
   compromise a system."
   impact 0.7
-  tag "gtitle": 'WINCC-000123'
-  tag "gid": 'V-36712'
-  tag "rid": 'SV-51752r1_rule'
-  tag "stig_id": 'WN12-CC-000123'
-  tag "fix_id": 'F-44827r1_fix'
+  tag "gtitle": "WINCC-000123"
+  tag "gid": "V-36712"
+  tag "rid": "SV-51752r1_rule"
+  tag "stig_id": "WN12-CC-000123"
+  tag "fix_id": "F-44827r1_fix"
   tag "cci": ['CCI-000877']
   tag "cce": ['CCE-24431-9']
   tag "nist": ['MA-4 c', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'IAIA-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "IAIA-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +40,4 @@ control 'V-36712' do
     its('AllowBasic') { should cmp == 0 }
   end
 end
+

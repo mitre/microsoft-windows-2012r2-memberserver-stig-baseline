@@ -1,20 +1,29 @@
-control 'V-3456' do
+control "V-3456" do
   title "Remote Desktop Services must delete temporary folders when a session
   is terminated."
-  desc "Remote desktop session temporary folders must always be deleted after
+  desc  "Remote desktop session temporary folders must always be deleted after
   a session is over to prevent hard disk clutter and potential leakage of
   information.  This setting controls the deletion of the temporary folders when
   the session is terminated."
   impact 0.5
-  tag "gtitle": 'TS/RDS - Delete Temp Folders'
-  tag "gid": 'V-3456'
-  tag "rid": 'SV-52901r1_rule'
-  tag "stig_id": 'WN12-CC-000103'
-  tag "fix_id": 'F-45827r1_fix'
+  tag "gtitle": "TS/RDS - Delete Temp Folders"
+  tag "gid": "V-3456"
+  tag "rid": "SV-52901r1_rule"
+  tag "stig_id": "WN12-CC-000103"
+  tag "fix_id": "F-45827r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24304-8']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3456' do
     its('DeleteTempDirsOnExit') { should cmp == 1 }
   end
 end
+

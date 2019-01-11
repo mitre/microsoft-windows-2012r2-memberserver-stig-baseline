@@ -1,20 +1,29 @@
-control 'V-6834' do
-  title 'Anonymous access to Named Pipes and Shares must be restricted.'
+control "V-6834" do
+  title "Anonymous access to Named Pipes and Shares must be restricted."
   desc  "Allowing anonymous access to named pipes or shares provides the
   potential for unauthorized system access.  This setting restricts access to
   those defined in \"Network access: Named Pipes that can be accessed
   anonymously\" and \"Network access: Shares that can be accessed anonymously\",
   both of which must be blank under other requirements."
   impact 0.7
-  tag "gtitle": 'Anonymous Access to Named Pipes and Shares'
-  tag "gid": 'V-6834'
-  tag "rid": 'SV-52937r1_rule'
-  tag "stig_id": 'WN12-SO-000058'
-  tag "fix_id": 'F-45863r1_fix'
+  tag "gtitle": "Anonymous Access to Named Pipes and Shares"
+  tag "gid": "V-6834"
+  tag "rid": "SV-52937r1_rule"
+  tag "stig_id": "WN12-SO-000058"
+  tag "fix_id": "F-45863r1_fix"
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-24564-7']
   tag "nist": ['SC-4', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-6834' do
     its('restrictnullsessaccess') { should cmp == 1 }
   end
 end
+

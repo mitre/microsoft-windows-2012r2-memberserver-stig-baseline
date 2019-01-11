@@ -1,17 +1,26 @@
-control 'V-15682' do
-  title 'Attachments must be prevented from being downloaded from RSS feeds.'
+control "V-15682" do
+  title "Attachments must be prevented from being downloaded from RSS feeds."
   desc  "Attachments from RSS feeds may not be secure.  This setting will
   prevent attachments from being downloaded from RSS feeds."
   impact 0.5
-  tag "gtitle": 'RSS Attachment Downloads'
-  tag "gid": 'V-15682'
-  tag "rid": 'SV-53040r1_rule'
-  tag "stig_id": 'WN12-CC-000105'
-  tag "fix_id": 'F-45966r1_fix'
+  tag "gtitle": "RSS Attachment Downloads"
+  tag "gid": "V-15682"
+  tag "rid": "SV-53040r1_rule"
+  tag "stig_id": "WN12-CC-000105"
+  tag "fix_id": "F-45966r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25340-1']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -30,3 +39,4 @@ control 'V-15682' do
     its('DisableEnclosureDownload') { should cmp == 1 }
   end
 end
+

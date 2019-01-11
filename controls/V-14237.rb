@@ -1,20 +1,29 @@
-control 'V-14237' do
+control "V-14237" do
   title "User Account Control must be configured to detect application
   installations and prompt for elevation."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting requires Windows to respond to application installation requests
   by prompting for credentials."
   impact 0.5
-  tag "gtitle": 'UAC - Application Installations'
-  tag "gid": 'V-14237'
-  tag "rid": 'SV-52949r1_rule'
-  tag "stig_id": 'WN12-SO-000080'
-  tag "fix_id": 'F-45875r2_fix'
+  tag "gtitle": "UAC - Application Installations"
+  tag "gid": "V-14237"
+  tag "rid": "SV-52949r1_rule"
+  tag "stig_id": "WN12-SO-000080"
+  tag "fix_id": "F-45875r2_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-24498-8']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -46,3 +55,4 @@ control 'V-14237' do
     end
   end
 end
+

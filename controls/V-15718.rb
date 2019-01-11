@@ -1,18 +1,27 @@
-control 'V-15718' do
+control "V-15718" do
   title "Turning off File Explorer heap termination on corruption must be
   disabled."
-  desc "Legacy plug-in applications may continue to function when a File
+  desc  "Legacy plug-in applications may continue to function when a File
   Explorer session has become corrupt.  Disabling this feature will prevent this."
   impact 0.3
-  tag "gtitle": "Windows Explorer \xE2\x80\x93 Heap Termination"
-  tag "gid": 'V-15718'
-  tag "rid": 'SV-53137r1_rule'
-  tag "stig_id": 'WN12-CC-000090'
-  tag "fix_id": 'F-46063r1_fix'
+  tag "gtitle": "Windows Explorer – Heap Termination"
+  tag "gid": "V-15718"
+  tag "rid": "SV-53137r1_rule"
+  tag "stig_id": "WN12-CC-000090"
+  tag "fix_id": "F-46063r1_fix"
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-23913-7']
   tag "nist": ['SC-5', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -31,3 +40,4 @@ control 'V-15718' do
     its('NoHeapTerminationOnCorruption') { should cmp == 0 }
   end
 end
+

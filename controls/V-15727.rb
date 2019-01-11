@@ -1,17 +1,26 @@
-control 'V-15727' do
-  title 'Users must be prevented from sharing files in their profiles.'
+control "V-15727" do
+  title "Users must be prevented from sharing files in their profiles."
   desc  "Allowing users to share files in their profiles may provide
   unauthorized access or result in the exposure of sensitive data."
   impact 0.5
-  tag "gtitle": 'User Network Sharing'
-  tag "gid": 'V-15727'
-  tag "rid": 'SV-53140r2_rule'
-  tag "stig_id": 'WN12-UC-000012'
-  tag "fix_id": 'F-46066r1_fix'
+  tag "gtitle": "User Network Sharing"
+  tag "gid": "V-15727"
+  tag "rid": "SV-53140r2_rule"
+  tag "stig_id": "WN12-UC-000012"
+  tag "fix_id": "F-46066r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24063-0']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -31,3 +40,4 @@ control 'V-15727' do
     its('NoInPlaceSharing') { should == 1 }
   end
 end
+

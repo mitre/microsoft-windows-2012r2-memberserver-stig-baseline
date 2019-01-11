@@ -1,19 +1,28 @@
-control 'V-1128' do
+control "V-1128" do
   title "Security configuration tools or equivalent processes must be used to
   configure and maintain platforms for security compliance."
-  desc "Security configuration tools such as Group Policies and Security
+  desc  "Security configuration tools such as Group Policies and Security
   Templates allow system administrators to consolidate security-related system
   settings into a single configuration file.  These settings can then be applied
   consistently to any number of Windows machines."
   impact 0.3
-  tag "gtitle": 'Security Configuration Tools'
-  tag "gid": 'V-1128'
-  tag "rid": 'SV-52859r2_rule'
-  tag "stig_id": 'WN12-00-000013'
-  tag "fix_id": 'F-45785r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "Security Configuration Tools"
+  tag "gid": "V-1128"
+  tag "rid": "SV-52859r2_rule"
+  tag "stig_id": "WN12-00-000013"
+  tag "fix_id": "F-45785r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify security configuration tools or equivalent processes are
   being used to configure Windows systems to meet security requirements.  If
   security configuration tools or equivalent processes are not used, this is a

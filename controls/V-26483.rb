@@ -1,31 +1,40 @@
-control 'V-26483' do
+control "V-26483" do
   title "The Deny log on as a batch job user right on member servers must be
   configured to prevent access from highly privileged domain accounts on domain
   systems, and from unauthenticated access on all systems."
-  desc "Inappropriate granting of user rights can provide system,
+  desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
-  The \"Deny log on as a batch job\" user right defines accounts that are
+      The \"Deny log on as a batch job\" user right defines accounts that are
   prevented from logging on to the system as a batch job such, as Task Scheduler.
 
 
-  In an Active Directory Domain, denying logons to the Enterprise Admins and
+      In an Active Directory Domain, denying logons to the Enterprise Admins and
   Domain Admins groups on lower-trust systems helps mitigate the risk of
   privilege escalation from credential theft attacks which could lead to the
   compromise of an entire domain.
 
-  The Guests group must be assigned to prevent unauthenticated access.
+      The Guests group must be assigned to prevent unauthenticated access.
   "
   impact 0.5
-  tag "gtitle": 'Deny log on as a batch job'
-  tag "gid": 'V-26483'
-  tag "rid": 'SV-51502r1_rule'
-  tag "stig_id": 'WN12-UR-000018-MS'
-  tag "fix_id": 'F-44652r1_fix'
+  tag "gtitle": "Deny log on as a batch job"
+  tag "gid": "V-26483"
+  tag "rid": "SV-51502r1_rule"
+  tag "stig_id": "WN12-UR-000018-MS"
+  tag "fix_id": "F-44652r1_fix"
   tag "cci": ['CCI-000213']
   tag "cce": ['CCE-25215-5']
   tag "nist": ['AC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -51,7 +60,6 @@ control 'V-26483' do
 
   All Systems:
   Guests Group"
-
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
   if is_domain == 'WORKGROUP'
@@ -75,3 +83,4 @@ control 'V-26483' do
     end
   end
 end
+

@@ -1,18 +1,27 @@
-control 'V-43238' do
+control "V-43238" do
   title "The display of slide shows on the lock screen must be disabled
   (Windows 2012 R2)."
-  desc "Slide shows that are displayed on the lock screen could display
+  desc  "Slide shows that are displayed on the lock screen could display
   sensitive information to unauthorized personnel.  Turning off this feature will
   limit access to the information to a logged on user."
   impact 0.5
-  tag "gtitle": 'WINCC-000138'
-  tag "gid": 'V-43238'
-  tag "rid": 'SV-56343r2_rule'
-  tag "stig_id": 'WN12-CC-000138'
-  tag "fix_id": 'F-49190r1_fix'
-  tag "cci": ['CCI-000381']
+  tag "gtitle": "WINCC-000138"
+  tag "gid": "V-43238"
+  tag "rid": "SV-56343r2_rule"
+  tag "stig_id": "WN12-CC-000138"
+  tag "fix_id": "F-49190r1_fix"
+  tag "cci": ["CCI-000381"]
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "This requirement is NA for the initial release of Windows 2012.
    It is applicable to Windows 2012 R2.
 
@@ -46,3 +55,4 @@ control 'V-43238' do
     end
   end
 end
+

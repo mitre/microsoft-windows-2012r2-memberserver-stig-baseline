@@ -1,23 +1,32 @@
-control 'V-26487' do
+control "V-26487" do
   title "Unauthorized accounts must not have the Enable computer and user
   accounts to be trusted for delegation user right on member servers."
-  desc "Inappropriate granting of user rights can provide system,
+  desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
-  The \"Enable computer and user accounts to be trusted for delegation\" user
+      The \"Enable computer and user accounts to be trusted for delegation\" user
   right allows the \"Trusted for Delegation\" setting to be changed.  This could
   potentially allow unauthorized users to impersonate other users.
   "
   impact 0.5
-  tag "gtitle": 'Enable accounts to be trusted for delegation'
-  tag "gid": 'V-26487'
-  tag "rid": 'SV-51500r1_rule'
-  tag "stig_id": 'WN12-UR-000022-MS'
-  tag "fix_id": 'F-44649r1_fix'
+  tag "gtitle": "Enable accounts to be trusted for delegation"
+  tag "gid": "V-26487"
+  tag "rid": "SV-51500r1_rule"
+  tag "stig_id": "WN12-UR-000022-MS"
+  tag "fix_id": "F-44649r1_fix"
   tag "cci": ['CCI-002235']
   tag "cce": ['CCE-25270-0']
   tag "nist": ['AC-6 (10)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -34,3 +43,4 @@ control 'V-26487' do
     its('SeEnableDelegationPrivilege') { should eq [] }
   end
 end
+

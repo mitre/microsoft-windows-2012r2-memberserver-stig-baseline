@@ -1,18 +1,27 @@
-control 'V-3245' do
+control "V-3245" do
   title "Non system-created file shares on a system must limit access to groups
   that require it."
-  desc "Shares on a system provide network access.  To prevent exposing
+  desc  "Shares on a system provide network access.  To prevent exposing
   sensitive information, where shares are necessary, permissions must be
   reconfigured to give the minimum access to those accounts that require it."
   impact 0.5
-  tag "gtitle": 'File share ACLs'
-  tag "gid": 'V-3245'
-  tag "rid": 'SV-52881r3_rule'
-  tag "stig_id": 'WN12-GE-000018'
-  tag "fix_id": 'F-45807r4_fix'
-  tag "cci": ['CCI-001090']
+  tag "gtitle": "File share ACLs"
+  tag "gid": "V-3245"
+  tag "rid": "SV-52881r3_rule"
+  tag "stig_id": "WN12-GE-000018"
+  tag "fix_id": "F-45807r4_fix"
+  tag "cci": ["CCI-001090"]
   tag "nist": ['SC-4', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If only system-created shares such as \"ADMIN$\", \"C$\", and
   \"IPC$\" exist on the system, this is NA.
   (System-created shares will display a message that it has been shared for
@@ -37,7 +46,6 @@ control 'V-3245' do
   accounts that require it.
 
   Remove any unnecessary non-system-created shares."
-
   share_names = []
   share_paths = []
   get = command('Get-WMIObject -Query "SELECT * FROM Win32_Share" | Findstr /V "Name --"').stdout.strip.split("\n")
@@ -71,3 +79,4 @@ control 'V-3245' do
     end
   end
 end
+

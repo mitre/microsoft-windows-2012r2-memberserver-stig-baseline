@@ -1,19 +1,27 @@
-control 'V-40204' do
+control "V-40204" do
   title "Only the default client printer must be redirected to the Remote
   Desktop Session Host.  (Remote Desktop Services Role)."
-  desc "Allowing the redirection of only the default client printer to a
+  desc  "Allowing the redirection of only the default client printer to a
   Remote Desktop session helps reduce possible exposure of sensitive data."
   impact 0.5
-  tag "gtitle": 'WNCC-000136'
-  tag "gid": 'V-40204'
-  tag "rid": 'SV-52163r2_rule'
-  tag "stig_id": 'WN12-CC-000136'
-  tag "fix_id": 'F-45188r2_fix'
+  tag "gtitle": "WNCC-000136"
+  tag "gid": "V-40204"
+  tag "rid": "SV-52163r2_rule"
+  tag "stig_id": "WN12-CC-000136"
+  tag "fix_id": "F-45188r2_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24504-3']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECSC-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECSC-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +41,4 @@ control 'V-40204' do
     its('RedirectOnlyDefaultClientPrinter') { should cmp == 1 }
   end
 end
+

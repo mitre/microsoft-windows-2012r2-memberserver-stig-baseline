@@ -1,5 +1,5 @@
-control 'V-2374' do
-  title 'Autoplay must be disabled for all drives.'
+control "V-2374" do
+  title "Autoplay must be disabled for all drives."
   desc  "Allowing Autoplay to execute may introduce malicious code to a system.
   Autoplay begins reading from a drive as soon media is inserted into the drive.
   As a result, the setup file of programs or music on audio media may start.  By
@@ -7,15 +7,24 @@ control 'V-2374' do
   drive (but not the CD-ROM drive) and on network drives.  Enabling this policy
   disables Autoplay on all drives."
   impact 0.7
-  tag "gtitle": 'Disable Media Autoplay'
-  tag "gid": 'V-2374'
-  tag "rid": 'SV-52879r2_rule'
-  tag "stig_id": 'WN12-CC-000074'
-  tag "fix_id": 'F-45805r1_fix'
+  tag "gtitle": "Disable Media Autoplay"
+  tag "gid": "V-2374"
+  tag "rid": "SV-52879r2_rule"
+  tag "stig_id": "WN12-CC-000074"
+  tag "fix_id": "F-45805r1_fix"
   tag "cci": ['CCI-001764']
   tag "cce": ['CCE-23878-2']
   tag "nist": ['CM-7 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,3 +44,4 @@ control 'V-2374' do
     its('NoDriveTypeAutoRun') { should cmp == 255 }
   end
 end
+

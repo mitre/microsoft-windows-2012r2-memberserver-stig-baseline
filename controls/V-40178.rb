@@ -1,23 +1,32 @@
-control 'V-40178' do
+control "V-40178" do
   title "Permissions for system drive root directory (usually C:\\) must
   conform to minimum requirements."
-  desc "Changing the system's file and directory permissions allows the
+  desc  "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
-  The default permissions are adequate when the Security Option \"Network
+      The default permissions are adequate when the Security Option \"Network
   access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": 'WNGE-000006'
-  tag "gid": 'V-40178'
-  tag "rid": 'SV-52136r3_rule'
-  tag "stig_id": 'WN12-GE-000006'
-  tag "fix_id": 'F-45162r1_fix'
-  tag "cci": ['CCI-002165']
+  tag "gtitle": "WNGE-000006"
+  tag "gid": "V-40178"
+  tag "rid": "SV-52136r3_rule"
+  tag "stig_id": "WN12-GE-000006"
+  tag "fix_id": "F-45162r1_fix"
+  tag "cci": ["CCI-002165"]
   tag "nist": ['AC-3 (4)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).  If the default ACLs are maintained and the referenced
@@ -89,3 +98,4 @@ control 'V-40178' do
     end
   end
 end
+

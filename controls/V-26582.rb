@@ -1,18 +1,27 @@
-control 'V-26582' do
-  title 'The System event log size must be configured to 32768 KB or greater.'
+control "V-26582" do
+  title "The System event log size must be configured to 32768 KB or greater."
   desc  "Inadequate log size will cause the log to fill up quickly. This may
   prevent audit events from being recorded properly and require frequent
   attention by administrative personnel."
   impact 0.5
-  tag "gtitle": 'Maximum Log Size - System'
-  tag "gid": 'V-26582'
-  tag "rid": 'SV-52963r2_rule'
-  tag "stig_id": 'WN12-CC-000087'
-  tag "fix_id": 'F-71607r2_fix'
+  tag "gtitle": "Maximum Log Size - System"
+  tag "gid": "V-26582"
+  tag "rid": "SV-52963r2_rule"
+  tag "stig_id": "WN12-CC-000087"
+  tag "fix_id": "F-71607r2_fix"
   tag "cci": ['CCI-001849']
   tag "cce": ['CCE-24411-1']
   tag "nist": ['AU-4', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the system is configured to write events directly to an
   audit server, this is NA.
 
@@ -35,3 +44,4 @@ control 'V-26582' do
     its('MaxSize') { should cmp >= 32768 }
   end
 end
+

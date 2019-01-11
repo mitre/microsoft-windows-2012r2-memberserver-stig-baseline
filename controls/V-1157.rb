@@ -1,19 +1,28 @@
-control 'V-1157' do
+control "V-1157" do
   title "The Smart Card removal option must be configured to Force Logoff or
   Lock Workstation."
-  desc "Unattended systems are susceptible to unauthorized use and must be
+  desc  "Unattended systems are susceptible to unauthorized use and must be
   locked.  Configuring a system to lock when a smart card is removed will ensure
   the system is inaccessible when unattended."
   impact 0.5
-  tag "gtitle": 'Smart Card Removal Option '
-  tag "gid": 'V-1157'
-  tag "rid": 'SV-52867r2_rule'
-  tag "stig_id": 'WN12-SO-000027'
-  tag "fix_id": 'F-45793r1_fix'
+  tag "gtitle": "Smart Card Removal Option "
+  tag "gid": "V-1157"
+  tag "rid": "SV-52867r2_rule"
+  tag "stig_id": "WN12-SO-000027"
+  tag "fix_id": "F-45793r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24154-7']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -46,3 +55,4 @@ control 'V-1157' do
     end
   end
 end
+

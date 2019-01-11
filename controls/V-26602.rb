@@ -1,17 +1,26 @@
-control 'V-26602' do
-  title 'The Microsoft FTP service must not be installed unless required.'
+control "V-26602" do
+  title "The Microsoft FTP service must not be installed unless required."
   desc  "Unnecessary services increase the attack surface of a system. Some of
   these services may not support required levels of authentication or encryption."
   impact 0.5
-  tag "gtitle": 'Microsoft FTP Service Disabled'
-  tag "gid": 'V-26602'
-  tag "rid": 'SV-52237r4_rule'
-  tag "stig_id": 'WN12-SV-000101'
-  tag "fix_id": 'F-74887r1_fix'
+  tag "gtitle": "Microsoft FTP Service Disabled"
+  tag "gid": "V-26602"
+  tag "rid": "SV-52237r4_rule"
+  tag "stig_id": "WN12-SV-000101"
+  tag "fix_id": "F-74887r1_fix"
   tag "cci": ['CCI-000382']
   tag "cce": ['CCE-23863-4']
   tag "nist": ['CM-7 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the server has the role of an FTP server, this is NA.
 
   Run \"Services.msc\".
@@ -29,6 +38,7 @@ control 'V-26602' do
   Select the appropriate server on the \"Server Selection\" page, click \"Next\".
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
+
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
 
   if is_ftp_installed == 'False'
@@ -44,3 +54,4 @@ control 'V-26602' do
     end
   end
 end
+

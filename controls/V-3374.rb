@@ -1,19 +1,28 @@
-control 'V-3374' do
-  title 'The system must be configured to require a strong session key.'
+control "V-3374" do
+  title "The system must be configured to require a strong session key."
   desc  "A computer connecting to a domain controller will establish a secure
   channel.  Requiring strong session keys enforces 128-bit encryption between
   systems."
   impact 0.5
-  tag "gtitle": 'Strong Session Key'
-  tag "gid": 'V-3374'
-  tag "rid": 'SV-52888r2_rule'
-  tag "stig_id": 'WN12-SO-000017'
-  tag "fix_id": 'F-45814r1_fix'
+  tag "gtitle": "Strong Session Key"
+  tag "gid": "V-3374"
+  tag "rid": "SV-52888r2_rule"
+  tag "stig_id": "WN12-SO-000017"
+  tag "fix_id": "F-45814r1_fix"
   tag "cci": ['CCI-002418', 'CCI-002421']
   tag "cce": ['CCE-25198-3']
   tag "nist": ['SC-8', 'Rev_4']
   tag "nist": ['CM-9 c', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,3 +44,4 @@ control 'V-3374' do
     its('RequireStrongKey') { should cmp == 1 }
   end
 end
+

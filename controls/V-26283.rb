@@ -1,18 +1,27 @@
-control 'V-26283' do
-  title 'Anonymous enumeration of SAM accounts must not be allowed.'
+control "V-26283" do
+  title "Anonymous enumeration of SAM accounts must not be allowed."
   desc  "Anonymous enumeration of SAM accounts allows anonymous log on users
   (null session connections) to list all accounts names, thus providing a list of
   potential points to attack the system."
   impact 0.7
-  tag "gtitle": 'Restrict Anonymous SAM Enumeration'
-  tag "gid": 'V-26283'
-  tag "rid": 'SV-53122r1_rule'
-  tag "stig_id": 'WN12-SO-000051'
-  tag "fix_id": 'F-46048r1_fix'
+  tag "gtitle": "Restrict Anonymous SAM Enumeration"
+  tag "gid": "V-26283"
+  tag "rid": "SV-53122r1_rule"
+  tag "stig_id": "WN12-SO-000051"
+  tag "fix_id": "F-46048r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23082-1']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-26283' do
     its('RestrictAnonymousSAM') { should cmp == 1 }
   end
 end
+

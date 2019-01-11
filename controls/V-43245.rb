@@ -1,22 +1,31 @@
-control 'V-43245' do
+control "V-43245" do
   title "Automatically signing in the last interactive user after a
   system-initiated restart must be disabled (Windows 2012 R2)."
-  desc "Windows 2012 R2 can be configured to automatically sign the user back
+  desc  "Windows 2012 R2 can be configured to automatically sign the user back
   in after a Windows Update restart.  Some protections are in place to help
   ensure this is done in a secure fashion; however, disabling this will prevent
   the caching of credentials for this purpose and also ensure the user is aware
   of the restart."
   impact 0.5
-  tag "gtitle": 'WINCC-000145'
-  tag "gid": 'V-43245'
-  tag "rid": 'SV-56355r2_rule'
-  tag "stig_id": 'WN12-CC-000145'
-  tag "fix_id": 'F-49196r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "WINCC-000145"
+  tag "gid": "V-43245"
+  tag "rid": "SV-56355r2_rule"
+  tag "stig_id": "WN12-CC-000145"
+  tag "fix_id": "F-49196r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "This requirement is NA for the initial release of Windows 2012.
-  It is applicable to Windows 2012 R2.
+   It is applicable to Windows 2012 R2.
 
   Verify the registry value below.  If it does not exist or is not configured as
   specified, this is a finding.
@@ -48,3 +57,4 @@ control 'V-43245' do
     end
   end
 end
+

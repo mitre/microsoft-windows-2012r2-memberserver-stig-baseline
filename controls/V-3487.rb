@@ -1,20 +1,29 @@
-control 'V-3487' do
+control "V-3487" do
   title "Necessary services must be documented to maintain a baseline to
   determine if additional, unnecessary services have been added to a system."
-  desc "Unnecessary services increase the attack surface of a system. Some
+  desc  "Unnecessary services increase the attack surface of a system. Some
   services may be run under the local System account, which generally has more
   permissions than required by the service.  Compromising a service could allow
   an intruder to obtain system permissions and open the system to a variety of
   attacks."
   impact 0.5
-  tag "gtitle": 'Unnecessary Services'
-  tag "gid": 'V-3487'
-  tag "rid": 'SV-52218r2_rule'
-  tag "stig_id": 'WN12-GE-000021'
-  tag "fix_id": 'F-45237r1_fix'
-  tag "cci": ['CCI-000381']
+  tag "gtitle": "Unnecessary Services"
+  tag "gid": "V-3487"
+  tag "rid": "SV-52218r2_rule"
+  tag "stig_id": "WN12-GE-000021"
+  tag "fix_id": "F-45237r1_fix"
+  tag "cci": ["CCI-000381"]
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Required services will vary between organizations, and on the
   role of the individual system.  Organizations will develop their own list of
   services which will be documented and justified with the ISSO.  The site's list
@@ -170,3 +179,4 @@ control 'V-3487' do
     skip 'is a manual check'
   end
 end
+

@@ -1,25 +1,34 @@
-control 'V-57637' do
+control "V-57637" do
   title "The operating system must employ a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs."
-  desc "Utilizing a whitelist provides a configuration management method for
+  desc  "Utilizing a whitelist provides a configuration management method for
   allowing the execution of only authorized software. Using only authorized
   software decreases risk by limiting the number of potential vulnerabilities.
 
-  The organization must identify authorized software programs and only permit
+      The organization must identify authorized software programs and only permit
   execution of authorized software. The process used to identify software
   programs that are authorized to execute on organizational information systems
   is commonly referred to as whitelisting.
   "
   impact 0.5
-  tag "gtitle": 'WIN00-000018'
-  tag "gid": 'V-57637'
-  tag "rid": 'SV-72047r4_rule'
-  tag "stig_id": 'WN12-00-000018'
-  tag "fix_id": 'F-66567r4_fix'
-  tag "cci": ['CCI-001774']
+  tag "gtitle": "WIN00-000018"
+  tag "gid": "V-57637"
+  tag "rid": "SV-72047r5_rule"
+  tag "stig_id": "WN12-00-000018"
+  tag "fix_id": "F-66567r6_fix"
+  tag "cci": ["CCI-001774"]
   tag "nist": ['CM-7 (5) (b)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "check": "This is applicable to unclassified systems, for other systems
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
+  tag "check": "This is applicable to unclassified systems; for other systems
   this is NA.
 
   Verify the operating system employs a deny-all, permit-by-exception policy to
@@ -50,16 +59,12 @@ control 'V-57637' do
   a browser or opened in a program such as Excel for review.
 
   Implementation guidance for AppLocker is available in the NSA paper
-  \"Application Whitelisting using Microsoft AppLocker\" under the Microsoft
-  Windows section of the following link:
+  \"Application Whitelisting using Microsoft AppLocker\" at the following link:
 
-  https://www.nsa.gov/ia/mitigation_guidance/security_configuration_guides/operating_systems.shtml"
-  tag "fix": "This is applicable to unclassified systems, for other systems
-  this is NA.
-
-  Configure an application whitelisting program to employ a deny-all,
-  permit-by-exception policy to allow the execution of authorized software
-  programs.
+  https://www.iad.gov/iad/library/ia-guidance/tech-briefs/application-whitelisting-using-microsoft-applocker.cfm"
+  tag "fix": "Configure an application whitelisting program to employ a
+  deny-all, permit-by-exception policy to allow the execution of authorized
+  software programs.
 
   Configuration of whitelisting applications will vary by the program.  AppLocker
   is a whitelisting application built into Windows Server 2012.
@@ -69,12 +74,13 @@ control 'V-57637' do
   Policies >> AppLocker.
 
   Implementation guidance for AppLocker is available in the NSA paper
-  \"Application Whitelisting using Microsoft AppLocker\" under the Microsoft
-  Windows section of the following link:
+  \"Application Whitelisting using Microsoft AppLocker\" at the following link:
 
-  https://www.nsa.gov/ia/mitigation_guidance/security_configuration_guides/operating_systems.shtml"
-  describe "he operating system must employ a deny-all, permit-by-exception
+  https://www.iad.gov/iad/library/ia-guidance/tech-briefs/application-whitelisting-using-microsoft-applocker.cfm"
+  describe "A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs" do
-    skip 'is a manual check'
+    skip 'A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
+  policy to allow the execution of authorized software programs'
   end
 end
+

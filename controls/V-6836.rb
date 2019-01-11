@@ -1,19 +1,28 @@
-control 'V-6836' do
-  title 'Passwords must, at a minimum, be 14 characters.'
+control "V-6836" do
+  title "Passwords must, at a minimum, be 14 characters."
   desc  "Information systems not protected with strong password schemes
   (including passwords of minimum length) provide the opportunity for anyone to
   crack the password, thus gaining access to the system and compromising the
   device, information, or the local network."
   impact 0.5
-  tag "gtitle": 'Minimum Password Length'
-  tag "gid": 'V-6836'
-  tag "rid": 'SV-52938r2_rule'
-  tag "stig_id": 'WN12-AC-000007'
-  tag "fix_id": 'F-45864r1_fix'
+  tag "gtitle": "Minimum Password Length"
+  tag "gid": "V-6836"
+  tag "rid": "SV-52938r2_rule"
+  tag "stig_id": "WN12-AC-000007"
+  tag "fix_id": "F-45864r1_fix"
   tag "cci": ['CCI-000205']
   tag "cce": ['CCE-25317-9']
   tag "nist": ['IA-5 (1) (a)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -29,3 +38,4 @@ control 'V-6836' do
     its('MinimumPasswordLength') { should be >= 14 }
   end
 end
+

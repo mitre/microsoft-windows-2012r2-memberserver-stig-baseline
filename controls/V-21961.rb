@@ -1,17 +1,26 @@
-control 'V-21961' do
-  title 'All Direct Access traffic must be routed through the internal network.'
+control "V-21961" do
+  title "All Direct Access traffic must be routed through the internal network."
   desc  "Routing all Direct Access  traffic through the internal network allows
   monitoring and prevents split tunneling."
   impact 0.3
-  tag "gtitle": "Direct Access \xE2\x80\x93 Route Through Internal Network"
-  tag "gid": 'V-21961'
-  tag "rid": 'SV-53183r1_rule'
-  tag "stig_id": 'WN12-CC-000006'
-  tag "fix_id": 'F-46109r1_fix'
+  tag "gtitle": "Direct Access – Route Through Internal Network"
+  tag "gid": "V-21961"
+  tag "rid": "SV-53183r1_rule"
+  tag "stig_id": "WN12-CC-000006"
+  tag "fix_id": "F-46109r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25221-3']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -30,3 +39,4 @@ control 'V-21961' do
     its('Force_Tunneling') { should eq 1 }
   end
 end
+

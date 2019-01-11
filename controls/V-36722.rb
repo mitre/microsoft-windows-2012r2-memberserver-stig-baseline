@@ -1,21 +1,30 @@
-control 'V-36722' do
+control "V-36722" do
   title "Permissions for the Application event log must prevent access by
   nonprivileged accounts."
-  desc "Maintaining an audit trail of system activity logs can help identify
+  desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.  The
-  Application event log may be susceptible to tampering if proper permissions
+  Application event log may be  susceptible to tampering if proper permissions
   are not applied."
   impact 0.5
-  tag "gtitle": 'WINAU-000204'
-  tag "gid": 'V-36722'
-  tag "rid": 'SV-51569r1_rule'
-  tag "stig_id": 'WN12-AU-000204'
-  tag "fix_id": 'F-44699r1_fix'
-  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164']
+  tag "gtitle": "WINAU-000204"
+  tag "gid": "V-36722"
+  tag "rid": "SV-51569r1_rule"
+  tag "stig_id": "WN12-AU-000204"
+  tag "fix_id": "F-44699r1_fix"
+  tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164"]
+  tag "nist": ['AU-9', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECTP-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECTP-1"
   tag "check": "Verify the permissions on the Application event log
   (Application.evtx).  Standard user accounts or groups must not have greater
   than Read access.  The default permissions listed below satisfy this
@@ -50,3 +59,4 @@ control 'V-36722' do
     its('stdout') { should eq "Access : NT SERVICE\\EventLog Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n" }
   end
 end
+

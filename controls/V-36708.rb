@@ -1,18 +1,27 @@
-control 'V-36708' do
-  title 'The location feature must be turned off.'
+control "V-36708" do
+  title "The location feature must be turned off."
   desc  "The location service on systems may allow sensitive data to be used by
   applications on the system.  This should be turned off unless explicitly
   allowed for approved systems/applications."
   impact 0.5
-  tag "gtitle": 'WINCC-000095'
-  tag "gid": 'V-36708'
-  tag "rid": 'SV-51748r2_rule'
-  tag "stig_id": 'WN12-CC-000095'
-  tag "fix_id": 'F-44823r2_fix'
+  tag "gtitle": "WINCC-000095"
+  tag "gid": "V-36708"
+  tag "rid": "SV-51748r2_rule"
+  tag "stig_id": "WN12-CC-000095"
+  tag "fix_id": "F-44823r2_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-25343-5']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -37,3 +46,4 @@ control 'V-36708' do
     its('DisableLocation') { should cmp == 1 }
   end
 end
+

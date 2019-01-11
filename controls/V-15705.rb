@@ -1,19 +1,28 @@
-control 'V-15705' do
+control "V-15705" do
   title "Users must be prompted to authenticate on resume from sleep (on
   battery)."
-  desc "Authentication must always be required when accessing a system.  This
+  desc  "Authentication must always be required when accessing a system.  This
   setting ensures the user is prompted for a password on resume from sleep (on
   battery)."
   impact 0.5
-  tag "gtitle": "Power Mgmt \xE2\x80\x93 Password Wake on Battery"
-  tag "gid": 'V-15705'
-  tag "rid": 'SV-53131r1_rule'
-  tag "stig_id": 'WN12-CC-000054'
-  tag "fix_id": 'F-46057r1_fix'
+  tag "gtitle": "Power Mgmt – Password Wake on Battery"
+  tag "gid": "V-15705"
+  tag "rid": "SV-53131r1_rule"
+  tag "stig_id": "WN12-CC-000054"
+  tag "fix_id": "F-46057r1_fix"
   tag "cci": ['CCI-002038']
   tag "cce": ['CCE-23998-8']
   tag "nist": ['IA-11', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +42,4 @@ control 'V-15705' do
     its('DCSettingIndex') { should cmp == 1 }
   end
 end
+

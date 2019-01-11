@@ -1,25 +1,34 @@
-control 'V-73519' do
+control "V-73519" do
   title "The Server Message Block (SMB) v1 protocol must be disabled on the SMB
   server."
-  desc "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
+  desc  "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB.
   MD5 is known to be vulnerable to a number of attacks such as collision and
   preimage attacks as well as not being FIPS compliant.
 
-  Disabling SMBv1 support may prevent access to file or print sharing
+      Disabling SMBv1 support may prevent access to file or print sharing
   resources with systems or devices that only support SMBv1. File shares and
   print services hosted on Windows Server 2003 are an example, however Windows
   Server 2003 is no longer a supported operating system. Some older network
   attached devices may only support SMBv1.
   "
   impact 0.5
-  tag "gtitle": 'WIN00-000170'
-  tag "gid": 'V-73519'
-  tag "rid": 'SV-88193r2_rule'
-  tag "stig_id": 'WN12-00-000170'
-  tag "fix_id": 'F-82945r1_fix'
-  tag "cci": ['CCI-000381']
+  tag "gtitle": "WIN00-000170"
+  tag "gid": "V-73519"
+  tag "rid": "SV-88193r2_rule"
+  tag "stig_id": "WN12-00-000170"
+  tag "fix_id": "F-82945r1_fix"
+  tag "cci": ["CCI-000381"]
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "This requirement specifically applies to Windows 2012 but can
   also be used for Windows 2012 R2.
 
@@ -51,3 +60,4 @@ control 'V-73519' do
     its('SMB1') { should cmp == 0 }
   end
 end
+

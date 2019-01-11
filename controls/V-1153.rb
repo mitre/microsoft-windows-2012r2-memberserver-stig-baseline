@@ -1,4 +1,4 @@
-control 'V-1153' do
+control "V-1153" do
   title "The LanMan authentication level must be set to send NTLMv2 response
   only, and to refuse LM and NTLM."
   desc  "The Kerberos v5 authentication protocol is the default for
@@ -8,15 +8,24 @@ control 'V-1153' do
   applications that still use it.  It is also used to authenticate logons to
   stand-alone computers that are running later versions."
   impact 0.7
-  tag "gtitle": 'LanMan Authentication Level'
-  tag "gid": 'V-1153'
-  tag "rid": 'SV-52865r1_rule'
-  tag "stig_id": 'WN12-SO-000067'
-  tag "fix_id": 'F-45791r1_fix'
+  tag "gtitle": "LanMan Authentication Level"
+  tag "gid": "V-1153"
+  tag "rid": "SV-52865r1_rule"
+  tag "stig_id": "WN12-SO-000067"
+  tag "fix_id": "F-45791r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24650-4']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-1153' do
     its('LmCompatibilityLevel') { should cmp == 5 }
   end
 end
+

@@ -1,4 +1,4 @@
-control 'V-3470' do
+control "V-3470" do
   title "The system must be configured to prevent unsolicited remote assistance
   offers."
   desc  "Remote assistance allows another user to view or take control of the
@@ -6,15 +6,24 @@ control 'V-3470' do
   by the remote user.  This may allow unauthorized parties access to the
   resources on the computer."
   impact 0.5
-  tag "gtitle": 'Remote Assistance - Offer Remote Assistance'
-  tag "gid": 'V-3470'
-  tag "rid": 'SV-52917r1_rule'
-  tag "stig_id": 'WN12-CC-000058'
-  tag "fix_id": 'F-45843r1_fix'
+  tag "gtitle": "Remote Assistance - Offer Remote Assistance"
+  tag "gid": "V-3470"
+  tag "rid": "SV-52917r1_rule"
+  tag "stig_id": "WN12-CC-000058"
+  tag "fix_id": "F-45843r1_fix"
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-23282-7']
   tag "nist": ['SC-4', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +42,4 @@ control 'V-3470' do
     its('fAllowUnsolicited') { should cmp == 0 }
   end
 end
+

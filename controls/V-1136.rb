@@ -1,5 +1,5 @@
-control 'V-1136' do
-  title 'Users must be forcibly disconnected when their logon hours expire.'
+control "V-1136" do
+  title "Users must be forcibly disconnected when their logon hours expire."
   desc  "Users must not be permitted to remain logged on to the network after
   they have exceeded their permitted logon hours.  In many cases, this indicates
   that a user forgot to log off before leaving for the day.  However, it may also
@@ -8,15 +8,24 @@ control 'V-1136' do
   hours expire protects critical and sensitive network data from exposure to
   unauthorized personnel with physical access to the computer."
   impact 0.3
-  tag "gtitle": 'Forcibly Disconnect when Logon Hours Expire'
-  tag "gid": 'V-1136'
-  tag "rid": 'SV-52860r1_rule'
-  tag "stig_id": 'WN12-SO-000034'
-  tag "fix_id": 'F-45786r1_fix'
+  tag "gtitle": "Forcibly Disconnect when Logon Hours Expire"
+  tag "gid": "V-1136"
+  tag "rid": "SV-52860r1_rule"
+  tag "stig_id": "WN12-SO-000034"
+  tag "fix_id": "F-45786r1_fix"
   tag "cci": ['CCI-001133']
   tag "cce": ['CCE-24148-9']
   tag "nist": ['SC-10', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-1136' do
     its('EnableForcedLogOff') { should cmp == 1 }
   end
 end
+

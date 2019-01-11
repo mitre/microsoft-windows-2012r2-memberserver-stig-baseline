@@ -1,4 +1,4 @@
-control 'V-36451' do
+control "V-36451" do
   title "Administrative accounts must not be used with applications that access
   the Internet, such as web browsers, or with potential Internet sources, such as
   email."
@@ -9,27 +9,36 @@ control 'V-36451' do
   vectors for introducing malicious code and must not be run with an
   administrative account.
 
-  Since administrative accounts may generally change or work around technical
+      Since administrative accounts may generally change or work around technical
   restrictions for running a web browser or other applications, it is essential
   that policy requires administrative accounts to not access the Internet or use
   applications, such as email.
 
-  The policy should define specific exceptions for local service
+      The policy should define specific exceptions for local service
   administration.  These exceptions may include HTTP(S)-based tools that are used
-  from the administration of the local system, services, or attached devices.
+  for the administration of the local system, services, or attached devices.
 
-  Technical means such as application whitelisting can be used to enforce the
+      Technical means such as application whitelisting can be used to enforce the
   policy to ensure compliance.
   "
   impact 0.7
-  tag "gtitle": 'Accounts with administrative privileges Internet access'
-  tag "gid": 'V-36451'
-  tag "rid": 'SV-51578r2_rule'
-  tag "stig_id": 'WN12-00-000008'
-  tag "fix_id": 'F-81021r2_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "Accounts with administrative privileges Internet access"
+  tag "gid": "V-36451"
+  tag "rid": "SV-51578r2_rule"
+  tag "stig_id": "WN12-00-000008"
+  tag "fix_id": "F-81021r2_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Determine whether administrative accounts are prevented from
   using applications that access the Internet, such as web browsers, or with
   potential Internet sources, such as email, except as necessary for local
@@ -66,3 +75,4 @@ control 'V-36451' do
     skip 'is a manual check'
   end
 end
+

@@ -1,21 +1,30 @@
-control 'V-1150' do
-  title 'The built-in Windows password complexity policy must be enabled.'
+control "V-1150" do
+  title "The built-in Windows password complexity policy must be enabled."
   desc  "The use of complex passwords increases their strength against attack.
   The built-in Windows password complexity policy requires passwords to contain
   at least 3 of the 4 types of characters (numbers, upper- and lower-case
   letters, and special characters), as well as preventing the inclusion of user
   names or parts of."
   impact 0.5
-  tag "gtitle": 'Microsoft Strong Password Filtering'
-  tag "gid": 'V-1150'
-  tag "rid": 'SV-52863r2_rule'
-  tag "stig_id": 'WN12-AC-000008'
-  tag "fix_id": 'F-45789r2_fix'
+  tag "gtitle": "Microsoft Strong Password Filtering"
+  tag "gid": "V-1150"
+  tag "rid": "SV-52863r2_rule"
+  tag "stig_id": "WN12-AC-000008"
+  tag "fix_id": "F-45789r2_fix"
   tag "cci": ['CCI-000192', 'CCI-000193', 'CCI-000194',
               'CCI-001619']
   tag "cce": ['CCE-25602-4']
   tag "nist": ['IA-5 (1) (a)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -36,3 +45,4 @@ control 'V-1150' do
     its('PasswordComplexity') { should eq 1 }
   end
 end
+

@@ -1,20 +1,29 @@
-control 'V-11806' do
+control "V-11806" do
   title "The system must be configured to prevent the display of the last
   username on the logon screen."
-  desc "Displaying the username of the last logged on user provides half of
+  desc  "Displaying the username of the last logged on user provides half of
   the userid/password equation that an unauthorized person would need to gain
   access.  The username of the last user to log on to a system must not be
   displayed."
   impact 0.3
-  tag "gtitle": 'Display of Last User Name'
-  tag "gid": 'V-11806'
-  tag "rid": 'SV-52941r1_rule'
-  tag "stig_id": 'WN12-SO-000018'
-  tag "fix_id": 'F-45867r1_fix'
+  tag "gtitle": "Display of Last User Name"
+  tag "gid": "V-11806"
+  tag "rid": "SV-52941r1_rule"
+  tag "stig_id": "WN12-SO-000018"
+  tag "fix_id": "F-45867r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24748-6']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-11806' do
     its('DontDisplayLastUserName') { should cmp == 1 }
   end
 end
+

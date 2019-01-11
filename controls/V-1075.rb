@@ -1,20 +1,29 @@
-control 'V-1075' do
-  title 'The shutdown option must not be available from the logon dialog box.'
+control "V-1075" do
+  title "The shutdown option must not be available from the logon dialog box."
   desc  "Displaying the shutdown button may allow individuals to shut down a
   system anonymously.  Only authenticated users should be allowed to shut down
   the system.  Preventing display of this button in the logon dialog box ensures
   that individuals who shut down the system are authorized and tracked in the
   system's Security event log."
   impact 0.3
-  tag "gtitle": 'Display Shutdown Button'
-  tag "gid": 'V-1075'
-  tag "rid": 'SV-52840r1_rule'
-  tag "stig_id": 'WN12-SO-000073'
-  tag "fix_id": 'F-45766r1_fix'
+  tag "gtitle": "Display Shutdown Button"
+  tag "gid": "V-1075"
+  tag "rid": "SV-52840r1_rule"
+  tag "stig_id": "WN12-SO-000073"
+  tag "fix_id": "F-45766r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25100-9']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,3 +44,4 @@ control 'V-1075' do
     its('ShutdownWithoutLogon') { should cmp == 0 }
   end
 end
+

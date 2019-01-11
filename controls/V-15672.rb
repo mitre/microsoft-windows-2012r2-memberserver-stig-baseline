@@ -1,18 +1,27 @@
-control 'V-15672' do
-  title 'Event Viewer Events.asp links must be turned off.'
+control "V-15672" do
+  title "Event Viewer Events.asp links must be turned off."
   desc  "Viewing events is a function of administrators, who must not access
-  the internet with privileged accounts.  This setting will disable Events.asp
+  the internet with privileged accounts.  This setting will disable  Events.asp
   hyperlinks in Event Viewer to prevent links to the internet from within events."
   impact 0.3
-  tag "gtitle": 'Event Viewer Events.asp Links'
-  tag "gid": 'V-15672'
-  tag "rid": 'SV-53017r1_rule'
-  tag "stig_id": 'WN12-CC-000033'
-  tag "fix_id": 'F-45944r1_fix'
+  tag "gtitle": "Event Viewer Events.asp Links"
+  tag "gid": "V-15672"
+  tag "rid": "SV-53017r1_rule"
+  tag "stig_id": "WN12-CC-000033"
+  tag "fix_id": "F-45944r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-24235-4']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-15672' do
     its('MicrosoftEventVwrDisableLinks') { should cmp == 1 }
   end
 end
+

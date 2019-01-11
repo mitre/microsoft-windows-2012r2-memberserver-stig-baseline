@@ -1,19 +1,28 @@
-control 'V-21951' do
+control "V-21951" do
   title "Services using Local System that use Negotiate when reverting to NTLM
   authentication must use the computer identity vs. authenticating anonymously."
-  desc "Services using Local System that use Negotiate when reverting to NTLM
+  desc  "Services using Local System that use Negotiate when reverting to NTLM
   authentication may gain unauthorized access if allowed to authenticate
   anonymously vs. using the computer identity."
   impact 0.5
-  tag "gtitle": 'Computer Identity Authentication for NTLM'
-  tag "gid": 'V-21951'
-  tag "rid": 'SV-53176r1_rule'
-  tag "stig_id": 'WN12-SO-000061'
-  tag "fix_id": 'F-46102r1_fix'
+  tag "gtitle": "Computer Identity Authentication for NTLM"
+  tag "gid": "V-21951"
+  tag "rid": "SV-53176r1_rule"
+  tag "stig_id": "WN12-SO-000061"
+  tag "fix_id": "F-46102r1_fix"
   tag "cci": ['CCI-000778']
   tag "cce": ['CCE-25508-3']
   tag "nist": ['IA-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +42,4 @@ control 'V-21951' do
     its('UseMachineId') { should cmp == 1 }
   end
 end
+

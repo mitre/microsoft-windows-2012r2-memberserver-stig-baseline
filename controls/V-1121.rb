@@ -1,18 +1,27 @@
-control 'V-1121' do
+control "V-1121" do
   title "File Transfer Protocol (FTP) servers must be configured to prevent
   access to the system drive."
-  desc "The FTP service allows remote users to access shared files and
+  desc  "The FTP service allows remote users to access shared files and
   directories.  Access outside of the specific directories of shared data could
   provide access to system resources and compromise the system."
   impact 0.7
-  tag "gtitle": 'FTP System File Access'
-  tag "gid": 'V-1121'
-  tag "rid": 'SV-52212r2_rule'
-  tag "stig_id": 'WN12-GE-000027'
-  tag "fix_id": 'F-81019r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "FTP System File Access"
+  tag "gid": "V-1121"
+  tag "rid": "SV-52212r2_rule"
+  tag "stig_id": "WN12-GE-000027"
+  tag "fix_id": "F-81019r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If FTP is not installed on the system, this is NA.
 
   Determine the IP address and port number assigned to FTP sites from
@@ -69,3 +78,4 @@ control 'V-1121' do
     end
   end
 end
+

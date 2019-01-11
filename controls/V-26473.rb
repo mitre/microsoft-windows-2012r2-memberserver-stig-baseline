@@ -1,22 +1,31 @@
-control 'V-26473' do
+control "V-26473" do
   title "The Allow log on through Remote Desktop Services user right must only
   be assigned to the Administrators group and other approved groups."
-  desc "Inappropriate granting of user rights can provide system,
+  desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
-  Accounts with the \"Allow log on through Remote Desktop Services\" user
+    Accounts with the \"Allow log on through Remote Desktop Services\" user
   right can access a system through Remote Desktop.
   "
   impact 0.5
-  tag "gtitle": 'Allow log on through Remote Desktop Services'
-  tag "gid": 'V-26473'
-  tag "rid": 'SV-83319r1_rule'
-  tag "stig_id": 'WN12-UR-000006-MS'
-  tag "fix_id": 'F-74893r1_fix'
+  tag "gtitle": "Allow log on through Remote Desktop Services"
+  tag "gid": "V-26473"
+  tag "rid": "SV-83319r1_rule"
+  tag "stig_id": "WN12-UR-000006-MS"
+  tag "fix_id": "F-74893r1_fix"
   tag "cci": ['CCI-000213']
   tag "cci": ['CCE-24406-1']
   tag "nist": ['AC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 

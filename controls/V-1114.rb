@@ -1,19 +1,28 @@
-control 'V-1114' do
-  title 'The built-in guest account must be renamed.'
+control "V-1114" do
+  title "The built-in guest account must be renamed."
   desc  "The built-in guest account is a well-known user account on all Windows
   systems and, as initially installed, does not require a password.  This can
   allow access to system resources by unauthorized users.  Renaming this account
   to an unidentified name improves the protection of this account and the system."
-  impact 0.5
-  tag "gtitle": 'Rename Built-in Guest Account'
-  tag "gid": 'V-1114'
-  tag "rid": 'SV-52856r1_rule'
-  tag "stig_id": 'WN12-SO-000006'
-  tag "fix_id": 'F-45782r1_fix'
+    impact 0.5
+  tag "gtitle": "Rename Built-in Guest Account"
+  tag "gid": "V-1114"
+  tag "rid": "SV-52856r1_rule"
+  tag "stig_id": "WN12-SO-000006"
+  tag "fix_id": "F-45782r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-23675-2']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 

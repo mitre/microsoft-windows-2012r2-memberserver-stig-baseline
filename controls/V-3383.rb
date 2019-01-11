@@ -1,20 +1,29 @@
-control 'V-3383' do
+control "V-3383" do
   title "The system must be configured to use FIPS-compliant algorithms for
   encryption, hashing, and signing."
-  desc "This setting ensures that the system uses algorithms that are
+  desc  "This setting ensures that the system uses algorithms that are
   FIPS-compliant for encryption, hashing, and signing.  FIPS-compliant algorithms
   meet specific standards established by the U.S. Government and must be the
   algorithms used for all OS encryption functions."
   impact 0.5
-  tag "gtitle": 'FIPS Compliant Algorithms '
-  tag "gid": 'V-3383'
-  tag "rid": 'SV-52896r2_rule'
-  tag "stig_id": 'WN12-SO-000074'
-  tag "fix_id": 'F-45822r2_fix'
+  tag "gtitle": "FIPS Compliant Algorithms "
+  tag "gid": "V-3383"
+  tag "rid": "SV-52896r2_rule"
+  tag "stig_id": "WN12-SO-000074"
+  tag "fix_id": "F-45822r2_fix"
   tag "cci": ['CCI-002450']
   tag "cce": ['CCE-23921-0']
   tag "nist": ['SC-13', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -39,3 +48,4 @@ control 'V-3383' do
     its('Enabled') { should cmp == 1 }
   end
 end
+

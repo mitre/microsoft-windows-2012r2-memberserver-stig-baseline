@@ -1,7 +1,7 @@
-control 'V-15722' do
+control "V-15722" do
   title "Windows Media Digital Rights Management (DRM) must be prevented from
   accessing the Internet."
-  desc "Some features may communicate with the vendor, sending system
+  desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
   outside the enterprise and uncontrolled updates to the system.
@@ -9,15 +9,24 @@ control 'V-15722' do
   the Internet.
   "
   impact 0.5
-  tag "gtitle": "Media DRM \xE2\x80\x93 Internet Access"
-  tag "gid": 'V-15722'
-  tag "rid": 'SV-53139r1_rule'
-  tag "stig_id": 'WN12-CC-000120'
-  tag "fix_id": 'F-46065r1_fix'
+  tag "gtitle": "Media DRM – Internet Access"
+  tag "gid": "V-15722"
+  tag "rid": "SV-53139r1_rule"
+  tag "stig_id": "WN12-CC-000120"
+  tag "fix_id": "F-46065r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-24380-8']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-15722' do
     its('DisableOnline') { should cmp == 1 }
   end
 end
+

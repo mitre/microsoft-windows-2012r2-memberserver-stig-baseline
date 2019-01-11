@@ -1,52 +1,61 @@
-control 'V-1120' do
+control "V-1120" do
   title "File Transfer Protocol (FTP) servers must be configured to prevent
   anonymous logons."
-  desc "The FTP service allows remote users to access shared files and
+  desc  "The FTP service allows remote users to access shared files and
   directories. Allowing anonymous FTP connections makes user auditing difficult.
 
-  Using accounts that have administrator privileges to log on to FTP risks
+      Using accounts that have administrator privileges to log on to FTP risks
   that the userid and password will be captured on the network and give
   administrator access to an unauthorized user.
   "
   impact 0.5
-  tag "gtitle": 'Prohibited FTP Logins'
-  tag "gid": 'V-1120'
-  tag "rid": 'SV-52106r2_rule'
-  tag "stig_id": 'WN12-GE-000026'
-  tag "fix_id": 'F-81017r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "Prohibited FTP Logins"
+  tag "gid": "V-1120"
+  tag "rid": "SV-52106r2_rule"
+  tag "stig_id": "WN12-GE-000026"
+  tag "fix_id": "F-81017r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If FTP is not installed on the system, this is NA.
 
   Determine the IP address and port number assigned to FTP sites from
   documentation or configuration.
 
-  If Microsoft FTP is used, open Internet Information Services (IIS) Manager.
+  If Microsoft FTP is used, open \"Internet Information Services (IIS) Manager\".
 
-  Select Sites under the server name.
+  Select \"Sites\" under the server name.
 
   For any sites that reference FTP, view the Binding information for IP address
   and port.  The standard port for FTP is 21, however this may be changed.
 
-  Open a Command Prompt.
+  Open a \"Command Prompt\".
 
-  Attempt to log on as the user anonymous with the following commands:
+  Attempt to log on as the user \"anonymous\" with the following commands:
 
   Note: Returned results may vary depending on the FTP server software.
 
-  C:\\> ftp
-  ftp> Open IP Address Port
+  C:\\> \"ftp\"
+  ftp> \"Open IP Address Port\"
   (Substituting [IP Address] and [Port] with the information previously
   identified.  If no IP Address was listed in the Binding, attempt using
-  localhost.)
+  \"localhost\".)
   (Connected to IP Address
   220 Microsoft FTP Service)
 
-  User (IP Address): anonymous
+  User (IP Address): \"anonymous\"
   (331 Anonymous access allowed, send identity (e-mail name) as password.)
 
-  Password: password
+  Password: \"password\"
   (230 User logged in.)
   ftp>
 
@@ -55,7 +64,7 @@ control 'V-1120' do
 
   If accounts with administrator privileges are used to access FTP, this is a CAT
   I finding."
-  tag "fix": 'Configure the FTP service to prevent anonymous logons.'
+  tag "fix": "Configure the FTP service to prevent anonymous logons."
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
   if is_ftp_installed == 'False'
     impact 0.0
@@ -69,3 +78,4 @@ control 'V-1120' do
     end
   end
 end
+

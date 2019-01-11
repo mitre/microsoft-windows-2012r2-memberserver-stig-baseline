@@ -1,18 +1,27 @@
-control 'V-15697' do
-  title 'The Responder network protocol driver must be disabled.'
+control "V-15697" do
+  title "The Responder network protocol driver must be disabled."
   desc  "The Responder network protocol driver allows a computer to be
-  discovered and located on a network.  Disabling this helps protect the system
-  from potentially being discovered and connected to by unauthorized devices."
+discovered and located on a network.  Disabling this helps protect the system
+from potentially being discovered and connected to by unauthorized devices."
   impact 0.5
-  tag "gtitle": "Network \xE2\x80\x93 Responder Driver"
-  tag "gid": 'V-15697'
-  tag "rid": 'SV-53081r1_rule'
-  tag "stig_id": 'WN12-CC-000002'
-  tag "fix_id": 'F-46007r1_fix'
+  tag "gtitle": "Network – Responder Driver "
+  tag "gid": "V-15697"
+  tag "rid": "SV-53081r1_rule"
+  tag "stig_id": "WN12-CC-000002"
+  tag "fix_id": "F-46007r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-23931-9']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry values do not exist or are not
   configured as specified, this is a finding:
 
@@ -46,3 +55,4 @@ control 'V-15697' do
     its('ProhibitRspndrOnPrivateNet') { should cmp == 0 }
   end
 end
+

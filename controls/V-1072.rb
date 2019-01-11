@@ -1,21 +1,28 @@
-
 SHARED_ACCOUNTS = attribute('shared_accounts')
-
-control 'V-1072' do
-  title 'Shared user accounts must not be permitted on the system.'
+control "V-1072" do
+  title "Shared user accounts must not be permitted on the system."
   desc  "Shared accounts (accounts where two or more people log in with the
   same user identification) do not provide adequate identification and
   authentication.  There is no way to provide for nonrepudiation or individual
   accountability for system access and resource usage."
   impact 0.5
-  tag "gtitle": 'Shared User Accounts'
-  tag "gid": 'V-1072'
-  tag "rid": 'SV-52839r2_rule'
-  tag "stig_id": 'WN12-00-000012'
-  tag "fix_id": 'F-86115r1_fix'
-  tag "cci": ['CCI-000764']
+  tag "gtitle": "Shared User Accounts"
+  tag "gid": "V-1072"
+  tag "rid": "SV-52839r2_rule"
+  tag "stig_id": "WN12-00-000012"
+  tag "fix_id": "F-86115r1_fix"
+  tag "cci": ["CCI-000764"]
   tag "nist": ['IA-2', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Determine whether any shared accounts exist. If no shared
   accounts exist, this is NA.
 

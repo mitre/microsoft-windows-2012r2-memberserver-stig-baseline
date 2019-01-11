@@ -1,20 +1,29 @@
-control 'V-3454' do
+control "V-3454" do
   title "Remote Desktop Services must be configured with the client connection
   encryption set to the required level."
-  desc "Remote connections must be encrypted to prevent interception of data
+  desc  "Remote connections must be encrypted to prevent interception of data
   or sensitive information. Selecting \"High Level\" will ensure encryption of
   Remote Desktop Services sessions in both directions."
   impact 0.5
-  tag "gtitle": 'TS/RDS - Set Encryption Level'
-  tag "gid": 'V-3454'
-  tag "rid": 'SV-52899r2_rule'
-  tag "stig_id": 'WN12-CC-000100'
-  tag "fix_id": 'F-45825r1_fix'
+  tag "gtitle": "TS/RDS - Set Encryption Level"
+  tag "gid": "V-3454"
+  tag "rid": "SV-52899r2_rule"
+  tag "stig_id": "WN12-CC-000100"
+  tag "fix_id": "F-45825r1_fix"
   tag "cci": ['CCI-000068', 'CCI-002890']
   tag "cce": ['CCE-24932-6']
   tag "nist": ['AC-17 (2)', 'Rev_4']
   tag "nist": ['MA-4 (6)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3454' do
     its('MinEncryptionLevel') { should cmp == 3 }
   end
 end
+

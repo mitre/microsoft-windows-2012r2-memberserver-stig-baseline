@@ -1,23 +1,32 @@
-control 'V-40177' do
+control "V-40177" do
   title "Permissions for program file directories must conform to minimum
   requirements."
-  desc "Changing the system's file and directory permissions allows the
+  desc  "Changing the system's file and directory permissions allows the
   possibility of unauthorized and anonymous modification to the operating system
   and installed applications.
 
-  The default permissions are adequate when the Security Option \"Network
+      The default permissions are adequate when the Security Option \"Network
   access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).
   "
   impact 0.5
-  tag "gtitle": 'WNGE-000007'
-  tag "gid": 'V-40177'
-  tag "rid": 'SV-52135r3_rule'
-  tag "stig_id": 'WN12-GE-000007'
-  tag "fix_id": 'F-45161r1_fix'
-  tag "cci": ['CCI-002165']
+  tag "gtitle": "WNGE-000007"
+  tag "gid": "V-40177"
+  tag "rid": "SV-52135r3_rule"
+  tag "stig_id": "WN12-GE-000007"
+  tag "fix_id": "F-45161r1_fix"
+  tag "cci": ["CCI-002165"]
   tag "nist": ['AC-3 (4)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "The default permissions are adequate when the Security Option
   \"Network access: Let everyone permissions apply to anonymous users\" is set to
   \"Disabled\" (V-3377).  If the default ACLs are maintained and the referenced
@@ -90,7 +99,6 @@ control 'V-40177' do
   Users - Read & execute - This folder, subfolders and files
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
-
   describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr /V 2') do
     its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
   end
@@ -104,5 +112,5 @@ control 'V-40177' do
   describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr CREATOR') do
     its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
   end
-
 end
+

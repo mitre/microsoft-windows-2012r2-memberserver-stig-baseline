@@ -1,16 +1,25 @@
-control 'V-1119' do
-  title 'The system must not boot into multiple operating systems (dual-boot).'
+control "V-1119" do
+  title "The system must not boot into multiple operating systems (dual-boot)."
   desc  "Allowing a system to boot into multiple operating systems
   (dual-booting) may allow security to be circumvented on a secure system."
   impact 0.5
-  tag "gtitle": 'Booting into Multiple Operating Systems'
-  tag "gid": 'V-1119'
-  tag "rid": 'SV-52858r1_rule'
-  tag "stig_id": 'WN12-GE-000010'
-  tag "fix_id": 'F-45784r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "Booting into Multiple Operating Systems"
+  tag "gid": "V-1119"
+  tag "rid": "SV-52858r1_rule"
+  tag "stig_id": "WN12-GE-000010"
+  tag "fix_id": "F-45784r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the local system boots directly into Windows.
 
   Open Control Panel.
@@ -28,3 +37,4 @@ control 'V-1119' do
   end
   only_if { os['release'].to_i < 6.3 }
 end
+

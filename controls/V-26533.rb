@@ -1,25 +1,34 @@
-control 'V-26533' do
+control "V-26533" do
   title "The system must be configured to audit Account Management - Other
   Account Management Events successes."
-  desc "Maintaining an audit trail of system activity logs can help identify
+  desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
   Collecting this data is essential for analyzing the security of information
   assets and detecting signs of suspicious and unexpected behavior.
 
-  Other Account Management Events records events such as the access of a
+      Other Account Management Events records events such as the access of a
   password hash or the Password Policy Checking API being called.
   "
   impact 0.5
-  tag "gtitle": 'Audit - Other Account Management Events - Success'
-  tag "gid": 'V-26533'
-  tag "rid": 'SV-53009r1_rule'
-  tag "stig_id": 'WN12-AU-000015'
-  tag "fix_id": 'F-45936r1_fix'
+  tag "gtitle": "Audit - Other Account Management Events - Success"
+  tag "gid": "V-26533"
+  tag "rid": "SV-53009r1_rule"
+  tag "stig_id": "WN12-AU-000015"
+  tag "fix_id": "F-45936r1_fix"
   tag "cci": ['CCI-000172', 'CCI-002234']
   tag "nist": ['AC-6 (9)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
   must be set to \"Enabled\" (V-14230) for the detailed auditing subcategories to
@@ -46,3 +55,4 @@ control 'V-26533' do
     end
   end
 end
+

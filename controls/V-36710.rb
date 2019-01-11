@@ -1,19 +1,28 @@
-control 'V-36710' do
+control "V-36710" do
   title "Automatic download of updates from the Windows Store must be turned
   off."
-  desc "Uncontrolled system updates can introduce issues to a system.
+  desc  "Uncontrolled system updates can introduce issues to a system.
   Obtaining update components from an outside source may also potentially allow
   sensitive information outside of the enterprise.  Application updates must be
   obtained from an internal source."
   impact 0.3
-  tag "gtitle": 'WINCC-000109'
-  tag "gid": 'V-36710'
-  tag "rid": 'SV-51750r2_rule'
-  tag "stig_id": 'WN12-CC-000109'
-  tag "fix_id": 'F-62329r2_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "WINCC-000109"
+  tag "gid": "V-36710"
+  tag "rid": "SV-51750r2_rule"
+  tag "stig_id": "WN12-CC-000109"
+  tag "fix_id": "F-62329r2_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "The Windows Store is not installed by default.  If the
   \\Windows\\WinStore directory does not exist, this is NA.
   If the following registry value does not exist or is not configured as
@@ -53,7 +62,6 @@ control 'V-36710' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> Store -> \"Turn off Automatic Download of
   updates\" to \"Enabled\"."
-
   if os['release'].to_i >= 6.3
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
       it { should have_property 'AutoDownload' }
@@ -76,3 +84,4 @@ control 'V-36710' do
     end
   end
 end
+

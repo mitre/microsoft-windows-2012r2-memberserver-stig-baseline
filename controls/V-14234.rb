@@ -1,20 +1,29 @@
-control 'V-14234' do
+control "V-14234" do
   title "User Account Control approval mode for the built-in Administrator must
   be enabled."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
-elevation of privileges, including administrative accounts, unless authorized.
-This setting configures the built-in Administrator account so that it runs in
-Admin Approval Mode."
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
+  elevation of privileges, including administrative accounts, unless authorized.
+  This setting configures the built-in Administrator account so that it runs in
+  Admin Approval Mode."
   impact 0.5
-  tag "gtitle": 'UAC - Admin Approval Mode'
-  tag "gid": 'V-14234'
-  tag "rid": 'SV-52946r1_rule'
-  tag "stig_id": 'WN12-SO-000077'
-  tag "fix_id": 'F-45872r2_fix'
+  tag "gtitle": "UAC - Admin Approval Mode"
+  tag "gid": "V-14234"
+  tag "rid": "SV-52946r1_rule"
+  tag "stig_id": "WN12-SO-000077"
+  tag "fix_id": "F-45872r2_fix"
   tag "cci": ['CCI-002038']
   tag "cce": ['CCE-24134-9']
   tag "nist": ['IA-11', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -46,3 +55,4 @@ Admin Approval Mode."
     end
   end
 end
+

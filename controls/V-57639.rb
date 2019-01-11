@@ -1,31 +1,40 @@
-control 'V-57639' do
+control "V-57639" do
   title "Users must be required to enter a password to access private keys
   stored on the computer."
-  desc "If the private key is discovered, an attacker can use the key to
+  desc  "If the private key is discovered, an attacker can use the key to
   authenticate as an authorized user and gain access to the network
   infrastructure.
 
-  The cornerstone of the PKI is the private key used to encrypt or digitally
+      The cornerstone of the PKI is the private key used to encrypt or digitally
   sign information.
 
-  If the private key is stolen, this will lead to the compromise of the
+      If the private key is stolen, this will lead to the compromise of the
   authentication and non-repudiation gained through PKI because the attacker can
   use the private key to digitally sign documents and pretend to be the
   authorized user.
 
-  Both the holders of a digital certificate and the issuing authority must
+      Both the holders of a digital certificate and the issuing authority must
   protect the computers, storage devices, or whatever they use to keep the
   private keys.
   "
   impact 0.5
-  tag "gtitle": 'WINSO-000092'
-  tag "gid": 'V-57639'
-  tag "rid": 'SV-72049r2_rule'
-  tag "stig_id": 'WN12-SO-000092'
-  tag "fix_id": 'F-62841r2_fix'
-  tag "cci": ['CCI-000186']
+  tag "gtitle": "WINSO-000092"
+  tag "gid": "V-57639"
+  tag "rid": "SV-72049r2_rule"
+  tag "stig_id": "WN12-SO-000092"
+  tag "fix_id": "F-62841r2_fix"
+  tag "cci": ["CCI-000186"]
   tag "nist": ['IA-5 (2) (b)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -45,3 +54,4 @@ control 'V-57639' do
     its('ForceKeyProtection') { should cmp == 2 }
   end
 end
+

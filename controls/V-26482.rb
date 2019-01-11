@@ -1,23 +1,33 @@
-control 'V-26482' do
-  title "Unauthorized accounts must not have the Create symbolic links user
-  right."
+control "V-26482" do
+  title "The Create symbolic links user right must only be assigned to the
+  Administrators group."
   desc  "Inappropriate granting of user rights can provide system,
   administrative, and other high-level capabilities.
 
-  Accounts with the \"Create symbolic links\" user right can create pointers
+      Accounts with the \"Create symbolic links\" user right can create pointers
   to other objects, which could potentially expose the system to attack.
   "
   impact 0.5
-  tag "gtitle": 'Create symbolic links'
-  tag "gid": 'V-26482'
-  tag "rid": 'SV-53054r2_rule'
-  tag "stig_id": 'WN12-UR-000015'
-  tag "fix_id": 'F-66511r1_fix'
+  tag "gtitle": "Create symbolic links"
+  tag "gid": "V-26482"
+  tag "rid": "SV-53054r3_rule"
+  tag "stig_id": "WN12-UR-000015"
+  tag "fix_id": "F-66511r1_fix"
   tag "cci": ['CCI-002235']
   tag "cce": ['CCE-24549-8']
   tag "nist": ['AC-6 (10)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
+
   Run \"gpedit.msc\".
 
   Navigate to Local Computer Policy >> Computer Configuration >> Windows Settings
@@ -49,3 +59,4 @@ control 'V-26482' do
     end
   end
 end
+

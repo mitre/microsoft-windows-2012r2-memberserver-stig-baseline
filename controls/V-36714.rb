@@ -1,19 +1,27 @@
-control 'V-36714' do
+control "V-36714" do
   title "The Windows Remote Management (WinRM) client must not use Digest
   authentication."
-  desc "Digest authentication is not as strong as other options and may be
+  desc  "Digest authentication is not as strong as other options and may be
   subject to man-in-the-middle attacks."
   impact 0.5
-  tag "gtitle": 'WINCC-000125'
-  tag "gid": 'V-36714'
-  tag "rid": 'SV-51754r1_rule'
-  tag "stig_id": 'WN12-CC-000125'
-  tag "fix_id": 'F-44829r1_fix'
+  tag "gtitle": "WINCC-000125"
+  tag "gid": "V-36714"
+  tag "rid": "SV-51754r1_rule"
+  tag "stig_id": "WN12-CC-000125"
+  tag "fix_id": "F-44829r1_fix"
   tag "cci": ['CCI-000877']
   tag "cce": ['CCE-25263-5']
   tag "nist": ['MA-4 c', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'IAIA-1'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "IAIA-1"
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +40,4 @@ control 'V-36714' do
     its('AllowDigest') { should cmp == 0 }
   end
 end
+

@@ -1,4 +1,4 @@
-control 'V-26535' do
+control "V-26535" do
   title "The system must be configured to audit Account Management - Security
   Group Management successes."
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -8,21 +8,30 @@ control 'V-26535' do
   Collecting this data is essential for analyzing the security of information
   assets and detecting signs of suspicious and unexpected behavior.
 
-  Security Group Management records events such as creating, deleting, or
+      Security Group Management records events such as creating, deleting, or
   changing security groups, including changes in group members.
   "
   impact 0.5
-  tag "gtitle": 'Audit - Security Group Management - Success'
-  tag "gid": 'V-26535'
-  tag "rid": 'SV-53007r2_rule'
-  tag "stig_id": 'WN12-AU-000017'
-  tag "fix_id": 'F-45934r1_fix'
+  tag "gtitle": "Audit - Security Group Management - Success"
+  tag "gid": "V-26535"
+  tag "rid": "SV-53007r2_rule"
+  tag "stig_id": "WN12-AU-000017"
+  tag "fix_id": "F-45934r1_fix"
   tag "cci": ['CCI-000018', 'CCI-000172', 'CCI-001403', 'CCI-001404',
               'CCI-001405', 'CCI-002130', 'CCI-002234']
   tag "nist": ['AC-2 (4)', 'Rev_4']
   tag "nist": ['AU-12 c', 'Rev_4']
   tag "nist": ['AC-6 (9)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
   must be set to \"Enabled\" (V-14230) for the detailed auditing subcategories to
@@ -49,3 +58,4 @@ control 'V-26535' do
     end
   end
 end
+

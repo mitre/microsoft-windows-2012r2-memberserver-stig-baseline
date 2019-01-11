@@ -1,25 +1,34 @@
-control 'V-78057' do
+control "V-78057" do
   title "Windows Server 2012/2012 R2 must be configured to audit Logon/Logoff -
   Account Lockout successes."
-  desc "Maintaining an audit trail of system activity logs can help identify
+  desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks. Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
   Collecting this data is essential for analyzing the security of information
   assets and detecting signs of suspicious and unexpected behavior.
 
-  Account Lockout events can be used to identify potentially malicious logon
+      Account Lockout events can be used to identify potentially malicious logon
   attempts.
   "
   impact 0.5
-  tag "gtitle": 'WINAU-000501'
-  tag "gid": 'V-78057'
-  tag "rid": 'SV-92765r1_rule'
-  tag "stig_id": 'WN12-AU-000030'
-  tag "fix_id": 'F-84781r1_fix'
-  tag "cci": ['CCI-000172', 'CCI-001404']
+  tag "gtitle": "WINAU-000501"
+  tag "gid": "V-78057"
+  tag "rid": "SV-92765r2_rule"
+  tag "stig_id": "WN12-AU-000030"
+  tag "fix_id": "F-84781r2_fix"
+  tag "cci": ["CCI-000172", "CCI-001404"]
   tag "nist": ['AC-2 (4)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Security Option \"Audit: Force audit policy subcategory
   settings (Windows Vista or later) to override audit policy category settings\"
   must be set to \"Enabled\" (V-14230) for the detailed auditing subcategories to
@@ -37,8 +46,9 @@ control 'V-78057' do
 
   Logon/Logoff >> Account Lockout - Success"
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
-  Settings >> Advanced Audit Policy Configuration >> System Audit Policies >>
-  Logon/Logoff >> \"Audit Account Lockout\" with \"Success\" selected."
+  Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
+  Audit Policies >> Logon/Logoff >> \"Audit Account Lockout\" with \"Success\"
+  selected."
   describe.one do
     describe audit_policy do
       its('Account Lockout') { should eq 'Success and Failure' }
@@ -48,3 +58,4 @@ control 'V-78057' do
     end
   end
 end
+

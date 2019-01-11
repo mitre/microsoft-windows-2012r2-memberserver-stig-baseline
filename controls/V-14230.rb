@@ -1,5 +1,5 @@
-control 'V-14230' do
-  title 'Audit policy using subcategories must be enabled.'
+control "V-14230" do
+  title "Audit policy using subcategories must be enabled."
   desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks.  Audit logs are necessary to
@@ -10,15 +10,24 @@ control 'V-14230' do
   capabilities.
   "
   impact 0.5
-  tag "gtitle": 'Audit Policy Subcategory Setting'
-  tag "gid": 'V-14230'
-  tag "rid": 'SV-52944r1_rule'
-  tag "stig_id": 'WN12-SO-000009'
-  tag "fix_id": 'F-45870r1_fix'
+  tag "gtitle": "Audit Policy Subcategory Setting"
+  tag "gid": "V-14230"
+  tag "rid": "SV-52944r1_rule"
+  tag "stig_id": "WN12-SO-000009"
+  tag "fix_id": "F-45870r1_fix"
   tag "cci": ['CCI-000169']
   tag "cce": ['CCE-24252-9']
   tag "nist": ['AU-12 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -38,3 +47,5 @@ control 'V-14230' do
     its('scenoapplylegacyauditpolicy') { should cmp == 1 }
   end
 end
+
+ 

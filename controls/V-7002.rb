@@ -1,18 +1,27 @@
-control 'V-7002' do
-  title 'Windows 2012/2012 R2 accounts must be configured to require passwords.'
+control "V-7002" do
+  title "Windows 2012/2012 R2 accounts must be configured to require passwords."
   desc  "The lack of password protection enables anyone to gain access to the
   information system, which opens a backdoor opportunity for intruders to
   compromise the system as well as other resources.  Accounts on a system must
   require passwords."
   impact 0.7
-  tag "gtitle": 'Password Requirement'
-  tag "gid": 'V-7002'
-  tag "rid": 'SV-52940r2_rule'
-  tag "stig_id": 'WN12-GE-000015'
-  tag "fix_id": 'F-85581r1_fix'
-  tag "cci": ['CCI-000764']
+  tag "gtitle": "Password Requirement"
+  tag "gid": "V-7002"
+  tag "rid": "SV-52940r2_rule"
+  tag "stig_id": "WN12-GE-000015"
+  tag "fix_id": "F-85581r1_fix"
+  tag "cci": ["CCI-000764"]
   tag "nist": ['IA-2', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Review the password required status for enabled user accounts.
 
   Open \"Windows PowerShell\".
@@ -56,3 +65,4 @@ control 'V-7002' do
     end
   end
 end
+

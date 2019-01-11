@@ -1,20 +1,29 @@
-control 'V-36662' do
+control "V-36662" do
   title "Windows 2012/2012 R2 manually managed application account passwords
   must be changed at least annually or when a system administrator with knowledge
   of the password leaves the organization."
-  desc "Setting application accounts to expire may cause applications to stop
+  desc  "Setting application accounts to expire may cause applications to stop
   functioning. However, not changing them on a regular basis exposes them to
   attack. If managed service accounts are used, this alleviates the need to
   manually change application account passwords."
   impact 0.5
-  tag "gtitle": 'WIN00-000010-02'
-  tag "gid": 'V-36662'
-  tag "rid": 'SV-51580r3_rule'
-  tag "stig_id": 'WN12-00-000011'
-  tag "fix_id": 'F-85585r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "WIN00-000010-02"
+  tag "gid": "V-36662"
+  tag "rid": "SV-51580r3_rule"
+  tag "stig_id": "WN12-00-000011"
+  tag "fix_id": "F-85585r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Determine if manually managed application/service accounts
   exist. If none exist, this is NA.
 
@@ -50,7 +59,6 @@ control 'V-36662' do
   password leaves the organization.
 
   It is recommended that system-managed service accounts be used where possible."
-
   users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
   users.each do |user|
@@ -77,3 +85,4 @@ control 'V-36662' do
     end
   end
 end
+

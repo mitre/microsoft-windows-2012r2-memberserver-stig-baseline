@@ -1,5 +1,5 @@
-control 'V-1107' do
-  title 'The password history must be configured to 24 passwords remembered.'
+control "V-1107" do
+  title "The password history must be configured to 24 passwords remembered."
   desc  "A system is more vulnerable to unauthorized access when system users
   recycle the same password several times without being required to change to a
   unique password on a regularly scheduled basis. This enables users to
@@ -7,15 +7,24 @@ control 'V-1107' do
   default value is 24 for Windows domain systems.  DoD has decided this is the
   appropriate value for all Windows systems."
   impact 0.5
-  tag "gtitle": 'Password Uniqueness'
-  tag "gid": 'V-1107'
-  tag "rid": 'SV-52853r2_rule'
-  tag "stig_id": 'WN12-AC-000004'
-  tag "fix_id": 'F-74885r1_fix'
+  tag "gtitle": "Password Uniqueness"
+  tag "gid": "V-1107"
+  tag "rid": "SV-52853r2_rule"
+  tag "stig_id": "WN12-AC-000004"
+  tag "fix_id": "F-74885r1_fix"
   tag "cci": ['CCI-000200']
   tag "cce": ['CCE-24644-7']
   tag "nist": ['IA-5 (1) (e)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -31,3 +40,4 @@ control 'V-1107' do
     its('PasswordHistorySize') { should be >= 24 }
   end
 end
+

@@ -1,20 +1,29 @@
-control 'V-3385' do
+control "V-3385" do
   title "The system must be configured to require case insensitivity for
   non-Windows subsystems."
-  desc "This setting controls the behavior of non-Windows subsystems when
+  desc  "This setting controls the behavior of non-Windows subsystems when
   dealing with the case of arguments or commands.  Case sensitivity could lead to
   the access of files or commands that must be restricted.  To prevent this from
   happening, case insensitivity restrictions must be required."
   impact 0.5
-  tag "gtitle": 'Case Insensitivity for Non-Windows'
-  tag "gid": 'V-3385'
-  tag "rid": 'SV-52897r1_rule'
-  tag "stig_id": 'WN12-SO-000075'
-  tag "fix_id": 'F-45823r1_fix'
+  tag "gtitle": "Case Insensitivity for Non-Windows"
+  tag "gid": "V-3385"
+  tag "rid": "SV-52897r1_rule"
+  tag "stig_id": "WN12-SO-000075"
+  tag "fix_id": "F-45823r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24870-8']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3385' do
     its('ObCaseInsensitive') { should cmp == 1 }
   end
 end
+

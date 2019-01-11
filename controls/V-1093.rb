@@ -1,18 +1,27 @@
-control 'V-1093' do
-  title 'Anonymous enumeration of shares must be restricted.'
+control "V-1093" do
+  title "Anonymous enumeration of shares must be restricted."
   desc  "Allowing anonymous logon users (null session connections) to list all
   account names and enumerate all shared resources can provide a map of potential
   points to attack the system."
   impact 0.7
-  tag "gtitle": 'Anonymous shares are not restricted'
-  tag "gid": 'V-1093'
-  tag "rid": 'SV-52847r1_rule'
-  tag "stig_id": 'WN12-SO-000052'
-  tag "fix_id": 'F-45773r1_fix'
+  tag "gtitle": "Anonymous shares are not restricted"
+  tag "gid": "V-1093"
+  tag "rid": "SV-52847r1_rule"
+  tag "stig_id": "WN12-SO-000052"
+  tag "fix_id": "F-45773r1_fix"
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-24774-2']
   tag "nist": ['SC-4', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-1093' do
     its('RestrictAnonymous') { should cmp == 1 }
   end
 end
+

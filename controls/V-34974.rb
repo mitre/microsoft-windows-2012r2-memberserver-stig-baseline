@@ -1,19 +1,28 @@
-control 'V-34974' do
+control "V-34974" do
   title "The Windows Installer Always install with elevated privileges option
   must be disabled."
-  desc "Standard user accounts must not be granted elevated privileges.
+  desc  "Standard user accounts must not be granted elevated privileges.
   Enabling Windows Installer to elevate privileges when installing applications
   can allow malicious persons and applications to gain full control of a system."
   impact 0.7
-  tag "gtitle": 'Always Install with Elevated Privileges Disabled'
-  tag "gid": 'V-34974'
-  tag "rid": 'SV-52954r1_rule'
-  tag "stig_id": 'WN12-CC-000116'
-  tag "fix_id": 'F-45880r1_fix'
+  tag "gtitle": "Always Install with Elevated Privileges Disabled"
+  tag "gid": "V-34974"
+  tag "rid": "SV-52954r1_rule"
+  tag "stig_id": "WN12-CC-000116"
+  tag "fix_id": "F-45880r1_fix"
   tag "cci": ['CCI-001812']
   tag "cce": ['CCE-23919-4']
   tag "nist": ['CM-11 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-34974' do
     its('AlwaysInstallElevated') { should cmp == 0 }
   end
 end
+

@@ -1,20 +1,29 @@
-control 'V-6831' do
-  title 'Outgoing secure channel traffic must be encrypted or signed.'
+control "V-6831" do
+  title "Outgoing secure channel traffic must be encrypted or signed."
   desc  "Requests sent on the secure channel are authenticated, and sensitive
   information (such as passwords) is encrypted, but not all information is
   encrypted.  If this policy is enabled, outgoing secure channel traffic will be
   encrypted and signed."
   impact 0.5
-  tag "gtitle": 'Encrypting and Signing of Secure Channel Traffic'
-  tag "gid": 'V-6831'
-  tag "rid": 'SV-52934r2_rule'
-  tag "stig_id": 'WN12-SO-000012'
-  tag "fix_id": 'F-45860r1_fix'
+  tag "gtitle": "Encrypting and Signing of Secure Channel Traffic"
+  tag "gid": "V-6831"
+  tag "rid": "SV-52934r2_rule"
+  tag "stig_id": "WN12-SO-000012"
+  tag "fix_id": "F-45860r1_fix"
   tag "cci": ['CCI-002418', 'CCI-002421']
   tag "cce": ['CCE-24465-7']
   tag "nist": ['SC-8', 'Rev_4']
   tag "nist": ['SC-8 (1)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-6831' do
     its('RequireSignOrSeal') { should cmp == 1 }
   end
 end
+

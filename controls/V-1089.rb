@@ -1,23 +1,33 @@
-control 'V-1089' do
+control "V-1089" do
   title "The required legal notice must be configured to display before console
   logon."
   desc  "Failure to display the logon banner prior to a logon attempt will
   negate legal proceedings resulting from unauthorized access to system
   resources."
   impact 0.5
-  tag "gtitle": 'Legal Notice Display'
-  tag "gid": 'V-1089'
-  tag "rid": 'SV-52845r3_rule'
-  tag "stig_id": 'WN12-SO-000022'
-  tag "fix_id": 'F-45771r3_fix'
-  tag "cci": ['CCE-25355-9', 'CCI-000048', 'CCI-000050', 'CCI-001384',
-              'CCI-001385', 'CCI-001386', 'CCI-001387', 'CCI-001388']
+  tag "gtitle": "Legal Notice Display"
+  tag "gid": "V-1089"
+  tag "rid": "SV-52845r3_rule"
+  tag "stig_id": "WN12-SO-000022"
+  tag "fix_id": "F-45771r3_fix"
+  tag "cci": ["CCI-000048", "CCI-000050", "CCI-001384",
+  "CCI-001385", "CCI-001386", "CCI-001387", "CCI-001388"]
+  tag "cce": ['CCE-25355-9']
   tag "nist": ['AC-8 a', 'Rev_4']
   tag "nist": ['AC-8 b', 'Rev_4']
   tag "nist": ['AC-8 c 1', 'Rev_4']
   tag "nist": ['AC-8 c 2', 'Rev_4']
   tag "nist": ['AC-8 c 3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -149,3 +159,4 @@ control 'V-1089' do
     }
   end
 end
+

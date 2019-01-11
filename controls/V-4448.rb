@@ -1,4 +1,4 @@
-control 'V-4448' do
+control "V-4448" do
   title "Group Policy objects must be reprocessed even if they have not
   changed."
   desc  "Enabling this setting and then selecting the \"Process even if the
@@ -6,15 +6,24 @@ control 'V-4448' do
   be reprocessed even if none have been changed.  This way, any unauthorized
   changes are forced to match the domain-based group policy settings again."
   impact 0.5
-  tag "gtitle": 'Group Policy - Registry Policy Processing'
-  tag "gid": 'V-4448'
-  tag "rid": 'SV-52933r1_rule'
-  tag "stig_id": 'WN12-CC-000028'
-  tag "fix_id": 'F-45859r1_fix'
+  tag "gtitle": "Group Policy - Registry Policy Processing"
+  tag "gid": "V-4448"
+  tag "rid": "SV-52933r1_rule"
+  tag "stig_id": "WN12-CC-000028"
+  tag "fix_id": "F-45859r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24992-0']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,3 +44,4 @@ control 'V-4448' do
     its('NoGPOListChanges') { should cmp == 0 }
   end
 end
+

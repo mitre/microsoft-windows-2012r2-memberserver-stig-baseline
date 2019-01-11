@@ -1,19 +1,28 @@
-control 'V-36711' do
-  title 'The Windows Store application must be turned off.'
+control "V-36711" do
+  title "The Windows Store application must be turned off."
   desc  "Uncontrolled installation of applications can introduce various
-  access to sensitive
+  issues, including system instability, and provide access to sensitive
   information.  Installation of applications must be controlled by the
   enterprise.  Turning off access to the Windows Store will limit access to
   publicly available applications."
   impact 0.5
-  tag "gtitle": 'WINCC-000110'
-  tag "gid": 'V-36711'
-  tag "rid": 'SV-51751r2_rule'
-  tag "stig_id": 'WN12-CC-000110'
-  tag "fix_id": 'F-62333r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "WINCC-000110"
+  tag "gid": "V-36711"
+  tag "rid": "SV-51751r2_rule"
+  tag "stig_id": "WN12-CC-000110"
+  tag "fix_id": "F-62333r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "The Windows Store is not installed by default. If the
   \\Windows\\WinStore directory does not exist, this is NA.
   If the following registry value does not exist or is not configured as
@@ -45,3 +54,4 @@ control 'V-36711' do
     end
   end
 end
+

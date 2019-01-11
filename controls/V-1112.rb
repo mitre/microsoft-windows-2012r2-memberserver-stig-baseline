@@ -1,18 +1,27 @@
-control 'V-1112' do
+control "V-1112" do
   title "Outdated or unused accounts must be removed from the system or
   disabled."
-  desc "Outdated or unused accounts provide penetration points that may go
+  desc  "Outdated or unused accounts provide penetration points that may go
   undetected.  Inactive accounts must be deleted if no longer necessary or, if
   still required, disabled until needed."
   impact 0.3
-  tag "gtitle": 'Dormant Accounts'
-  tag "gid": 'V-1112'
-  tag "rid": 'SV-52854r4_rule'
-  tag "stig_id": 'WN12-GE-000014'
-  tag "fix_id": 'F-45780r2_fix'
-  tag "cci": ['CCI-000795']
+  tag "gtitle": "Dormant Accounts"
+  tag "gid": "V-1112"
+  tag "rid": "SV-52854r4_rule"
+  tag "stig_id": "WN12-GE-000014"
+  tag "fix_id": "F-45780r2_fix"
+  tag "cci": ["CCI-000795"]
   tag "nist": ['IA-4 e', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Run \"PowerShell\".
 
   Member servers and standalone systems:
@@ -20,17 +29,16 @@ control 'V-1112' do
   twice may be required. Do not include the quotes at the beginning and end of
   the query.)
 
-  ([ADSI]('WinNT://{0}' -f $env:COMPUTERNAME)).Children | Where {
+  \"([ADSI]('WinNT://{0}' -f $env:COMPUTERNAME)).Children | Where {
   $_.SchemaClassName -eq 'user' } | ForEach {
-   $user = ([ADSI]$_.Path)      <status>draft</status>
-
+   $user = ([ADSI]$_.Path)
    $lastLogin = $user.Properties.LastLogin.Value
    $enabled = ($user.Properties.UserFlags.Value -band 0x2) -ne 0x2
    if ($lastLogin -eq $null) {
    $lastLogin = 'Never'
    }
    Write-Host $user.Name $lastLogin $enabled
-  }
+  }\"
 
   This will return a list of local accounts with the account name, last logon,
   and if the account is enabled (True/False).
@@ -59,7 +67,6 @@ control 'V-1112' do
   tag "fix": "Regularly review accounts to determine if they are still active.
   Disable or delete any active accounts that have not been used in the last 35
   days."
-
   users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
   get_sids = []
@@ -131,3 +138,4 @@ control 'V-1112' do
     impact 0.0
   end
 end
+

@@ -1,19 +1,28 @@
-control 'V-1104' do
-  title 'The maximum password age must meet requirements.'
+control "V-1104" do
+  title "The maximum password age must meet requirements."
   desc  "The longer a password is in use, the greater the opportunity for
   someone to gain unauthorized knowledge of the passwords.   Scheduled changing
   of passwords hinders the ability of unauthorized system users to crack
   passwords and gain access to a system."
   impact 0.5
-  tag "gtitle": 'Maximum Password Age '
-  tag "gid": 'V-1104'
-  tag "rid": 'SV-52851r1_rule'
-  tag "stig_id": 'WN12-AC-000005'
-  tag "fix_id": 'F-45777r2_fix'
+  tag "gtitle": "Maximum Password Age "
+  tag "gid": "V-1104"
+  tag "rid": "SV-52851r1_rule"
+  tag "stig_id": "WN12-AC-000005"
+  tag "fix_id": "F-45777r2_fix"
   tag "cci": ['CCI-000199']
   tag "cce": ['CCE-24535-7']
   tag "nist": ['IA-5 (1) (d)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
 
@@ -33,3 +42,4 @@ control 'V-1104' do
     its('MaximumPasswordAge') { should be > 0 }
   end
 end
+

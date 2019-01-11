@@ -1,18 +1,27 @@
-control 'V-14270' do
-  title 'The system must notify antivirus when file attachments are opened.'
+control "V-14270" do
+  title "The system must notify antivirus when file attachments are opened."
   desc  "Attaching malicious files is a known avenue of attack.  This setting
   configures the system to notify antivirus programs when a user opens a file
   attachment."
   impact 0.5
-  tag "gtitle": 'Attachment Mgr - Scan with Antivirus'
-  tag "gid": 'V-14270'
-  tag "rid": 'SV-53006r1_rule'
-  tag "stig_id": 'WN12-UC-000011'
-  tag "fix_id": 'F-45933r1_fix'
+  tag "gtitle": "Attachment Mgr - Scan with Antivirus"
+  tag "gid": "V-14270"
+  tag "rid": "SV-53006r1_rule"
+  tag "stig_id": "WN12-UC-000011"
+  tag "fix_id": "F-45933r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25538-0']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-14270' do
     its('ScanWithAntiVirus') { should cmp == 3 }
   end
 end
+

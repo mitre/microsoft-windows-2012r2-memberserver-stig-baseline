@@ -1,4 +1,4 @@
-control 'V-15687' do
+control "V-15687" do
   title "Users must not be presented with Privacy and Installation options on
   first use of Windows Media Player."
   desc  "Some features may communicate with the vendor, sending system
@@ -10,15 +10,24 @@ control 'V-15687' do
   some communication with the vendor.
   "
   impact 0.3
-  tag "gtitle": "Media Player \xE2\x80\x93 First Use Dialog Boxes"
-  tag "gid": 'V-15687'
-  tag "rid": 'SV-53069r1_rule'
-  tag "stig_id": 'WN12-CC-000121'
-  tag "fix_id": 'F-45995r1_fix'
+  tag "gtitle": "Media Player – First Use Dialog Boxes "
+  tag "gid": "V-15687"
+  tag "rid": "SV-53069r1_rule"
+  tag "stig_id": "WN12-CC-000121"
+  tag "fix_id": "F-45995r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25014-2']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Windows Media Player is not installed by default.  If it is not
   installed, this is NA.
 
@@ -47,5 +56,5 @@ control 'V-15687' do
       Applicable."
     end
   end
-
 end
+

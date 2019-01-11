@@ -1,20 +1,29 @@
-control 'V-15713' do
-  title 'Microsoft Active Protection Service membership must be disabled.'
+control "V-15713" do
+  title "Microsoft Active Protection Service membership must be disabled."
   desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this feature will prevent potentially sensitive information from being sent
   outside the enterprise and uncontrolled updates to the system.  This setting
   disables Microsoft Active Protection Service membership and reporting."
   impact 0.5
-  tag "gtitle": "Defender \xE2\x80\x93 SpyNet Reporting"
-  tag "gid": 'V-15713'
-  tag "rid": 'SV-53134r2_rule'
-  tag "stig_id": 'WN12-CC-000111'
-  tag "fix_id": 'F-62313r2_fix'
+  tag "gtitle": "Defender – SpyNet Reporting"
+  tag "gid": "V-15713"
+  tag "rid": "SV-53134r2_rule"
+  tag "stig_id": "WN12-CC-000111"
+  tag "fix_id": "F-62313r2_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-25247-8']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value exists and is set to \"1\"
   (Basic) or \"2\" (Advanced), this is a finding:
 
@@ -48,3 +57,4 @@ control 'V-15713' do
     end
   end
 end
+

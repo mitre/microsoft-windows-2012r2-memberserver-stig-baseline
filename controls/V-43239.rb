@@ -1,26 +1,35 @@
-control 'V-43239' do
+control "V-43239" do
   title "Windows 2012 R2 must include command line data in process creation
   events."
-  desc "Maintaining an audit trail of system activity logs can help identify
+  desc  "Maintaining an audit trail of system activity logs can help identify
   configuration errors, troubleshoot service disruptions, and analyze compromises
   that have occurred, as well as detect attacks. Audit logs are necessary to
   provide a trail of evidence in case the system or network is compromised.
   Collecting this data is essential for analyzing the security of information
   assets and detecting signs of suspicious and unexpected behavior.
 
-  Enabling \"Include command line data for process creation events\" will
+      Enabling \"Include command line data for process creation events\" will
   record the command line information with the process creation events in the
   log. This can provide additional detail when malware has run on a system.
   "
   impact 0.5
-  tag "gtitle": 'WINCC-000139'
-  tag "gid": 'V-43239'
-  tag "rid": 'SV-56344r3_rule'
-  tag "stig_id": 'WN12-CC-000139'
-  tag "fix_id": 'F-82939r1_fix'
-  tag "cci": ['CCI-000135']
+  tag "gtitle": "WINCC-000139"
+  tag "gid": "V-43239"
+  tag "rid": "SV-56344r3_rule"
+  tag "stig_id": "WN12-CC-000139"
+  tag "fix_id": "F-82939r1_fix"
+  tag "cci": ["CCI-000135"]
   tag "nist": ['AU-3 (1)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "This requirement is NA for the initial release of Windows 2012.
   It is applicable to Windows 2012 R2.
 
@@ -50,3 +59,4 @@ control 'V-43239' do
     end
   end
 end
+

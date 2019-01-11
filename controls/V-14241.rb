@@ -1,20 +1,29 @@
-control 'V-14241' do
+control "V-14241" do
   title "User Account Control must switch to the secure desktop when prompting
   for elevation."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting ensures that the elevation prompt is only used in secure desktop
   mode."
   impact 0.5
-  tag "gtitle": 'UAC - Secure Desktop Mode'
-  tag "gid": 'V-14241'
-  tag "rid": 'SV-52952r1_rule'
-  tag "stig_id": 'WN12-SO-000084'
-  tag "fix_id": 'F-45878r2_fix'
+  tag "gtitle": "UAC - Secure Desktop Mode"
+  tag "gid": "V-14241"
+  tag "rid": "SV-52952r1_rule"
+  tag "stig_id": "WN12-SO-000084"
+  tag "fix_id": "F-45878r2_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23656-2']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -46,3 +55,4 @@ control 'V-14241' do
     end
   end
 end
+

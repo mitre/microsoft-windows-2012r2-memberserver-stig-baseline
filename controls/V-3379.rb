@@ -1,20 +1,29 @@
-control 'V-3379' do
+control "V-3379" do
   title "The system must be configured to prevent the storage of the LAN
   Manager hash of passwords."
-  desc "The LAN Manager hash uses a weak encryption algorithm and there are
+  desc  "The LAN Manager hash uses a weak encryption algorithm and there are
   several tools available that use this hash to retrieve account passwords.  This
   setting controls whether or not a LAN Manager hash of the password is stored in
   the SAM the next time the password is changed."
   impact 0.7
-  tag "gtitle": 'LAN Manager Hash stored'
-  tag "gid": 'V-3379'
-  tag "rid": 'SV-52892r2_rule'
-  tag "stig_id": 'WN12-SO-000065'
-  tag "fix_id": 'F-45818r1_fix'
+  tag "gtitle": "LAN Manager Hash stored"
+  tag "gid": "V-3379"
+  tag "rid": "SV-52892r2_rule"
+  tag "stig_id": "WN12-SO-000065"
+  tag "fix_id": "F-45818r1_fix"
   tag "cci": ['CCI-000196']
   tag "cce": ['CCE-24150-5']
   tag "nist": ['SC-6.1', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3379' do
     its('NoLMHash') { should cmp == 1 }
   end
 end
+

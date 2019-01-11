@@ -1,5 +1,5 @@
-control 'V-16048' do
-  title 'Windows Help Ratings feedback must be turned off.'
+control "V-16048" do
+  title "Windows Help Ratings feedback must be turned off."
   desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
@@ -8,15 +8,24 @@ control 'V-16048' do
   Help content.
   "
   impact 0.5
-  tag "gtitle": 'Help Ratings'
-  tag "gid": 'V-16048'
-  tag "rid": 'SV-53145r1_rule'
-  tag "stig_id": 'WN12-UC-000008'
-  tag "fix_id": 'F-46071r1_fix'
+  tag "gtitle": "Help Ratings"
+  tag "gid": "V-16048"
+  tag "rid": "SV-53145r1_rule"
+  tag "stig_id": "WN12-UC-000008"
+  tag "fix_id": "F-46071r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-25470-6']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -35,3 +44,4 @@ control 'V-16048' do
     its('NoExplicitFeedback') { should cmp == 1 }
   end
 end
+

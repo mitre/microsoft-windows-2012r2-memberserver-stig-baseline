@@ -1,5 +1,5 @@
-control 'V-21965' do
-  title 'Device driver searches using Windows Update must be prevented.'
+control "V-21965" do
+  title "Device driver searches using Windows Update must be prevented."
   desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
@@ -8,15 +8,24 @@ control 'V-21965' do
   device drivers.
   "
   impact 0.3
-  tag "gtitle": 'Prevent Windows Update for device driver search'
-  tag "gid": 'V-21965'
-  tag "rid": 'SV-53186r1_rule'
-  tag "stig_id": 'WN12-CC-000024'
-  tag "fix_id": 'F-46112r1_fix'
+  tag "gtitle": "Prevent Windows Update for device driver search"
+  tag "gid": "V-21965"
+  tag "rid": "SV-53186r1_rule"
+  tag "stig_id": "WN12-CC-000024"
+  tag "fix_id": "F-46112r1_fix"
   tag "cci": ['CCI-001812']
   tag "cce": ['CCE-24777-5']
   tag "nist": ['CM-11 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -36,3 +45,4 @@ control 'V-21965' do
     its('SearchOrderConfig') { should cmp == 0 }
   end
 end
+

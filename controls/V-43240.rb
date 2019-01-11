@@ -1,17 +1,26 @@
-control 'V-43240' do
+control "V-43240" do
   title "The network selection user interface (UI) must not be displayed on the
   logon screen (Windows 2012 R2)."
   desc  "Enabling interaction with the network selection UI allows users to
   change connections to available networks without signing into Windows."
   impact 0.5
-  tag "gtitle": 'WINCC-000140'
-  tag "gid": 'V-43240'
-  tag "rid": 'SV-56346r2_rule'
-  tag "stig_id": 'WN12-CC-000140'
-  tag "fix_id": 'F-49192r2_fix'
-  tag "cci": ['CCI-000381']
+  tag "gtitle": "WINCC-000140"
+  tag "gid": "V-43240"
+  tag "rid": "SV-56346r2_rule"
+  tag "stig_id": "WN12-CC-000140"
+  tag "fix_id": "F-49192r2_fix"
+  tag "cci": ["CCI-000381"]
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "This requirement is NA for the initial release of Windows 2012.
    It is applicable to Windows 2012 R2.
 
@@ -43,3 +52,4 @@ control 'V-43240' do
     end
   end
 end
+

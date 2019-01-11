@@ -1,16 +1,15 @@
 EMERGENCY_ACCOUNT = attribute('emergency_account')
-
-control 'V-57655' do
+control "V-57655" do
   title "Windows 2012 / 2012 R2 must automatically remove or disable emergency
   accounts after the crisis is resolved or within 72 hours."
-  desc "Emergency administrator accounts are privileged accounts which are
+  desc  "Emergency administrator accounts are privileged accounts which are
   established in response to crisis situations where the need for rapid account
   activation is required. Therefore, emergency account activation may bypass
   normal account authorization processes. If these accounts are automatically
   disabled, system maintenance during emergencies may not be possible, thus
   adversely affecting system availability.
 
-  Emergency administrator accounts are different from infrequently used
+      Emergency administrator accounts are different from infrequently used
   accounts (i.e., local logon accounts used by system administrators when network
   or normal logon/access is not available). Infrequently used accounts are not
   subject to automatic termination dates. Emergency accounts are accounts created
@@ -20,19 +19,28 @@ control 'V-57655' do
   permanent account should be established for privileged users who need long-term
   maintenance accounts.
 
-  To address access requirements, many operating systems can be integrated
+      To address access requirements, many operating systems can be integrated
   with enterprise-level authentication/access mechanisms that meet or exceed
   access control policy requirements.
-  "
+    "
   impact 0.5
-  tag "gtitle": 'WINGE-000057'
-  tag "gid": 'V-57655'
-  tag "rid": 'SV-72065r3_rule'
-  tag "stig_id": 'WN12-GE-000057'
-  tag "fix_id": 'F-82985r1_fix'
-  tag "cci": ['CCI-001682']
-  tag "nist": ['AC-2 (2)', 'Rev_4']
+  tag "gtitle": "WINGE-000057"
+  tag "gid": "V-57655"
+  tag "rid": "SV-72065r3_rule"
+  tag "stig_id": "WN12-GE-000057"
+  tag "fix_id": "F-82985r1_fix"
+  tag "cci": ["CCI-001682"]
+  tag "nist": ["Rev_4"]
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Determine if emergency administrator accounts are used and
   identify any that exist. If none exist, this is NA.
 
@@ -82,7 +90,6 @@ control 'V-57655' do
   Local accounts can be configured to expire with the command \"Net user
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the emergency
   administrator account."
-
   emergency_accounts = EMERGENCY_ACCOUNT
 
   if emergency_accounts != []
@@ -152,3 +159,4 @@ control 'V-57655' do
     end
   end
 end
+

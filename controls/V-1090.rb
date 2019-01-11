@@ -1,5 +1,5 @@
-control 'V-1090' do
-  title 'Caching of logon credentials must be limited.'
+control "V-1090" do
+  title "Caching of logon credentials must be limited."
   desc  "The default Windows configuration caches the last logon credentials
   for users who log on interactively to a system.  This feature is provided for
   system availability reasons, such as the user's machine being disconnected from
@@ -8,15 +8,24 @@ control 'V-1090' do
   individual may isolate the password to a domain user account using a
   password-cracking program and gain access to the domain."
   impact 0.3
-  tag "gtitle": 'Caching of logon credentials'
-  tag "gid": 'V-1090'
-  tag "rid": 'SV-52846r2_rule'
-  tag "stig_id": 'WN12-SO-000024'
-  tag "fix_id": 'F-66507r2_fix'
+  tag "gtitle": "Caching of logon credentials"
+  tag "gid": "V-1090"
+  tag "rid": "SV-52846r2_rule"
+  tag "stig_id": "WN12-SO-000024"
+  tag "fix_id": "F-66507r2_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24264-4']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the system is not a member of a domain, this is NA.
 
   If the following registry value does not exist or is not configured as
@@ -49,3 +58,4 @@ control 'V-1090' do
     end
   end
 end
+

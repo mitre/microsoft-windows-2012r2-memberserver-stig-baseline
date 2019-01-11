@@ -1,19 +1,28 @@
-control 'V-3666' do
+control "V-3666" do
   title "The system must be configured to meet the minimum session security
   requirement for NTLM SSP-based servers."
-  desc "Microsoft has implemented a variety of security support providers for
+  desc  "Microsoft has implemented a variety of security support providers for
   use with RPC sessions.  All of the options must be enabled to ensure the
   maximum security level."
   impact 0.5
-  tag "gtitle": 'Session Security for NTLM SSP based Servers'
-  tag "gid": 'V-3666'
-  tag "rid": 'SV-52922r1_rule'
-  tag "stig_id": 'WN12-SO-000070'
-  tag "fix_id": 'F-45848r1_fix'
+  tag "gtitle": "Session Security for NTLM SSP based Servers"
+  tag "gid": "V-3666"
+  tag "rid": "SV-52922r1_rule"
+  tag "stig_id": "WN12-SO-000070"
+  tag "fix_id": "F-45848r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-25264-3']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -34,3 +43,4 @@ control 'V-3666' do
     its('NTLMMinServerSec') { should cmp == 537395200 }
   end
 end
+

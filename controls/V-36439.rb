@@ -1,24 +1,33 @@
-control 'V-36439' do
+control "V-36439" do
   title "Local administrator accounts must have their privileged token filtered
   to prevent elevated privileges from being used over the network on domain
   systems."
-  desc "A compromised local administrator account can provide means for an
+  desc  "A compromised local administrator account can provide means for an
   attacker to move laterally between domain systems.
 
-  With User Account Control enabled, filtering the privileged token for local
+      With User Account Control enabled, filtering the privileged token for local
   administrator accounts will prevent the elevated privileges of these accounts
   from being used over the network.
   "
   impact 0.5
   tag "gtitle": "Local admin accounts filtered token policy enabled on domain
   systems."
-  tag "gid": 'V-36439'
-  tag "rid": 'SV-51590r3_rule'
-  tag "stig_id": 'WN12-RG-000003-MS'
-  tag "fix_id": 'F-81023r1_fix'
-  tag "cci": ['CCI-001084']
+  tag "gid": "V-36439"
+  tag "rid": "SV-51590r3_rule"
+  tag "stig_id": "WN12-RG-000003-MS"
+  tag "fix_id": "F-81023r1_fix"
+  tag "cci": ["CCI-001084"]
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the system is not a member of a domain, this is NA.
   If the following registry value does not exist or is not configured as
   specified, this is a finding:
@@ -58,3 +67,4 @@ control 'V-36439' do
     end
   end
 end
+

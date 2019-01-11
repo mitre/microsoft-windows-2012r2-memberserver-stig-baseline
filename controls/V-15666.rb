@@ -1,18 +1,27 @@
-control 'V-15666' do
-  title 'Windows Peer-to-Peer networking services must be turned off.'
+control "V-15666" do
+  title "Windows Peer-to-Peer networking services must be turned off."
   desc  "Peer-to-Peer applications can allow unauthorized access to a system
   and exposure of sensitive data.  This setting will turn off the Microsoft
   Peer-to-Peer Networking Service."
   impact 0.5
-  tag "gtitle": 'Windows Peer to Peer Networking '
-  tag "gid": 'V-15666'
-  tag "rid": 'SV-53012r1_rule'
-  tag "stig_id": 'WN12-CC-000003'
-  tag "fix_id": 'F-45939r1_fix'
+  tag "gtitle": "Windows Peer to Peer Networking "
+  tag "gid": "V-15666"
+  tag "rid": "SV-53012r1_rule"
+  tag "stig_id": "WN12-CC-000003"
+  tag "fix_id": "F-45939r1_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-24398-0']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-15666' do
     its('Disabled') { should cmp == 1 }
   end
 end
+

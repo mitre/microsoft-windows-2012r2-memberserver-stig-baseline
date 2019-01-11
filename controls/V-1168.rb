@@ -1,19 +1,30 @@
-control 'V-1168' do
-  title 'Members of the Backup Operators group must be documented.'
+BACKUP_OPERATORS = attribute('backup_operators')
+
+control "V-1168" do
+  title "Members of the Backup Operators group must be documented."
   desc  "Backup Operators are able to read and write to any file in the system,
   regardless of the rights assigned to it.  Backup and restore rights permit
   users to circumvent the file access restrictions present on NTFS disk drives
   for backup and restore purposes.  Visibility of members of the Backup Operators
   group must be maintained."
   impact 0.5
-  tag "gtitle": 'Members of the Backup Operators Group'
-  tag "gid": 'V-1168'
-  tag "rid": 'SV-52156r2_rule'
-  tag "stig_id": 'WN12-00-000009-01'
-  tag "fix_id": 'F-45181r1_fix'
-  tag "cci": ['CCI-000366']
+  tag "gtitle": "Members of the Backup Operators Group"
+  tag "gid": "V-1168"
+  tag "rid": "SV-52156r2_rule"
+  tag "stig_id": "WN12-00-000009-01"
+  tag "fix_id": "F-45181r1_fix"
+  tag "cci": ["CCI-000366"]
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If no accounts are members of the Backup Operators group, this
   is NA.
 
@@ -37,3 +48,4 @@ control 'V-1168' do
     end
   end
 end
+

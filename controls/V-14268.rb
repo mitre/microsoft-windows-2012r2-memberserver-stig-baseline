@@ -1,17 +1,26 @@
-control 'V-14268' do
-  title 'Zone information must be preserved when saving attachments.'
+control "V-14268" do
+  title "Zone information must be preserved when saving attachments."
   desc  "Preserving zone of origin (internet, intranet, local, restricted)
   information on file attachments allows Windows to determine risk."
   impact 0.5
-  tag "gtitle": 'Attachment Mgr - Preserve Zone Info'
-  tag "gid": 'V-14268'
-  tag "rid": 'SV-53002r1_rule'
-  tag "stig_id": 'WN12-UC-000009'
-  tag "fix_id": 'F-45929r1_fix'
+  tag "gtitle": "Attachment Mgr - Preserve Zone Info"
+  tag "gid": "V-14268"
+  tag "rid": "SV-53002r1_rule"
+  tag "stig_id": "WN12-UC-000009"
+  tag "fix_id": "F-45929r1_fix"
   tag "cci": ['CCI-000366']
   tag "cce": ['CCE-24747-8']
   tag "nist": ['CM-6 b', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -31,3 +40,4 @@ control 'V-14268' do
     its('SaveZoneInformation') { should cmp == 2 }
   end
 end
+

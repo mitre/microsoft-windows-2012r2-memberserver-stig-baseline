@@ -1,19 +1,28 @@
-control 'V-14243' do
-  title 'Administrator accounts must not be enumerated during elevation.'
+control "V-14243" do
+  title "Administrator accounts must not be enumerated during elevation."
   desc  "Enumeration of administrator accounts when elevating can provide part
   of the logon information to an unauthorized user.  This setting configures the
   system to always require users to enter in a username and password to elevate a
   running application."
   impact 0.5
-  tag "gtitle": 'Enumerate Administrator Accounts on Elevation'
-  tag "gid": 'V-14243'
-  tag "rid": 'SV-52955r2_rule'
-  tag "stig_id": 'WN12-CC-000077'
-  tag "fix_id": 'F-45881r2_fix'
+  tag "gtitle": "Enumerate Administrator Accounts on Elevation"
+  tag "gid": "V-14243"
+  tag "rid": "SV-52955r2_rule"
+  tag "stig_id": "WN12-CC-000077"
+  tag "fix_id": "F-45881r2_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-24805-4']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -33,3 +42,4 @@ control 'V-14243' do
     its('EnumerateAdministrators') { should cmp == 0 }
   end
 end
+

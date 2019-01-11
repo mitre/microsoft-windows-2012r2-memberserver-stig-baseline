@@ -1,21 +1,29 @@
-control 'V-15991' do
+control "V-15991" do
   title "UIAccess applications must not be allowed to prompt for elevation
   without using the secure desktop."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting prevents User Interface Accessibility programs from disabling the
   secure desktop for elevation prompts."
   impact 0.5
-  tag "gtitle": 'UAC - UIAccess Secure Desktop'
-  tag "gid": 'V-15991'
-  tag "rid": 'SV-52223r2_rule'
-  tag "stig_id": 'WN12-SO-000086'
-  tag "fix_id": 'F-45241r1_fix'
+  tag "gtitle": "UAC - UIAccess Secure Desktop"
+  tag "gid": "V-15991"
+  tag "rid": "SV-52223r2_rule"
+  tag "stig_id": "WN12-SO-000086"
+  tag "fix_id": "F-45241r1_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23295-9']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
-  tag "ia_controls": 'ECCD-1, ECCD-2'
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": "ECCD-1, ECCD-2"
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -47,3 +55,4 @@ control 'V-15991' do
     end
   end
 end
+

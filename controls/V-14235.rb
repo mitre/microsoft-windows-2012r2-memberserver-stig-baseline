@@ -1,20 +1,29 @@
-control 'V-14235' do
+control "V-14235" do
   title "User Account Control must, at minimum, prompt administrators for
   consent."
-  desc "User Account Control (UAC) is a security mechanism for limiting the
+  desc  "User Account Control (UAC) is a security mechanism for limiting the
   elevation of privileges, including administrative accounts, unless authorized.
   This setting configures the elevation requirements for logged on administrators
   to complete a task that requires raised privileges."
   impact 0.5
-  tag "gtitle": 'UAC - Admin Elevation Prompt'
-  tag "gid": 'V-14235'
-  tag "rid": 'SV-52947r1_rule'
-  tag "stig_id": 'WN12-SO-000078'
-  tag "fix_id": 'F-45873r2_fix'
+  tag "gtitle": "UAC - Admin Elevation Prompt"
+  tag "gid": "V-14235"
+  tag "rid": "SV-52947r1_rule"
+  tag "stig_id": "WN12-SO-000078"
+  tag "fix_id": "F-45873r2_fix"
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23877-4']
   tag "nist": ['SC-3', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "UAC requirements are NA on Server Core installations.
 
   If the following registry value does not exist or is not configured as
@@ -56,3 +65,4 @@ control 'V-14235' do
     end
   end
 end
+

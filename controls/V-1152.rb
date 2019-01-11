@@ -1,17 +1,26 @@
-control 'V-1152' do
-  title 'Anonymous access to the registry must be restricted.'
+control "V-1152" do
+  title "Anonymous access to the registry must be restricted."
   desc  "The registry is integral to the function, security, and stability of
   the Windows system.  Some processes may require anonymous access to the
   registry.  This must be limited to properly protect the system."
   impact 0.7
-  tag "gtitle": 'Anonymous Access to the Registry'
-  tag "gid": 'V-1152'
-  tag "rid": 'SV-52864r3_rule'
-  tag "stig_id": 'WN12-RG-000004'
-  tag "fix_id": 'F-80411r1_fix'
-  tag "cci": ['CCI-002235']
+  tag "gtitle": "Anonymous Access to the Registry"
+  tag "gid": "V-1152"
+  tag "rid": "SV-52864r3_rule"
+  tag "stig_id": "WN12-RG-000004"
+  tag "fix_id": "F-80411r1_fix"
+  tag "cci": ["CCI-002235"]
   tag "nist": ['AC-6 (10)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Run \"Regedit\".
   Navigate to the following registry key:
   HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurePipeServers\\winreg\\
@@ -52,5 +61,4 @@ control 'V-1152' do
   describe registry_key('HKLM\System\CurrentControlSet\Control\SecurePipeServers\Winreg') do
     it { should exist }
   end
-
 end

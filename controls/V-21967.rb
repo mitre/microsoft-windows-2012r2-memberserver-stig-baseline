@@ -1,7 +1,7 @@
-control 'V-21967' do
+control "V-21967" do
   title "Microsoft Support Diagnostic Tool (MSDT) interactive communication
   with Microsoft must be prevented."
-  desc "Some features may communicate with the vendor, sending system
+  desc  "Some features may communicate with the vendor, sending system
   information or downloading data or components for the feature.  Turning off
   this capability will prevent potentially sensitive information from being sent
   outside the enterprise and uncontrolled updates to the system.
@@ -9,15 +9,24 @@ control 'V-21967' do
   collected data to Microsoft, the default support provider.
   "
   impact 0.3
-  tag "gtitle": 'MSDT Interactive Communication'
-  tag "gid": 'V-21967'
-  tag "rid": 'SV-53187r1_rule'
-  tag "stig_id": 'WN12-CC-000066'
-  tag "fix_id": 'F-46113r2_fix'
+  tag "gtitle": "MSDT Interactive Communication"
+  tag "gid": "V-21967"
+  tag "rid": "SV-53187r1_rule"
+  tag "stig_id": "WN12-CC-000066"
+  tag "fix_id": "F-46113r2_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-23633-1']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -38,3 +47,4 @@ control 'V-21967' do
     its('DisableQueryRemoteServer') { should cmp == 0 }
   end
 end
+

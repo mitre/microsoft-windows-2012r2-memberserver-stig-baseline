@@ -1,20 +1,29 @@
-control 'V-3480' do
+control "V-3480" do
   title "Windows Media Player must be configured to prevent automatic checking
   for updates."
-  desc "Uncontrolled system updates can introduce issues to a system.  The
+  desc  "Uncontrolled system updates can introduce issues to a system.  The
   automatic check for updates performed by Windows Media Player must be disabled
   to ensure a constant platform and to prevent the introduction of
   unknown\\untested software on the system."
   impact 0.5
-  tag "gtitle": 'Media Player - Disable Automatic Updates'
-  tag "gid": 'V-3480'
-  tag "rid": 'SV-53130r1_rule'
-  tag "stig_id": 'WN12-CC-000122'
-  tag "fix_id": 'F-46056r1_fix'
+  tag "gtitle": "Media Player - Disable Automatic Updates"
+  tag "gid": "V-3480"
+  tag "rid": "SV-53130r1_rule"
+  tag "stig_id": "WN12-CC-000122"
+  tag "fix_id": "F-46056r1_fix"
   tag "cci": ['CCI-001812']
   tag "cce": ['CCE-24250-3']
   tag "nist": ['CM-11 (2)', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "Windows Media Player is not installed by default.  If it is not
   installed, this is NA.
 
@@ -44,3 +53,4 @@ control 'V-3480' do
     end
   end
 end
+

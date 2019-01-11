@@ -1,19 +1,28 @@
-control 'V-15699' do
-  title 'The Windows Connect Now wizards must be disabled.'
+control "V-15699" do
+  title "The Windows Connect Now wizards must be disabled."
   desc  "Windows Connect Now provides wizards for tasks such as \"Set up a
   wireless router or access point\" and must not be available to users.
   Functions such as these may allow unauthorized connections to a system and the
   potential for sensitive information to be compromised."
   impact 0.5
-  tag "gtitle": "Network \xE2\x80\x93 Windows Connect Now Wizards"
-  tag "gid": 'V-15699'
-  tag "rid": 'SV-53089r1_rule'
-  tag "stig_id": 'WN12-CC-000013'
-  tag "fix_id": 'F-46015r2_fix'
+  tag "gtitle": "Network – Windows Connect Now Wizards "
+  tag "gid": "V-15699"
+  tag "rid": "SV-53089r1_rule"
+  tag "stig_id": "WN12-CC-000013"
+  tag "fix_id": "F-46015r2_fix"
   tag "cci": ['CCI-000381']
   tag "cce": ['CCE-24665-2']
   tag "nist": ['CM-7 a', 'Rev_4']
+  tag "false_negatives": nil
+  tag "false_positives": nil
   tag "documentable": false
+  tag "mitigations": nil
+  tag "severity_override_guidance": false
+  tag "potential_impacts": nil
+  tag "third_party_tools": nil
+  tag "mitigation_controls": nil
+  tag "responsibility": nil
+  tag "ia_controls": nil
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
 
@@ -32,3 +41,4 @@ control 'V-15699' do
     its('DisableWcnUi') { should cmp == 1 }
   end
 end
+
