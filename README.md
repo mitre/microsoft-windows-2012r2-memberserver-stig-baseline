@@ -1,87 +1,51 @@
-# microsoft-windows_2012r2_memberserver_stig
+# microsoft-windows-2012r2-memberserver-stig-baseline
 
-InSpec profile testing secure configuration of Windows 2012r2 member servers.
+InSpec profile to validate the secure configuration of Microsoft Windows 2012 R2 Member Server, against [DISA](https://iase.disa.mil/stigs/)'s **Microsoft Windows Server 2012/2012 R2 Member Server Security Technical Implementation Guide (STIG) Version 2, Release 14**.
 
-## Description
+## Getting Started  
+It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __winrm__.
 
-This InSpec compliance profile is a collection of automated tests for secure configuration of Windows 2012r2 Member Server's.
+__For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
-InSpec is an open-source run-time framework and rule language used to specify compliance, security, and policy requirements for testing any node in your infrastructure.
+Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
 
-## Versioning and State of Development
-This project uses the [Semantic Versioning Policy](https://semver.org/). 
+## Running This Profile
 
-### Branches
-The master branch contains the latest version of the software leading up to a new release. 
+    inspec exec https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline/archive/master.tar.gz -t winrm://<hostip> --user '<admin-account>' --password=<password> --reporter cli json:<filename>.json
 
-Other branches contain feature-specific updates. 
+Runs this profile over winrm to the host at IP address <hostip> as a privileged user account (i.e., an account with administrative privileges), reporting results to both the command line interface (cli) and to a machine-readable JSON file. 
+    
+The following is an example of using this command. 
 
-### Tags
-Tags indicate official releases of the project.
+    inspec exec https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline/archive/master.tar.gz -t winrm://$winhostip --user 'Administrator' --password=Pa55w0rd --reporter cli json:windows-memberserver-results.json
 
-Please note 0.x releases are works in progress (WIP) and may change at any time.   
+## Viewing the JSON Results
 
-## Requirements
+The JSON results output file can be loaded into __[heimdall-lite](https://mitre.github.io/heimdall-lite/)__ for a user-interactive, graphical view of the InSpec results. 
 
-- [ruby](https://www.ruby-lang.org/en/) at least 2.4
-- [InSpec](http://inspec.io/) at least version 2.1
-    - Install via ruby gem: `gem install inspec`
+The JSON InSpec results file may also be loaded into a __full heimdall server__, allowing for additional functionality such as to store and compare multiple profile runs.
 
-## Usage
-InSpec makes it easy to run tests wherever you need. More options listed here: [InSpec cli](http://inspec.io/docs/reference/cli/)
-
-### Run with remote profile:
-You may choose to run the profile via a remote url, this has the advantage of always being up to date.
-The disadvantage is you may wish to modify controls, which is only possible when downloaded.
-Also, the remote profile is unintuitive for passing in attributes, which modify the default values of the profile.
-``` bash
-inspec exec https://gitlab.mitre.org/inspec/windows_2012r2_memberserver_stig/repository/master/archive.tar.gz
-```
-
-Another option is to download the profile then run it, this allows you to edit specific instructions and view the profile code.
-``` bash
-# Clone Inspec Profile
-$ git clone https://gitlab.mitre.org/inspec/apache_server_baseline.git
-
-# Run profile locally (assuming you have not changed directories since cloning)
-# This will display compliance level at the prompt, and generate a JSON file 
-# for export called output.json
-$ inspec exec windows_2012r2_memberserver_stig --reporter cli json:output.json
-
-# Run profile with custom settings defined in attributes.yml against the target 
-# server example.com. 
-$ inspec exec windows_2012r2_memberserver_stig -t ssh://user@password:example.com --attrs attributes.yml --reporter cli json:output.json
-
-# Run profile with: custom attributes, ssh keyed into a custom target, and sudo.
-$ inspec exec windows_2012r2_memberserver_stig -t ssh://user@hostname -i /path/to/key --sudo --attrs attributes.yml --reporter cli json:output.json
-```
-
-
-## Contributors + Kudos
-
+## Authors
 - Alicia Sturtevant
+
+## Special Thanks
+
 - The MITRE InSpec Team
 
-## License and Author
+## License 
 
-### Authors
+This project is licensed under the terms of the [Apache 2.0 license](https://github.com/mitre/microsoft-windows-2012r2-memberserver-stig-baseline/blob/master/LICENSE.md).
 
-- Author:: Alicia Sturtevant
+### NOTICE
 
-### License 
-
-* This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
-
-## NOTICE
-
-© 2018 The MITRE Corporation.  
+© 2019 The MITRE Corporation.  
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.  
 
-## NOTICE
+### NOTICE
 MITRE hereby grants express written permission to use, reproduce, distribute, modify, and otherwise leverage this software to the extent permitted by the licensed terms provided in the LICENSE.md file included with this project.
 
-## NOTICE  
+### NOTICE  
 
 This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.  
 
@@ -89,6 +53,6 @@ No other use other than that granted to the U. S. Government, or to those acting
 
 For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA  22102-7539, (703) 983-6000.  
 
-## NOTICE
+### NOTICE
 
 DISA STIGs are published by DISA IASE, see: https://iase.disa.mil/Pages/privacy_policy.aspx   
