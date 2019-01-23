@@ -44,6 +44,6 @@ control "V-4112" do
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'PerformRouterDiscovery' }
     its('PerformRouterDiscovery') { should cmp == 0 }
-  ends
+  end
 end
 
