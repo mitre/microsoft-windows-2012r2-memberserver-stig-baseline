@@ -37,6 +37,7 @@ control 'V-1102' do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Act as part of the operating system\" to be defined but containing no entries
   (blank)."
+
   describe security_policy do
     its('SeTcbPrivilege') { should be_empty }
   end
