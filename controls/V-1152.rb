@@ -47,7 +47,7 @@ control 'V-1152' do
   Backup Operators - Read - This key only
   LOCAL SERVICE - Read - This key and subkeys"
   describe command('Get-Acl -Path "HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "         NT AUTHORITY\\LOCAL SERVICE Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Backup Operators Allow  ReadKey\r\n" }
+    its('stdout') { should match "         NT AUTHORITY\\LOCAL SERVICE Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Backup Operators Allow  ReadKey\r\n" }
   end
   describe registry_key('HKLM\System\CurrentControlSet\Control\SecurePipeServers\Winreg') do
     it { should exist }
