@@ -38,6 +38,6 @@ control 'V-1102' do
   \"Act as part of the operating system\" to be defined but containing no entries
   (blank)."
   describe security_policy do
-    its('SeTcbPrivilege') { should_not include entry }
+    its('SeTcbPrivilege') { should be_empty }
   end
 end

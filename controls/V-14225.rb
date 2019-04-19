@@ -54,24 +54,12 @@ control 'V-14225' do
   Automated tools, such as Microsoft's LAPS, may be used on domain-joined member
   servers to accomplish this."
 
-  require 'date'
-  get_password_last_set = command("Net User #{ADMINISTRATOR_ACCOUNT} | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
-  month = get_password_last_set[27..29]
-  day = get_password_last_set[31..32]
-  year = get_password_last_set[34..38]
 
-  if get_password_last_set[32] == '/'
-    month = get_password_last_set[27..29]
-    day = get_password_last_set[31]
-    year = get_password_last_set[33..37]
-  end
+  password_age = json({ command:"NEW-TIMESPAN –End (GET-DATE) –Start ([datetime]((net user Administrator | \
+                      Select-String \"Password last set\").Line.Substring(29,10))) | convertto-json"}).Days
 
-  date = day + '/' + month + '/' + year
-
-  date_password_last_set = DateTime.now.mjd - DateTime.parse(date).mjd
-  describe "Administrator account's password last set" do
-    describe date_password_last_set do
-      it { should cmp <= 365 }
-    end
+  describe "Administrator Password age" do
+    subject { password_age }
+    it { should cmp <= 365 }
   end
 end
