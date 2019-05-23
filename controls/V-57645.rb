@@ -33,9 +33,11 @@ control 'V-57645' do
   employ encryption to protect the confidentiality and integrity of all
   information at rest."
 
-  describe "Systems requiring data at rest protections must employ cryptographic
+  describe "A manual review is required to ensure systems requiring data at rest protections must employ cryptographic
   mechanisms to prevent unauthorized disclosure and modification of the
   information at rest." do
-    skip 'is a manual check'
+    skip '"A manual review is required to ensure systems requiring data at rest protections must employ cryptographic
+  mechanisms to prevent unauthorized disclosure and modification of the
+  information at rest.'
   end
 end

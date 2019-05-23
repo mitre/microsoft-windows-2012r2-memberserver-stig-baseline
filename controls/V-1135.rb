@@ -42,9 +42,10 @@ control 'V-1135' do
       skip 'This control is not applicable'
     end
   else
-    describe "Nonadministrative user accounts or groups must only have print
+    describe "A manual review is required to ensure nonadministrative user accounts or groups only have print
     permissions on printer shares." do
-      skip 'This is a manual control'
+      skip 'A manual review is required to ensure nonadministrative user accounts or groups only have print
+    permissions on printer shares.'
     end
   end
 end

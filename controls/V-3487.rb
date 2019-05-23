@@ -165,8 +165,9 @@ control 'V-3487' do
   Workstation - Automatic"
   tag "fix": "Document the services required for the system to operate.  Remove
   or disable any services that are not required."
-  describe "Necessary services must be documented to maintain a baseline to
+  describe "A manual review is required to ensure necessary services are documented to maintain a baseline to
   determine if additional, unnecessary services have been added to a system" do
-    skip 'is a manual check'
+    skip 'A manual review is required to ensure necessary services are documented to maintain a baseline to
+  determine if additional, unnecessary services have been added to a system'
   end
 end

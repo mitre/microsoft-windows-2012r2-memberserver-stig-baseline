@@ -18,7 +18,7 @@ control 'V-40172' do
   this is a finding."
   tag "fix": "Ensure system-level information backups are stored in a secure
   location and protected from destruction."
-  describe 'Backups of system-level information must be protected' do
-    skip 'is a manual check'
+  describe 'A manual review is required to ensure backups of system-level information is protected' do
+    skip 'A manual review is required to ensure backups of system-level information is protected'
   end
 end

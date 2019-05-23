@@ -18,7 +18,7 @@ control 'V-1070' do
   accessible only to authorized personnel.  If systems are not adequately
   protected, this is a finding."
   tag "fix": 'Ensure servers are located in secure, access-controlled areas.'
-  describe 'Server systems must be located in a controlled area' do
-    skip 'is a manual check'
+  describe 'A manual review is required to ensure server systems are located in a controlled area, accessible only to authorized personnel' do
+    skip 'A manual review is required to ensure server systems are located in a controlled area, accessible only to authorized personnel'
   end
 end

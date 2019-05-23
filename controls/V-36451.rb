@@ -60,9 +60,11 @@ control 'V-36451' do
   Implement technical measures where feasible such as removal of applications or
   use of application whitelisting to restrict the use of applications that can
   access the Internet."
-  describe "Administrative accounts must not be used with applications that access
+  describe "A manual review is required to ensure administrative accounts are not be used with applications that access
   the Internet, such as web browsers, or with potential Internet sources, such as
   email" do
-    skip 'is a manual check'
+    skip 'A manual review is required to ensure administrative accounts are not be used with applications that access
+  the Internet, such as web browsers, or with potential Internet sources, such as
+  email'
   end
 end

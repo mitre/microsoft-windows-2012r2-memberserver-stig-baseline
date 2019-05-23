@@ -37,10 +37,11 @@ control 'V-57641' do
   IPSEC when the data owner has a strict requirement for ensuring data integrity
   and confidentiality is maintained at every step of the data transfer and
   handling process to maintain the confidentiality and integrity."
-  describe "Protection methods such as TLS, encrypted VPNs, or IPSEC must be
+  describe "A manual review is required to ensure protection methods such as TLS, encrypted VPNs, or IPSEC are
   implemented if the data owner has a strict requirement for ensuring data
   integrity and confidentiality is maintained at every step of the data transfer
   and handling process." do
-    skip 'is a manual check'
+    skip 'A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
+  policy to allow the execution of authorized software programs'
   end
 end

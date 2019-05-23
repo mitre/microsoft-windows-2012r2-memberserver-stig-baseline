@@ -28,8 +28,9 @@ control 'V-1128' do
   this is acceptable."
   tag "fix": "Implement a process using security configuration tools or the
   equivalent to configure Windows systems to meet security requirements."
-  describe "Security configuration tools or equivalent processes must be used to
+  describe "A manual review is required to ensure security configuration tools or equivalent processes are used to
   configure and maintain platforms for security compliance" do
-    skip 'is a manual check'
+    skip 'A manual review is required to ensure security configuration tools or equivalent processes are used to
+  configure and maintain platforms for security compliance'
   end
 end
