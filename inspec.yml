@@ -23,10 +23,10 @@ attributes:
     default: []
 
   - name: administrators
-    type: string
+    type: array
     description: 'List of authorized users in the local Administrators group'
-    default: 'Admn'
-
+    default: []
+    
   - name: administrators_domain
     type: array
     description: 'List of authorized users in the local Administrators domain group'
@@ -66,8 +66,7 @@ attributes:
 
   - name: LegalNoticeCaption
     type: string
-    default: "DoD Notice and Consent Banner, US Department of Defense Warning
-      Statement, or a site-defined equivalent."
+    default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
 
 
 
