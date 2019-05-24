@@ -107,10 +107,10 @@ control 'V-1112' do
           describe date_last_logged_on do
             it { should cmp <= 35 }
           end
-        end if inactive_accountsac != []
+        end if !inactive_accountsac.empty?
       end
 
-      if inactive_accountsac != []
+      if inactive_accountsac.empty?
         if last_logon == 'Never'
           date_last_logged_on = 'Never'
           describe "#{user}'s last logon" do
@@ -125,9 +125,9 @@ control 'V-1112' do
 
   describe 'The system does not have any inactive accounts, control is NA' do
     skip 'The system does not have any inactive accounts, controls is NA'
-  end if inactive_accounts == []
+  end if inactive_accounts.empty?
 
-  if inactive_accounts == []
+  if inactive_accounts.empty?
     impact 0.0
   end
 end

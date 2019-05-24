@@ -27,6 +27,6 @@ control 'V-26578' do
   Technologies -> \"Set Teredo State\" to \"Enabled: Disabled State\"."
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition') do
     it { should have_property 'Teredo_State' }
-    its('Teredo_State') { should eq 0 }
+    its('Teredo_State') { should cmp 'Disabled' }
   end
 end
