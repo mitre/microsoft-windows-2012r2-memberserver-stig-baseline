@@ -47,9 +47,13 @@ control 'V-26359' do
   language of the banner text required in V-1089."
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LegalNoticeCaption' }
-    its('LegalNoticeCaption') {
-      should eq ['DoD Notice and Consent Banner, US Department of Defense Warning
-      Statement, or a site-defined equivalent.']
-    }
+  end 
+
+  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeCaption
+
+  describe 'The required legal notice caption' do
+    subject { key.gsub(%r{[\r\n\s]}, '')}
+    it {should cmp attribute('LegalNoticeCaption').gsub(%r{[\r\n\s]}, '') }
   end
+
 end
