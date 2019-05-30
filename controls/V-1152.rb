@@ -46,11 +46,15 @@ control 'V-1152' do
   Administrators - Full Control - This key and subkeys
   Backup Operators - Read - This key only
   LOCAL SERVICE - Read - This key and subkeys"
-  describe command('Get-Acl -Path "HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should match "         NT AUTHORITY\\LOCAL SERVICE Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Backup Operators Allow  ReadKey\r\n" }
-  end
+  
   describe registry_key('HKLM\System\CurrentControlSet\Control\SecurePipeServers\Winreg') do
     it { should exist }
+  end
+
+  describe windows_registry("HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg") do
+    it { should be_allowed('read', by_user: 'NT AUTHORITY\\LOCAL SERVICE') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Backup Operators') }
   end
 
 end

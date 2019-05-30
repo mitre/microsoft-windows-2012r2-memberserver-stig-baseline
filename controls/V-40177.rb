@@ -91,18 +91,22 @@ control 'V-40177' do
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
-  describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
-  end
-  describe command('Get-Acl -Path "C:\\Program Files" | Format-List | Findstr All | Findstr CREATOR') do
-    its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
+   describe file("C:\\Program Files") do
+    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 
-  describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr /V 2') do
-    its('stdout') { should eq "         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
-  end
-  describe command('Get-Acl -Path "C:\\Program Files (x86)" | Format-List | Findstr All | Findstr CREATOR') do
-    its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n" }
+  describe file("C:\\Program Files (x86)") do
+    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 
 end

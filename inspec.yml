@@ -27,7 +27,7 @@ attributes:
     description: 'List of authorized users in the local Administrators group'
     default: []
     
-  - name: administrators_domain
+  - name: administrators_domain'
     type: array
     description: 'List of authorized users in the local Administrators domain group'
     default: []

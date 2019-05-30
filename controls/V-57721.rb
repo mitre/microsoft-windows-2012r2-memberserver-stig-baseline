@@ -35,10 +35,16 @@ control 'V-57721' do
   The default permissions below satisfy this requirement.
   TrustedInstaller - Full Control
   Administrators, SYSTEM, Users, ALL APPLICATION PACKAGES - Read & Execute"
-  get_system_root = command('env | Findstr SYSTEMROOT').stdout.strip
+  get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
-  describe command("Get-Acl -Path '#{system_root}\\SYSTEM32\\Eventvwr.exe' | Format-List | Findstr All") do
-    its('stdout') { should eq "Access : NT AUTHORITY\\SYSTEM Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Administrators Allow  ReadAndExecute, Synchronize\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n" }
+  systemroot = system_root.strip
+
+   describe windows_registry("#{systemroot}\\SYSTEM32\\Eventvwr.exe") do
+    it { should be_allowed('read', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 end

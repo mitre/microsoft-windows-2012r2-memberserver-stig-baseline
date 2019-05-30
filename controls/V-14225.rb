@@ -1,5 +1,3 @@
-ADMINISTRATOR_ACCOUNT = attribute('administrators')
-
 control 'V-14225' do
   title "Windows 2012/2012 R2 password for the built-in Administrator account
   must be changed at least annually or when a member of the administrative team
@@ -27,7 +25,7 @@ control 'V-14225' do
   Administrator account.
 
   Domain controllers:
-
+ 
   Open \"Windows PowerShell\".
 
   Enter \"Get-ADUser -Filter * -Properties SID, PasswordLastSet | Where SID -Like
@@ -54,12 +52,23 @@ control 'V-14225' do
   Automated tools, such as Microsoft's LAPS, may be used on domain-joined member
   servers to accomplish this."
 
+  if !attribute('administrators').empty?
+    attribute('administrators').each do |admin|
+      puts "Printing account"
+      puts "#{admin}"
+      password_age = json({ command:"NEW-TIMESPAN –End (GET-DATE) –Start ([datetime]((net user #{admin} | \
+                        Select-String \"Password last set\").Line.Substring(29,10))) | convertto-json"}).Days
 
-  password_age = json({ command:"NEW-TIMESPAN –End (GET-DATE) –Start ([datetime]((net user Administrator | \
-                      Select-String \"Password last set\").Line.Substring(29,10))) | convertto-json"}).Days
+      describe "Administrator Password age for #{admin}" do
+        subject { password_age }
+        it { should cmp <= 365 }
+      end
+    end
+  end
 
-  describe "Administrator Password age" do
-    subject { password_age }
-    it { should cmp <= 365 }
+  if attribute('administrators').empty?
+    describe 'There are no administrative accounts on this system' do
+      skip 'There are no administrative accounts on this system'
+    end
   end
 end

@@ -40,13 +40,24 @@ control 'V-32282' do
   CREATOR OWNER - Full Control (Subkeys only)
   ALL APPLICATION PACKAGES - Read"
 
-  describe 'The registry key permissions for HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\' do
-    subject { command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All').stdout }
-    it { should eq "Access : CREATOR OWNER Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+  describe windows_registry("HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\") do
+    it { should be_allowed('full-control', by_user: 'CREATOR OWNER') }
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 
-  describe 'The registry key permissions for HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\' do
-    subject { command('Get-Acl -Path "HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\" | Format-List | Findstr All').stdout }
-    it { should eq "Access : BUILTIN\\Users Allow  ReadKey\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         CREATOR OWNER Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+   describe windows_registry("HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\") do
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'CREATOR OWNER') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
+
 end
+
+
+

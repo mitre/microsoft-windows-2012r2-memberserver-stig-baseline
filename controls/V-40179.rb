@@ -89,7 +89,15 @@ control 'V-40179' do
   Users - Read & execute - This folder, subfolders and files
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
-  describe command('Get-Acl -Path "C:\\Windows" | Format-List | Findstr All') do
-    its('stdout') { should eq "Access : CREATOR OWNER Allow  268435456\r\n         NT AUTHORITY\\SYSTEM Allow  268435456\r\n         NT AUTHORITY\\SYSTEM Allow  Modify, Synchronize\r\n         BUILTIN\\Administrators Allow  268435456\r\n         BUILTIN\\Administrators Allow  Modify, Synchronize\r\n         BUILTIN\\Users Allow  -1610612736\r\n         BUILTIN\\Users Allow  ReadAndExecute, Synchronize\r\n         NT SERVICE\\TrustedInstaller Allow  268435456\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  -1610612736\r\n" }
+
+   describe file("C:\\Windows") do
+    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('modify', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user:  'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') } 
+    it { should be_allowed('execute', by_user:  'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') } 
   end
 end

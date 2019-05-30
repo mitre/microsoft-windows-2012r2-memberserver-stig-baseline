@@ -52,8 +52,15 @@ control 'V-26070' do
   Administrators - Full Control
   Users - Read
   ALL APPLICATION PACKAGES - Read"
-  describe 'The registry permissions for HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\' do
-    subject { command('Get-Acl -Path "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" | Format-List | Findstr All').stdout }
-    it { should eq "Access : NT AUTHORITY\\SYSTEM Allow  FullControl\r\n         BUILTIN\\Administrators Allow  FullControl\r\n         BUILTIN\\Users Allow  ReadKey\r\n         NT SERVICE\\TrustedInstaller Allow  FullControl\r\n         APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey\r\n" }
+
+  describe windows_registry("HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon") do
+    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
+    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 end
+
+
+
