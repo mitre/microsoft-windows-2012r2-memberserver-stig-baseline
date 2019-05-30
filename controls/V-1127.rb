@@ -72,22 +72,36 @@ control 'V-1127' do
   administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
 
   if is_domain == 'WORKGROUP'
-    administrator_group.each do |user|
-      describe user.to_s do
-        it { should be_in attribute('administrators') }
+
+    if !administrator_group.empty?
+      administrator_group.each do |user|
+        describe user.to_s do
+          it { should be_in attribute('administrators') }
+        end
       end
     end
+
+    if administrator_group.empty?
+      impact 0.0
+      describe 'There are no adminstrator accounts on this system' do
+        skip 'This control is not applicable'
+      end
+    end
+
   else
-    administrator_domain_group.each do |users|
-      describe users.to_s do
-        it { should be_in attribute('administrators_domain') }
+    if !administrator_domain_group.empty?
+      administrator_domain_group.each do |users|
+        describe users.to_s do
+          it { should be_in attribute('administrators_domain') }
+        end
       end
     end
-  end
-  if administrator_group.empty? || administrator_domain_group.empty?
-    impact 0.0
-    describe 'There are no adminstrator accounts on this system' do
-      skip 'This control is not applicable'
+
+    if administrator_domain_group.empty?
+      impact 0.0
+      describe 'There are no adminstrator accounts on this system' do
+        skip 'This control is not applicable'
+      end
     end
   end
 end
