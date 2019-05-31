@@ -67,41 +67,16 @@ control 'V-1127' do
 
   Remove any standard user accounts."
 
-  is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
-  administrator_domain_group = command("net localgroup Administrators /DOMAIN | Format-List | Findstr /V 'Alias Name Comment Members - command request'").stdout.strip.split('\n')
-
-  if is_domain == 'WORKGROUP'
-
-    if !administrator_group.empty?
-      administrator_group.each do |user|
-        describe user.to_s do
-          it { should be_in attribute('administrators') }
-        end
-      end
+  administrator_group.each do |user|
+    describe user.to_s do
+      it { should be_in ADMINISTRATORS }
     end
-
-    if administrator_group.empty?
-      impact 0.0
-      describe 'There are no adminstrator accounts on this system' do
-        skip 'This control is not applicable'
-      end
-    end
-
-  else
-    if !administrator_domain_group.empty?
-      administrator_domain_group.each do |users|
-        describe users.to_s do
-          it { should be_in attribute('administrators_domain') }
-        end
-      end
-    end
-
-    if administrator_domain_group.empty?
-      impact 0.0
-      describe 'There are no adminstrator accounts on this system' do
-        skip 'This control is not applicable'
-      end
+  end
+  if administrator_group.empty?
+    impact 0.0
+    describe 'There are no users with administrative privileges' do
+      skip 'This control is not applicable'
     end
   end
 end
