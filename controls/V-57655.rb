@@ -1,5 +1,3 @@
-EMERGENCY_ACCOUNT = attribute('emergency_account')
-
 control 'V-57655' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable emergency
   accounts after the crisis is resolved or within 72 hours."
@@ -83,11 +81,9 @@ control 'V-57655' do
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the emergency
   administrator account."
 
-  emergency_accounts = EMERGENCY_ACCOUNT
+  if !attribute('emergency_account').empty?
 
-  if emergency_accounts != []
-
-    emergency_accounts.each do |user|
+    attribute('emergency_account').each do |user|
 
       get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
 
