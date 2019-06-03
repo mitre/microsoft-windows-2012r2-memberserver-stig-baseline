@@ -1,5 +1,3 @@
-TEMP_ACCOUNT = attribute('temp_account')
-
 control 'V-57653' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable temporary
   user accounts after 72 hours."
@@ -75,10 +73,9 @@ control 'V-57653' do
   user account.
 
   Delete any temporary user accounts that are no longer necessary."
-  temp_accounts = TEMP_ACCOUNT
 
-  if temp_accounts != []
-    temp_accounts.each do |user|
+  if attribute('temp_account').empty?
+    attribute('temp_account').each do |user|
 
       get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
 
