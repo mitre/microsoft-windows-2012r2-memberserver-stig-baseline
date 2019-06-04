@@ -29,8 +29,9 @@ control 'V-1072' do
   reason for the account, who has access to the account, and how the risk of
   using the shared account is mitigated to include monitoring account activity."
   get_accounts = command("net user | Findstr /v 'command -- accounts'").stdout.strip.split(' ')
-
-  if attribute('shared_accounts').empty?
+  shared_accounts = attribute('shared_accounts')
+  
+  if shared_accounts.empty?
     impact 0.0
     describe 'The system does not have any shared accounts, control is NA' do
       skip 'The system does not have any shared accounts, controls is NA'
@@ -38,7 +39,7 @@ control 'V-1072' do
   else
     get_accounts.each do |user|
       describe user do
-        it { should_not be_in attribute('shared_accounts') }
+        it { should_not be_in shared_accounts }
       end
     end
   end
