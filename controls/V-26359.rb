@@ -49,11 +49,10 @@ control 'V-26359' do
     it { should have_property 'LegalNoticeCaption' }
   end 
 
-  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeCaption
-
+  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeCaption.to_s
+ 
   describe 'The required legal notice caption' do
-    subject { key.gsub(%r{[\r\n\s]}, '')}
-    it {should cmp attribute('LegalNoticeCaption').gsub(%r{[\r\n\s]}, '') }
+    subject { key.scan(/[\w().;,!]/).join}
+    it {should cmp attribute('LegalNoticeCaption').scan(/[\w().;,!]/).join }
   end
-
 end
