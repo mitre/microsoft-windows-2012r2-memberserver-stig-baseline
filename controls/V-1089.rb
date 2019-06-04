@@ -92,11 +92,12 @@ control 'V-1089' do
     it { should have_property 'LegalNoticeText' }
   end
 
-  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeText
+  key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeText.to_s
+
   k = key.gsub("\u0000", '')
 
   describe 'The required legal notice text' do
-    subject { k.gsub(%r{[\r\n\s]}, '')}
-    it {should cmp attribute('LegalNoticeText').gsub(%r{[\r\n\s]}, '') }
+    subject { k.scan(/[\w().;,!]/).join }
+    it {should cmp attribute('LegalNoticeText').scan(/[\w().;,!]/).join }
   end
 end
