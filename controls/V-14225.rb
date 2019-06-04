@@ -51,11 +51,11 @@ control 'V-14225' do
 
   Automated tools, such as Microsoft's LAPS, may be used on domain-joined member
   servers to accomplish this."
+  
+  administrators = attribute('administrators')
 
-  if !attribute('administrators').empty?
-    attribute('administrators').each do |admin|
-      puts "Printing account"
-      puts "#{admin}"
+  if !administrators.empty?
+    administrators.each do |admin|
       password_age = json({ command:"NEW-TIMESPAN –End (GET-DATE) –Start ([datetime]((net user #{admin} | \
                         Select-String \"Password last set\").Line.Substring(29,10))) | convertto-json"}).Days
 
@@ -66,7 +66,7 @@ control 'V-14225' do
     end
   end
 
-  if attribute('administrators').empty?
+  if administrators.empty?
     describe 'There are no administrative accounts on this system' do
       skip 'There are no administrative accounts on this system'
     end
