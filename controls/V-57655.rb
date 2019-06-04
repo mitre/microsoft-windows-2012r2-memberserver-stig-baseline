@@ -81,9 +81,10 @@ control 'V-57655' do
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the emergency
   administrator account."
 
-  if !attribute('emergency_account').empty?
+  emergency_account = attribute('emergency_account')
+  if !emergency_account .empty?
 
-    attribute('emergency_account').each do |user|
+    emergency_account.each do |user|
 
       get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
 
