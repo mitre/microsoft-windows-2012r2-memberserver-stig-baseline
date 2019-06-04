@@ -1,5 +1,3 @@
-ADMINISTRATORS = attribute('administrators')
-
 control 'V-36658' do
   title 'Users with administrative privilege must be documented.'
   desc  "Administrative accounts may perform any action on a system.  Users
@@ -19,11 +17,11 @@ control 'V-36658' do
   Administrators group is not maintained with the ISSO, this is a finding."
   tag "fix": "Create the necessary documentation that identifies the members of
   the Administrators group."
-
+  administrators = attribute('administrators')
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_group.each do |user|
     describe user.to_s do
-      it { should be_in ADMINISTRATORS }
+      it { should be_in administrators }
     end
   end
   if administrator_group.empty?
