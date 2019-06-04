@@ -22,11 +22,12 @@ control 'V-36659' do
   administrative functions and standard user functions, this is a finding."
   tag "fix": "Ensure each user with administrative privileges has a separate
   account for user duties and one for privileged duties."
-
+  
+  administrators = attribute('administrators')
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_group.each do |user|
     describe user.to_s do
-      it { should be_in attribute('administrators') }
+      it { should be_in administrators }
     end
   end
   if administrator_group.empty?
