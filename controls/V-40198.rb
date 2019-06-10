@@ -36,7 +36,7 @@ control 'V-40198' do
     backup_operators_group.each do |user|
       describe user do
         it { should be_in backup_operators }
-      end  if backup_operators_group == []
+      end
     end
   end
 end
