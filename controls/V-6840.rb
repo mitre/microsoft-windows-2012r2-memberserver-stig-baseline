@@ -45,7 +45,7 @@ control 'V-6840' do
   with the ISSO."
 
   describe command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False
-  and LocalAccount=True' | FT Name, PasswordExpires, Disabled, LocalAccount | Findstr /V 'Name --'") do
+  and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'") do
     its('stdout') { should eq '' }
   end
 end
