@@ -25,8 +25,9 @@ control 'V-1074' do
     describe registry_key('HKLM\SOFTWARE\McAfee/DesktopProtection\szProductVer') do
       it { should exist }
     end
-    describe registry_key('HKLM\SOFTWARE\McAfee\Endpoint\AV\ProductVersion') do
+    describe registry_key('HKLM\SOFTWARE\McAfee\Endpoint\AV') do
       it { should exist }
+      it { should have_property 'ProductVersion' }
     end
   end
 end
