@@ -67,7 +67,7 @@ control 'V-1127' do
 
   Remove any standard user accounts."
   administrators = attribute('administrators')
-  administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
+  administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   administrator_group.each do |user|
     describe user.to_s do
       it { should be_in administrators }
