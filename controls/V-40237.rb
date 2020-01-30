@@ -13,8 +13,7 @@ control 'V-40237' do
   tag "stig_id": 'WN12-PK-000004'
   tag "fix_id": 'F-76905r2_fix'
   tag "cci": ['CCI-000185', 'CCI-002470']
-  tag "nist": ['IA-5 (2) (a)', 'Rev_4']
-  tag "nist": ['SC-23 (5)', 'Rev_4']
+  tag "nist": ['IA-5 (2) (a)', 'SC-23 (5)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the US DoD CCEB Interoperability Root CA
   cross-certificate is installed on unclassified systems as an Untrusted
