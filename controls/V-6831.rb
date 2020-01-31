@@ -12,8 +12,7 @@ control 'V-6831' do
   tag "fix_id": 'F-45860r1_fix'
   tag "cci": ['CCI-002418', 'CCI-002421']
   tag "cce": ['CCE-24465-7']
-  tag "nist": ['SC-8', 'Rev_4']
-  tag "nist": ['SC-8 (1)', 'Rev_4']
+  tag "nist": ['SC-8', 'SC-8 (1)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
