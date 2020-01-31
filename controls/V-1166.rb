@@ -13,7 +13,8 @@ control 'V-1166' do
   tag "fix_id": 'F-45800r1_fix'
   tag "cci": ['CCI-002418', 'CCI-002421']
   tag "cce": ['CCE-24740-3']
-  tag "nist": ['SC-8', 'SC-8 (2)', 'Rev_4']
+  tag "nist": ['SC-8', 'Rev_4']
+  tag "nist": ['SC-8 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:

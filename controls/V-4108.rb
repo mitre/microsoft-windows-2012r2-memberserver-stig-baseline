@@ -13,7 +13,9 @@ control 'V-4108' do
   tag "fix_id": 'F-45849r2_fix'
   tag "cci": ['CCI-000139', 'CCI-001855', 'CCI-001858']
   tag "cce": ['CCE-25110-8']
-  tag "nist": ['AU-5 a', 'AU-5 (1)', 'AU-5 (2)', 'Rev_4']
+  tag "nist": ['AU-5 a', 'Rev_4']
+  tag "nist": ['AU-5 (1)', 'Rev_4']
+  tag "nist": ['AU-5 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the system is configured to write to an audit server, or is
   configured to automatically archive full logs, this is NA.

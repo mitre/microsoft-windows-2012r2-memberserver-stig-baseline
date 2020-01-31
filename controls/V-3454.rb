@@ -12,7 +12,8 @@ control 'V-3454' do
   tag "fix_id": 'F-45825r1_fix'
   tag "cci": ['CCI-000068', 'CCI-002890']
   tag "cce": ['CCE-24932-6']
-  tag "nist": ['AC-17 (2)', 'MA-4 (6)', 'Rev_4']
+  tag "nist": ['AC-17 (2)', 'Rev_4']
+  tag "nist": ['MA-4 (6)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
