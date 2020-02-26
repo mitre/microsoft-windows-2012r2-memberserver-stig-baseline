@@ -15,7 +15,6 @@ require 'shellwords'
 
   class WindowsRegistryResource < Inspec.resource(1)
     include WindowsRegistryPermissionsSelector
-    include LinuxMountParser
 
     name 'windows_registry'
    #  supports platform: 'unix'
