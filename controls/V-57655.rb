@@ -81,7 +81,7 @@ control 'V-57655' do
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the emergency
   administrator account."
 
-  emergency_account = attribute('emergency_account')
+  emergency_account = input('emergency_account')
   if !emergency_account .empty?
 
     emergency_account.each do |user|

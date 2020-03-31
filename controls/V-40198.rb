@@ -26,7 +26,7 @@ control 'V-40198' do
   tag "fix": "Ensure each member of the Backup Operators group has separate
   accounts for backup functions and standard user functions."
   backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
-  backup_operators = attribute('backup_operators')
+  backup_operators = input('backup_operators')
   if backup_operators_group.empty?
     impact 0.0
     describe 'Backup Operators Group Empty' do

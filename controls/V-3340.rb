@@ -30,11 +30,14 @@ control 'V-3340' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Shares that can be accessed anonymously\" contains no entries
   (blank)."
-  describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
-    it { should have_property 'NullSessionShares' }
-    its('NullSessionShares') { should eq [''] }
-  end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters').exists?
+  
+  describe.one do
+    describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
+      it { should have_property 'NullSessionShares' }
+      its('NullSessionShares') { should eq [''] }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
+      it { should_not have_property 'NullSessionShares' }
+    end
   end
 end

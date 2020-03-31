@@ -29,7 +29,7 @@ control 'V-1072' do
   reason for the account, who has access to the account, and how the risk of
   using the shared account is mitigated to include monitoring account activity."
   get_accounts = command("net user | Findstr /v 'command -- accounts'").stdout.strip.split(' ')
-  shared_accounts = attribute('shared_accounts')
+  shared_accounts = input('shared_accounts')
   
   if shared_accounts.empty?
     impact 0.0

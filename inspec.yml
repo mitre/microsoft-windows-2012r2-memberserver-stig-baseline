@@ -11,7 +11,16 @@ description:
   https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip
 version: 0.1.0
 
-attributes:
+inputs:
+  - name: av_approved_software
+    desc: "This is a list of Approved Anti-Virus Software"
+    type: Array
+    value:
+      - Windows Defender
+      - McAfee Host Intrusion Prevention
+      - McAfee Endpoint Security
+      - McAfee Agent
+
   - name: shared_accounts
     type: array
     description: 'List of shared accounts on the system'
@@ -67,6 +76,21 @@ attributes:
   - name: LegalNoticeCaption
     type: string
     default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
+
+  - name: reg_winreg_perms
+    desc: 'This is the values of the winreg registry key'
+    type: Array
+    value:
+     - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
+     - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
+     - BUILTIN\Administrators Allow  268435456
+     - BUILTIN\Administrators Allow  FullControl
+     - BUILTIN\Backup Operators Allow  ReadKey
+
+  - name: domain_sid
+    desc: 'This is the SID for Domain'
+    type: String
+    value: "3561952647-5207400-2818715555"
 
 
 
