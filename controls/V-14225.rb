@@ -52,7 +52,7 @@ control 'V-14225' do
   Automated tools, such as Microsoft's LAPS, may be used on domain-joined member
   servers to accomplish this."
   
-  administrators = attribute('administrators')
+  administrators = input('administrators')
 
   if !administrators.empty?
     administrators.each do |admin|

@@ -66,7 +66,7 @@ control 'V-1127' do
   Directory Domain STIG).
 
   Remove any standard user accounts."
-  administrators = attribute('administrators')
+  administrators = input('administrators')
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   administrator_group.each do |user|
     describe user.to_s do

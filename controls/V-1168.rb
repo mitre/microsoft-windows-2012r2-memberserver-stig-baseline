@@ -24,7 +24,7 @@ control 'V-1168' do
   tag "fix": "Create the necessary documentation that identifies the members of
   the Backup Operators group."
   
-  backup_operators = attribute('backup_operators') 
+  backup_operators = input('backup_operators') 
   backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   if backup_operators_group != []
     backup_operators_group.each do |user|

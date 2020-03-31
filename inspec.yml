@@ -11,7 +11,16 @@ description:
   https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip
 version: 0.1.0
 
-attributes:
+inputs:
+  - name: av_approved_software
+    desc: "This is a list of Approved Anti-Virus Software"
+    type: Array
+    value:
+      - Windows Defender
+      - McAfee Host Intrusion Prevention
+      - McAfee Endpoint Security
+      - McAfee Agent
+
   - name: shared_accounts
     type: array
     description: 'List of shared accounts on the system'
