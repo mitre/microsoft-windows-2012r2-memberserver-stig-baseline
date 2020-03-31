@@ -77,5 +77,15 @@ inputs:
     type: string
     default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
 
+  - name: reg_winreg_perms
+    desc: 'This is the values of the winreg registry key'
+    type: Array
+    value:
+     - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
+     - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
+     - BUILTIN\Administrators Allow  268435456
+     - BUILTIN\Administrators Allow  FullControl
+     - BUILTIN\Backup Operators Allow  ReadKey
+
 
 
