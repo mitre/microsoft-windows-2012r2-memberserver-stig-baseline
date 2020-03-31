@@ -46,15 +46,30 @@ control 'V-1152' do
   Administrators - Full Control - This key and subkeys
   Backup Operators - Read - This key only
   LOCAL SERVICE - Read - This key and subkeys"
-  
+
+  hklm_winreg = <<-EOH
+  $output = (Get-Acl -Path HKLM:System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg).AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_winreg = powershell(hklm_winreg).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_result_winreg = raw_winreg.lines.collect(&:strip)
+
   describe registry_key('HKLM\System\CurrentControlSet\Control\SecurePipeServers\Winreg') do
     it { should exist }
   end
 
-  describe windows_registry("HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg") do
-    it { should be_allowed('read', by_user: 'NT AUTHORITY\\LOCAL SERVICE') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Backup Operators') }
+   describe 'Verify the default registry permissions for the keys note below of the HKLM:System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg' do
+    subject { clean_result_winreg }
+    it { should be_in input('reg_winreg_perms') }
   end
+  #describe windows_registry("HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg") do
+    #it { should be_allowed('read', by_user: 'NT AUTHORITY\\LOCAL SERVICE') }
+  #  it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+  #  it { should be_allowed('read', by_user: 'BUILTIN\\Backup Operators') }
+ # end
 
 end
