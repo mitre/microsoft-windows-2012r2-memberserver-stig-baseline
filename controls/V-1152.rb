@@ -64,7 +64,7 @@ control 'V-1152' do
 
    describe 'Verify the default registry permissions for the keys note below of the HKLM:System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg' do
     subject { clean_result_winreg }
-    it { should be_in input('reg_winreg_perms') }
+    it { should include input('reg_winreg_perms') }
   end
   #describe windows_registry("HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg") do
     #it { should be_allowed('read', by_user: 'NT AUTHORITY\\LOCAL SERVICE') }
