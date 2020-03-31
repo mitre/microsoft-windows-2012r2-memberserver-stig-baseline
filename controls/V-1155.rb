@@ -82,6 +82,7 @@ control 'V-1155' do
   Microsoft Security Advisory Patch 2871997 adds the new security groups to
   Windows Server 2012."
 
+  #Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
   if is_domain == 'WORKGROUP'
@@ -90,8 +91,8 @@ control 'V-1155' do
     end
 
   else
-    get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
-    domain_sid = get_domain_sid[9..40]
+    #get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
+    domain_sid = input('domain_sid')
     describe security_policy do
       its('SeDenyNetworkLogonRight') { should include "S-1-21-#{domain_sid}-512" }
     end

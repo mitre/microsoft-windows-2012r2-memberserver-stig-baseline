@@ -87,5 +87,10 @@ inputs:
      - BUILTIN\Administrators Allow  FullControl
      - BUILTIN\Backup Operators Allow  ReadKey
 
+  - name: domain_sid
+    desc: 'This is the SID for Domain'
+    type: String
+    value: "3561952647-5207400-2818715555"
+
 
 
