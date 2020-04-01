@@ -59,6 +59,7 @@ control 'V-26483' do
         its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
       end
   else
+    #Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
     #get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
     #domain_sid = get_domain_sid[9..40]
     domain_sid = input('domain_sid')
