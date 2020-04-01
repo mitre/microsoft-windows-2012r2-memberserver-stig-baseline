@@ -35,7 +35,7 @@ Admin Approval Mode."
   Control: Admin Approval Mode for the Built-in Administrator account\" to
   \"Enabled\"."
 
- #command checks to see if install is a Core or Gui Based install
+ #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'
