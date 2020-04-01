@@ -36,11 +36,11 @@ control 'V-26602' do
       skip 'The system does not have Ftp installed, this requirement is Not Applicable.'
     end
   else
-    describe wmi({
-                   class: 'win32_service',
-    filter: "name like '%ftpsvc%'"
-                 }) do
-      its('StartMode') { should cmp 'Disabled' }
+    startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "FTPSVC"} | Select StartMode | ConvertTo-Json').stdout.strip
+    clean_startmode = startmode[22..29]
+    describe 'Fax Service is installed and disabled' do
+      subject { clean_startmode }
+      it { should eq 'Disabled'}
     end
   end
 end

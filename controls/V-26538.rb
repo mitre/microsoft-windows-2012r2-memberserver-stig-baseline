@@ -38,6 +38,7 @@ control 'V-26538' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Management -> \"Audit User Account Management\" with
   \"Failure\" selected."
+  
   describe.one do
     describe audit_policy do
       its('User Account Management') { should eq 'Failure' }

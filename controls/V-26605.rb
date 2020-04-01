@@ -22,12 +22,19 @@ control 'V-26605' do
 
   Simple TCP/IP Services (simptcp)"
   tag "fix": 'Remove or disable the Simple TCP/IP Services (simptcp) service.'
-  describe.one do
-    describe service('simptcp') do
-      it { should_not be_installed }
+
+  is_tcpip_installed = command('Get-WindowsFeature Simple-TCPIP | Select -Expand Installed').stdout.strip
+
+  if is_tcpip_installed  == 'False'
+    describe 'The system does not have Simple TCP/IP installed' do
+      skip 'The system does not have Simple TCP/IP installed, this requirement is Not Applicable.'
     end
-    describe service('simptcp') do
-      it { should_not be_enabled }
+  else
+    startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "simptcp"} | Select StartMode | ConvertTo-Json').stdout.strip
+    clean_startmode = startmode[22..29]
+    describe 'Simple TCP/IP Service is installed and disabled' do
+      subject { clean_startmode }
+      it { should eq 'Disabled'}
     end
   end
 end

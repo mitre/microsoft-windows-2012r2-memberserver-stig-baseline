@@ -92,5 +92,17 @@ inputs:
     type: String
     value: "3561952647-5207400-2818715555"
 
+  - name: dod_root_certificates
+    description: "List of DoD CA Root Certificates"
+    type: Array
+    value: 
+     - :Subject: "CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "8C941B34EA1EA6ED9AE2BC54CF687252B4C9B561"
+     - :Subject: "CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "D73CA91102A2204A36459ED32213B467D7CE97FB"
+     - :Subject: "CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "B8269F25DBD937ECAFD4C35A9838571723F2D026"
+
+  
 
 

@@ -36,6 +36,7 @@ control 'V-26539' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Detailed Tracking -> \"Audit Process Creation\" with
   \"Success\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Process Creation') { should eq 'Success' }

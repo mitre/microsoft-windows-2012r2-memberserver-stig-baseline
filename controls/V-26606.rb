@@ -22,12 +22,20 @@ control 'V-26606' do
 
   Telnet (tlntsvr)"
   tag "fix": 'Remove or disable the Telnet (tlntsvr) service.'
-  describe.one do
-    describe service('tlntsvr') do
-      it { should_not be_installed }
+
+  is_telnetserver_installed = command('Get-WindowsFeature telnet-server | Select -Expand Installed').stdout.strip
+
+   startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "tlntsvr"} | Select StartMode | ConvertTo-Json').stdout.strip
+   clean_startmode = startmode[22..29]
+
+  if is_telnetserver_installed  == 'False'
+    describe 'The system does not have Telnet Server installed' do
+      skip 'The system does not have Telnet Server installed, this requirement is Not Applicable.'
     end
-    describe service('tlntsvr') do
-      it { should_not be_enabled }
+  else
+    describe 'Telnet Service is installed and disabled' do
+     subject { clean_startmode }
+     it { should eq 'Disabled'}
     end
   end
 end

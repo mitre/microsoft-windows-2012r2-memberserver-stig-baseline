@@ -65,42 +65,13 @@ control 'V-32272' do
 
   The InstallRoot tool is available on IASE at
   http://iase.disa.mil/pki-pke/Pages/tools.aspx."
-  describe.one do
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\8C941B34EA1EA6ED9AE2BC54CF687252B4C9B561') do
-      it { should exist }
+
+dod_root_certificates = JSON.parse(input('dod_root_certificates').to_json)
+
+query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\root | Where {$_.Subject -Like "*DoD*"} | Select Subject, Thumbprint | ConvertTo-Json' })
+
+    describe 'Verify the DoD Root CA certificates are installed as Trusted Root Certification Authorities.' do
+      subject { query.params }
+      it { should be_in dod_root_certificates }
     end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\D73CA91102A2204A36459ED32213B467D7CE97FB') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\SystemCertificates\\Root\\Certificates\\B8269F25DBD937ECAFD4C35A9838571723F2D026') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\8C941B34EA1EA6ED9AE2BC54CF687252B4C9B561') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\D73CA91102A2204A36459ED32213B467D7CE97FB') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\B8269F25DBD937ECAFD4C35A9838571723F2D026') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\8C941B34EA1EA6ED9AE2BC54CF687252B4C9B561') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\D73CA91102A2204A36459ED32213B467D7CE97FB') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\SystemCertificates\\Root\\Certificates\\B8269F25DBD937ECAFD4C35A9838571723F2D026') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\8C941B34EA1EA6ED9AE2BC54CF687252B4C9B561') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\D73CA91102A2204A36459ED32213B467D7CE97FB') do
-      it { should exist }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\EnterpriseCertificates\\Root\\Certificates\\B8269F25DBD937ECAFD4C35A9838571723F2D026') do
-      it { should exist }
-    end
-  end
 end
