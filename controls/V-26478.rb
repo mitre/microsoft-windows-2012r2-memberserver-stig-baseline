@@ -31,12 +31,8 @@ control 'V-26478' do
   \"Create a pagefile\" to only include the following accounts or groups:
 
   Administrators"
-  describe.one do
+  
     describe security_policy do
       its('SeCreatePagefilePrivilege') { should eq ['S-1-5-32-544'] }
     end
-    describe security_policy do
-      its('SeCreatePagefilePrivilege') { should eq [] }
-    end
-  end
 end

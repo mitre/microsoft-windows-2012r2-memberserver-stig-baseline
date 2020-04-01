@@ -35,18 +35,8 @@ control 'V-26476' do
 
   Administrators
   Local Service"
-  describe.one do
+  
     describe security_policy do
       its('SeTimeZonePrivilege') { should eq ['S-1-5-19', 'S-1-5-32-544'] }
     end
-    describe security_policy do
-      its('SeTimeZonePrivilege') { should eq ['S-1-5-19'] }
-    end
-    describe security_policy do
-      its('SeTimeZonePrivilege') { should eq ['S-1-5-32-544'] }
-    end
-    describe security_policy do
-      its('SeTimeZonePrivilege') { should eq [] }
-    end
-  end
 end
