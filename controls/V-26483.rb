@@ -64,10 +64,10 @@ control 'V-26483' do
     #domain_sid = get_domain_sid[9..40]
     domain_sid = input('domain_sid')
     describe security_policy do
-      its('SeDenyBatchLogonRight') { should include "S-1-21-5-#{domain_sid}-512" }
+      its('SeDenyBatchLogonRight') { should include "S-1-5-21-#{domain_sid}-512" }
     end
     describe security_policy do
-      its('SeDenyBatchLogonRight') { should include "S-1-21-5-#{domain_sid}-519" }
+      its('SeDenyBatchLogonRight') { should include "S-1-5-21-#{domain_sid}-519" }
     end
   end
 end
