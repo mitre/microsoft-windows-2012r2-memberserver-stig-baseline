@@ -38,7 +38,7 @@ Admin Approval Mode."
  #command checks to see if install is a Core or Gui Based install
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
-  if os_type == 'True'
+  if os_type == 'false'
     impact 0.0
     describe 'This system is a Server Core Installation, control is NA' do
       skip 'This system is a Server Core Installation control is NA'
