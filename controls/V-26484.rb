@@ -56,7 +56,6 @@ control 'V-26484' do
     describe security_policy do
       its('SeDenyServiceLogonRight') { should eq [] }
     end
-
   else
     #Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
     #get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip

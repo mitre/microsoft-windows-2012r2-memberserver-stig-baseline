@@ -29,6 +29,7 @@ control 'V-26497' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Modify an object label\" to be defined but containing no entries (blank)."
+  
   describe security_policy do
     its('SeRelabelPrivilege') { should eq [] }
   end

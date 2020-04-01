@@ -61,24 +61,19 @@ control 'V-26485' do
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
   if is_domain == 'WORKGROUP'
-    describe.one do
       describe security_policy do
         its('SeDenyInteractiveLogonRight') { should eq ['S-1-5-32-546'] }
       end
-      describe security_policy do
-        its('SeDenyInteractiveLogonRight') { should eq [] }
-      end
-    end
-
   else
-    get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
-    domain_sid = get_domain_sid[9..40]
+    #Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
+    #get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
+    #domain_sid = get_domain_sid[9..40]
+    domain_sid = input('domain_sid')
     describe security_policy do
-      its('SeDenyInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-512" }
+      its('SeDenyInteractiveLogonRight') { should include "S-1-5-21-#{domain_sid}-512" }
     end
     describe security_policy do
-      its('SeDenyInteractiveLogonRight') { should include "S-1-21-#{domain_sid}-519" }
+      its('SeDenyInteractiveLogonRight') { should include "S-1-5-21-#{domain_sid}-519" }
     end
   end
-
 end
