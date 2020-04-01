@@ -35,7 +35,11 @@ control 'V-14239' do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Only elevate UIAccess applications that are installed in secure
   locations\" to \"Enabled\"."
-  if registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+  
+  #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
+  os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
+
+  if os_type == 'false'
     impact 0.0
     describe 'This system is a Server Core Installation, control is NA' do
       skip 'This system is a Server Core Installation control is NA'
