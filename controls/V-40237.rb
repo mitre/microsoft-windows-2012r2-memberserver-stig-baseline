@@ -89,7 +89,7 @@ Valid: Friday, September 27, 2019"
 
     describe 'Verify the DoD CCEB CA certificates are installed as Untrusted Certificate.' do
       subject { query.params }
-      it { should be_in dod_root_certificates }
+      it { should be_in dod_cceb_certificates }
     end
   end
 end
