@@ -32,7 +32,7 @@ control 'V-43238' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Control Panel -> Personalization -> \"Prevent enabling lock screen
   slide show\" to \"Enabled\"."
-  if os['release'].to_i < 6.3
+  if os['release'].to_f < 6.3
     impact 0.0
     describe 'Control not applicable' do
       skip 'This requirement is NA for the initial release of Windows 2012'

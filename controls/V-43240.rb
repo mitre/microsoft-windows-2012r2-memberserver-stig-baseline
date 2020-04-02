@@ -31,7 +31,7 @@ control 'V-43240' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> System -> Logon -> \"Do not display network selection UI\" to
   \"Enabled\"."
-  if os['release'].match?(/6.3.*/)
+  if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do
       skip 'System is not Windows 2012, control is NA'

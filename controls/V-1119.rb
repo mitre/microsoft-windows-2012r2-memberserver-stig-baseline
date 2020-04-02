@@ -23,8 +23,8 @@ control 'V-1119' do
   system other than Windows Server 2012, this is a finding."
   tag "fix": "Ensure Windows Server 2012 is the only operating system installed
   for the system to boot into.  Remove alternate operating systems."
-  describe command("bcdedit | Findstr description | Findstr /v /c:'Windows Boot Manager'") do
+  
+    describe command("bcdedit | Findstr description | Findstr /v /c:'Windows Boot Manager'") do
     its('stdout') { should eq "description             Windows Server 2012 R2\r\n" }
   end
-  only_if { os['release'].to_i < 6.3 }
 end
