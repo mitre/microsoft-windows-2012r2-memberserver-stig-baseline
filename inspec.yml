@@ -159,8 +159,16 @@ inputs:
     - NT AUTHORITY\SYSTEM Allow  FullControl
     - BUILTIN\Administrators Allow  FullControl
 
-   - name: winevt_logs_security_perms
+  - name: winevt_logs_security_perms
     desc: 'This is the values of the Security.evtx file under system32'
+    type: Array
+    value:
+    - NT SERVICE\EventLog Allow  FullControl
+    - NT AUTHORITY\SYSTEM Allow  FullControl
+    - BUILTIN\Administrators Allow  FullControl
+
+  - name: winevt_logs_system_perms
+    desc: 'This is the values of the System.evtx file under system32'
     type: Array
     value:
     - NT SERVICE\EventLog Allow  FullControl
