@@ -91,4 +91,5 @@ Valid: Friday, September 27, 2019"
       subject { query.params }
       it { should be_in dod_root_certificates }
     end
+  end
 end
