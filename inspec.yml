@@ -131,22 +131,22 @@ inputs:
     desc: 'This is the values of the Installed Components registry key'
     type: Array
     value:
-    - BUILTIN\\Users Allow  ReadKey
-    - BUILTIN\\Users Allow  -2147483648
-    - BUILTIN\\Administrators Allow  FullControl
-    - BUILTIN\\Administrators Allow  268435456
-    - NT AUTHORITY\\SYSTEM Allow  FullControl
-    - NT AUTHORITY\\SYSTEM Allow  268435456
+    - BUILTIN\Users Allow  ReadKey
+    - BUILTIN\Users Allow  -2147483648
+    - BUILTIN\Administrators Allow  FullControl
+    - BUILTIN\Administrators Allow  268435456
+    - NT AUTHORITY\SYSTEM Allow  FullControl
+    - NT AUTHORITY\SYSTEM Allow  268435456
     - CREATOR OWNER Allow  268435456
-    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey
-    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  -2147483648
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
 
   - name: reg_wow6432_install_comp_perms
     desc: 'This is the values of the Installed Components under WoW643Node registry key'
     type: Array
     value:
-    - BUILTIN\\Users Allow  ReadKey
-    - BUILTIN\\Administrators Allow  FullControl
-    - NT AUTHORITY\\SYSTEM Allow  FullControl
+    - BUILTIN\Users Allow  ReadKey
+    - BUILTIN\Administrators Allow  FullControl
+    - NT AUTHORITY\SYSTEM Allow  FullControl
     - CREATOR OWNER Allow  FullControl
-    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
