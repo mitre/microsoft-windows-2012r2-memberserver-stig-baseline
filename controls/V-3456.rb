@@ -29,6 +29,7 @@ control 'V-3456' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Temporary Folders -> \"Do not delete temp folder
   upon exit\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'DeleteTempDirsOnExit' }
     its('DeleteTempDirsOnExit') { should cmp == 1 }

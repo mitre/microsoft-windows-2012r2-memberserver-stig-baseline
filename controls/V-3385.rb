@@ -29,6 +29,7 @@ control 'V-3385' do
   Settings -> Security Settings -> Local Policies -> Security Options -> \"System
   objects: Require case insensitivity for non-Windows subsystems\" to
   \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel') do
     it { should have_property 'ObCaseInsensitive' }
     its('ObCaseInsensitive') { should cmp == 1 }

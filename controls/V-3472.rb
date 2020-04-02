@@ -56,6 +56,7 @@ control 'V-3472' do
   Time Service -> Time Providers -> \"Configure Windows NTP Client\" to
   \"Enabled\", and configure the \"NtpServer\" field to point to an authorized
   time server."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\W32time\Parameters') do
     its('Type') { should_not cmp == 'NTP' }
     its('Type') { should_not cmp == 'AllSync' }

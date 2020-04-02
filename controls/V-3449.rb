@@ -28,6 +28,7 @@ control 'V-3449' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Connections -> \"Restrict Remote Desktop
   Services users to a single Remote Desktop Services Session\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fSingleSessionPerUser' }
     its('fSingleSessionPerUser') { should cmp == 1 }
