@@ -25,12 +25,16 @@ control 'V-1073' do
   Unsupported Service Packs/Releases:
   Windows 2012 - any release candidates or versions prior to the initial release."
   tag "fix": 'Update the system to a supported release or service pack level.'
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
-    it { should have_property 'CurrentVersion' }
-    its('CurrentVersion') { should cmp >= '6.2' }
-  end
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion') do
-    it { should have_property 'CurrentBuildNumber' }
-    its('CurrentBuildNumber') { should cmp >= '9200' }
-  end
+
+  currentversion = os['release'].to_f
+  release = os['release'].to_s[4..8]
+
+    describe 'Microsoft Windows 2012 R2 needs to be higher that current version 6.2' do
+      subject {currentversion}
+      it { should cmp >= 6.2 }
+    end
+    describe 'Microsoft Windows 2012 R2 needs to be higher that release 9200' do
+      subject {release}
+      it { should cmp >= 9200 }
+    end
 end
