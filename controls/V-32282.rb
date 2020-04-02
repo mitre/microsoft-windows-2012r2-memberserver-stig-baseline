@@ -60,11 +60,11 @@ control 'V-32282' do
 
    describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components' do
     subject { clean_installed_comp }
-    it { should be_in input('reg_install_comp_perms') }
+    it { should cmp input('reg_install_comp_perms') }
   end
 
   describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components' do
     subject { clean_wow_installed_comp }
-    it { should be_in input('reg_wow6432_install_comp_perms') }
+    it { should cmp input('reg_wow6432_install_comp_perms') }
   end
 end

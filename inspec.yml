@@ -141,7 +141,7 @@ inputs:
     - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey
     - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  -2147483648
 
-  - name: rreg_wow6432_install_comp_perms
+  - name: reg_wow6432_install_comp_perms
     desc: 'This is the values of the Installed Components under WoW643Node registry key'
     type: Array
     value:
