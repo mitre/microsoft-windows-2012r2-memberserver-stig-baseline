@@ -40,11 +40,19 @@ control 'V-57721' do
 
   systemroot = system_root.strip
 
-   describe windows_registry("#{systemroot}\\SYSTEM32\\Eventvwr.exe") do
-    it { should be_allowed('read', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-  end
+  eventvwr = <<-EOH
+  $output = (Get-Acl -Path #{systemroot}\\SYSTEM32\\Eventvwr.exe).AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_eventvwr = powershell(eventvwr).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_eventvwr = raw_eventvwr.lines.collect(&:strip)
+
+   describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\Eventvwr.exe' do
+    subject { clean_eventvwr }
+    it { should cmp input('eventvwr_perms') }
+   end
 end

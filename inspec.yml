@@ -183,3 +183,13 @@ inputs:
     - NT SERVICE\EventLog Allow  FullControl
     - NT AUTHORITY\SYSTEM Allow  FullControl
     - BUILTIN\Administrators Allow  FullControl
+
+  - name: eventvwr_perms
+    desc: 'This is the values of the Eventvwr.exe file under system32'
+    type: Array
+    value:
+    - NT AUTHORITY\SYSTEM Allow  ReadAndExecute, Synchronize
+    - BUILTIN\Administrators Allow  ReadAndExecute, Synchronize
+    - BUILTIN\Users Allow  ReadAndExecute, Synchronize
+    - NT SERVICE\TrustedInstaller Allow  FullControl
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
