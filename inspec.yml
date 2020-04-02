@@ -93,7 +93,7 @@ inputs:
     value: "3561952647-5207400-2818715555"
 
   - name: dod_root_certificates
-    description: "List of DoD CA Root Certificates"
+    desc: "List of DoD CA Root Certificates"
     type: Array
     value: 
      - :Subject: "CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
@@ -109,6 +109,44 @@ inputs:
        :Thumbprint: "4ECB5CC3095670454DA1CBD410FC921F46B8564B"
        :NotAfter: "Friday, June 14, 2041"
 
+  - name: dod_interoperability_certificates
+    desc: "List of DoD CA Root Certificates"
+    type: Array
+    value: 
+     - :Subject: "CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Issuer: "CN=DoD Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "22BBE981F0694D246CC1472ED2B021DC8540A22F"
+       :NotAfter: "Friday, September 6, 2019"
+     - :Subject: "CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Issuer: "CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "AC06108CA348CC03B53795C64BF84403C1DBD341"
+       :NotAfter: "Saturday, January 22, 2022"
   
+  - name: sensitive_system
+    desc: "Set flag to true if the target system is sensitive"
+    type: String
+    value: "false"
 
+  - name: reg_install_comp_perms
+    desc: 'This is the values of the Installed Components registry key'
+    type: Array
+    value:
+    - BUILTIN\\Users Allow  ReadKey
+    - BUILTIN\\Users Allow  -2147483648
+    - BUILTIN\\Administrators Allow  FullControl
+    - BUILTIN\\Administrators Allow  268435456
+    - NT AUTHORITY\\SYSTEM Allow  FullControl
+    - NT AUTHORITY\\SYSTEM Allow  268435456
+    - CREATOR OWNER Allow  268435456
+    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey
+    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  -2147483648
 
+  - name: rreg_wow6432_install_comp_perms
+    desc: 'This is the values of the Installed Components under WoW643Node registry key'
+    type: Array
+    value:
+    - BUILTIN\\Users Allow  ReadKey
+    - BUILTIN\\Administrators Allow  FullControl
+    - NT AUTHORITY\\SYSTEM Allow  FullControl
+    - CREATOR OWNER Allow  FullControl
+    - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES Allow  ReadKey
