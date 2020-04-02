@@ -27,6 +27,7 @@ control 'V-1107' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Security Settings >> Account Policies >> Password Policy >>
   \"Enforce password history\" to \"24\" passwords remembered."
+  
   describe security_policy do
     its('PasswordHistorySize') { should be >= 24 }
   end

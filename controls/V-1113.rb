@@ -25,6 +25,7 @@ control 'V-1113' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Accounts: Guest account status\" to \"Disabled\"."
+  
   describe security_policy do
     its('EnableGuestAccount') { should cmp 0 }
   end

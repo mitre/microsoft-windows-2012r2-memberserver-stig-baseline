@@ -29,6 +29,7 @@ control 'V-1097' do
 Settings -> Security Settings -> Account Policies -> Account Lockout Policy ->
 \"Account lockout threshold\" to \"3\" or less invalid logon attempts
 (excluding \"0\" which is unacceptable)."
+
   describe security_policy do
     its('LockoutBadCount') { should be <= 3 }
   end

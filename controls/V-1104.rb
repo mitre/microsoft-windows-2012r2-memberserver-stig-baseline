@@ -26,6 +26,7 @@ control 'V-1104' do
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Maximum password age\" to \"60\" days or less (excluding \"0\" which is
   unacceptable)."
+  
   describe security_policy do
     its('MaximumPasswordAge') { should be <= 60 }
   end

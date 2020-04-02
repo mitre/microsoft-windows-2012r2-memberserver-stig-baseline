@@ -57,6 +57,7 @@ control 'V-1121' do
   Windows directories, this is a finding."
   tag "fix": "Configure the system to only allow FTP access to specific folders
   containing the data to be available through the service."
+  
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
   if is_ftp_installed == 'False'
     describe 'FTP is not installed' do

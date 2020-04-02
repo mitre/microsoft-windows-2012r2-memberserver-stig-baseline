@@ -28,6 +28,7 @@ control 'V-1151' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Devices: Prevent users from installing printer drivers\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Print\\Providers\\LanMan Print Services\\Servers') do
     it { should have_property 'AddPrinterDrivers' }
     its('AddPrinterDrivers') { should cmp == 1 }
