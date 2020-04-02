@@ -59,7 +59,7 @@ control 'V-36722' do
   raw_logs_application = powershell(winevt_logs_application).stdout.strip
 
    # clean results cleans up the extra line breaks
-  clean_logs_application  = raw_logs_application .lines.collect(&:strip)
+  clean_logs_application  = raw_logs_application.lines.collect(&:strip)
 
    describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Application.evtx' do
     subject { clean_logs_application  }

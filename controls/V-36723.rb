@@ -47,9 +47,19 @@ control 'V-36723' do
 
   systemroot = system_root.strip
 
-  describe windows_registry("#{systemroot}\\SYSTEM32\\WINEVT\\LOGS\\Security.evtx") do
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\EventLog') }
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+  winevt_logs_security = <<-EOH
+  $output = (Get-Acl -Path #{systemroot}\\SYSTEM32\\WINEVT\\LOGS\\Security.evtx).AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_logs_security = powershell(winevt_logs_security).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_logs_security  = raw_logs_security.lines.collect(&:strip)
+
+   describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Security.evtx' do
+    subject { clean_logs_security  }
+    it { should cmp input('winevt_logs_security_perms') }
   end
 end
