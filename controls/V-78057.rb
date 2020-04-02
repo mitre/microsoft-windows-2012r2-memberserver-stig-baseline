@@ -41,10 +41,10 @@ control 'V-78057' do
   Logon/Logoff >> \"Audit Account Lockout\" with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its('Account Lockout') { should eq 'Success and Failure' }
+      its('Account Lockout') { should eq 'Success' }
     end
     describe audit_policy do
-      its('Account Lockout') { should eq 'Success' }
+      its('Account Lockout') { should eq 'Success and Failure' }
     end
   end
 end

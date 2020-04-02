@@ -41,10 +41,10 @@ control 'V-78061' do
   System >> \"Audit Other System Events\" with \"Success\" selected."
   describe.one do
     describe audit_policy do
-      its('Other System Events') { should eq 'Success and Failure' }
+      its('Other System Events') { should eq 'Success' }
     end
     describe audit_policy do
-      its('Other System Events') { should eq 'Success' }
+      its('Other System Events') { should eq 'Success and Failure' }
     end
   end
 end
