@@ -54,22 +54,25 @@ control 'V-36710' do
   Templates -> Windows Components -> Store -> \"Turn off Automatic Download of
   updates\" to \"Enabled\"."
 
-  if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
+  if os['release'].to_i >= 6.3
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
+      it { should have_property 'AutoDownload' }
+      its('AutoDownload') { should cmp == 2 }
+    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  end
+
+  if os['release'].to_i < 6.3
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
+      it { should have_property 'AutoDownload' }
+      its('AutoDownload') { should cmp == 2 }
+    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  end
+
+  if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
     impact 0.0
     describe 'The system does not have Windows Store installed' do
       skip "The system does not have Windows Store installed, this requirement is Not
       Applicable."
     end
-  elsif os['release'].to_i >= 6.3
-     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
-      it { should have_property 'AutoDownload' }
-      its('AutoDownload') { should cmp == 2 }
-     end 
-  else
-  if os['release'].to_i < 6.3
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
-      it { should have_property 'AutoDownload' }
-      its('AutoDownload') { should cmp == 2 }
-    end 
   end
 end
