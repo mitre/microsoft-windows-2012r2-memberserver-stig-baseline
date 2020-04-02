@@ -35,17 +35,18 @@ control 'V-1090' do
   Security Settings >> Local Policies >> Security Options >> \"Interactive Logon:
   Number of previous logons to cache (in case Domain Controller is not
   available)\" to \"4\" logons or less."
+
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
-    it { should have_property 'CachedLogonsCount' }
-    its('CachedLogonsCount') { should cmp <= 4 }
-  end if is_domain != 'WORKGROUP'
-
-  if is_domain == 'WORKGROUP'
+   if is_domain == 'WORKGROUP'
     impact 0.0
-    describe 'The system is not a member of a domain, control is NA' do
-      skip 'The system is not a member of a domain, control is NA'
+    describe 'This requirement is applicable to domain-joined systems, for standalone systems this is NA' do
+      skip 'This requirement is applicable to domain-joined systems, for standalone systems this is NA'
     end
+  else
+     describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
+      it { should have_property 'CachedLogonsCount' }
+      its('CachedLogonsCount') { should cmp <= 4 }
+     end 
   end
 end
