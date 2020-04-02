@@ -121,6 +121,15 @@ inputs:
        :Issuer: "CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
        :Thumbprint: "AC06108CA348CC03B53795C64BF84403C1DBD341"
        :NotAfter: "Saturday, January 22, 2022"
+
+  - name: dod_cceb_certificates
+    desc: "List of CCEB Certificates"
+    type: Array
+    value: 
+     - :Subject: "CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Issuer: "CN=US DoD CCEB Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
+       :Thumbprint: "929BF3196896994C0A201DF4A5B71F603FEFBF2E"
+       :NotAfter: "Friday, September 27, 2019"
   
   - name: sensitive_system
     desc: "Set flag to true if the target system is sensitive"
