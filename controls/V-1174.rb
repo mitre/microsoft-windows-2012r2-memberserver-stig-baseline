@@ -31,6 +31,7 @@ control 'V-1174' do
   Settings >> Security Settings >> Local Policies >> Security Options >>
   \"Microsoft Network Server: Amount of idle time required before suspending
   session\" to \"15\" minutes or less."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
     it { should have_property 'AutoDisconnect' }
     its('AutoDisconnect') { should cmp <= 15 }

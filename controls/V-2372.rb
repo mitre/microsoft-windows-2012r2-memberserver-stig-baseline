@@ -24,6 +24,7 @@ control 'V-2372' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy -> \"Store
   password using reversible encryption\" to \"Disabled\"."
+  
   describe security_policy do
     its('ClearTextPassword') { should eq 0 }
   end

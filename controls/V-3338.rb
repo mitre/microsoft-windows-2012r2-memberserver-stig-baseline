@@ -36,6 +36,7 @@ control 'V-3338' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Named pipes that can be accessed anonymously\" to be defined
   but containing no entries (blank)."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'NullSessionPipes' }
     its('NullSessionPipes') { should eq [''] }

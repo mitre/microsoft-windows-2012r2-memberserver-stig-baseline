@@ -29,6 +29,7 @@ control 'V-1172' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive Logon: Prompt user to change password before expiration\" to
   \"14\" days or more."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'PasswordExpiryWarning' }
     its('PasswordExpiryWarning') { should cmp >= 14 }

@@ -31,6 +31,7 @@ control 'V-1163' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Security Settings >> Local Policies >> Security Options >> \"Domain
   member: Digitally encrypt secure channel data (when possible)\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
     it { should have_property 'SealSecureChannel' }
     its('SealSecureChannel') { should cmp == 1 }

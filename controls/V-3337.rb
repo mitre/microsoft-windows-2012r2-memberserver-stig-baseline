@@ -24,6 +24,7 @@ control 'V-3337' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Allow anonymous SID/Name translation\" to \"Disabled\"."
+  
   describe security_policy do
     its('LSAAnonymousNameLookup') { should eq 0 }
   end

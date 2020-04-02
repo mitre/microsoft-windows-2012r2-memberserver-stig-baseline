@@ -29,6 +29,7 @@ control 'V-3289' do
   If a host-based Intrusion Detection System is not installed on the system, this
   is a finding."
   tag "fix": 'Install a host-based Intrusion Detection System on each server.'
+  
   describe 'A manual review is required to ensure servers have a host-based Intrusion Detection System' do
     skip 'A manual review is required to ensure servers have a host-based Intrusion Detection System'
   end
