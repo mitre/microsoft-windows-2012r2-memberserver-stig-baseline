@@ -42,9 +42,19 @@ control 'V-7002' do
   The password required flag can be set by entering the following on a command
   line: \"Net user [username] /passwordreq:yes\", substituting [username] with
   the name of the user account."
+
+  is_domain_controller = powershell('Get-ADDomainController').stdout.strip
+
+  if is_domain_controller == ''
   users_with_no_password_required = command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordRequired=False and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'").stdout
   describe "Windows 2012/2012 R2 accounts configured to not require passwords" do
     subject {users_with_no_password_required}
     it { should be_empty }
+  end
+  else
+     impact 0.0
+    describe 'Review Domain Accounts' do
+      skip 'Review Domain Accounts'
+    end
   end
 end

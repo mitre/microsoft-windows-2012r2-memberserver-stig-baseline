@@ -29,6 +29,7 @@ control 'V-6834' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Restrict anonymous access to Named Pipes and Shares\" to
   \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'restrictnullsessaccess' }
     its('restrictnullsessaccess') { should cmp == 1 }

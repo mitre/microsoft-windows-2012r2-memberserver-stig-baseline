@@ -25,6 +25,7 @@ control 'V-6836' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Minimum password length\" to \"14\" characters."
+  
   describe security_policy do
     its('MinimumPasswordLength') { should be >= 14 }
   end

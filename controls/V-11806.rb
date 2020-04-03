@@ -29,6 +29,7 @@ control 'V-11806' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive logon: Do not display last user name\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'DontDisplayLastUserName' }
     its('DontDisplayLastUserName') { should cmp == 1 }
