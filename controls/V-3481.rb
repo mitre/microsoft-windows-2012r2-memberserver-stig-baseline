@@ -29,6 +29,7 @@ control 'V-3481' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Windows Media Player ->
   Playback -> \"Prevent Codec Download\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer') do
     it { should have_property 'PreventCodecDownload' }
     its('PreventCodecDownload') { should cmp == 1 }
