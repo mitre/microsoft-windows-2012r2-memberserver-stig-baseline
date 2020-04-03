@@ -33,6 +33,7 @@ control 'V-4116' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netbt\\Parameters') do
     it { should have_property 'NoNameReleaseOnDemand' }
     its('NoNameReleaseOnDemand') { should cmp == 1 }
