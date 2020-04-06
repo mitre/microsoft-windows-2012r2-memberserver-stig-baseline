@@ -21,7 +21,7 @@ script block logging."
  tag "check": "If the following registry value does not exist or is not configured as specified, this is a finding.
 
 Registry Hive: HKEY_LOCAL_MACHINE 
-Registry Path: \SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\
+Registry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\
 
 Value Name: EnableScriptBlockLogging
 
@@ -36,7 +36,7 @@ PowerShell 5.x does not require the installation of an additional patch."
 tag "fix": "Configure the following registry value as specified.
 
 Registry Hive: HKEY_LOCAL_MACHINE 
-Registry Path: \SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\
+Registry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\
 
 Value Name: EnableScriptBlockLogging
 
@@ -52,10 +52,11 @@ PowerShell 5.x does not require the installation of an additional patch."
 powershell_version = json({ command: '$PSVersionTable.PSVersion | Select Major | ConvertTo-Json' } )
 version_check = powershell_version["Major"]
 
-if version_check >= 5
-  describe 'PowerShell 5.x is installed and does not require patch' do
+if (version_check >= 5)
+ #impact 0.0
+ describe 'PowerShell 5.x is installed and does not require patch' do
   skip 'PowerShell 5.x is installed and does not require patch'
- end
+  end
 else
   describe registry_key("HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging") do
     it { should have_property 'EnableScriptBlockLogging' } 
