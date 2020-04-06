@@ -27,6 +27,7 @@ control 'V-15672' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off Event Viewer \"Events.asp\"
   links\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\EventViewer') do
     it { should have_property 'MicrosoftEventVwrDisableLinks' }
     its('MicrosoftEventVwrDisableLinks') { should cmp == 1 }

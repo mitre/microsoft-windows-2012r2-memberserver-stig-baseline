@@ -27,6 +27,7 @@ control 'V-15666' do
   Administrative Templates -> Network -> Microsoft Peer-to-Peer Networking
   Services -> \"Turn off Microsoft Peer-to-Peer Networking Services\" to
   \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Peernet') do
     it { should have_property 'Disabled' }
     its('Disabled') { should cmp == 1 }
