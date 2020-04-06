@@ -28,6 +28,7 @@ control 'V-21950' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Microsoft network server: Server SPN target name validation level\" to
   \"Off\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'SMBServerNameHardeningLevel' }
     its('SMBServerNameHardeningLevel') { should cmp == 0 }

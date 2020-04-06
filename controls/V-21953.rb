@@ -27,6 +27,7 @@ control 'V-21953' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: Allow PKU2U authentication requests to this computer to use
   online identities\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa\\pku2u') do
     it { should have_property 'AllowOnlineID' }
     its('AllowOnlineID') { should cmp == 0 }

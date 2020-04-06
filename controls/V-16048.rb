@@ -30,6 +30,7 @@ control 'V-16048' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication Settings -> \"Turn off Help Ratings\" to \"Enabled\"."
+  
   describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Assistance\\Client\\1.0') do
     it { should have_property 'NoExplicitFeedback' }
     its('NoExplicitFeedback') { should cmp == 1 }

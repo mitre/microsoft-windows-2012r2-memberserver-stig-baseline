@@ -28,6 +28,7 @@ control 'V-21960' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Network Connections -> \"Require domain
   users to elevate when setting a network's location\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Network Connections') do
     it { should have_property 'NC_StdDomainUserSetLocation' }
     its('NC_StdDomainUserSetLocation') { should cmp == 1 }

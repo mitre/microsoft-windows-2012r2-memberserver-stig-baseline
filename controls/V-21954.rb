@@ -69,15 +69,19 @@ control 'V-21954' do
   AES256_HMAC_SHA1
   Future encryption types"
 
+  if registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists?
   describe.one do
     describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
-      its('SupportedEncryptionTypes') { should eq 2_147_483_644 }
+      its('SupportedEncryptionTypes') { should eq 2_147_483_647 }
     end
     describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
       its('SupportedEncryptionTypes') { should eq 0 }
     end
   end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists?
+else
+  impact 0.0
+  describe 'Registry Key for Kerberos Encryption does not exist, this control is NA' do
+    skip 'Registry Key for Kerberos Encryption does not exist, this control is NA'
   end
+ end
 end
