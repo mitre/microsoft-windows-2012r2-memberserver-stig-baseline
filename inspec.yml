@@ -663,3 +663,18 @@ inputs:
    type: Array
    value:
     -
+
+ - name: reg_winlogon_perms
+   desc: 'This is the values of the Winlogon Registry Key'
+   type: Array
+   value:
+    - NT SERVICE\TrustedInstaller Allow  FullControl
+    - NT SERVICE\TrustedInstaller Allow  268435456
+    - NT AUTHORITY\SYSTEM Allow  FullControl
+    - NT AUTHORITY\SYSTEM Allow  268435456
+    - BUILTIN\Administrators Allow  FullControl
+    - BUILTIN\Administrators Allow  268435456
+    - BUILTIN\Users Allow  ReadKey
+    - BUILTIN\Users Allow  -2147483648
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
+    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648

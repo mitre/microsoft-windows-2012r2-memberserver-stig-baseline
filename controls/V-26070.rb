@@ -53,14 +53,19 @@ control 'V-26070' do
   Users - Read
   ALL APPLICATION PACKAGES - Read"
 
-  describe windows_registry("HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon") do
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-  end
+ hklm_winlogon = <<-EOH
+  $output = (Get-Acl -Path 'HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon').AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_winlogon = powershell(hklm_winlogon).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_winlogon = raw_winlogon.lines.collect(&:strip)
+
+   describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' do
+    subject { clean_winlogon }
+    it { should cmp input('reg_winlogon_perms') }
+   end
 end
-
-
-
