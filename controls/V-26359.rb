@@ -42,6 +42,7 @@ control 'V-26359' do
 
   If a site-defined title is used, it can in no case contravene or modify the
   language of the banner text required in V-1089."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LegalNoticeCaption' }
   end 
