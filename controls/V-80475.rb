@@ -54,7 +54,7 @@ powershell_version = json({ command: '$PSVersionTable.PSVersion | Select Major |
 version_check = powershell_version["Major"]
 
 if (version_check >= 5)
- #impact 0.0
+ impact 0.0
  describe 'PowerShell 5.x is installed and does not require patch' do
   skip 'PowerShell 5.x is installed and does not require patch'
   end
