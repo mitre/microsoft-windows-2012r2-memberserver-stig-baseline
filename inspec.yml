@@ -194,11 +194,10 @@ inputs:
     - NT SERVICE\TrustedInstaller Allow  FullControl
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
 
-
- - name: basic_window_services
-   desc: 'This is list of Windows Services That are Installed on OS'
-   type: Array
-   value:
+  - name: basic_window_services
+    desc: 'This is list of Windows Services That are Installed on OS'
+    type: Array
+    value:
     - :Name: "AeLookupSvc"
       :DisplayName: "Application Experience"
       :StartMode: "Manual"
@@ -644,10 +643,10 @@ inputs:
       :DisplayName: "Windows Driver Foundation - User-mode Driver Framework"
       :StartMode: "Manual"
 
- - name: vmware_window_services
-   desc: 'This is list of VMware Services That are Installed on OS'
-   type: Array
-   value:
+  - name: vmware_window_services
+    desc: 'This is list of VMware Services That are Installed on OS'
+    type: Array
+    value:
     - :Name: "VGAuthService"
       :DisplayName: "VMware Alias Manager and Ticket Service"
       :StartMode: "Auto"
@@ -658,15 +657,15 @@ inputs:
       :DisplayName: "WVMware Snapshot Provider"
       :StartMode: "Manual"
 
- #- name: application_services
- #  desc: 'This is a list of Services that are Application'
-  # type: Array
-  # value:
+  - name: application_services
+    desc: 'This is a list of Services that are Application'
+    type: Array
+    value:
 
- - name: reg_winlogon_perms
-   desc: 'This is the values of the Winlogon Registry Key'
-   type: Array
-   value:
+  - name: reg_winlogon_perms
+    desc: 'This is the values of the Winlogon Registry Key'
+    type: Array
+    value:
     - NT SERVICE\TrustedInstaller Allow  FullControl
     - NT SERVICE\TrustedInstaller Allow  268435456
     - NT AUTHORITY\SYSTEM Allow  FullControl
