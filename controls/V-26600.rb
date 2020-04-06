@@ -21,6 +21,7 @@ control 'V-26600' do
 
   Fax (fax)"
   tag "fix": 'Remove or disable the Fax (fax) service.'
+  
   is_fax_installed = command('Get-WindowsFeature Fax | Select -Expand Installed').stdout.strip
 
   if is_fax_installed == 'False'

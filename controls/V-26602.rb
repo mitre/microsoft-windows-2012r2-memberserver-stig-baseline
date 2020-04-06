@@ -29,6 +29,7 @@ control 'V-26602' do
   Select the appropriate server on the \"Server Selection\" page, click \"Next\".
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
+  
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
 
   if is_ftp_installed == 'False'

@@ -30,6 +30,7 @@ control 'V-26581' do
   Administrative Templates >> Windows Components >> Event Log Service >> Setup >>
   \"Specify the maximum log file size (KB)\" to \"Enabled\" with a \"Maximum Log
   Size (KB)\" of \"32768\" or greater."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup') do
     it { should have_property 'MaxSize' }
     its('MaxSize') { should cmp >= 32768 }
