@@ -44,7 +44,7 @@ inputs:
   - name: temp_account
     type: Array
     description: 'List of temporary accounts on the system'
-    default: []
+    value: []
 
   - name: emergency_account
     type: Array
