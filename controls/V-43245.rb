@@ -36,6 +36,7 @@ control 'V-43245' do
   Templates -> Windows Components -> Windows Logon Options -> \"Sign-in last
   interactive user automatically after a system-initiated restart\" to
   \"Disabled\"."
+  
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do

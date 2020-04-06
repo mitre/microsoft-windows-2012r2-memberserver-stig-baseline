@@ -37,6 +37,7 @@ control 'V-57641' do
   IPSEC when the data owner has a strict requirement for ensuring data integrity
   and confidentiality is maintained at every step of the data transfer and
   handling process to maintain the confidentiality and integrity."
+  
   describe "A manual review is required to ensure protection methods such as TLS, encrypted VPNs, or IPSEC are
   implemented if the data owner has a strict requirement for ensuring data
   integrity and confidentiality is maintained at every step of the data transfer

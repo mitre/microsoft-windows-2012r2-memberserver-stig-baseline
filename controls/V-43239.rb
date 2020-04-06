@@ -38,6 +38,7 @@ control 'V-43239' do
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> System >> Audit Process Creation >> \"Include
   command line in process creation events\" to \"Enabled\"."
+  
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'Control not applicable' do

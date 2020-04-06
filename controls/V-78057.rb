@@ -39,6 +39,7 @@ control 'V-78057' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Advanced Audit Policy Configuration >> System Audit Policies >>
   Logon/Logoff >> \"Audit Account Lockout\" with \"Success\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Account Lockout') { should eq 'Success' }

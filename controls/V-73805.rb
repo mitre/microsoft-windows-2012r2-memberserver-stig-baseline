@@ -48,6 +48,7 @@ control 'V-73805' do
   De-select \"SMB 1.0/CIFS File Sharing Support\".
 
   The system must be restarted for the changes to take effect."
+  
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do

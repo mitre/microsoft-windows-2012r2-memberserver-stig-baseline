@@ -25,6 +25,7 @@ control 'V-40173' do
   time and recovery point objectives, this is a finding."
   tag "fix": "Back up system-related documentation in accordance with local
   recovery time and recovery point objectives."
+  
   describe "A manual review is required to ensure system-related documentation is backed up in accordance with
   local recovery time and recovery point objectives" do
     skip 'A manual review is required to ensure system-related documentation is backed up in accordance with

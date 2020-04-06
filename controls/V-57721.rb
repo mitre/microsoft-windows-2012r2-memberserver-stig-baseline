@@ -35,6 +35,7 @@ control 'V-57721' do
   The default permissions below satisfy this requirement.
   TrustedInstaller - Full Control
   Administrators, SYSTEM, Users, ALL APPLICATION PACKAGES - Read & Execute"
+  
   get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
