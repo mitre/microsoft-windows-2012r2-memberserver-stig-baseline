@@ -5,11 +5,11 @@ copyright: The MITRE Corporation
 copyright_email: inspec@mitre.org
 license: Apache-2.0
 summary: Inspec profile testing STIG compliance of Windows Member Server 2012r2
-description:
-  Inspec testing for Windows 2012r2 member servers per the IASE DISA Windows
-  2012r2 v2r12 STIG at 
-  https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip
-version: 0.1.0
+
+description: "Inspec testing for Windows 2012r2 member servers per the IASE DISA Windows 2012r2 v2r12 STIG at 
+https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip"
+  
+version: 2.17.0
 
 inputs:
   - name: av_approved_software
@@ -642,7 +642,7 @@ inputs:
     - :Name: "wudfsvc"
       :DisplayName: "Windows Driver Foundation - User-mode Driver Framework"
       :StartMode: "Manual"
-
+      
   - name: vmware_window_services
     desc: 'This is list of VMware Services That are Installed on OS'
     type: Array
@@ -657,11 +657,26 @@ inputs:
       :DisplayName: "WVMware Snapshot Provider"
       :StartMode: "Manual"
 
+  - name: reg_winreg_perms
+    desc: 'This is the values of the winreg registry key'
+    type: Array
+    value:
+     - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
+     - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
+     - BUILTIN\Administrators Allow  268435456
+     - BUILTIN\Administrators Allow  FullControl
+     - BUILTIN\Backup Operators Allow  ReadKey
+
+  - name: domain_sid
+    desc: 'This is the SID for Domain'
+    type: String
+    value: ""
+
   - name: application_services
     desc: 'This is a list of Services that are Application'
     type: Array
     value:
-    -
+      -
 
   - name: reg_winlogon_perms
     desc: 'This is the values of the Winlogon Registry Key'
