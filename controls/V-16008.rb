@@ -34,7 +34,10 @@ control 'V-16008' do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Only elevate executables that are signed and validated\" to
   \"Disabled\"."
-  if registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('ServerCore', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Mgmt', :dword, 1) && registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').has_property_value?('Server-Gui-Shell', :dword, 1)
+
+   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
+
+  if os_type == 'false'
     impact 0.0
     describe 'This system is a Server Core Installation, control is NA' do
       skip 'This system is a Server Core Installation, control is NA'

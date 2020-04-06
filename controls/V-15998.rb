@@ -29,6 +29,7 @@ control 'V-15998' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Device and Resource Redirection -> \"Do not
   allow LPT port redirection\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fDisableLPT' }
     its('fDisableLPT') { should cmp == 1 }
