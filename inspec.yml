@@ -22,38 +22,38 @@ inputs:
       - McAfee Agent
 
   - name: shared_accounts
-    type: array
+    type: Array
     description: 'List of shared accounts on the system'
-    default: []
+    value: []
 
   - name: backup_operators
-    type: array
+    type: Array
     description: 'List of authorized users in the Backup Operators Group'
-    default: []
+    value: []
 
   - name: administrators
-    type: array
+    type: Array
     description: 'List of authorized users in the local Administrators group'
-    default: []
+    value: []
     
   - name: administrators_domain'
-    type: array
+    type: Array
     description: 'List of authorized users in the local Administrators domain group'
-    default: []
+    value: []
 
   - name: temp_account
-    type: array
+    type: Array
     description: 'List of temporary accounts on the system'
     default: []
 
   - name: emergency_account
-    type: array
+    type: Array
     description: 'List of emergency accounts on the system'
-    default: []
+    value: []
 
   - name: LegalNoticeText
     type: string
-    default: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
+    value: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
     By using this IS (which includes any device attached to this IS), you consent
     to the following conditions:
     -The USG routinely intercepts and monitors communications on this IS for
@@ -75,7 +75,7 @@ inputs:
 
   - name: LegalNoticeCaption
     type: string
-    default: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
+    value: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
 
   - name: reg_winreg_perms
     desc: 'This is the values of the winreg registry key'
