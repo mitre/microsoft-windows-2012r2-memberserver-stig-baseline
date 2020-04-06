@@ -39,6 +39,6 @@ control 'V-4445' do
   
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\SubSystems') do
     it { should have_property 'Optional' }
-    its('Optional') { should eq [''] }
+    its('Optional') { should eq [' '] }
   end
 end

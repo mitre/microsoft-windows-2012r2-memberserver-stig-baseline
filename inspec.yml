@@ -116,7 +116,7 @@ inputs:
      - :Subject: "CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
        :Issuer: "CN=DoD Interoperability Root CA 1, OU=PKI, OU=DoD, O=U.S. Government, C=US"
        :Thumbprint: "22BBE981F0694D246CC1472ED2B021DC8540A22F"
-       :NotAfter: "Friday, September 6, 2019"
+       :NotAfter: "Friday, September 06, 2019"
      - :Subject: "CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US"
        :Issuer: "CN=DoD Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
        :Thumbprint: "AC06108CA348CC03B53795C64BF84403C1DBD341"
