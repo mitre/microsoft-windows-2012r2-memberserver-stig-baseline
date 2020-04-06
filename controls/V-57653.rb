@@ -73,6 +73,7 @@ control 'V-57653' do
   user account.
 
   Delete any temporary user accounts that are no longer necessary."
+  
   temp_account = input('temp_account')
   if temp_account.empty?
     temp_account.each do |user|
