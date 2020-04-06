@@ -46,4 +46,5 @@ control 'V-36680' do
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
      it { should_not have_property 'NoUseStoreOpenWith' }
   end
+ end
 end
