@@ -661,6 +661,7 @@ inputs:
     desc: 'This is a list of Services that are Application'
     type: Array
     value:
+    -
 
   - name: reg_winlogon_perms
     desc: 'This is the values of the Winlogon Registry Key'
