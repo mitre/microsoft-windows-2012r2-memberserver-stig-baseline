@@ -29,6 +29,7 @@ control 'V-36696' do
   Administrative Templates -> System -> Troubleshooting and Diagnostics ->
   Application Compatibility Diagnostics -> \"Detect compatibility issues for
   applications and drivers\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\AppCompat') do
     it { should have_property 'DisablePcaUI' }
     its('DisablePcaUI') { should cmp == 0 }

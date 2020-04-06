@@ -30,6 +30,7 @@ control 'V-36678' do
   Administrative Templates -> System -> Device Installation -> \"Specify the
   search server for device driver updates\" to \"Enabled\" with \"Search Managed
   Server\" selected."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DriverSearching') do
     it { should have_property 'DriverServerSelection' }
     its('DriverServerSelection') { should cmp == 1 }

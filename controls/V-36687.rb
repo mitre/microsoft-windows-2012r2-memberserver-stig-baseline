@@ -27,6 +27,7 @@ control 'V-36687' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Logon -> \"Turn off app notifications on
   the lock screen\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
     it { should have_property 'DisableLockScreenAppNotifications' }
     its('DisableLockScreenAppNotifications') { should cmp == 1 }
