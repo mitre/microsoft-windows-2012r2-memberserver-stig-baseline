@@ -24,13 +24,18 @@ control 'V-15505' do
   a finding."
   tag "fix": "Deploy the McAfee Agent as detailed in accordance with the DoD
   HBSS STIG."
-  
-  describe.one do
-    describe service('McAfee Agent Service') do
-      it { should be_running }
+
+   mc_agent_startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "masvc"} | Select State | ConvertTo-Json').stdout.strip
+   mc_agent_clean_startmode = mc_agent_startmode[18..24]
+   mc_framework_startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "macompatsvc"} | Select State | ConvertTo-Json').stdout.strip
+   mc_framework_clean_startmode = mc_framework_startmode[18..24]
+
+    describe 'Verify the Mcafee Agent Service is Running' do
+      subject { mc_agent_clean_startmode }
+      it { should cmp 'Running' }
     end
-    describe service('McAfee Framework Service') do
-      it { should be_running }
+    describe 'Verify the Mcafee Framework Service is Running' do
+      subject { mc_framework_clean_startmode }
+      it { should cmp 'Running' }
     end
-  end
 end
