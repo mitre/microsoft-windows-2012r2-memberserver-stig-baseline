@@ -34,7 +34,10 @@ inputs:
   - name: administrators
     type: Array
     description: 'List of authorized users in the local Administrators group'
-    value: []
+    value: 
+      - LAB\Domain Admins
+      - LAB\inspectst
+      - localuser
     
   - name: administrators_domain'
     type: Array

@@ -39,6 +39,6 @@ control 'V-3338' do
   
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'NullSessionPipes' }
-    its('NullSessionPipes') { should eq [''] }
+    its('NullSessionPipes') { should eq [' '] }
   end
 end
