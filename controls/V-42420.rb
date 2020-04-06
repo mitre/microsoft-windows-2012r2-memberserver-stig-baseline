@@ -45,5 +45,6 @@ control 'V-42420' do
      failure_message = "is not Enabled"
      expect(subject).to eql(1), failure_message
      end
-  end
+  end 
+ end
 end
