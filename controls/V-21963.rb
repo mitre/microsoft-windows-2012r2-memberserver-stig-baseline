@@ -32,6 +32,7 @@ control 'V-21963' do
   tag "fix": "Configure the policy value for Computer Configuration ->
 Administrative Templates -> Printers -> \"Extend Point and Print connection to
 search Windows Update\" to \"Disabled\"."
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Printers') do
     it { should have_property 'DoNotInstallCompatibleDriverFromWindowsUpdate' }
     its('DoNotInstallCompatibleDriverFromWindowsUpdate') { should cmp == 1 }

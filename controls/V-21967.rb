@@ -33,6 +33,7 @@ control 'V-21967' do
   Administrative Templates -> System -> Troubleshooting and Diagnostics ->
   Microsoft Support Diagnostic Tool -> \"Microsoft Support Diagnostic Tool: Turn
   on MSDT interactive communication with support provider\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy') do
     it { should have_property 'DisableQueryRemoteServer' }
     its('DisableQueryRemoteServer') { should cmp == 0 }

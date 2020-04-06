@@ -35,6 +35,7 @@ control 'V-21969' do
   troubleshooting content on Microsoft servers from the Troubleshooting Control
   Panel (via the Windows Online Troubleshooting Service - WOTS)\" to
   \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy') do
     it { should have_property 'EnableQueryRemoteServer' }
     its('EnableQueryRemoteServer') { should cmp == 0 }
