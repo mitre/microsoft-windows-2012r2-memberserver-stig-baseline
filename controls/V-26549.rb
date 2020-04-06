@@ -38,6 +38,7 @@ control 'V-26549' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Privilege Use -> \"Audit Sensitive Privilege Use\" with
   \"Success\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Sensitive Privilege Use') { should eq 'Success' }

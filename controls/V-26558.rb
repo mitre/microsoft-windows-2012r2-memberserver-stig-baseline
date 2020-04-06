@@ -37,6 +37,7 @@ control 'V-26558' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> System -> \"Audit System Integrity\" with \"Failure\"
   selected."
+  
   describe.one do
     describe audit_policy do
       its('System Integrity') { should eq 'Failure' }

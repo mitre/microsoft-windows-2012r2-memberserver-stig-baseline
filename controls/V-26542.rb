@@ -36,6 +36,7 @@ control 'V-26542' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Logon/Logoff -> \"Audit Logon\" with \"Failure\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Logon') { should eq 'Failure' }
