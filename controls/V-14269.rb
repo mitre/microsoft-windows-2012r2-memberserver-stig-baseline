@@ -29,6 +29,7 @@ control 'V-14269' do
   tag "fix": "Configure the policy value for User Configuration ->
 Administrative Templates -> Windows Components -> Attachment Manager -> \"Hide
 mechanisms to remove zone information\" to \"Enabled\"."
+
   describe registry_key('HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
     it { should have_property 'HideZoneInfoOnProperties' }
     its('HideZoneInfoOnProperties') { should cmp == 1 }

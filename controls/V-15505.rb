@@ -24,6 +24,7 @@ control 'V-15505' do
   a finding."
   tag "fix": "Deploy the McAfee Agent as detailed in accordance with the DoD
   HBSS STIG."
+  
   describe.one do
     describe service('McAfee Agent Service') do
       it { should be_running }
