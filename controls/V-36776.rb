@@ -27,6 +27,7 @@ control 'V-36776' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Start Menu and Taskbar -> Notifications -> \"Turn
   off notifications network usage\" to \"Enabled\"."
+  
   describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications') do
     it { should have_property 'NoCloudApplicationNotification' }
     its('NoCloudApplicationNotification') { should cmp == 1 }

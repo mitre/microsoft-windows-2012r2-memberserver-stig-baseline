@@ -32,6 +32,7 @@ control 'V-36708' do
 
   If location services are approved by the organization for a device, this must
   be documented."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\LocationAndSensors') do
     it { should have_property 'DisableLocation' }
     its('DisableLocation') { should cmp == 1 }

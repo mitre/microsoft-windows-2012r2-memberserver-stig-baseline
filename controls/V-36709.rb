@@ -26,6 +26,7 @@ control 'V-36709' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> RSS Feeds -> \"Turn on Basic
   feed authentication over HTTP\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
     it { should have_property 'AllowBasicAuthInClear' }
     its('AllowBasicAuthInClear') { should cmp == 0 }

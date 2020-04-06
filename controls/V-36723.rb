@@ -42,6 +42,7 @@ control 'V-36723' do
 
   If the location of the logs has been changed, when adding Eventlog to the
   permissions, it must be entered as \"NT Service\\Eventlog\"."
+  
   get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
