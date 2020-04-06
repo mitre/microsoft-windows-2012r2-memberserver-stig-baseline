@@ -43,7 +43,8 @@ Value Name: EnableScriptBlockLogging
 Value Type: REG_DWORD
 Value: 0x00000001 (1)
 
-Administrative templates from later versions of Windows include a group policy setting for this. Configure the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Windows PowerShell >> "Turn on PowerShell Script Block Logging" to "Enabled". 
+Administrative templates from later versions of Windows include a group policy setting for this. Configure the policy value for Computer Configuration >> 
+Administrative Templates >> Windows Components >> Windows PowerShell >> \"Turn on PowerShell Script Block Logging\" to \"Enabled\". 
 
 Install patch KB3000850 on Windows 2012 R2 or KB3119938 on Windows 2012 on systems with PowerShell 4.0. 
 
