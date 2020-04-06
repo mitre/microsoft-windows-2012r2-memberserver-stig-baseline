@@ -33,6 +33,7 @@ control 'V-15704' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off handwriting recognition error
   reporting\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\HandwritingErrorReports') do
     it { should have_property 'PreventHandwritingErrorReports' }
     its('PreventHandwritingErrorReports') { should cmp == 1 }

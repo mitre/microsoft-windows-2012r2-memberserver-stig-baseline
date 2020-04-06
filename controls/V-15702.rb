@@ -33,6 +33,7 @@ control 'V-15702' do
   Administrative Templates -> System -> Device Installation -> \"Do not send a
   Windows error report when a generic driver is installed on a device\" to
   \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DeviceInstall\\Settings') do
     it { should have_property 'DisableSendGenericDriverNotFoundToWER' }
     its('DisableSendGenericDriverNotFoundToWER') { should cmp == 1 }

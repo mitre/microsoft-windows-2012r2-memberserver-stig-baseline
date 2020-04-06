@@ -27,6 +27,7 @@ control 'V-15683' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> File Explorer -> \"Turn off
   shell protocol protected mode\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
     it { should have_property 'PreXPSP2ShellProtocolBehavior' }
     its('PreXPSP2ShellProtocolBehavior') { should cmp == 0 }

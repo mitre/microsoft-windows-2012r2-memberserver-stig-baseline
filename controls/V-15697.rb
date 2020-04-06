@@ -29,6 +29,7 @@ control 'V-15697' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Link-Layer Topology Discovery -> \"Turn
   on Responder (RSPNDR) driver\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\LLTD') do
     it { should have_property 'AllowRspndrOnDomain' }
     its('AllowRspndrOnDomain') { should cmp == 0 }

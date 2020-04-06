@@ -27,6 +27,7 @@ control 'V-15707' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Remote Assistance -> \"Turn on session
   logging\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'LoggingEnabled' }
     its('LoggingEnabled') { should cmp == 1 }

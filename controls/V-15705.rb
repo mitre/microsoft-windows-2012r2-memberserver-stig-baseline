@@ -29,7 +29,7 @@ control 'V-15705' do
   Administrative Templates -> System -> Power Management -> Sleep Settings ->
   \"Require a password when a computer wakes (on battery)\" to \"Enabled\"."
   
-  #This test is not validate on a Windows Server, Servers don't go to sleep or you would have outages, this needs to be reviewed for validation.
+  #This test is not validate on a Windows Server, this needs to be reviewed for validation.
   
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51') do
     it { should have_property 'DCSettingIndex' }
