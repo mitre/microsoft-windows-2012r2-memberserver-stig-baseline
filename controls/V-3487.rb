@@ -165,9 +165,36 @@ control 'V-3487' do
   Workstation - Automatic"
   tag "fix": "Document the services required for the system to operate.  Remove
   or disable any services that are not required."
-  describe "A manual review is required to ensure necessary services are documented to maintain a baseline to
-  determine if additional, unnecessary services have been added to a system" do
-    skip 'A manual review is required to ensure necessary services are documented to maintain a baseline to
-  determine if additional, unnecessary services have been added to a system'
+
+  #describe "A manual review is required to ensure necessary services are documented to maintain a baseline to
+  #determine if additional, unnecessary services have been added to a system" do
+   # skip 'A manual review is required to ensure necessary services are documented to maintain a baseline to
+  #determine if additional, unnecessary services have been added to a system'
+  #end
+
+  services = <<-EOH
+  $output = Get-WmiObject -Class Win32_Service | Select Name, DisplayName, Startmode | ConvertTo-Json
+  wricote-output $output
+  EOH
+
+  # raw powershell output
+  raw_services = powershell(services).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_result_services = raw_services.lines.collect(&:strip)
+
+ if sys_info.manufacturer == "VMware, Inc."
+   all_services_vmware = input('basic_window_services') + input('vmware_window_services') + input('application_services')
+   describe 'Verify Services installed meet approved list' do
+    subject { clean_result_services  }
+    it { should be_in all_services_vmware }
+   end
+ else
+  all_services_nonvmware = input('basic_window_services') + input('application_services')
+   describe 'Verify Services installed meet approved list' do
+    subject { clean_result_services  }
+    it { should be_in all_services_nonvmware }
+   end
   end
 end
+

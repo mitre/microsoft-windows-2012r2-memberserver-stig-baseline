@@ -32,6 +32,7 @@ control 'V-36711' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> Store -> \"Turn off the Store application\"
   to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
     it { should have_property 'RemoveWindowsStore' }
     its('RemoveWindowsStore') { should cmp == 1 }

@@ -35,6 +35,7 @@ control 'V-4108' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security') do
     it { should have_property 'WarningLevel' }
     its('WarningLevel') { should cmp <= 90 }

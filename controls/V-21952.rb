@@ -25,6 +25,7 @@ control 'V-21952' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: Allow LocalSystem NULL session fallback\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa\\MSV1_0') do
     it { should have_property 'allownullsessionfallback' }
     its('allownullsessionfallback') { should cmp == 0 }

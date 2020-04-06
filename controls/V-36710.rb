@@ -54,14 +54,14 @@ control 'V-36710' do
   Templates -> Windows Components -> Store -> \"Turn off Automatic Download of
   updates\" to \"Enabled\"."
 
-  if os['release'].to_i >= 6.3
+  if os['release'].to_f >= 6.3
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
       it { should have_property 'AutoDownload' }
       its('AutoDownload') { should cmp == 2 }
     end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
   end
 
-  if os['release'].to_i < 6.3
+  if os['release'].to_f < 6.3
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
       it { should have_property 'AutoDownload' }
       its('AutoDownload') { should cmp == 2 }

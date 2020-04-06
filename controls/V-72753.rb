@@ -38,6 +38,7 @@ control 'V-72753' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\Wdigest') do
     it { should have_property 'UseLogonCredential' }
     its('UseLogonCredential') { should cmp == 0 }

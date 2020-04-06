@@ -33,6 +33,7 @@ control 'V-3479' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager') do
     it { should have_property 'SafeDllSearchMode' }
     its('SafeDllSearchMode') { should cmp == 1 }

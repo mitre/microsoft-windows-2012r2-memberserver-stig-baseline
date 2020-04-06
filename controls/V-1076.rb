@@ -25,6 +25,7 @@ control 'V-1076' do
   time and recovery point objectives, this is a finding."
   tag "fix": "Implement system-level information backups in accordance with
   local recovery time and recovery point objectives."
+  
   describe "A manual review is required to ensure system-level information is backed up in accordance with local
   recovery time and recovery point objectives." do
     skip 'A manual review is required to ensure system-level information is backed up in accordance with local

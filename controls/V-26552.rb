@@ -35,6 +35,7 @@ control 'V-26552' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> System -> \"Audit IPsec Driver\" with \"Failure\" selected."
+  
   describe.one do
     describe audit_policy do
       its('IPsec Driver') { should eq 'Failure' }

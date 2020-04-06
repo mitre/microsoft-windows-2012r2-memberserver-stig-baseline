@@ -46,6 +46,7 @@ control 'V-73519' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
     it { should have_property 'SMB1' }
     its('SMB1') { should cmp == 0 }

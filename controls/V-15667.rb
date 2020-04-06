@@ -27,6 +27,7 @@ control 'V-15667' do
   Administrative Templates -> Network -> Network Connections -> \"Prohibit
   installation and configuration of Network Bridge on your DNS domain network\"
   to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections') do
     it { should have_property 'NC_AllowNetBridge_NLA' }
     its('NC_AllowNetBridge_NLA') { should cmp == 0 }

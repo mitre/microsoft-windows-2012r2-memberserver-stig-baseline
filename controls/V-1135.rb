@@ -35,6 +35,7 @@ control 'V-1135' do
   tag "fix": "Configure the permissions on shared printers to restrict standard
   users to only have Print permissions.  This is typically given through the
   Everyone group by default."
+  
   get_printers = command("Get-Printer | Format-List | Findstr /v 'Name ---'")
   if get_printers == ''
     impact 0.0

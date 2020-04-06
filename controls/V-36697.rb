@@ -29,6 +29,7 @@ control 'V-36697' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> App Package Deployment  ->
   \"Allow all trusted apps to install\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Appx') do
     it { should have_property 'AllowAllTrustedApps' }
     its('AllowAllTrustedApps') { should cmp == 1 }

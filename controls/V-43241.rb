@@ -32,7 +32,8 @@ control 'V-43241' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> App Runtime -> \"Allow Microsoft accounts to
   be optional\" to \"Enabled\"."
-  if os['release'].to_i < 6.3
+  
+  if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do
       skip 'System is not Windows 2012, control is NA'

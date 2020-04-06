@@ -33,12 +33,8 @@ control 'V-26488' do
   or groups:
 
   Administrators"
-  describe.one do
+ 
     describe security_policy do
       its('SeRemoteShutdownPrivilege') { should eq ['S-1-5-32-544'] }
     end
-    describe security_policy do
-      its('SeRemoteShutdownPrivilege') { should eq [] }
-    end
-  end
 end

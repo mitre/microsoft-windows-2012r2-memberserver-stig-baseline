@@ -25,6 +25,7 @@ control 'V-1105' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Minimum password age\" to at least \"1\" day."
+  
   describe security_policy do
     its('MinimumPasswordAge') { should be >= 1 }
   end

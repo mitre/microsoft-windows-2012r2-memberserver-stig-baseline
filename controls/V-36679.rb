@@ -31,6 +31,7 @@ control 'V-36679' do
 Administrative Templates -> System -> Early Launch Antimalware -> \"Boot-Start
 Driver Initialization Policy\" to \"Enabled\" with \"Good and Unknown\"
 selected."
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Policies\\EarlyLaunch') do
     it { should have_property 'DriverLoadPolicy' }
     its('DriverLoadPolicy') { should cmp == 1 }

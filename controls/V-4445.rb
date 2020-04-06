@@ -36,8 +36,9 @@ control 'V-4445' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options -> \"System
   settings: Optional subsystems\" to \"Blank\" (Configured with no entries)."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\SubSystems') do
     it { should have_property 'Optional' }
-    its('Optional') { should eq [''] }
+    its('Optional') { should eq [] }
   end
 end

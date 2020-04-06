@@ -28,6 +28,7 @@ control 'V-22692' do
   Administrative Templates -> Windows Components -> AutoPlay Policies -> \"Set
   the default behavior for AutoRun\" to \"Enabled:Do not execute any autorun
   commands\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
     it { should have_property 'NoAutorun' }
     its('NoAutorun') { should cmp == 1 }

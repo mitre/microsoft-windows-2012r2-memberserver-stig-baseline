@@ -34,12 +34,8 @@ control 'V-26493' do
   groups:
 
   Administrators"
-  describe.one do
+ 
     describe security_policy do
       its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
     end
-    describe security_policy do
-      its('SeLoadDriverPrivilege') { should eq [] }
-    end
-  end
 end

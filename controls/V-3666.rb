@@ -29,6 +29,7 @@ control 'V-3666' do
   \"Network security: Minimum session security for NTLM SSP based (including
   secure RPC) servers\" to \"Require NTLMv2 session security\" and \"Require
   128-bit encryption\" (all options selected)."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa\\MSV1_0') do
     it { should have_property 'NTLMMinServerSec' }
     its('NTLMMinServerSec') { should cmp == 537395200 }

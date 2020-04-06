@@ -37,6 +37,7 @@ control 'V-26540' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Logon/Logoff -> \"Audit Logoff\" with \"Success\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Logoff') { should eq 'Success' }

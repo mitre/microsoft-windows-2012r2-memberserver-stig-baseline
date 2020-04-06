@@ -50,18 +50,8 @@ control 'V-26470' do
   Systems dedicated to managing Active Directory (AD admin platforms, see V-36436
   in the Active Directory Domain STIG), must only allow Administrators, removing
   the Authenticated Users group."
-  describe.one do
+ 
     describe security_policy do
       its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
-    end
-    describe security_policy do
-      its('SeNetworkLogonRight') { should eq ['S-1-5-11'] }
-    end
-    describe security_policy do
-      its('SeNetworkLogonRight') { should eq ['S-1-5-32-544'] }
-    end
-    describe security_policy do
-      its('SeNetworkLogonRight') { should eq [] }
-    end
-  end
+      end
 end

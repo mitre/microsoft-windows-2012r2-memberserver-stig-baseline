@@ -31,6 +31,7 @@ control 'V-1154' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive Logon: Do not require CTRL+ALT+DEL\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'DisableCAD' }
     its('DisableCAD') { should cmp == 0 }

@@ -84,6 +84,7 @@ control 'V-1089' do
   by attorneys, psychotherapists, or clergy, and their assistants.  Such
   communications and work product are private and confidential.  See User
   Agreement for details."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LegalNoticeText' }
   end

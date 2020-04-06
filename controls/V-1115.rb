@@ -25,6 +25,7 @@ control 'V-1115' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Accounts: Rename administrator account\" to a name other than
   \"Administrator\"."
+  
   describe user('Administrator') do
     it { should_not exist }
   end

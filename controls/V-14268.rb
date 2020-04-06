@@ -26,6 +26,7 @@ control 'V-14268' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Attachment Manager -> \"Do
   not preserve zone information in file attachments\" to \"Disabled\"."
+  
   describe registry_key('HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
     it { should have_property 'SaveZoneInformation' }
     its('SaveZoneInformation') { should cmp == 2 }

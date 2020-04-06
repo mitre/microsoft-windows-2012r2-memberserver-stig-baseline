@@ -48,7 +48,17 @@ control 'V-73805' do
   De-select \"SMB 1.0/CIFS File Sharing Support\".
 
   The system must be restarted for the changes to take effect."
-  describe command('Get-WindowsOptionalFeature -Online | Where FeatureName -eq SMB1Protocol') do
-    its('stdout') { should_not eq "\r\n\r\nFeature Name : SMB1Protocol\r\nState        : Enabled\r\n\r\n\r\n\r\n" }
+  
+  if os['release'].to_f < 6.3
+    impact 0.0
+    describe 'System is not Windows 2012, control is NA' do
+      skip 'System is not Windows 2012, control is NA'
+    end
+  else
+   state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
+   describe 'SMB 1.0 Procotocl is disabled as part of Security Requirement' do
+    subject { state }
+    it { should_not eq "Enabled"}
+   end
   end
 end

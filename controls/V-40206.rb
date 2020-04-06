@@ -22,14 +22,18 @@ control 'V-40206' do
   is a finding."
   tag "fix": "Configure the Startup Type for the Smart Card Removal Policy
   service to \"Automatic\"."
+  
   is_scpolicysvc_installed = command('Get-Service SCPolicySvc').stdout.strip
   if is_scpolicysvc_installed == ''
     describe 'SCPolicySvc not installed' do
       skip 'This must be checked manually, since the SCPolicySvc is not installed'
     end
   else
-    describe wmi({ namespace: 'root\\cimv2', query: "SELECT startmode FROM Win32_Service WHERE name='SCPolicySvc'" }).params.values do
-      its('join') { should eq 'Auto' }
+    startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "SCPolicySvc"} | Select StartMode | ConvertTo-Json').stdout.strip
+    clean_startmode = startmode[22..25]
+    describe 'Smart Card Removal Policy is Set to Automatic' do
+      subject { clean_startmode }
+      it { should eq 'Auto'}
     end
   end
 end

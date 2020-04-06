@@ -39,12 +39,13 @@ control 'V-78061' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Advanced Audit Policy Configuration >> System Audit Policies >>
   System >> \"Audit Other System Events\" with \"Success\" selected."
+  
   describe.one do
     describe audit_policy do
-      its('Other System Events') { should eq 'Success and Failure' }
+      its('Other System Events') { should eq 'Success' }
     end
     describe audit_policy do
-      its('Other System Events') { should eq 'Success' }
+      its('Other System Events') { should eq 'Success and Failure' }
     end
   end
 end

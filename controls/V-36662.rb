@@ -51,6 +51,8 @@ control 'V-36662' do
 
   It is recommended that system-managed service accounts be used where possible."
 
+  # Code needs to be written for Domain Controllers
+
   users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
 
   users.each do |user|

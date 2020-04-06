@@ -29,6 +29,7 @@ control 'V-3455' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Temporary Folders -> \"Do not use temporary
   folders per session\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'PerSessionTempDir' }
     its('PerSessionTempDir') { should cmp == 1 }

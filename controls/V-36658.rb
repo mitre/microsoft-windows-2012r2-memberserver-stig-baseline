@@ -17,6 +17,7 @@ control 'V-36658' do
   Administrators group is not maintained with the ISSO, this is a finding."
   tag "fix": "Create the necessary documentation that identifies the members of
   the Administrators group."
+
   administrators = input('administrators')
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split('\n')
   administrator_group.each do |user|

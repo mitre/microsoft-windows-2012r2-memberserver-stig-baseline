@@ -26,6 +26,7 @@ control 'V-3380' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: Force logoff when logon hours expire\" to \"Enabled\"."
+  
   describe security_policy do
     its('ForceLogoffWhenHourExpire') { should eq 1 }
   end

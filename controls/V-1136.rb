@@ -31,6 +31,7 @@ control 'V-1136' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Microsoft network server: Disconnect clients when logon hours expire\" to
   \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'EnableForcedLogOff' }
     its('EnableForcedLogOff') { should cmp == 1 }

@@ -32,6 +32,7 @@ control 'V-14261' do
 Administrative Templates -> System -> Internet Communication Management ->
 Internet Communication settings -> \"Turn off Windows Update device driver
 searching\" to \"Enabled\"."
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DriverSearching') do
     it { should have_property 'DontSearchWindowsUpdate' }
     its('DontSearchWindowsUpdate') { should cmp == 1 }

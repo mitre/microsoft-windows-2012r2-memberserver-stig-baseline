@@ -28,6 +28,7 @@ control 'V-1072' do
   Document required shared accounts with the ISSO. Documentation must include the
   reason for the account, who has access to the account, and how the risk of
   using the shared account is mitigated to include monitoring account activity."
+  
   get_accounts = command("net user | Findstr /v 'command -- accounts'").stdout.strip.split(' ')
   shared_accounts = input('shared_accounts')
   

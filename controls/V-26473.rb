@@ -49,12 +49,8 @@ control 'V-26473' do
   with administrative or management functions, if required.  Remote Desktop
   Services access must be restricted to the accounts that require it.  This must
   be documented with the ISSO."
-  describe.one do
+
     describe security_policy do
       its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
     end
-    describe security_policy do
-      its('SeRemoteInteractiveLogonRight') { should eq [] }
-    end
-  end
 end

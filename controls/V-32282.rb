@@ -40,24 +40,31 @@ control 'V-32282' do
   CREATOR OWNER - Full Control (Subkeys only)
   ALL APPLICATION PACKAGES - Read"
 
-  describe windows_registry("HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components\\") do
-    it { should be_allowed('full-control', by_user: 'CREATOR OWNER') }
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
+  hklm_installed_comp = <<-EOH
+  $output = (Get-Acl -Path 'HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components').AccessToString
+  write-output $output
+  EOH
+
+  hklm_wow_installed_comp = <<-EOH
+  $output = (Get-Acl -Path 'HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components').AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_installed_comp = powershell(hklm_installed_comp).stdout.strip
+  raw_wow_installed_comp = powershell(hklm_wow_installed_comp).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_installed_comp = raw_installed_comp.lines.collect(&:strip)
+  clean_wow_installed_comp = raw_wow_installed_comp.lines.collect(&:strip)
+
+   describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components' do
+    subject { clean_installed_comp }
+    it { should cmp input('reg_install_comp_perms') }
   end
 
-   describe windows_registry("HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components\\") do
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'CREATOR OWNER') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
+  describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Wow6432Node\\Microsoft\\Active Setup\\Installed Components' do
+    subject { clean_wow_installed_comp }
+    it { should cmp input('reg_wow6432_install_comp_perms') }
   end
-
 end
-
-
-

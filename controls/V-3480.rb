@@ -31,6 +31,7 @@ control 'V-3480' do
   tag "fix": "If Windows Media Player is installed, configure the policy value
   for Computer Configuration -> Administrative Templates -> Windows Components ->
   Windows Media Player -> \"Prevent Automatic Updates\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer') do
     it { should have_property 'DisableAutoUpdate' }
     its('DisableAutoUpdate') { should cmp == 1 }

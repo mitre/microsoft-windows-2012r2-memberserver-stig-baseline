@@ -42,6 +42,7 @@ control 'V-36667' do
   Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
   Audit Policies >> Object Access >> \"Audit Removable Storage\" with \"Failure\"
   selected."
+  
   describe.one do
     describe audit_policy do
       its('Removable Storage') { should eq 'Failure' }

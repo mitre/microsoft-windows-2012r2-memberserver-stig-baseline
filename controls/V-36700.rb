@@ -27,6 +27,7 @@ control 'V-36700' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Credential User Interface ->
   \"Do not display the password reveal button\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\CredUI') do
     it { should have_property 'DisablePasswordReveal' }
     its('DisablePasswordReveal') { should cmp == 1 }

@@ -37,11 +37,14 @@ control 'V-36680' do
   This is located under \"User Interfaces and Infrastructure\" in the \"Add Roles
   and Features Wizard\".  The \\Windows\\WinStore directory may need to be
   manually deleted after this."
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
+  
+  describe.one do
+   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
     it { should have_property 'NoUseStoreOpenWith' }
     its('NoUseStoreOpenWith') { should cmp == 1 }
+   end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
+     it { should_not have_property 'NoUseStoreOpenWith' }
   end
-  only_if do
-    registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer').exists?
-  end
+ end
 end

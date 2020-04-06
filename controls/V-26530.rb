@@ -37,6 +37,7 @@ control 'V-26530' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Logon -> \"Audit Credential Validation\" with
   \"Failure\" selected."
+  
   describe.one do
     describe audit_policy do
       its('Credential Validation') { should eq 'Failure' }

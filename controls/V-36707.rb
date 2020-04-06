@@ -25,13 +25,21 @@ control 'V-36707' do
   Value Name: EnableSmartScreen
 
   Type: REG_DWORD
-  Value: 0x00000002 (2)"
+  Value: 0x00000001 (1) (Give user a warning…)
+  Or 0x00000002 (2) (Require approval…)"
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> Windows Components >> File Explorer >> \"Configure
   Windows SmartScreen\" to \"Enabled\" with \"Require approval from an
   administrator before running downloaded unknown software\" selected."
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
+
+  describe.one do
+   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
+    it { should have_property 'EnableSmartScreen' }
+    its('EnableSmartScreen') { should cmp == 1 }
+   end
+   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
     it { should have_property 'EnableSmartScreen' }
     its('EnableSmartScreen') { should cmp == 2 }
-  end
+   end
+ end
 end

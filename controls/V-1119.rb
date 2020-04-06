@@ -23,8 +23,12 @@ control 'V-1119' do
   system other than Windows Server 2012, this is a finding."
   tag "fix": "Ensure Windows Server 2012 is the only operating system installed
   for the system to boot into.  Remove alternate operating systems."
-  describe command("bcdedit | Findstr description | Findstr /v /c:'Windows Boot Manager'") do
-    its('stdout') { should eq "description             Windows Server 2012 R2\r\n" }
+
+ check_os = powershell('bcdedit | Findstr description | Findstr /v /C:"Windows Boot Manager" | ConvertTo-Json').stdout.strip
+ result = check_os[25..43]
+
+  describe 'Verify the local system boots directly into Windows' do
+   subject {result}
+   it { should cmp "Windows Server 2012"}
   end
-  only_if { os['release'].to_i < 6.3 }
 end

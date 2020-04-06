@@ -42,18 +42,8 @@ control 'V-26489' do
 
   Local Service
   Network Service"
-  describe.one do
+
     describe security_policy do
       its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
     end
-    describe security_policy do
-      its('SeAuditPrivilege') { should eq ['S-1-5-19'] }
-    end
-    describe security_policy do
-      its('SeAuditPrivilege') { should eq ['S-1-5-20'] }
-    end
-    describe security_policy do
-      its('SeAuditPrivilege') { should eq [] }
-    end
-  end
 end

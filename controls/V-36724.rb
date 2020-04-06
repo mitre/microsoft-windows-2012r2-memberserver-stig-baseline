@@ -42,14 +42,25 @@ control 'V-36724' do
 
   If the location of the logs has been changed, when adding Eventlog to the
   permissions, it must be entered as \"NT Service\\Eventlog\"."
+  
   get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
   systemroot = system_root.strip
 
-   describe windows_registry("#{systemroot}\\SYSTEM32\\WINEVT\\LOGS\\System.evtx") do
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\EventLog') }
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
+  winevt_logs_system = <<-EOH
+  $output = (Get-Acl -Path #{systemroot}\\SYSTEM32\\WINEVT\\LOGS\\System.evtx).AccessToString
+  write-output $output
+  EOH
+
+  # raw powershell output
+  raw_logs_system = powershell(winevt_logs_system).stdout.strip
+
+   # clean results cleans up the extra line breaks
+  clean_logs_system  = raw_logs_system.lines.collect(&:strip)
+
+   describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\System.evtx' do
+    subject { clean_logs_system }
+    it { should cmp input('winevt_logs_system_perms') }
   end
 end

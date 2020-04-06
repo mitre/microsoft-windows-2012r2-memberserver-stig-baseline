@@ -35,8 +35,8 @@ control 'V-36656' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Control Panel -> Personalization -> \"Enable screen
   saver\" to \"Enabled\"."
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Control
-  Panel\\Desktop") do
+  
+  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop") do
     it { should have_property 'ScreenSaveActive' }
     its('ScreenSaveActive') { should cmp == 1 }
   end

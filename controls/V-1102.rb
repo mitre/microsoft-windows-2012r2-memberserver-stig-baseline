@@ -32,7 +32,12 @@ control 'V-1102' do
   -> Security Settings -> Local Policies -> User Rights Assignment.
 
   If any accounts or groups (to include administrators), are granted the \"Act as
-  part of the operating system\" user right, this is a finding."
+  part of the operating system\" user right, this is a finding.
+  If an application requires this user right, this would not be a finding.
+
+  Vendor documentation must support the requirement for having the user right.
+
+  The requirement must be documented with the ISSO."
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Act as part of the operating system\" to be defined but containing no entries

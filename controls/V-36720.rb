@@ -29,6 +29,7 @@ control 'V-36720' do
   Administrative Templates -> Windows Components -> Windows Remote Management
   (WinRM) -> WinRM Service -> \"Disallow WinRM from storing RunAs credentials\"
   to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WinRM\\Service') do
     it { should have_property 'DisableRunAs' }
     its('DisableRunAs') { should cmp == 1 }

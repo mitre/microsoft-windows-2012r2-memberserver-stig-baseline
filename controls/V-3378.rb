@@ -28,6 +28,7 @@ control 'V-3378' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Sharing and security model for local accounts\" to \"Classic
   - local users authenticate as themselves\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'ForceGuest' }
     its('ForceGuest') { should cmp == 0 }

@@ -18,6 +18,7 @@ control 'V-36672' do
   not, this is a finding."
   tag "fix": "Establish and implement a process for backing up log data to
   another system or media other than the system being audited."
+  
   describe "Audit records must be backed up onto a different system or media than
   the system being audited" do
     skip 'is a manual check'

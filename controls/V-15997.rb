@@ -29,6 +29,7 @@ control 'V-15997' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Device and Resource Redirection -> \"Do not
   allow COM port redirection\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fDisableCcm' }
     its('fDisableCcm') { should cmp == 1 }

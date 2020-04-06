@@ -45,16 +45,19 @@ control 'V-36439' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
+  
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-    it { should have_property 'LocalAccountTokenFilterPolicy' }
-    its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
-  end if is_domain != 'WORKGROUP'
 
-  if is_domain == 'WORKGROUP'
+   if is_domain == 'WORKGROUP'
     impact 0.0
-    describe 'The system does is not a member of a domain, control is NA' do
-      skip 'The system does is not a member of a domain, control is NA'
+    describe 'This requirement is applicable to domain-joined systems, for standalone systems this is NA' do
+      skip 'This requirement is applicable to domain-joined systems, for standalone systems this is NA'
     end
+  else
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
+     it { should have_property 'LocalAccountTokenFilterPolicy' }
+     its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
+    end 
   end
 end
+

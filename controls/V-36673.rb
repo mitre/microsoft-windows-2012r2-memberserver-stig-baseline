@@ -26,6 +26,7 @@ control 'V-36673' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> TCPIP Settings -> Parameters -> \"Set IP
   Stateless Autoconfiguration Limits State\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'EnableIPAutoConfigurationLimits' }
     its('EnableIPAutoConfigurationLimits') { should cmp == 1 }

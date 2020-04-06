@@ -28,6 +28,7 @@ control 'V-3454' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Security -> \"Set client connection encryption
   level\" to \"Enabled\" and \"High Level\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'MinEncryptionLevel' }
     its('MinEncryptionLevel') { should cmp == 3 }

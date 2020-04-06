@@ -30,6 +30,7 @@ control 'V-1166' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Microsoft network client: Digitally sign communications (if server agrees)\"
   to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters') do
     it { should have_property 'EnableSecuritySignature' }
     its('EnableSecuritySignature') { should cmp == 1 }

@@ -39,6 +39,7 @@ Administrators"
   \"Debug programs\" to only include the following accounts or groups:
 
   Administrators"
+  
   describe security_policy do
     its('SeDebugPrivilege') { should eq ['S-1-5-32-544'] }
   end

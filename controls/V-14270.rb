@@ -27,6 +27,7 @@ control 'V-14270' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Attachment Manager ->
   \"Notify antivirus programs when opening attachments\" to \"Enabled\"."
+  
   describe registry_key('HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
     it { should have_property 'ScanWithAntiVirus' }
     its('ScanWithAntiVirus') { should cmp == 3 }

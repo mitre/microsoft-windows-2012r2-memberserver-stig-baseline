@@ -29,6 +29,7 @@ control 'V-26576' do
 
   Note: \"IPHTTPS URL:\" must be entered in the policy even if set to Disabled
   State.  Enter \"about:blank\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition\\IPHTTPS\\IPHTTPSInterface') do
     it { should have_property 'IPHTTPS_ClientState' }
     its('IPHTTPS_ClientState') { should cmp == 3 }

@@ -21,6 +21,7 @@ control 'V-26600' do
 
   Fax (fax)"
   tag "fix": 'Remove or disable the Fax (fax) service.'
+  
   is_fax_installed = command('Get-WindowsFeature Fax | Select -Expand Installed').stdout.strip
 
   if is_fax_installed == 'False'
@@ -29,11 +30,11 @@ control 'V-26600' do
       skip 'The system does not have Fax installed, this requirement is Not Applicable.'
     end
   else
-    describe wmi({
-                   class: 'win32_service',
-    filter: "name like '%Fax%'"
-                 }) do
-      its('StartMode') { should cmp 'Disabled' }
+    startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "fax"} | Select StartMode | ConvertTo-Json').stdout.strip
+    clean_startmode = startmode[22..29]
+    describe 'Fax Service is installed and disabled' do
+      subject { clean_startmode }
+      it { should eq 'Disabled'}
     end
   end
 end

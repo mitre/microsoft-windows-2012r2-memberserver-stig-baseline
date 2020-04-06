@@ -30,6 +30,7 @@ control 'V-1075' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Shutdown: Allow system to be shutdown without having to log on\" to
   \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'ShutdownWithoutLogon' }
     its('ShutdownWithoutLogon') { should cmp == 0 }

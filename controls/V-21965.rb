@@ -31,6 +31,7 @@ control 'V-21965' do
   Administrative Templates -> System -> Device Installation -> \"Specify search
   order for device driver source locations\" to \"Enabled: Do not search Windows
   Update\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DriverSearching') do
     it { should have_property 'SearchOrderConfig' }
     its('SearchOrderConfig') { should cmp == 0 }

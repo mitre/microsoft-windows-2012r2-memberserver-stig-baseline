@@ -34,6 +34,7 @@ control 'V-14228' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
 Settings -> Security Settings -> Local Policies -> Security Options -> \"Audit:
 Audit the access of global system objects\" to \"Disabled\"."
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
     it { should have_property 'AuditBaseObjects' }
     its('AuditBaseObjects') { should cmp == 0 }

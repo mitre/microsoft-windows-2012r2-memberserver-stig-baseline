@@ -30,6 +30,7 @@ control 'V-21964' do
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> System >> Device Installation >> \"Prevent device
   metadata retrieval from the Internet\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Device Metadata') do
     it { should have_property 'PreventDeviceMetadataFromNetwork' }
     its('PreventDeviceMetadataFromNetwork') { should cmp == 1 }

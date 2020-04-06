@@ -30,6 +30,7 @@ traffic\" to \"Only ISAKMP is exempt (recommended for Windows Server 2003)\".
 
 (See \"Updating the Windows Security Options File\" in the STIG Overview
 document if MSS settings are not visible in the system's policy tools.)"
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\IPSEC') do
     it { should have_property 'NoDefaultExempt' }
     its('NoDefaultExempt') { should cmp == 3 }

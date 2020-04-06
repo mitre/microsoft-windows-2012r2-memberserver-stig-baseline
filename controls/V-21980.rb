@@ -27,6 +27,7 @@ control 'V-21980' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> File Explorer -> \"Turn off
   Data Execution Prevention for Explorer\" to \"Disabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Explorer') do
     it { should have_property 'NoDataExecutionPrevention' }
     its('NoDataExecutionPrevention') { should cmp == 0 }

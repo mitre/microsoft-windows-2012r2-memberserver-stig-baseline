@@ -31,6 +31,7 @@ control 'V-16020' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication Settings -> \"Turn off Windows Customer Experience
   Improvement Program\" to \"Enabled\"."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\SQMClient\\Windows') do
     it { should have_property 'CEIPEnable' }
     its('CEIPEnable') { should cmp == 0 }

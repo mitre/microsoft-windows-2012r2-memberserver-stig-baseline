@@ -32,6 +32,7 @@ control 'V-1099' do
 
   A value of \"0\" is also acceptable, requiring an administrator to unlock the
   account."
+  
   describe.one do
     describe security_policy do
       its('LockoutDuration') { should be >= 15 }

@@ -19,6 +19,7 @@ control 'V-36670' do
   schedule.  If audit logs are not reviewed on a regular basis, this is a
   finding."
   tag "fix": 'Review audit logs on a predetermined scheduled.'
+  
   describe 'A manual review is required to ensure audit data is reviewed on a regular basis.' do
     skip 'A manual review is required to ensure audit data is reviewed on a regular basis.'
   end

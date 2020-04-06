@@ -31,6 +31,7 @@ control 'V-36677' do
   Administrative Templates -> System -> \"Specify settings for optional component
   installation and component repair\" to \"Enabled\" and with \"Never attempt to
   download payload from Windows Update\" selected."
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Servicing') do
     it { should have_property 'UseWindowsUpdate' }
     its('UseWindowsUpdate') { should cmp == 2 }

@@ -44,8 +44,17 @@ control 'V-6840' do
   Management for member servers and standalone systems. Document any exceptions
   with the ISSO."
 
+  is_domain_controller = powershell('Get-ADDomainController').stdout.strip
+
+  if is_domain_controller == ''
   describe command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False
   and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'") do
     its('stdout') { should eq '' }
+  end
+else
+    impact 0.0
+    describe 'Review Domain Accounts' do
+      skip 'Review Domain Accounts'
+    end
   end
 end

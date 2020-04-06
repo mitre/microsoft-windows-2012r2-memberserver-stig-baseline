@@ -30,6 +30,7 @@ control 'V-36734' do
   the following frequency: continuously, where HBSS is used; 30 days, for any
   additional internal network scans not covered by HBSS; and annually, for
   external scans by Computer Network Defense Service Provider (CNDSP)."
+  
   describe "A manual review is required to ensure the operating system employs automated mechanisms to determine the
   state of system components with regard to flaw remediation using the following
   frequency: continuously, where HBSS is used; 30 days, for any additional
