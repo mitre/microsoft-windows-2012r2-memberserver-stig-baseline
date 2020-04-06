@@ -101,4 +101,5 @@ Valid to: Saturday, January 22, 2022"
     subject { query.params }
     it { should be_in dod_interoperability_certificates }
   end
+ end
 end
