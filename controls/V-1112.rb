@@ -60,71 +60,42 @@ control 'V-1112' do
   Disable or delete any active accounts that have not been used in the last 35
   days."
 
-  users = command("Get-CimInstance -Class Win32_Useraccount -Filter 'LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'").stdout.strip.split(' ')
 
-  get_sids = []
-  get_names = []
-  names = []
-  inactive_accounts = []
 
-  if !users.empty?
-    users.each do |user|
-      get_sids = command("wmic useraccount where \"Name='#{user}'\" get name',' sid| Findstr /v SID").stdout.strip
-      get_last = get_sids[get_sids.length-3, 3]
+  application_accounts = input('application_accounts')
+  excluded_accounts = input('excluded_accounts')
 
-      loc_space = get_sids.index(' ')
-      names = get_sids[0, loc_space]
-      if get_last != '500' && get_last != '501'
-        get_names.push(names)
-      end
-    end
-  end
-  
-  if !get_names.empty?
-    get_names.each do |user|
-      get_last_logon = command("Net User #{user} | Findstr /i 'Last Logon' | Findstr /v 'Password script hours'").stdout.strip
-      last_logon = get_last_logon[29..33]
-      if last_logon != 'Never'
-        month = get_last_logon[28..29]
-        day = get_last_logon[31..32]
-        year = get_last_logon[34..37]
+ # returns a hash of {'Enabled' => 'true' } 
+ is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
-        if get_last_logon[32] == '/'
-          month = get_last_logon[28..29]
-          day = get_last_logon[31]
-          year = get_last_logon[33..37]
+   if (is_domain_controller['Enabled'] == true)
+     #application_accounts = input('application_accounts')
+     list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select Name | ConvertTo-Json' })
+     ad_accounts = list_of_accounts.params
+     untracked_accounts = ad_accounts - application_accounts - excluded_accounts
+  # require 'pry'; binding.pry
+       describe 'Untracked Accounts' do
+         it 'should not have any untracked accounts' do
+         failure_message = "Users that are not tracked by the system: #{untracked_accounts.join(', ')}"
+         expect(untracked_accounts).to be_empty, failure_message
         end
-        date = day + '/' + month + '/' + year
-
-        date_last_logged_on = DateTime.now.mjd - DateTime.parse(date).mjd
-        if date_last_logged_on > 35
-          inactive_accounts.push(user)
-        end
-
-        describe "#{user}'s last logon" do
-          describe date_last_logged_on do
-            it { should cmp <= 35 }
-          end
-        end if !inactive_accounts.empty?
-      end
-
-      if !inactive_accounts.empty?
-        if last_logon == 'Never'
-          date_last_logged_on = 'Never'
-          describe "#{user}'s last logon" do
-            describe date_last_logged_on do
-              it { should_not == 'Never' }
-            end
-          end
+       end
+   end
+ if (is_domain_controller.params == {} )
+    local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select Name | ConvertTo-Json" })
+    local_users_list = local_users.params
+    if (local_users_list == ' ')
+      impact 0.0
+       describe 'The system does not have any inactive accounts, control is NA' do
+        skip 'The system does not have any inactive accounts, controls is NA'
+       end
+    else
+      describe "Account or Accounts exists" do
+        it 'Server should not have Accounts' do
+        failure_message = "User or Users #{local_users_list} have not login to system in 35 days" 
+        expect(local_users['Name']).to be_empty, failure_message
         end
       end
-    end
-  end
-
-  if inactive_accounts.empty?
-    impact 0.0
-    describe 'The system does not have any inactive accounts, control is NA' do
-      skip 'The system does not have any inactive accounts, controls is NA'
-    end
+   end
   end
 end
