@@ -22,13 +22,13 @@ inputs:
       - McAfee Agent
 
   - name: shared_accounts
+    desc: 'List of shared accounts on the system'
     type: Array
-    description: 'List of shared accounts on the system'
     value: []
 
   - name: backup_operators
+    desc: 'List of authorized users in the Backup Operators Group'
     type: Array
-    description: 'List of authorized users in the Backup Operators Group'
     value: []
 
   - name: administrators
@@ -36,20 +36,32 @@ inputs:
     description: 'List of authorized users in the local Administrators group'
     value: []
     
-  - name: administrators_domain'
+  - name: administrators_domain
+    desc: 'List of authorized users in the local Administrators domain group'
     type: Array
-    description: 'List of authorized users in the local Administrators domain group'
     value: []
 
   - name: temp_account
+    desc: 'List of temporary accounts on the system'
     type: Array
-    description: 'List of temporary accounts on the system'
     value: []
 
   - name: emergency_account
+    desc: 'List of emergency accounts on the system'
     type: Array
-    description: 'List of emergency accounts on the system'
     value: []
+  
+  - name: application_accounts
+    desc: 'Application or Service Accounts that don't get log into'
+    type: Array
+    value: 
+      - DefaultAccount
+  
+  - name: excluded_accounts
+    desc: 'Excluded Accounts that don't get log into'
+    type: Array
+    value: 
+      - Guest-old
 
   - name: LegalNoticeText
     type: string
