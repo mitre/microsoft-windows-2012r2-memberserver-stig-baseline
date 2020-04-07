@@ -71,7 +71,7 @@ control 'V-1112' do
    if (is_domain_controller['Enabled'] == true)
      #application_accounts = input('application_accounts')
      list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select Name | ConvertTo-Json' })
-     ad_accounts = list_of_accounts.params
+     ad_accounts = list_of_accounts.map{|x|x['Name']}
      untracked_accounts = ad_accounts - application_accounts - excluded_accounts
   # require 'pry'; binding.pry
        describe 'Untracked Accounts' do
@@ -83,7 +83,7 @@ control 'V-1112' do
    end
  if (is_domain_controller.params == {} )
     local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select Name | ConvertTo-Json" })
-    local_users_list = local_users.params
+    local_users_list = local_users.map{|x|x['Name']}
     if (local_users_list == ' ')
       impact 0.0
        describe 'The system does not have any inactive accounts, control is NA' do
