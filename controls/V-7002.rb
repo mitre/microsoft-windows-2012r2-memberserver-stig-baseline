@@ -43,18 +43,38 @@ control 'V-7002' do
   line: \"Net user [username] /passwordreq:yes\", substituting [username] with
   the name of the user account."
 
-  is_domain_controller = powershell('Get-ADDomainController').stdout.strip
+  # returns a hash of {'Enabled' => 'true' } 
+ is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
-  if is_domain_controller == ''
-  users_with_no_password_required = command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordRequired=False and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'").stdout
-  describe "Windows 2012/2012 R2 accounts configured to not require passwords" do
-    subject {users_with_no_password_required}
-    it { should be_empty }
-  end
-  else
-     impact 0.0
-    describe 'Review Domain Accounts' do
-      skip 'Review Domain Accounts'
+   if (is_domain_controller['Enabled'] == true)
+     list_of_accounts = json({ command: "Get-ADUser -Filter * -Properties PasswordNotRequired | Where-Object {$_.PasswordNotRequired -eq 'True' -and $_.Enabled -eq 'True'} Select -ExpandProperty Name | ConvertTo-Json" })
+     ad_accounts = list_of_accounts.params
+  # require 'pry'; binding.pry
+       describe 'AD Accounts' do
+         it 'AD should not have any Accounts that have Password Not Required' do
+         failure_message = "Users that have Password Not Required #{ad_accounts}"
+         expect(ad_accounts).to be_empty, failure_message
+        end
+       end
+   end
+ if (is_domain_controller.params == {} )
+    local_users = json({ command: "Get-CimInstance -Class Win32_Useraccount -Filter PasswordRequired=False and LocalAccount=True | Select -ExpandProperty Name | ConvertTo-Json" })
+    local_users_list = local_users.params
+    if (local_users_list == ' ')
+      impact 0.0
+       describe 'The system does not have any accounts with a Password set, control is NA' do
+        skip 'The system does not have any accounts with a Password set,, controls is NA'
+       end
+    else
+      describe "Account or Accounts exists" do
+        it 'Server should not have Accounts with No Password Set' do
+        failure_message = "User or Users #{local_users_list} have no Password Set" 
+        expect(local_users_list).to be_empty, failure_message
+        end
+      end
     end
   end
 end
+
+
+ 

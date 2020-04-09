@@ -50,32 +50,45 @@ control 'V-36662' do
   password leaves the organization.
 
   It is recommended that system-managed service accounts be used where possible."
+  application_accounts = input('application_accounts_domain')
+  application_accounts_local = input('application_accounts_local')
+  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
-  # Code needs to be written for Domain Controllers
-
-  users = command("net user | Findstr /V 'command -- accounts'").stdout.strip.split(' ')
-
-  users.each do |user|
-
-    get_password_last_set = command("Net User #{user}  | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
-
-    month = get_password_last_set[27..29]
-    day = get_password_last_set[31..32]
-    year = get_password_last_set[34..38]
-
-    date = day + '/' + month + '/' + year
-
-    date_password_last_set = DateTime.now.mjd - DateTime.parse(date).mjd
-    describe "#{user}'s data password last set" do
-      describe date_password_last_set do
-        it { should cmp <= 365 }
+   if (is_domain_controller['Enabled'] == true)
+     application_accounts.each do |user|
+     password_set_date = json({ command: "Get-ADUser -Identity #{user} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
+     date = password_set_date["DateTime"]
+     if (date == nil)
+      describe "Application Accounts are all within 365 days since password change #{user}" do
+        skip "Application Accounts are all within 365 days since password change #{user}"
       end
-    end
+    else
+       describe 'Password Last Set' do
+         it "Application Account #{user} Password Last Set Date is" do
+         failure_message = "Password Date should not be more that 365 Days: #{date}"
+         expect(date).to be_empty, failure_message
+        end
+       end
+      end
+   end
   end
-  if users.empty?
-    impact 0.0
-    describe 'There are no system users' do
-      skip 'This control is not applicable'
-    end
+
+  if (is_domain_controller.params == {} )
+   application_accounts_local.each do |user|
+     local_password_set_date = json({ command: "Get-LocalUser -name #{user} | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
+     date = local_password_set_date["DateTime"]
+     if (date == nil)
+      describe "Application Accounts are all within 365 days since password change #{user}" do
+        skip "Application Accounts are all within 365 days since password change #{user}"
+      end
+    else
+       describe 'Password Last Set' do
+         it "Application Account #{user} Password Last Set Date is" do
+         failure_message = "Password Date should not be more that 365 Days: #{date}"
+         expect(date).to be_empty, failure_message
+        end
+       end
+      end
+   end
   end
 end

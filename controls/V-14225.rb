@@ -52,23 +52,41 @@ control 'V-14225' do
   Automated tools, such as Microsoft's LAPS, may be used on domain-joined member
   servers to accomplish this."
   
-  administrators = input('administrators')
+  administrator = input('local_administrator')
+  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
-  if !administrators.empty?
-    administrators.each do |admin|
-      password_age = json({ command:"NEW-TIMESPAN –End (GET-DATE) –Start ([datetime]((net user #{admin} | \
-                        Select-String \"Password last set\").Line.Substring(29,10))) | convertto-json"}).Days
-
-      describe "Administrator Password age for #{admin}" do
-        subject { password_age }
-        it { should cmp <= 365 }
+   if (is_domain_controller['Enabled'] == true)
+    
+     password_set_date = json({ command: "Get-ADUser -Filter * -Properties SID, PasswordLastSet | Where-Object {$_.SID -like '*-500' -and $_.PasswordLastSet -lt ((Get-Date).AddDays(-365))} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
+     date = password_set_date["DateTime"]
+     if (date == nil)
+      describe 'Administrator Account is within 365 days since password change' do
+        skip 'Administrator Account is within 365 days since password change'
       end
-    end
-  end
-
-  if administrators.empty?
-    describe 'There are no administrative accounts on this system' do
-      skip 'There are no administrative accounts on this system'
-    end
-  end
+    else
+       describe 'Password Last Set' do
+         it 'Administrator Account Password Last Set Date is' do
+         failure_message = "Password Date should not be more that 365 Days: #{date}"
+         expect(date).to be_empty, failure_message
+        end
+       end
+      end
+   end
+   if (is_domain_controller.params == {} )
+   # Input local_administrator is critical here
+   local_password_set_date = json({ command: "Get-LocalUser -name #{administrator} | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json"})
+   local_date =  local_password_set_date["DateTime"]
+    if (local_date == nil)
+      describe 'Local Administrator Account is within 365 days since password change' do
+        skip 'Local Administrator Account is within 365 days since password change'
+      end
+    else
+       describe 'Password Last Set' do
+         it 'Local Administrator Account Password Last Set Date is' do
+         failure_message = "Password Date should not be more that 365 Days: #{local_date}"
+         expect(local_date).to be_empty, failure_message
+        end
+       end
+      end
+   end
 end
