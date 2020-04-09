@@ -24,44 +24,67 @@ inputs:
   - name: shared_accounts
     desc: 'List of shared accounts on the system'
     type: Array
-    value: []
+    value: 
+      -
 
   - name: backup_operators
     desc: 'List of authorized users in the Backup Operators Group'
     type: Array
-    value: []
+    value: 
+      -
 
   - name: administrators
+    desc: 'List of authorized users in the local Administrators group'
     type: Array
-    description: 'List of authorized users in the local Administrators group'
-    value: []
+    value: 
+      -
+  
+  - name: local_administrator
+    desc: 'Local Administrator Account on Windows Server'
+    type: String
+    value: ""
     
   - name: administrators_domain
     desc: 'List of authorized users in the local Administrators domain group'
     type: Array
-    value: []
+    value: 
+      -
 
-  - name: temp_account
-    desc: 'List of temporary accounts on the system'
+  - name: temp_accounts_domain
+    desc: 'List of temporary accounts on the domain'
     type: Array
-    value: []
+    value: 
+      -
+
+  - name: temp_accounts_local
+    desc: 'List of temporary accounts on local system'
+    type: Array
+    value: 
+      -
 
   - name: emergency_account
     desc: 'List of emergency accounts on the system'
     type: Array
-    value: []
+    value: 
+      - 
   
-  - name: application_accounts
-    desc: 'Application or Service Accounts that don't get log into'
+  - name: application_accounts_domain
+    desc: 'Application or Service Accounts domain'
     type: Array
     value: 
-      - DefaultAccount
+      - 
   
-  - name: excluded_accounts
-    desc: 'Excluded Accounts that don't get log into'
+  - name: excluded_accounts_domain
+    desc: 'Excluded Accounts domain'
     type: Array
     value: 
-      - Guest-old
+      - 
+
+  - name: application_accounts_local
+    desc: 'Application Local Accounts'
+    type: Array
+    value: 
+      - 
 
   - name: LegalNoticeText
     type: string

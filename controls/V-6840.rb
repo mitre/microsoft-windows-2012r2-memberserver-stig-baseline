@@ -44,17 +44,39 @@ control 'V-6840' do
   Management for member servers and standalone systems. Document any exceptions
   with the ISSO."
 
-  is_domain_controller = powershell('Get-ADDomainController').stdout.strip
+  application_accounts = input('application_accounts_domain')
+  excluded_accounts = input('excluded_accounts_domain')
 
-  if is_domain_controller == ''
-  describe command("Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False
-  and LocalAccount=True and Disabled=False' | FT Name | Findstr /V 'Name --'") do
-    its('stdout') { should eq '' }
-  end
-else
-    impact 0.0
-    describe 'Review Domain Accounts' do
-      skip 'Review Domain Accounts'
-    end
-  end
+ # returns a hash of {'Enabled' => 'true' } 
+ is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+
+   if (is_domain_controller['Enabled'] == true)
+     list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | -ExpandProperty Name | ConvertTo-Json" })
+     ad_accounts = list_of_accounts.params
+     untracked_accounts = ad_accounts - application_accounts - excluded_accounts
+     # require 'pry'; binding.pry
+       describe 'Untracked Accounts' do
+         it 'No Enabled Domain Account should be set to have Password Never Expire' do
+         failure_message = "Users Accounts are set to Password Never Expire: #{untracked_accounts}"
+         expect(untracked_accounts).to be_empty, failure_message
+        end
+       end
+   end
+       if (is_domain_controller.params == {} )
+    local_users = json({ command: "Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False and LocalAccount=True and Disabled=False' | Select -ExpandProperty Name | ConvertTo-Json" })
+    local_users_list = local_users.params
+          if (local_users_list == ' ')
+            impact 0.0
+            describe 'The system does not have any local accounts where password is set to Password Never Expires, control is NA' do
+               skip 'The system does not have any local accounts where password is set to Password Never Expires, controls is NA'
+            end
+          else
+              describe "Account or Accounts exists" do
+                 it 'Server should not have Accounts with Password Never Expire' do
+                 failure_message = "User or Users #{local_users_list} have Password set to not expire" 
+                 expect(local_users_list).to be_empty, failure_message
+                 end
+              end
+          end
+      end
 end

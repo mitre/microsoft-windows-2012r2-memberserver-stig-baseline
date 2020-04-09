@@ -62,28 +62,27 @@ control 'V-1112' do
 
 
 
-  application_accounts = input('application_accounts')
-  excluded_accounts = input('excluded_accounts')
+  application_accounts = input('application_accounts_domain')
+  excluded_accounts = input('excluded_accounts_domain')
 
  # returns a hash of {'Enabled' => 'true' } 
  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
    if (is_domain_controller['Enabled'] == true)
-     #application_accounts = input('application_accounts')
-     list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select Name | ConvertTo-Json' })
-     ad_accounts = list_of_accounts.map{|x|x['Name']}
+     list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select -ExpandProperty Name | ConvertTo-Json' })
+     ad_accounts = list_of_accounts.params
      untracked_accounts = ad_accounts - application_accounts - excluded_accounts
   # require 'pry'; binding.pry
-       describe 'Untracked Accounts' do
-         it 'should not have any untracked accounts' do
-         failure_message = "Users that are not tracked by the system: #{untracked_accounts.join(', ')}"
+       describe 'AD Accounts' do
+         it 'AD should not have any Accounts that are Inactive over 35 days' do
+         failure_message = "Users that have not log into in 35 days #{untracked_accounts}"
          expect(untracked_accounts).to be_empty, failure_message
         end
        end
    end
  if (is_domain_controller.params == {} )
-    local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select Name | ConvertTo-Json" })
-    local_users_list = local_users.map{|x|x['Name']}
+    local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select -ExpandProperty Name | ConvertTo-Json" })
+    local_users_list = local_users.params
     if (local_users_list == ' ')
       impact 0.0
        describe 'The system does not have any inactive accounts, control is NA' do
@@ -93,7 +92,7 @@ control 'V-1112' do
       describe "Account or Accounts exists" do
         it 'Server should not have Accounts' do
         failure_message = "User or Users #{local_users_list} have not login to system in 35 days" 
-        expect(local_users['Name']).to be_empty, failure_message
+        expect(local_users_list).to be_empty, failure_message
         end
       end
    end
