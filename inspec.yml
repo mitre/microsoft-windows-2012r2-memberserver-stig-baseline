@@ -138,11 +138,6 @@ inputs:
     type: Numeric
     value: 3
 
-  - name: max_inactive_days
-    desc: "Max number of days an account is allowed to be inactive [35]"
-    type: Numeric
-    value: 35
-
   - name: pass_expiry_warning
     desc: "Users must be warned in advance of their passwords expiring[14] or greater"
     type: Numeric
