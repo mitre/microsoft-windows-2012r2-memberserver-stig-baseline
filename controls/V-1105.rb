@@ -27,6 +27,6 @@ control 'V-1105' do
   \"Minimum password age\" to at least \"1\" day."
   
   describe security_policy do
-    its('MinimumPasswordAge') { should be >= 1 }
+    its('MinimumPasswordAge') { should be >= input('min_pass_age') }
   end
 end
