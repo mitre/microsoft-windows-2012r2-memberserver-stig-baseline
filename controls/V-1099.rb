@@ -33,9 +33,10 @@ control 'V-1099' do
   A value of \"0\" is also acceptable, requiring an administrator to unlock the
   account."
   
+  pass_lock_duration = input('pass_lock_duration')
   describe.one do
     describe security_policy do
-      its('LockoutDuration') { should be >= input('pass_lock_duration') }
+      its('LockoutDuration') { should be >= pass_lock_duration }
     end
     describe security_policy do
       its('LockoutDuration') { should cmp == 0 }
