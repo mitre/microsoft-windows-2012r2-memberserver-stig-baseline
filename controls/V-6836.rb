@@ -27,6 +27,6 @@ control 'V-6836' do
   \"Minimum password length\" to \"14\" characters."
   
   describe security_policy do
-    its('MinimumPasswordLength') { should be >= 14 }
+    its('MinimumPasswordLength') { should be >= input('min_pass_len')}
   end
 end
