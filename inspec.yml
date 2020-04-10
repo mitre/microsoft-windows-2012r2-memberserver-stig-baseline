@@ -97,12 +97,6 @@ inputs:
     type: Numeric
     value: 14
 
-  - name: app_serv_min_pass_len
-    desc: "Appliction/Service Accounts Password needs to be set the minimum length of passwords [15]"
-    type: Numeric
-    value: 15
-
-
   - name: enable_pass_complexity
     desc: "If windows should enforce password complexity (0/1) [1]"
     type: Numeric
