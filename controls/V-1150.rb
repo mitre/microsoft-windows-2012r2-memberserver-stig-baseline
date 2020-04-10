@@ -34,6 +34,6 @@ control 'V-1150' do
   \"Password must meet complexity requirements\" to \"Enabled\"."
   
   describe security_policy do
-    its('PasswordComplexity') { should eq 1 }
+    its('PasswordComplexity') { should eq input('enable_pass_complexity') }
   end
 end

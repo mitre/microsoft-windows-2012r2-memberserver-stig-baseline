@@ -28,7 +28,7 @@ control 'V-1104' do
   unacceptable)."
   
   describe security_policy do
-    its('MaximumPasswordAge') { should be <= 60 }
+    its('MaximumPasswordAge') { should be <= input('max_pass_age') }
   end
   describe security_policy do
     its('MaximumPasswordAge') { should be > 0 }

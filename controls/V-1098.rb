@@ -29,6 +29,6 @@ control 'V-1098' do
   \"Reset account lockout counter after\" to at least \"15\" minutes."
   
   describe security_policy do
-    its('ResetLockoutCount') { should be >= 15 }
+    its('ResetLockoutCount') { should be >= input('pass_lock_time') }
   end
 end

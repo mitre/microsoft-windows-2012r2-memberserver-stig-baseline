@@ -32,6 +32,6 @@ control 'V-1172' do
   
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'PasswordExpiryWarning' }
-    its('PasswordExpiryWarning') { should cmp >= 14 }
+    its('PasswordExpiryWarning') { should cmp >= input('pass_expiry_warning') }
   end
 end

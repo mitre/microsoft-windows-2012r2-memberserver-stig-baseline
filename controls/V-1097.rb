@@ -31,7 +31,7 @@ Settings -> Security Settings -> Account Policies -> Account Lockout Policy ->
 (excluding \"0\" which is unacceptable)."
 
   describe security_policy do
-    its('LockoutBadCount') { should be <= 3 }
+    its('LockoutBadCount') { should be <= input('max_pass_lockout') }
   end
   describe security_policy do
     its('LockoutBadCount') { should be > 0 }

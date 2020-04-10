@@ -29,6 +29,6 @@ control 'V-1107' do
   \"Enforce password history\" to \"24\" passwords remembered."
   
   describe security_policy do
-    its('PasswordHistorySize') { should be >= 24 }
+    its('PasswordHistorySize') { should be >= input('pass_hist_size') }
   end
 end
