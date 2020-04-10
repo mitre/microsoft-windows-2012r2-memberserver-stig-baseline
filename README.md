@@ -1,6 +1,6 @@
 # microsoft-windows-2012r2-memberserver-stig-baseline
 
-InSpec profile to validate the secure configuration of Microsoft Windows 2012 R2 Member Server, against [DISA](https://iase.disa.mil/stigs/)'s **Microsoft Windows Server 2012/2012 R2 Member Server Security Technical Implementation Guide (STIG) Version 2, Release 14**.
+InSpec profile to validate the secure configuration of Microsoft Windows 2012 R2 Member Server, against [DISA](https://iase.disa.mil/stigs/)'s **Microsoft Windows Server 2012/2012 R2 Member Server Security Technical Implementation Guide (STIG) Version 2, Release 17**.
 
 ## Getting Started  
 It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __winrm__.
@@ -8,6 +8,39 @@ It is intended and recommended that InSpec run this profile from a __"runner"__ 
 __For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
 Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
+
+### Please review and set these `inputs` as best fits your target
+
+The profile _will_ run without updating these values but you will get the _best_ results if you provide the profile with the following data.
+
+- sensitive_system (false) - set to either the string `"true"` or `"false"`
+- domain_sid (NULL) - set to your Domain SID as a string in the form `xxxxxxxxxx-xxxxxxx-xxxxxxxxxx`
+- backup_operators (NULL) - add your usernames as needed
+- administrators (NULL) - add your usernames as needed
+- hyper_v_admin (NULL) - add your usernames as needed
+- av_approved_software(List of AV Software) - add your AV Software Product to this list
+- shared_accounts (NULL) - add your usernames as needed
+- local_administrator (NULL) - add your usernames as needed
+- temp_accounts_domain (NULL) - add your usernames as needed
+- temp_accounts_local (NULL) - add your usernames as needed
+- emergency_accounts_domain (NULL) - add your usernames as needed
+- emergency_accounts_local (NULL) - add your usernames as needed
+- application_accounts_domain (NULL) - add your usernames as needed
+- application_accounts_local (NULL) - add your usernames as needed
+- excluded_accounts_domain (NULL) - add your usernames as needed
+- application_services (NULL) - Need to allow for Control V-3487 to pass
+
+### Domain Controller Controls are include in this Profile
+    
+    There are 7 Controls that Require the Profile be ran against a Domain controller. These Controls check for User Accounts that are on the domain and require restrictions. List below are these controls:
+
+    - V-1112 - Outdated or unused accounts must be removed from the system or disabled.
+    - V-6840 - Windows 2012/2012 R2 passwords must be configured to expire.
+    - V-7002 - Windows 2012/2012 R2 accounts must be configured to require passwords.
+    - V-14225 - Windows 2012/2012 R2 password for the built-in Administrator account must be changed at least annually or when a member of the administrative team leaves the organization.
+    - V-36662 - Windows 2012/2012 R2 manually managed application account passwords must be changed at least annually or when a system administrator with knowledge of the password leaves the organization.
+    - V-57653 - If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.
+    - V-57655 - Emergency administrator accounts are privileged accounts which are established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability.
 
 ## Running This Profile
 
@@ -34,6 +67,7 @@ To contribute, please review the [contribution guidelines](https://github.com/mi
 
 ## Authors
 - Alicia Sturtevant
+- Jared Burns
 
 ## Special Thanks
 

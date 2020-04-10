@@ -46,14 +46,15 @@ control 'V-6840' do
 
   application_accounts = input('application_accounts_domain')
   excluded_accounts = input('excluded_accounts_domain')
-
+  smart_card_check = json({ command: "Get-ADUser -Filter * -Properties SmartcardLogonRequired | Where-Object {$_.SmartcardLogonRequired -eq 'True' } | Select -ExpandProperty SamAccountName | ConvertTo-Json" })
+  list_smart_card_acct = smart_card_check.params
  # returns a hash of {'Enabled' => 'true' } 
- is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
    if (is_domain_controller['Enabled'] == true)
-     list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | -ExpandProperty Name | ConvertTo-Json" })
+     list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | Select -ExpandProperty Name | ConvertTo-Json" })
      ad_accounts = list_of_accounts.params
-     untracked_accounts = ad_accounts - application_accounts - excluded_accounts
+     untracked_accounts = ad_accounts - list_smart_card_acct - application_accounts_domain - excluded_accounts_domain
     
        describe 'Untracked Accounts' do
          it 'No Enabled Domain Account should be set to have Password Never Expire' do
