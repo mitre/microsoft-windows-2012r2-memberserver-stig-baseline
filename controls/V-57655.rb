@@ -81,71 +81,185 @@ control 'V-57655' do
   [username] /expires:[mm/dd/yyyy]\", where username is the name of the emergency
   administrator account."
 
-  emergency_account = input('emergency_account')
-  if !emergency_account .empty?
+  #Critical Input by person running profile
+  emergency_accounts_domain = input('emergency_accounts_domain')
+  # returns a hash of {'Enabled' => 'true' }
+  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+    if(emergency_accounts_domain.empty?)
+     describe 'There are no Emergency Account listed for this Control' do
+       skip 'This becomes a manual check if the input emergency_accounts_domain is not assigned a value'
+       end
+    else
+  if (is_domain_controller['Enabled'] == true)
+     emergency_accounts_domain.each do |user|
+      #Gets raw format of creation date
+  raw_day_created = powershell("Get-ADUser -Identity #{user} -Properties Created | Findstr /i 'Created'").stdout.strip
+  #If statement checks for "/" in output to see where the first number for month starts
+  if (raw_day_created[21] == '/')
+    clean_month_created = raw_day_created[20]
+ else
+    clean_month_created = raw_day_created[20..21]
+ end
+#If statement checks for "/" in output to see where the first number for Day starts
+ if (raw_day_created[21] == '/' && raw_day_created[23] == '/')
+   clean_day_created = raw_day_created[22]
+ elsif (raw_day_created[21] != '/' &&  raw_day_created[24] == '/')
+    clean_day_created = raw_day_created[23]
+ elsif (raw_day_created[21] == '/' && raw_day_created[22] != '/' && raw_day_created[23] != '/' && raw_day_created[24] == '/')
+    clean_day_created = raw_day_created[22..23]
+ elsif (raw_day_created[21] != '/' && raw_day_created[22] == '/' && raw_day_created[23] != '/' && raw_day_created[24] != '/' && raw_day_created[25] == '/')
+    clean_day_created = raw_day_created[23..24]
+ end
+ #If statement checks for last "/" before year starts
+ if (raw_day_created[23] == '/')
+   clean_year_created = raw_day_created[24..27]
+ elsif (raw_day_created[24] == '/')
+   clean_year_created = raw_day_created[25..28]
+ elsif (raw_day_created[25] == '/')
+   clean_year_created = raw_day_created[26..29]
+ end
+ #date created by starts setup as dd/mm/yyyy
+  date_created = clean_day_created + '/' + clean_month_created + '/' + clean_year_created
 
-    emergency_account.each do |user|
-
-      get_account_expires = command("Net User #{user} | Findstr /i 'expires' | Findstr /v 'password'").stdout.strip
-
-      month_account_expires = get_account_expires[28..30]
-      day_account_expires = get_account_expires[32..33]
-      year_account_expires = get_account_expires[35..39]
-
-      if get_account_expires[30] == '/'
-        month_account_expires = get_account_expires[28..29]
-        if get_account_expires[32] == '/'
-          day_account_expires = get_account_expires[31]
-        end
-        if get_account_expires[32] != '/'
-          day_account_expires = get_account_expires[31..32]
-        end
-        if get_account_expires[33] == '/'
-          year_account_expires = get_account_expires[34..37]
-        end
-        if get_account_expires[33] != '/'
-          year_account_expires = get_account_expires[33..37]
-        end
-      end
-
-      date_expires = day_account_expires + '/' + month_account_expires + '/' + year_account_expires
-
-      get_password_last_set = command("Net User #{user}  | Findstr /i 'Password Last Set' | Findstr /v 'expires changeable required may logon'").stdout.strip
-
-      month = get_password_last_set[27..29]
-      day = get_password_last_set[31..32]
-      year = get_password_last_set[34..38]
-
-      if get_password_last_set[32] == '/'
-        month = get_password_last_set[27..29]
-        day = get_password_last_set[31]
-        year = get_password_last_set[33..37]
-      end
-      date = day + '/' + month + '/' + year
-
-      date_expires_minus_password_last_set = DateTime.parse(date_expires).mjd - DateTime.parse(date).mjd
-
-      account_expires = get_account_expires[27..33]
-
-      if account_expires == 'Never'
-        describe "#{user}'s account expires" do
-          describe account_expires do
-            it { should_not == 'Never' }
-          end
-        end
-      end
-      next unless account_expires != 'Never'
-      describe "#{user}'s account expires" do
-        describe date_expires_minus_password_last_set do
-          it { should cmp <= 72 }
-        end
-      end
-    end
-
+  #Gets raw format of expiration date
+  raw_day_expire_date = powershell("Get-ADUser -Identity #{user} -Properties AccountExpirationDate | Findstr /i 'AccountExpirationDate'").stdout.strip
+ 
+  #If statement checks for "/" in output to see where the first number for month starts
+  if (raw_day_expire_date[25] == '/')
+    clean_month_expire_date = raw_day_expire_date[24]
   else
-    impact 0.0
-    describe 'No emergency accounts exist' do
-      skip 'check not applicable'
-    end
+    clean_month_expire_date = raw_day_expire_date[24..25]
   end
+ #If statement checks for "/" in output to see where the first number for Day starts
+ if (raw_day_expire_date[25] == '/' && raw_day_expire_date[27] == '/')
+   clean_day_expire_date = raw_day_expire_date[26]
+ elsif (raw_day_expire_date[25] != '/' &&  raw_day_expire_date[28] == '/')
+    clean_day_expire_date = raw_day_expire_date[27]
+ elsif (raw_day_expire_date[25] == '/' && raw_day_expire_date[26] != '/' && raw_day_expire_date[27] != '/' && raw_day_expire_date[28] == '/')
+    clean_day_expire_date= raw_day_expire_date[26..27]
+ elsif (raw_day_expire_date[25] != '/' && raw_day_expire_date[26] == '/' && raw_day_expire_date[27] != '/' && raw_day_expire_date[28] != '/' && raw_day_expire_date[29] == '/')
+    clean_day_expire_date = raw_day_expire_date[27..28]
+ end
+#If statement checks for last "/" before year starts
+ if (raw_day_expire_date[27] == '/')
+   clean_year_expire_date = raw_day_expire_date[28..31]
+ elsif (raw_day_expire_date[28] == '/')
+   clean_year_expire_date = raw_day_expire_date[29..32]
+ elsif (raw_day_expire_date[29] == '/')
+   clean_year_expire_date = raw_day_expire_date[30..33]
+ end
+
+  #date expire setup as dd/mm/yyyy
+  date_expires = clean_day_expire_date + '/' + clean_month_expire_date + '/' + clean_year_expire_date
+   #Determines the number of days difference
+  date_expires_minus_password_last_set = DateTime.parse(date_expires).mjd  - DateTime.parse(date_created).mjd
+
+   if date_expires_minus_password_last_set <= 3
+    describe "Emergency Account is within 3 days since creation and expiration: #{user}" do
+        skip "Emergency Account is within 3 days since creation and expiration: #{user}" 
+      end
+    else
+       describe 'Account Expiration' do
+         it "Emergency Account #{user} Creation date and Expiration date is" do
+         failure_message = "more than 3 days"
+         expect(date_expires_minus_password_last_set).to be_empty, failure_message
+        end
+       end
+      end
+   end
+  end
+ end
+
+   #Critical Input to allow for Control to pass
+   emergency_account_local = input('emergency_account_local')
+  if (is_domain_controller.params == {} )
+     if emergency_account_local.empty?
+    describe 'There are no accounts in input emergency_account_local, nothing will run' do
+      skip 'There are no accounts in input emergency_account_local, nothing will run'
+    end
+  else
+    emergency_account_local.each do |user|
+
+     #Gets Raw Account Expiration Date for Local Account
+     get_account_expires = powershell("Get-LocalUser -name #{user}  | Select-Object AccountExpires").stdout.strip
+
+    #Gets Local Accounts Month of Expiration Date
+    if (get_account_expires[47] == '/')
+      clean_account_expires_month = get_account_expires[46]
+    else
+      clean_account_expires_month = get_account_expires[46..47]
+    end
+
+    #If statement checks for "/" in output to see where the first number for Day starts
+ if (get_account_expires[47] == '/' && get_account_expires[49] == '/')
+   clean_account_expires_day = get_account_expires[48]
+ elsif (get_account_expires[47] != '/' &&  get_account_expires[50] == '/')
+    clean_account_expires_day = get_account_expires[49]
+ elsif (get_account_expires[47] == '/' && get_account_expires[48] != '/' && get_account_expires[49] != '/' && get_account_expires[50] == '/')
+    clean_account_expires_day = get_account_expires[48..49]
+ elsif (get_account_expires[47] != '/' && get_account_expires[48] == '/' && get_account_expires[49] != '/' && get_account_expires[50] != '/' && get_account_expires[51] == '/')
+    clean_account_expires_day = get_account_expires[49..50]
+ end
+
+#If statement checks for last "/" before year starts
+ if (get_account_expires[49] == '/')
+   clean_account_expires_year = get_account_expires[50..53]
+ elsif (get_account_expires[50] == '/')
+   clean_account_expires_year  = get_account_expires[51..54]
+ elsif (get_account_expires[51] == '/')
+   clean_account_expires_year  = get_account_expires[52..55]
+ end
+
+ #date account expires by starts setup as dd/mm/yyyy
+  date_account_expires = clean_account_expires_day + '/' + clean_account_expires_month + '/' + clean_account_expires_year
+
+ #Gets Raw Password Last Set Date for Local Account
+ get_password_last_set = powershell("Get-LocalUser -name #{user} | Select-Object PasswordLastSet").stdout.strip
+  #Gets Local Accounts Month of Expiration Date
+    if (get_password_last_set[43] == '/')
+      clean_account_last_pass_month = get_password_last_set[42]
+    else
+      clean_account_last_pass_month = get_password_last_set[42..43]
+    end
+
+    #If statement checks for "/" in output to see where the first number for Day starts
+ if (get_password_last_set[43] == '/' && get_password_last_set[45] == '/')
+   clean_account_last_pass_day = get_password_last_set[44]
+ elsif (get_password_last_set[43] != '/' &&  get_password_last_set[46] == '/')
+    clean_account_last_pass_day = get_password_last_set[45]
+ elsif (get_password_last_set[43] == '/' && get_password_last_set[44] != '/' && get_password_last_set[45] != '/' && get_password_last_set[46] == '/')
+    clean_account_last_pass_day = get_password_last_set[44..45]
+ elsif (get_password_last_set[43] != '/' && get_password_last_set[44] == '/' && get_password_last_set[45] != '/' && get_password_last_set[46] != '/' && get_password_last_set[47] == '/')
+    clean_account_last_pass_day = get_password_last_set[45..46]
+ end
+
+#If statement checks for last "/" before year starts
+ if (get_password_last_set[45] == '/')
+   clean_account_last_pass_year = get_password_last_set[46..49]
+ elsif (get_password_last_set[46] == '/')
+   clean_account_last_pass_year  = get_password_last_set[47..50]
+ elsif (get_password_last_set[47] == '/')
+   clean_account_last_pass_year  = get_password_last_set[48..51]
+ end
+
+#date expire setup as dd/mm/yyyy
+  date_expire_last_set = clean_account_last_pass_day + '/' + clean_account_last_pass_month + '/' + clean_account_last_pass_year 
+  #Determines the number of days difference
+  date_expires_minus_password_last_set = DateTime.parse(date_account_expires).mjd  - DateTime.parse(date_expire_last_set).mjd
+
+   if date_expires_minus_password_last_set <= 3
+    describe "Emergency Account is within 3 days since creation and expiration: #{user}" do
+        skip "Emergency Account is within 3 days since creation and expiration: #{user}"
+      end
+    else
+       describe 'Account Expiration' do
+         it "Emergency Account #{user} Expiration date and Password Last Set is" do
+         failure_message = "more than 3 days"
+         expect(date_expires_minus_password_last_set).to be_empty, failure_message
+        end
+       end
+      end
+   end
+  end
+ end
 end

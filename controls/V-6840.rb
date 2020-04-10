@@ -54,7 +54,7 @@ control 'V-6840' do
      list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | -ExpandProperty Name | ConvertTo-Json" })
      ad_accounts = list_of_accounts.params
      untracked_accounts = ad_accounts - application_accounts - excluded_accounts
-     # require 'pry'; binding.pry
+    
        describe 'Untracked Accounts' do
          it 'No Enabled Domain Account should be set to have Password Never Expire' do
          failure_message = "Users Accounts are set to Password Never Expire: #{untracked_accounts}"

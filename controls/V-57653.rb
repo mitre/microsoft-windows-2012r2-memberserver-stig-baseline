@@ -74,18 +74,24 @@ control 'V-57653' do
 
   Delete any temporary user accounts that are no longer necessary."
 
+  #Critical Input by person running profile
+  temp_accounts_domain = input('temp_accounts_domain')
+  #Pulls all accounts that have a Expiration date
+  temp_accounts_powershell = json({ command: 'Search-ADAccount -AccountExpiring | Select -ExpandProperty SamAccountName | ConvertTo-Json' })
+  #Gets list from Powershell
+  temp_accounts_list = temp_accounts_powershell.params 
+  #Adds both input and powershell command together
+  untracked_temp_accounts = temp_accounts_list + temp_accounts_domain
 
-  #temp_accounts_domain = input('temp_accounts_domain')
-  temp_accounts_domain = json({ command: 'Search-ADAccount -AccountExpiring | Select -ExpandProperty SamAccountName | ConvertTo-Json' })
-  temp_accounts_list = temp_accounts_domain.params
+  # returns a hash of {'Enabled' => 'true' } 
   is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
-    if(temp_accounts_list.empty?)
+    if(untracked_temp_accounts.empty?)
      describe 'There are no Temporary Account listed for this Control' do
        skip 'This becomes a manual check if the input temp_accounts_domain is not assigned a value'
        end
     else
   if (is_domain_controller['Enabled'] == true)
-     temp_accounts_list.each do |user|
+     untracked_temp_accounts.each do |user|
       #Gets raw format of creation date
   raw_day_created = powershell("Get-ADUser -Identity #{user} -Properties Created | Findstr /i 'Created'").stdout.strip
   #If statement checks for "/" in output to see where the first number for month starts
@@ -149,8 +155,8 @@ control 'V-57653' do
   date_expires_minus_password_last_set = DateTime.parse(date_expires).mjd  - DateTime.parse(date_created).mjd
 
    if date_expires_minus_password_last_set <= 3
-    describe "Temporary Account are within 3 days since creation and expiration: #{user}" do
-        skip "Temporary Account are within 3 days since creation and expiration: #{user}"
+    describe "Temporary Account is within 3 days since creation and expiration: #{user}" do
+        skip "Temporary Account is within 3 days since creation and expiration: #{user}"
       end
     else
        describe 'Account Expiration' do
@@ -241,8 +247,8 @@ control 'V-57653' do
   date_expires_minus_password_last_set = DateTime.parse(date_account_expires).mjd  - DateTime.parse(date_expire_last_set).mjd
 
    if date_expires_minus_password_last_set <= 3
-    describe "Temporary Account are within 3 days since creation and expiration: #{user}" do
-        skip "Temporary Account are within 3 days since creation and expiration: #{user}"
+    describe "Temporary Account is within 3 days since creation and expiration: #{user}" do
+        skip "Temporary Account is within 3 days since creation and expiration: #{user}"
       end
     else
        describe 'Account Expiration' do
