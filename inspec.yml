@@ -92,7 +92,7 @@ inputs:
     value: 
       - 
 
-   - name: min_pass_len
+  - name: min_pass_len
     desc: "Sets the minimum length of passwords [14]"
     type: Numeric
     value: 14
