@@ -52,6 +52,7 @@ control 'V-36662' do
   It is recommended that system-managed service accounts be used where possible."
   application_accounts = input('application_accounts_domain')
   application_accounts_local = input('application_accounts_local')
+  # returns a hash of {'Enabled' => 'true' } 
   is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
    if (is_domain_controller['Enabled'] == true)

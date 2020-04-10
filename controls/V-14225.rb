@@ -53,6 +53,7 @@ control 'V-14225' do
   servers to accomplish this."
   
   administrator = input('local_administrator')
+  # returns a hash of {'Enabled' => 'true' } 
   is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
    if (is_domain_controller['Enabled'] == true)
