@@ -97,6 +97,12 @@ inputs:
     type: Numeric
     value: 14
 
+  - name: app_serv_min_pass_len
+    desc: "Appliction/Service Accounts Password needs to be set the minimum length of passwords [15]"
+    type: Numeric
+    value: 15
+
+
   - name: enable_pass_complexity
     desc: "If windows should enforce password complexity (0/1) [1]"
     type: Numeric
@@ -111,6 +117,11 @@ inputs:
     desc: "Sets the maximum age for a password [60]"
     type: Numeric
     value: 60
+
+  - name: comp_acct_max_pass_age
+    desc: "Sets the maximum age for a password [30]"
+    type: Numeric
+    value: 30
 
   - name: pass_lock_time
     desc: "Sets the number of min before a session is locked out [15]"
@@ -131,7 +142,17 @@ inputs:
     desc: "Max number of days an account is allowed to be inactive [35]"
     type: Numeric
     value: 35
-    
+
+  - name: pass_expiry_warning
+    desc: "Users must be warned in advance of their passwords expiring[14] or greater"
+    type: Numeric
+    value: 14
+
+  - name: pass_lock_duration
+    desc: "Account lockout duration must be configured to [15] minutes or greater"
+    type: Numeric
+    value: 15
+
   - name: LegalNoticeText
     type: string
     value: "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.

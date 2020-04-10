@@ -22,6 +22,6 @@ control 'V-36661' do
   Ensure the policy is enforced."
   
   describe security_policy do
-    its('MinimumPasswordLength') { should be >= 15 }
+    its('MinimumPasswordLength') { should be >= input('app_serv_min_pass_len') }
   end
 end

@@ -35,7 +35,7 @@ control 'V-1099' do
   
   describe.one do
     describe security_policy do
-      its('LockoutDuration') { should be >= 15 }
+      its('LockoutDuration') { should be >= input('pass_lock_duration') }
     end
     describe security_policy do
       its('LockoutDuration') { should cmp == 0 }
