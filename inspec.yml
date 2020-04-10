@@ -22,77 +22,77 @@ inputs:
       - McAfee Agent
 
   - name: shared_accounts
-    desc: 'List of shared accounts on the system'
+    desc: "List of shared accounts on the system"
     type: Array
     value: 
       -
 
   - name: backup_operators
-    desc: 'List of authorized users in the Backup Operators Group'
+    desc: "List of authorized users in the Backup Operators Group"
     type: Array
     value: 
       -
 
   - name: administrators
-    desc: 'List of authorized users in the local Administrators group'
+    desc: "List of authorized users in the local Administrators group"
     type: Array
     value: 
       -
   
   - name: local_administrator
-    desc: 'Local Administrator Account on Windows Server'
+    desc: "Local Administrator Account on Windows Server"
     type: String
     value: ""
     
   - name: administrators_domain
-    desc: 'List of authorized users in the local Administrators domain group'
+    desc: "List of authorized users in the local Administrators domain group"
     type: Array
     value: 
       -
 
   - name: temp_accounts_domain
-    desc: 'List of temporary accounts on the domain'
+    desc: "List of temporary accounts on the domain"
     type: Array
     value: 
       -
 
   - name: temp_accounts_local
-    desc: 'List of temporary accounts on local system'
+    desc: "List of temporary accounts on local system"
     type: Array
     value: 
       -
 
   - name: emergency_accounts_domain
-    desc: 'List of emergency accounts on the system'
+    desc: "List of emergency accounts on the domain"
     type: Array
     value: 
       - 
 
   - name: emergency_accounts_local
-    desc: 'List of emergency accounts on the system'
+    desc: "List of emergency accounts on the system"
     type: Array
     value: 
       - 
   
   - name: application_accounts_domain
-    desc: 'Application or Service Accounts domain'
-    type: Array
-    value: 
-      - 
-  
-  - name: excluded_accounts_domain
-    desc: 'Excluded Accounts domain'
+    desc: "List Application or Service Accounts domain"
     type: Array
     value: 
       - 
 
   - name: application_accounts_local
-    desc: 'Application Local Accounts'
+    desc: "List Application Local Accounts"
+    type: Array
+    value: 
+      - 
+  
+  - name: excluded_accounts_domain
+    desc: "List Excluded Accounts domain"
     type: Array
     value: 
       - 
 
-  - name: min_pass_len
+   - name: min_pass_len
     desc: "Sets the minimum length of passwords [14]"
     type: Numeric
     value: 14
@@ -169,7 +169,7 @@ inputs:
     value: "DoD Notice and Consent Banner, US Department of Defense Warning Statement, or a site-defined equivalent."
 
   - name: reg_winreg_perms
-    desc: 'This is the values of the winreg registry key'
+    desc: "This is the values of the winreg registry key"
     type: Array
     value:
      - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
@@ -179,7 +179,7 @@ inputs:
      - BUILTIN\Backup Operators Allow  ReadKey
 
   - name: domain_sid
-    desc: 'This is the SID for Domain'
+    desc: "This is the SID for Domain"
     type: String
     value: "3561952647-5207400-2818715555"
 
@@ -201,7 +201,7 @@ inputs:
        :NotAfter: "Friday, June 14, 2041"
 
   - name: dod_interoperability_certificates
-    desc: "List of DoD CA Root Certificates"
+    desc: "List of DoD InterOperability CA Certificates"
     type: Array
     value: 
      - :Subject: "CN=DoD Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US"
@@ -228,7 +228,7 @@ inputs:
     value: "false"
 
   - name: reg_install_comp_perms
-    desc: 'This is the values of the Installed Components registry key'
+    desc: "This is the values of the Installed Components registry key"
     type: Array
     value:
     - BUILTIN\Users Allow  ReadKey
@@ -242,7 +242,7 @@ inputs:
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
 
   - name: reg_wow6432_install_comp_perms
-    desc: 'This is the values of the Installed Components under WoW643Node registry key'
+    desc: "This is the values of the Installed Components under WoW643Node registry key"
     type: Array
     value:
     - BUILTIN\Users Allow  ReadKey
@@ -252,7 +252,7 @@ inputs:
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
 
   - name: winevt_logs_application_perms
-    desc: 'This is the values of the Application.evtx file under system32'
+    desc: "This is the values of the Application.evtx file under system32"
     type: Array
     value:
     - NT SERVICE\EventLog Allow  FullControl
@@ -260,7 +260,7 @@ inputs:
     - BUILTIN\Administrators Allow  FullControl
 
   - name: winevt_logs_security_perms
-    desc: 'This is the values of the Security.evtx file under system32'
+    desc: "This is the values of the Security.evtx file under system32"
     type: Array
     value:
     - NT SERVICE\EventLog Allow  FullControl
@@ -268,7 +268,7 @@ inputs:
     - BUILTIN\Administrators Allow  FullControl
 
   - name: winevt_logs_system_perms
-    desc: 'This is the values of the System.evtx file under system32'
+    desc: "This is the values of the System.evtx file under system32"
     type: Array
     value:
     - NT SERVICE\EventLog Allow  FullControl
@@ -276,7 +276,7 @@ inputs:
     - BUILTIN\Administrators Allow  FullControl
 
   - name: eventvwr_perms
-    desc: 'This is the values of the Eventvwr.exe file under system32'
+    desc: "This is the values of the Eventvwr.exe file under system32"
     type: Array
     value:
     - NT AUTHORITY\SYSTEM Allow  ReadAndExecute, Synchronize
@@ -286,7 +286,7 @@ inputs:
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
 
   - name: basic_window_services
-    desc: 'This is list of Windows Services That are Installed on OS'
+    desc: "This is list of Windows Services That are Installed on OS"
     type: Array
     value:
     - :Name: "AeLookupSvc"
@@ -656,7 +656,7 @@ inputs:
       :DisplayName: "Hyper-V Guest Shutdown Service"
       :StartMode: "Manual"
     - :Name: "vmictimesync"
-      :DisplayName: 'Hyper-V Time Synchronization Service'
+      :DisplayName: "Hyper-V Time Synchronization Service"
       :StartMode: "Manual"
     - :Name: "vmicvss"
       :DisplayName: "Hyper-V Volume Shadow Copy Requestor"
@@ -735,7 +735,7 @@ inputs:
       :StartMode: "Manual"
       
   - name: vmware_window_services
-    desc: 'This is list of VMware Services That are Installed on OS'
+    desc: "This is list of VMware Services That are Installed on OS"
     type: Array
     value:
     - :Name: "VGAuthService"
@@ -748,29 +748,14 @@ inputs:
       :DisplayName: "WVMware Snapshot Provider"
       :StartMode: "Manual"
 
-  - name: reg_winreg_perms
-    desc: 'This is the values of the winreg registry key'
-    type: Array
-    value:
-     - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
-     - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
-     - BUILTIN\Administrators Allow  268435456
-     - BUILTIN\Administrators Allow  FullControl
-     - BUILTIN\Backup Operators Allow  ReadKey
-
-  - name: domain_sid
-    desc: 'This is the SID for Domain'
-    type: String
-    value: ""
-
-  - name: application_services
-    desc: 'This is a list of Services that are Application'
+   - name: application_services
+    desc: "This is a list of Services that are Application"
     type: Array
     value:
       -
 
   - name: reg_winlogon_perms
-    desc: 'This is the values of the Winlogon Registry Key'
+    desc: "This is the values of the Winlogon Registry Key"
     type: Array
     value:
     - NT SERVICE\TrustedInstaller Allow  FullControl
