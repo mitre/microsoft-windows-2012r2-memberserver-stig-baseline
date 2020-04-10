@@ -181,7 +181,7 @@ inputs:
   - name: domain_sid
     desc: "This is the SID for Domain"
     type: String
-    value: "3561952647-5207400-2818715555"
+    value: ""
 
   - name: dod_root_certificates
     desc: "List of DoD CA Root Certificates"
@@ -748,7 +748,7 @@ inputs:
       :DisplayName: "WVMware Snapshot Provider"
       :StartMode: "Manual"
 
-   - name: application_services
+  - name: application_services
     desc: "This is a list of Services that are Application"
     type: Array
     value:
