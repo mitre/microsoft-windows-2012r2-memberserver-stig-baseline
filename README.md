@@ -33,7 +33,7 @@ The profile _will_ run without updating these values but you will get the _best_
 
 ## Inputs used in the profile
 
-| Input                             | Default                                                                                             | Description                                                                         | Required | Typed       | Allowed |
+| Input                             | Default                                                                                             | Description                                                                         | Required | Type        | Allowed |
 | --------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | -------- | ----------- | ------- |
 | av_approved_software              | `['Windows Defender','Mcafee Host Intrusion Prevention','Mcafee Endpoint Security','Mcafee Agent']` | List of approved av-software                                                        | X        | String      | Array   |
 | shared_accounts                   | NULL                                                                                                | List of shared accounts on the system                                               | X        | String      | Array   |
