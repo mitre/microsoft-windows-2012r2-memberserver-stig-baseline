@@ -77,17 +77,21 @@ The profile _will_ run without updating these values but you will get the _best_
 | application_services              | NULL                                                                                                | This is a list of Services that are Application                                     | X       | String      | Array          |
 | reg_winlogon_perms                | see 'inspec.yml'                                                                                    | This is the values of the Winlogon Registry Key                                     | X       | String      | Array          |
 
-There are 7 Controls that Require the Profile be ran against a Domain controller. These Controls check for User Accounts that are on the domain and require restrictions.
+## Domain Controller Specific Controls
+
+There are 7 Controls that Require the Profile be ran against a Domain controller.
+
+These Controls check for User Accounts that are on the domain and require restrictions.
 
 List below are these controls:
 
-    - V-1112 - Outdated or unused accounts must be removed from the system or disabled.
-    - V-6840 - Windows 2012/2012 R2 passwords must be configured to expire.
-    - V-7002 - Windows 2012/2012 R2 accounts must be configured to require passwords.
-    - V-14225 - Windows 2012/2012 R2 password for the built-in Administrator account must be changed at least annually or when a member of the administrative team leaves the organization.
-    - V-36662 - Windows 2012/2012 R2 manually managed application account passwords must be changed at least annually or when a system administrator with knowledge of the password leaves the organization.
-    - V-57653 - If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.
-    - V-57655 - Emergency administrator accounts are privileged accounts which are established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability.
+- V-1112 - Outdated or unused accounts must be removed from the system or disabled.
+- V-6840 - Windows 2012/2012 R2 passwords must be configured to expire.
+- V-7002 - Windows 2012/2012 R2 accounts must be configured to require passwords.
+- V-14225 - Windows 2012/2012 R2 password for the built-in Administrator account must be changed at least annually or when a member of the administrative team leaves the organization.
+- V-36662 - Windows 2012/2012 R2 manually managed application account passwords must be changed at least annually or when a system administrator with knowledge of the password leaves the organization.
+- V-57653 - If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.
+- V-57655 - Emergency administrator accounts are privileged accounts which are established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability.
 
 ## Running This Profile
 
