@@ -29,7 +29,7 @@ The profile _will_ run without updating these values but you will get the _best_
 - application_accounts_domain (NULL) - add your usernames as needed
 - application_accounts_local (NULL) - add your usernames as needed
 - excluded_accounts_domain (NULL) - add your usernames as needed
-- application_services (NULL) - Need to allow for Control V-3487 to pass
+- application_services (NULL) - add your known and approved application system services
 
 ## Inputs used in the profile
 
