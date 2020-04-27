@@ -54,6 +54,11 @@ control 'V-73805' do
     describe 'System is not Windows 2012, control is NA' do
       skip 'System is not Windows 2012, control is NA'
     end
+  elsif registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters').has_property_value?('SMB1', :dword, 0)
+    impact 0.0
+    describe 'This control is not applicable, as controls V-73519 and V-73523 are configured' do
+      skip 'This control is not applicable, as controls V-73519 and V-73523 are configured'
+    end
   else
    state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
    describe 'SMB 1.0 Procotocl is disabled as part of Security Requirement' do

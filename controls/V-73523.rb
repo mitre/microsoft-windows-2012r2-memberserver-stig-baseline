@@ -70,13 +70,23 @@ control 'V-73523' do
   \"SecGuide.adml\" must be copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
 
-  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
+  state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
+
+  if state == "Disabled"
+     impact 0.0
+     describe 'V-73805 is configured, this control is NA' do
+      skip 'V-73805 is configured, this control is NA'
+     end
+  else
+   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
     it { should have_property 'Start' }
     its('Start') { should cmp == 4 }
-  end
+   end
 
-  describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation') do
+   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation') do
     it { should have_property 'DependOnService' }
     its('DependOnService') { should_not eq 'MRxSmb10' }
+   end
   end
 end
+
