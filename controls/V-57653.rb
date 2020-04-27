@@ -83,14 +83,13 @@ control 'V-57653' do
   #Adds both input and powershell command together
   untracked_temp_accounts = temp_accounts_list + temp_accounts_domain
 
-  # returns a hash of {'Enabled' => 'true' } 
-  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
     if(untracked_temp_accounts.empty?)
      describe 'There are no Temporary Account listed for this Control' do
        skip 'This becomes a manual check if the input temp_accounts_domain is not assigned a value'
        end
     else
-  if (is_domain_controller['Enabled'] == true)
+  if domain_role == '4' || domain_role == '5' 
      untracked_temp_accounts.each do |user|
       #Gets raw format of creation date
   raw_day_created = powershell("Get-ADUser -Identity #{user} -Properties Created | Findstr /i 'Created'").stdout.strip
@@ -171,7 +170,7 @@ control 'V-57653' do
  end
 
    temp_account_local = input('temp_account_local')
-  if (is_domain_controller.params == {} )
+  if domain_role != '4' || domain_role != '5' 
      if temp_account_local.empty?
     describe 'There are no accounts in input temp_account_local, nothing will run' do
       skip 'There are no accounts in input temp_account_local, nothing will run'

@@ -53,11 +53,10 @@ control 'V-14225' do
   servers to accomplish this."
   
   administrator = input('local_administrator')
-  # returns a hash of {'Enabled' => 'true' } 
-  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+  
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
 
-   if (is_domain_controller['Enabled'] == true)
-    
+   if domain_role == '4' || domain_role == '5'   
      password_set_date = json({ command: "Get-ADUser -Filter * -Properties SID, PasswordLastSet | Where-Object {$_.SID -like '*-500' -and $_.PasswordLastSet -lt ((Get-Date).AddDays(-365))} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
      date = password_set_date["DateTime"]
      if (date == nil)
@@ -73,7 +72,7 @@ control 'V-14225' do
        end
       end
    end
-   if (is_domain_controller.params == {} )
+   if domain_role != '4' || domain_role != '5'
    # Input local_administrator is critical here
    local_password_set_date = json({ command: "Get-LocalUser -name #{administrator} | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json"})
    local_date =  local_password_set_date["DateTime"]

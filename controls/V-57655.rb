@@ -83,14 +83,13 @@ control 'V-57655' do
 
   #Critical Input by person running profile
   emergency_accounts_domain = input('emergency_accounts_domain')
-  # returns a hash of {'Enabled' => 'true' }
-  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
     if(emergency_accounts_domain.empty?)
      describe 'There are no Emergency Account listed for this Control' do
        skip 'This becomes a manual check if the input emergency_accounts_domain is not assigned a value'
        end
     else
-  if (is_domain_controller['Enabled'] == true)
+  if domain_role == '4' || domain_role == '5' 
      emergency_accounts_domain.each do |user|
       #Gets raw format of creation date
   raw_day_created = powershell("Get-ADUser -Identity #{user} -Properties Created | Findstr /i 'Created'").stdout.strip
@@ -172,7 +171,7 @@ control 'V-57655' do
 
    #Critical Input to allow for Control to pass
    emergency_account_local = input('emergency_account_local')
-  if (is_domain_controller.params == {} )
+  if domain_role != '4' || domain_role != '5' 
      if emergency_account_local.empty?
     describe 'There are no accounts in input emergency_account_local, nothing will run' do
       skip 'There are no accounts in input emergency_account_local, nothing will run'

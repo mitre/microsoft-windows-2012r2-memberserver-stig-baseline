@@ -48,10 +48,9 @@ control 'V-6840' do
   excluded_accounts = input('excluded_accounts_domain')
   smart_card_check = json({ command: "Get-ADUser -Filter * -Properties SmartcardLogonRequired | Where-Object {$_.SmartcardLogonRequired -eq 'True' } | Select -ExpandProperty SamAccountName | ConvertTo-Json" })
   list_smart_card_acct = smart_card_check.params
- # returns a hash of {'Enabled' => 'true' } 
-  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
-
-   if (is_domain_controller['Enabled'] == true)
+ 
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
+   if domain_role == '4' || domain_role == '5'
      list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | Select -ExpandProperty Name | ConvertTo-Json" })
      ad_accounts = list_of_accounts.params
      untracked_accounts = ad_accounts - list_smart_card_acct - application_accounts_domain - excluded_accounts_domain
@@ -63,7 +62,7 @@ control 'V-6840' do
         end
        end
    end
-       if (is_domain_controller.params == {} )
+       if domain_role != '4' || domain_role != '5'
     local_users = json({ command: "Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False and LocalAccount=True and Disabled=False' | Select -ExpandProperty Name | ConvertTo-Json" })
     local_users_list = local_users.params
           if (local_users_list == ' ')

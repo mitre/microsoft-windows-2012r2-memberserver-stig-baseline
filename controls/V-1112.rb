@@ -65,14 +65,12 @@ control 'V-1112' do
   application_accounts = input('application_accounts_domain')
   excluded_accounts = input('excluded_accounts_domain')
 
- # returns a hash of {'Enabled' => 'true' } 
- is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
+ domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
 
-   if (is_domain_controller['Enabled'] == true)
+   if domain_role == '4' || domain_role == '5'
      list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select -ExpandProperty Name | ConvertTo-Json' })
      ad_accounts = list_of_accounts.params
      untracked_accounts = ad_accounts - application_accounts - excluded_accounts
-  # require 'pry'; binding.pry
        describe 'AD Accounts' do
          it 'AD should not have any Accounts that are Inactive over 35 days' do
          failure_message = "Users that have not log into in 35 days #{untracked_accounts}"
@@ -80,7 +78,7 @@ control 'V-1112' do
         end
        end
    end
- if (is_domain_controller.params == {} )
+    if domain_role != '4' || domain_role != '5'
     local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select -ExpandProperty Name | ConvertTo-Json" })
     local_users_list = local_users.params
     if (local_users_list == ' ')
