@@ -53,8 +53,8 @@ domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRol
      its('MaxServiceAge') { should_not eq 0 }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-2376 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2376 is NA'
+    describe 'Server is a Member Server or Standalone, Control V-2377 is NA' do
+      skip 'Server is a Member Server or Standalone, Control V-2377 is NA'
     end
   end
 end

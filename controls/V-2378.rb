@@ -55,9 +55,9 @@ domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRol
     describe security_policy do
      its('MaxTicketAge') { should_not eq 0 }
     end
-  else
-    describe 'Server is a Member Server or Standalone, Control V-2376 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2376 is NA'
+  else 
+    describe 'Server is a Member Server or Standalone, Control V-2378 is NA' do
+      skip 'Server is a Member Server or Standalone, Control V-2378 is NA'
     end
   end
 end

@@ -48,8 +48,8 @@ if domain_role == '4' || domain_role == '5'
      its('MaxClockSkew') { should cmp <= 5 }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-2376 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2376 is NA'
+    describe 'Server is a Member Server or Standalone, Control V-2380 is NA' do
+      skip 'Server is a Member Server or Standalone, Control V-2380 is NA'
     end
   end
 end
