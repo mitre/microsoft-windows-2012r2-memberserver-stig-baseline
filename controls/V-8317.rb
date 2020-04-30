@@ -66,17 +66,18 @@ partition then the directory server data files."
       subject { drive_letter}
       it { should be_empty }
       end
-    elsif
+    else
       describe 'File Shares' do
         it 'Extra File Shares are located on Logical Drive' do
           failure_message = "extra shares #{drive_letter}"
           expect(drive_letter).to be_empty, failure_message
         end
       end
-    else
+    end
+  end
+     if domain_role != '4' || domain_role != '5'
       describe 'Server is a Member Server or Standalone, Control V-8317 is NA' do
         skip 'Server is a Member Server or Standalone, Control V-8317 is NA'
       end
-   end
- end
+     end
 end
