@@ -10,24 +10,24 @@ functions may be partially or completely unavailable until the services are
 manually started.  This could result in a failure to replicate data or to
 support client authentication and authorization requests."
   impact 0.5
-  tag "severity": nil
-  tag "gtitle": 'Prerequisite OS Services Startup'
-  tag "gid": 'V-8327'
-  tag "rid": 'SV-51184r2_rule'
-  tag "stig_id": 'WN12-AD-000010-DC'
-  tag "fix_id": 'F-44341r1_fix'
-  tag "cci": ['CCI-000366']
-  tag "nist": ['CM-6 b', 'Rev_4']
-  tag "false_negatives": nil
-  tag "false_positives": nil
-  tag "documentable": false
-  tag "mitigations": nil
-  tag "severity_override_guidance": false
-  tag "potential_impacts": nil
-  tag "third_party_tools": nil
-  tag "mitigation_controls": nil
-  tag "responsibility": nil
-  tag "ia_controls": 'ECTM-1, ECTM-2'
+  tag 'severity': nil
+  tag 'gtitle': 'Prerequisite OS Services Startup'
+  tag 'gid': 'V-8327'
+  tag 'rid': 'SV-51184r2_rule'
+  tag 'stig_id': 'WN12-AD-000010-DC'
+  tag 'fix_id': 'F-44341r1_fix'
+  tag 'cci': ['CCI-000366']
+  tag 'nist': ['CM-6 b', 'Rev_4']
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': 'ECTM-1, ECTM-2'
   tag 'check:' "Run \"services.msc\" to display the Services console.
 
 Verify the Startup Type for the following Windows services:

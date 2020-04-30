@@ -15,24 +15,24 @@ require the use of network ports or services conflicting with the directory
 server.  In this case, non-standard ports might be selected and this could
 interfere with intrusion detection or prevention services."
   impact 0.5
-  tag "severity": nil
-  tag "gtitle": 'Directory Server Host Dedication'
-  tag "gid": 'V-8326'
-  tag "rid": 'SV-51183r2_rule'
-  tag "stig_id": 'WN12-AD-000009-DC'
-  tag "fix_id": 'F-44340r1_fix'
-  tag "cci": ['CCI-001082']
-  tag "nist": %w[SC-2 Rev_4]
-  tag "false_negatives": nil
-  tag "false_positives": nil
-  tag "documentable": false
-  tag "mitigations": nil
-  tag "severity_override_guidance": false
-  tag "potential_impacts": nil
-  tag "third_party_tools": nil
-  tag "mitigation_controls": nil
-  tag "responsibility": nil
-  tag "ia_controls": 'DCSP-1'
+  tag 'severity': nil
+  tag 'gtitle': 'Directory Server Host Dedication'
+  tag 'gid': 'V-8326'
+  tag 'rid': 'SV-51183r2_rule'
+  tag 'stig_id': 'WN12-AD-000009-DC'
+  tag 'fix_id': 'F-44340r1_fix'
+  tag 'cci': ['CCI-001082']
+  tag 'nist': %w[SC-2 Rev_4]
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': 'DCSP-1'
   tag 'check:' "Review the roles and services the domain controller is running.
 Run \"services.msc\" to display the Services console.
 

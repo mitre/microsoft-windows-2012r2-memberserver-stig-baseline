@@ -9,24 +9,24 @@ sources according to network or server contention.  If switches between time
 sources are not logged, it may be difficult or impossible to detect malicious
 activity or availability problems."
   impact 0.3
-  tag "severity": nil
-  tag "gtitle": 'Time Synchronization Source Logging'
-  tag "gid": 'V-8324'
-  tag "rid": 'SV-51182r3_rule'
-  tag "stig_id": 'WN12-AD-000008-DC'
-  tag "fix_id": 'F-47824r1_fix'
-  tag "cci": ['CCI-000366']
-  tag "nist": ['CM-6 b', 'Rev_4']
-  tag "false_negatives": nil
-  tag "false_positives": nil
-  tag "documentable": false
-  tag "mitigations": nil
-  tag "severity_override_guidance": false
-  tag "potential_impacts": nil
-  tag "third_party_tools": nil
-  tag "mitigation_controls": nil
-  tag "responsibility": nil
-  tag 'ia_controls:' 'ECTM-1, ECTM-2'
+  tag 'severity': nil
+  tag 'gtitle': 'Time Synchronization Source Logging'
+  tag 'gid': 'V-8324'
+  tag 'rid': 'SV-51182r3_rule'
+  tag 'stig_id': 'WN12-AD-000008-DC'
+  tag 'fix_id': 'F-47824r1_fix'
+  tag 'cci': ['CCI-000366']
+  tag 'nist': ['CM-6 b', 'Rev_4']
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': 'ECTM-1, ECTM-2'
   tag 'check:' "Verify logging is configured to capture time source switches.
 
 If the Windows Time Service is used, verify the following registry value.  If

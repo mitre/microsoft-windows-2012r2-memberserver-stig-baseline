@@ -13,28 +13,27 @@ less restrictive permissions in order to allow access to the user data.
 
     The directory service may be vulnerable to a denial of service attack when
 user-owned files on a common partition are expanded to an extent preventing the
-directory service from acquiring more space for directory or audit data.
-  "
+directory service from acquiring more space for directory or audit data."
   impact 0.5
-  tag 'severity:' 'nil'
-  tag 'gtitle:' 'Directory Server Data File Locations'
-  tag 'gid:' 'V-8317'
-  tag 'rid:' 'SV-51180r2_rule'
-  tag 'stig_id:' 'WN12-AD-000006-DC'
-  tag 'fix_id:' 'F-44337r1_fix'
-  tag 'cci:' '["CCI-001082"]'
-  tag 'nist:' '["SC-2", "Rev_4"]'
-  tag 'false_negatives:' 'nil'
-  tag 'false_positives:' 'nil'
-  tag 'documentable:' 'false'
-  tag 'mitigations:' 'nil'
-  tag 'severity_override_guidance:' 'false'
-  tag 'potential_impacts:' 'nil'
-  tag 'third_party_tools:' 'nil'
-  tag 'mitigation_controls:' 'nil'
-  tag 'responsibility:' 'nil'
-  tag 'ia_controls:' 'DCSP-1'
-  tag 'check:' "Refer to the AD database location obtained in check V-8316.  Note
+  tag 'severity': nil
+  tag 'gtitle': 'Directory Server Data File Locations'
+  tag 'gid': 'V-8317'
+  tag 'rid': 'SV-51180r2_rule'
+  tag 'stig_id': 'WN12-AD-000006-DC'
+  tag 'fix_id': 'F-44337r1_fix'
+  tag 'cci': ["CCI-001082"]
+  tag 'nist': ["SC-2", "Rev_4"]
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': 'DCSP-1'
+  tag 'check': "Refer to the AD database location obtained in check V-8316.  Note
 the logical drive (e.g., C:) on which the files are located.
 
 Determine if the server is currently providing file sharing services to users
@@ -49,7 +48,7 @@ ignored.
 
 If user shares are located on the same logical partition as the directory
 server data files, this is a finding."
-  tag 'fix:' "Ensure files owned by users  are stored on a different logical
+  tag 'fix': "Ensure files owned by users  are stored on a different logical
 partition then the directory server data files."
 
   domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip

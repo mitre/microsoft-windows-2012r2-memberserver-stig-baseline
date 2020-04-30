@@ -14,27 +14,26 @@ investigation.
 
     In AD, the lack of synchronized time could prevent clients from logging on
 or accessing server resources as a result of Kerberos requirements related to
-time variance.
-  "
+time variance."
   impact 0.5
-  tag "severity": 'nil'
-  tag "gtitle": 'Time Synchronization'
-  tag "gid": 'V-8322'
-  tag "rid": 'SV-51181r2_rule'
-  tag "stig_id": 'WN12-AD-000007-DC'
-  tag "fix_id": 'F-44338r1_fix'
-  tag "cci": ['CCI-001891']
-  tag "nist": ['AU-8 (1) (a)', 'Rev_4']
-  tag "false_negatives": nil
-  tag "false_positives": nil
-  tag "documentable": false
-  tag "mitigations": nil
-  tag "severity_override_guidance": false
-  tag "potential_impacts": nil
-  tag "third_party_tools": nil
-  tag "mitigation_controls": nil
-  tag "responsibility": nil
-  tag "ia_controls": 'ECTM-1, ECTM-2'
+  tag 'severity': 'nil'
+  tag 'gtitle': 'Time Synchronization'
+  tag 'gid': 'V-8322'
+  tag 'rid': 'SV-51181r2_rule'
+  tag 'stig_id': 'WN12-AD-000007-DC'
+  tag 'fix_id': 'F-44338r1_fix'
+  tag 'cci': ['CCI-001891']
+  tag 'nist': ['AU-8 (1) (a)', 'Rev_4']
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': 'ECTM-1, ECTM-2'
   tag 'check:' "Determine if a time synchronization tool has been implemented on
 the Windows domain controller.
 
