@@ -768,3 +768,16 @@ inputs:
     - BUILTIN\Users Allow  -2147483648
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
+  
+  - name: ntds_permissions
+    desc: "Permissions on folder and file for NTDS Directory"
+    type: Array
+    value:
+      - BUILTIN\\Administrators:(I)(F)
+      - NT AUTHORITY\\SYSTEM:(I)(F)
+
+  - name: ad_approved_services
+    desc: "This is a list of services that are suppose to run on AD Boxes"
+    type: Array
+    value: 
+      - 

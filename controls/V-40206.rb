@@ -29,11 +29,10 @@ control 'V-40206' do
       skip 'This must be checked manually, since the SCPolicySvc is not installed'
     end
   else
-    startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "SCPolicySvc"} | Select StartMode | ConvertTo-Json').stdout.strip
-    clean_startmode = startmode[22..25]
-    describe 'Smart Card Removal Policy is Set to Automatic' do
-      subject { clean_startmode }
-      it { should eq 'Auto'}
-    end
+    startmode = json( command: 'Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "SCPolicySvc"} | Select -ExpandProperty StartMode | ConvertTo-Json').params
+      describe 'Smart Card Removal Policy is Set to Automatic' do
+       subject { startmode}
+       it { should eq 'Auto'}
+      end
   end
 end
