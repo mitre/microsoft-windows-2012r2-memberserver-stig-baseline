@@ -17,7 +17,7 @@ support client authentication and authorization requests."
   tag "nist": ["CM-6 b", "Rev_4"]
   tag "false_negatives": nil
   tag "false_positives": nil
-  tag "documentable:" false
+  tag "documentable": false
   tag "mitigations": nil
   tag "severity_override_guidance": false
   tag "potential_impacts": nil
