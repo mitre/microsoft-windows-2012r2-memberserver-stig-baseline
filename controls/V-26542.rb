@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26542' do
   title 'The system must be configured to audit Logon/Logoff - Logon failures.'
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -17,7 +19,7 @@ control 'V-26542' do
   tag "rid": 'SV-52993r2_rule'
   tag "stig_id": 'WN12-AU-000048'
   tag "fix_id": 'F-45920r1_fix'
-  tag "cci": ['CCI-000067', 'CCI-000172']
+  tag "cci": %w[CCI-000067 CCI-000172]
   tag "nist": ['AC-17 (1)', 'AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -36,7 +38,7 @@ control 'V-26542' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Logon/Logoff -> \"Audit Logon\" with \"Failure\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Logon') { should eq 'Failure' }

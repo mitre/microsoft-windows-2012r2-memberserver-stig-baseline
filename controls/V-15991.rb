@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15991' do
   title "UIAccess applications must not be allowed to prompt for elevation
   without using the secure desktop."
@@ -13,7 +15,7 @@ control 'V-15991' do
   tag "fix_id": 'F-45241r1_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23295-9']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "ia_controls": 'ECCD-1, ECCD-2'
   tag "check": "UAC requirements are NA on Server Core installations.
@@ -35,7 +37,7 @@ control 'V-15991' do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Allow UIAccess applications to prompt for elevation without using the
   secure desktop\" to \"Disabled\"."
- 
+
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'

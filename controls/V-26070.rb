@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26070' do
   title "Standard user accounts must only have Read permissions to the Winlogon
   registry key."
@@ -53,7 +55,7 @@ control 'V-26070' do
   Users - Read
   ALL APPLICATION PACKAGES - Read"
 
- hklm_winlogon = <<-EOH
+  hklm_winlogon = <<-EOH
   $output = (Get-Acl -Path 'HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon').AccessToString
   write-output $output
   EOH
@@ -61,11 +63,11 @@ control 'V-26070' do
   # raw powershell output
   raw_winlogon = powershell(hklm_winlogon).stdout.strip
 
-   # clean results cleans up the extra line breaks
+  # clean results cleans up the extra line breaks
   clean_winlogon = raw_winlogon.lines.collect(&:strip)
 
-   describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' do
+  describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' do
     subject { clean_winlogon }
     it { should cmp input('reg_winlogon_perms') }
-   end
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-40179' do
   title "Permissions for Windows installation directory must conform to minimum
   requirements."
@@ -15,7 +17,7 @@ control 'V-40179' do
   tag "rid": 'SV-52137r3_rule'
   tag "stig_id": 'WN12-GE-000008'
   tag "fix_id": 'F-45163r1_fix'
-  tag "cci": ['CCI-001499', 'CCI-002165']
+  tag "cci": %w[CCI-001499 CCI-002165]
   tag "nist": ['CM-5 (6)', 'AC-3 (4)', 'Rev_4']
   tag "documentable": false
   tag "check": "The default permissions are adequate when the Security Option
@@ -89,14 +91,14 @@ control 'V-40179' do
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
-   describe file("C:\\Windows") do
+  describe file('C:\\Windows') do
     it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('modify', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
     it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user:  'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') } 
-    it { should be_allowed('execute', by_user:  'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') } 
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
+    it { should be_allowed('execute', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 end

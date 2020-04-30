@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26479' do
   title "Unauthorized accounts must not have the Create a token object user
   right."
@@ -35,7 +37,7 @@ control 'V-26479' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Create a token object\" to be defined but containing no entries (blank)."
-  
+
   describe security_policy do
     its('SeCreateTokenPrivilege') { should eq [] }
   end

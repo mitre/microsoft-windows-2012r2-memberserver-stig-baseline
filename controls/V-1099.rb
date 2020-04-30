@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1099' do
   title "Windows 2012 account lockout duration must be configured to 15 minutes
   or greater."
@@ -32,7 +34,7 @@ control 'V-1099' do
 
   A value of \"0\" is also acceptable, requiring an administrator to unlock the
   account."
-  
+
   pass_lock_duration = input('pass_lock_duration')
   describe.one do
     describe security_policy do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15686' do
   title "Nonadministrators must be prevented from applying vendor-signed
   updates."
@@ -28,7 +30,7 @@ control 'V-15686' do
   Administrative Templates -> Windows Components -> Windows Installer ->
   \"Prohibit non-administrators from applying vendor signed updates\" to
   \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Installer') do
     it { should have_property 'DisableLUAPatching' }
     its('DisableLUAPatching') { should cmp == 1 }

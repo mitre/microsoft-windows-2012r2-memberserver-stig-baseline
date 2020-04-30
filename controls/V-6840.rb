@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-6840' do
   title 'Windows 2012/2012 R2 passwords must be configured to expire.'
   desc  "Passwords that do not expire or are reused increase the exposure of a
@@ -48,35 +50,35 @@ control 'V-6840' do
   excluded_accounts = input('excluded_accounts_domain')
   smart_card_check = json({ command: "Get-ADUser -Filter * -Properties SmartcardLogonRequired | Where-Object {$_.SmartcardLogonRequired -eq 'True' } | Select -ExpandProperty SamAccountName | ConvertTo-Json" })
   list_smart_card_acct = smart_card_check.params
- 
+
   domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
-   if domain_role == '4' || domain_role == '5'
-     list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | Select -ExpandProperty Name | ConvertTo-Json" })
-     ad_accounts = list_of_accounts.params
-     untracked_accounts = ad_accounts - list_smart_card_acct - application_accounts_domain - excluded_accounts_domain
-    
-       describe 'Untracked Accounts' do
-         it 'No Enabled Domain Account should be set to have Password Never Expire' do
-         failure_message = "Users Accounts are set to Password Never Expire: #{untracked_accounts}"
-         expect(untracked_accounts).to be_empty, failure_message
-        end
-       end
-   end
-       if domain_role != '4' || domain_role != '5'
+  if domain_role == '4' || domain_role == '5'
+    list_of_accounts = json({ command: "Search-ADAccount -PasswordNeverExpires -UsersOnly | Where-Object {$_.PasswordNeverExpires -eq 'True' -and $_.Enabled -eq 'True'} | Select -ExpandProperty Name | ConvertTo-Json" })
+    ad_accounts = list_of_accounts.params
+    untracked_accounts = ad_accounts - list_smart_card_acct - application_accounts_domain - excluded_accounts_domain
+
+    describe 'Untracked Accounts' do
+      it 'No Enabled Domain Account should be set to have Password Never Expire' do
+        failure_message = "Users Accounts are set to Password Never Expire: #{untracked_accounts}"
+        expect(untracked_accounts).to be_empty, failure_message
+      end
+    end
+  end
+  if domain_role != '4' || domain_role != '5'
     local_users = json({ command: "Get-CimInstance -Class Win32_Useraccount -Filter 'PasswordExpires=False and LocalAccount=True and Disabled=False' | Select -ExpandProperty Name | ConvertTo-Json" })
     local_users_list = local_users.params
-          if (local_users_list == ' ')
-            impact 0.0
-            describe 'The system does not have any local accounts where password is set to Password Never Expires, control is NA' do
-               skip 'The system does not have any local accounts where password is set to Password Never Expires, controls is NA'
-            end
-          else
-              describe "Account or Accounts exists" do
-                 it 'Server should not have Accounts with Password Never Expire' do
-                 failure_message = "User or Users #{local_users_list} have Password set to not expire" 
-                 expect(local_users_list).to be_empty, failure_message
-                 end
-              end
-          end
+    if local_users_list == ' '
+      impact 0.0
+      describe 'The system does not have any local accounts where password is set to Password Never Expires, control is NA' do
+        skip 'The system does not have any local accounts where password is set to Password Never Expires, controls is NA'
       end
+    else
+      describe 'Account or Accounts exists' do
+        it 'Server should not have Accounts with Password Never Expire' do
+          failure_message = "User or Users #{local_users_list} have Password set to not expire"
+          expect(local_users_list).to be_empty, failure_message
+        end
+      end
+    end
+ end
 end

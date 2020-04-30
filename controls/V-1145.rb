@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1145' do
   title 'Automatic logons must be disabled.'
   desc  "Allowing a system to automatically log on when the machine is booted
@@ -41,7 +43,7 @@ control 'V-1145' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'AutoAdminLogon' }
     its('AutoAdminLogon') { should cmp == 0 }

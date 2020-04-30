@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3383' do
   title "The system must be configured to use FIPS-compliant algorithms for
   encryption, hashing, and signing."
@@ -13,7 +15,7 @@ control 'V-3383' do
   tag "fix_id": 'F-45822r2_fix'
   tag "cci": ['CCI-002450']
   tag "cce": ['CCE-23921-0']
-  tag "nist": ['SC-13', 'Rev_4']
+  tag "nist": %w[SC-13 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -34,7 +36,7 @@ control 'V-3383' do
   Settings >> Security Settings >> Local Policies >> Security Options >> \"System
   cryptography: Use FIPS compliant algorithms for encryption, hashing, and
   signing\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy') do
     it { should have_property 'Enabled' }
     its('Enabled') { should cmp == 1 }

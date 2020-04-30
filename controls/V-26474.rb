@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26474' do
   title "Unauthorized accounts must not have the back up files and directories
   user right."
@@ -42,7 +44,7 @@ control 'V-26474' do
 
   Administrators"
 
-    describe security_policy do
-      its('SeBackupPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+  describe security_policy do
+    its('SeBackupPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

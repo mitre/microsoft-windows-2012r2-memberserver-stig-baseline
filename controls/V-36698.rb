@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36698' do
   title 'The use of biometrics must be disabled.'
   desc  "Allowing biometrics may bypass required authentication methods.
@@ -28,7 +30,7 @@ control 'V-36698' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Biometrics -> \"Allow the use
   of biometrics\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Biometrics') do
     it { should have_property 'Enabled' }
     its('Enabled') { should cmp == 0 }

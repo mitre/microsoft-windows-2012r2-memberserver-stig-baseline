@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1104' do
   title 'The maximum password age must meet requirements.'
   desc  "The longer a password is in use, the greater the opportunity for
@@ -26,7 +28,7 @@ control 'V-1104' do
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Maximum password age\" to \"60\" days or less (excluding \"0\" which is
   unacceptable)."
-  
+
   describe security_policy do
     its('MaximumPasswordAge') { should be <= input('max_pass_age') }
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3380' do
   title "The system must be configured to force users to log off when their
   allowed logon hours expire."
@@ -13,7 +15,7 @@ control 'V-3380' do
   tag "fix_id": 'F-45819r1_fix'
   tag "cci": ['CCI-001133']
   tag "cce": ['CCE-25367-4']
-  tag "nist": ['SC-10', 'Rev_4']
+  tag "nist": %w[SC-10 Rev_4]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -26,7 +28,7 @@ control 'V-3380' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: Force logoff when logon hours expire\" to \"Enabled\"."
-  
+
   describe security_policy do
     its('ForceLogoffWhenHourExpire') { should eq 1 }
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1150' do
   title 'The built-in Windows password complexity policy must be enabled.'
   desc  "The use of complex passwords increases their strength against attack.
@@ -11,8 +13,8 @@ control 'V-1150' do
   tag "rid": 'SV-52863r2_rule'
   tag "stig_id": 'WN12-AC-000008'
   tag "fix_id": 'F-45789r2_fix'
-  tag "cci": ['CCI-000192', 'CCI-000193', 'CCI-000194',
-              'CCI-001619']
+  tag "cci": %w[CCI-000192 CCI-000193 CCI-000194
+                CCI-001619]
   tag "cce": ['CCE-25602-4']
   tag "nist": ['IA-5 (1) (a)', 'Rev_4']
   tag "documentable": false
@@ -32,7 +34,7 @@ control 'V-1150' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings -> Security Settings >> Account Policies >> Password Policy >>
   \"Password must meet complexity requirements\" to \"Enabled\"."
-  
+
   describe security_policy do
     its('PasswordComplexity') { should eq input('enable_pass_complexity') }
   end

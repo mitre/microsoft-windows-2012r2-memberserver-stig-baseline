@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-43241' do
   title "The setting to allow Microsoft accounts to be optional for modern
   style apps must be enabled (Windows 2012 R2)."
@@ -32,7 +34,7 @@ control 'V-43241' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> App Runtime -> \"Allow Microsoft accounts to
   be optional\" to \"Enabled\"."
-  
+
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do

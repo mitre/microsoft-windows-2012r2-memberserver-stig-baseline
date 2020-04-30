@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-73519' do
   title "The Server Message Block (SMB) v1 protocol must be disabled on the SMB
   server."
@@ -46,18 +48,18 @@ control 'V-73519' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  
+
   state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
 
-  if state == "Disabled"
-     impact 0.0
-     describe 'V-73805 is configured, this control is NA' do
+  if state == 'Disabled'
+    impact 0.0
+    describe 'V-73805 is configured, this control is NA' do
       skip 'V-73805 is configured, this control is NA'
-     end
+    end
   else
-   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
-    it { should have_property 'SMB1' }
-    its('SMB1') { should cmp == 0 }
-   end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
+      it { should have_property 'SMB1' }
+      its('SMB1') { should cmp == 0 }
+    end
   end
 end

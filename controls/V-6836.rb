@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-6836' do
   title 'Passwords must, at a minimum, be 14 characters.'
   desc  "Information systems not protected with strong password schemes
@@ -25,8 +27,8 @@ control 'V-6836' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Minimum password length\" to \"14\" characters."
-  
+
   describe security_policy do
-    its('MinimumPasswordLength') { should be >= input('min_pass_len')}
+    its('MinimumPasswordLength') { should be >= input('min_pass_len') }
   end
 end

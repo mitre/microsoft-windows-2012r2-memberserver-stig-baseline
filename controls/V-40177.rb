@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-40177' do
   title "Permissions for program file directories must conform to minimum
   requirements."
@@ -91,7 +93,7 @@ control 'V-40177' do
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
-   describe file("C:\\Program Files") do
+  describe file('C:\\Program Files') do
     it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
@@ -100,7 +102,7 @@ control 'V-40177' do
     it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
 
-  describe file("C:\\Program Files (x86)") do
+  describe file('C:\\Program Files (x86)') do
     it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
     it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
@@ -108,5 +110,4 @@ control 'V-40177' do
     it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
     it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
   end
-
 end

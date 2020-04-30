@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1107' do
   title 'The password history must be configured to 24 passwords remembered.'
   desc  "A system is more vulnerable to unauthorized access when system users
@@ -27,7 +29,7 @@ control 'V-1107' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Security Settings >> Account Policies >> Password Policy >>
   \"Enforce password history\" to \"24\" passwords remembered."
-  
+
   describe security_policy do
     its('PasswordHistorySize') { should be >= input('pass_hist_size') }
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-43240' do
   title "The network selection user interface (UI) must not be displayed on the
   logon screen (Windows 2012 R2)."
@@ -31,7 +33,7 @@ control 'V-43240' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> System -> Logon -> \"Do not display network selection UI\" to
   \"Enabled\"."
-  
+
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do

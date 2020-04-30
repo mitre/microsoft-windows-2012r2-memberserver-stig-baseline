@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36707' do
   title "Windows SmartScreen must be configured to require approval from an
   administrator before running downloaded unknown software on Windows 2012/2012
@@ -33,13 +35,13 @@ control 'V-36707' do
   administrator before running downloaded unknown software\" selected."
 
   describe.one do
-   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
-    it { should have_property 'EnableSmartScreen' }
-    its('EnableSmartScreen') { should cmp == 1 }
-   end
-   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
-    it { should have_property 'EnableSmartScreen' }
-    its('EnableSmartScreen') { should cmp == 2 }
-   end
- end
+    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
+      it { should have_property 'EnableSmartScreen' }
+      its('EnableSmartScreen') { should cmp == 1 }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
+      it { should have_property 'EnableSmartScreen' }
+      its('EnableSmartScreen') { should cmp == 2 }
+    end
+  end
 end

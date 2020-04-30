@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1112' do
   title "Outdated or unused accounts must be removed from the system or
   disabled."
@@ -60,39 +62,37 @@ control 'V-1112' do
   Disable or delete any active accounts that have not been used in the last 35
   days."
 
-
-
   application_accounts = input('application_accounts_domain')
   excluded_accounts = input('excluded_accounts_domain')
 
- domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
 
-   if domain_role == '4' || domain_role == '5'
-     list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select -ExpandProperty Name | ConvertTo-Json' })
-     ad_accounts = list_of_accounts.params
-     untracked_accounts = ad_accounts - application_accounts - excluded_accounts
-       describe 'AD Accounts' do
-         it 'AD should not have any Accounts that are Inactive over 35 days' do
-         failure_message = "Users that have not log into in 35 days #{untracked_accounts}"
-         expect(untracked_accounts).to be_empty, failure_message
-        end
-       end
-   end
-    if domain_role != '4' || domain_role != '5'
+  if domain_role == '4' || domain_role == '5'
+    list_of_accounts = json({ command: 'Search-ADAccount -AccountInactive -UsersOnly -Timespan 35.00:00:00 | Select -ExpandProperty Name | ConvertTo-Json' })
+    ad_accounts = list_of_accounts.params
+    untracked_accounts = ad_accounts - application_accounts - excluded_accounts
+    describe 'AD Accounts' do
+      it 'AD should not have any Accounts that are Inactive over 35 days' do
+        failure_message = "Users that have not log into in 35 days #{untracked_accounts}"
+        expect(untracked_accounts).to be_empty, failure_message
+      end
+    end
+  end
+  if domain_role != '4' || domain_role != '5'
     local_users = json({ command: "Get-LocalUser | Where-Object {$_.Enabled -eq 'True' -and $_.Lastlogon -le (Get-Date).AddDays(-35) } | Select -ExpandProperty Name | ConvertTo-Json" })
     local_users_list = local_users.params
-    if (local_users_list == ' ')
+    if local_users_list == ' '
       impact 0.0
-       describe 'The system does not have any inactive accounts, control is NA' do
+      describe 'The system does not have any inactive accounts, control is NA' do
         skip 'The system does not have any inactive accounts, controls is NA'
-       end
+      end
     else
-      describe "Account or Accounts exists" do
+      describe 'Account or Accounts exists' do
         it 'Server should not have Accounts' do
-        failure_message = "User or Users #{local_users_list} have not login to system in 35 days" 
-        expect(local_users_list).to be_empty, failure_message
+          failure_message = "User or Users #{local_users_list} have not login to system in 35 days"
+          expect(local_users_list).to be_empty, failure_message
         end
       end
    end
-  end
+end
 end

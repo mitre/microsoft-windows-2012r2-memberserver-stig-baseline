@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26484' do
   title "The Deny log on as a service user right on member servers must be
   configured to prevent access from highly privileged domain accounts on domain
@@ -24,7 +26,7 @@ control 'V-26484' do
   tag "fix_id": 'F-44654r1_fix'
   tag "cci": ['CCI-000213']
   tag "cce": ['CCE-23117-5']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -57,9 +59,9 @@ control 'V-26484' do
       its('SeDenyServiceLogonRight') { should eq [] }
     end
   else
-    #Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
-    #get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
-    #domain_sid = get_domain_sid[9..40]
+    # Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
+    # get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
+    # domain_sid = get_domain_sid[9..40]
     domain_sid = input('domain_sid')
     describe security_policy do
       its('SeDenyServiceLogonRight') { should include "S-1-5-21-#{domain_sid}-512" }

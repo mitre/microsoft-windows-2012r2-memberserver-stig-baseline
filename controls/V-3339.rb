@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3339' do
   title "Unauthorized remotely accessible registry paths must not be
   configured."
@@ -12,9 +14,9 @@ control 'V-3339' do
   tag "rid": 'SV-52883r2_rule'
   tag "stig_id": 'WN12-SO-000056'
   tag "fix_id": 'F-45809r2_fix'
-  tag "cci": ['CCE-23899-8', 'CCI-001090']
+  tag "cci": %w[CCE-23899-8 CCI-001090]
   tag "cce": ['CCE-23899-8']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:

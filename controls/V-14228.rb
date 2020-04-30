@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14228' do
   title 'Auditing the Access of Global System Objects must be turned off.'
   desc  "Maintaining an audit trail of system activity logs can help identify

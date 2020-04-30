@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15701' do
   title "A system restore point must be created when a new device driver is
   installed."
@@ -28,7 +30,7 @@ control 'V-15701' do
   Administrative Templates -> System -> Device Installation -> \"Prevent creation
   of a system restore point during device activity that would normally prompt
   creation of a restore point\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DeviceInstall\\Settings') do
     it { should have_property 'DisableSystemRestore' }
     its('DisableSystemRestore') { should cmp == 0 }

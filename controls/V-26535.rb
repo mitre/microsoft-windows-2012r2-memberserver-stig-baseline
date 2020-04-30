@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26535' do
   title "The system must be configured to audit Account Management - Security
   Group Management successes."
@@ -17,8 +19,8 @@ control 'V-26535' do
   tag "rid": 'SV-53007r2_rule'
   tag "stig_id": 'WN12-AU-000017'
   tag "fix_id": 'F-45934r1_fix'
-  tag "cci": ['CCI-000018', 'CCI-000172', 'CCI-001403', 'CCI-001404',
-              'CCI-001405', 'CCI-002130', 'CCI-002234']
+  tag "cci": %w[CCI-000018 CCI-000172 CCI-001403 CCI-001404
+                CCI-001405 CCI-002130 CCI-002234]
   tag "nist": ['AC-2 (4)', 'AU-12 c', 'AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -38,7 +40,7 @@ control 'V-26535' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Management -> \"Audit Security Group Management\"
   with \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Security Group Management') { should eq 'Success' }

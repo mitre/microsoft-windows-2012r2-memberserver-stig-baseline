@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14229' do
   title 'Auditing of Backup and Restore Privileges must be turned off.'
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -33,7 +35,7 @@ control 'V-14229' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options -> \"Audit:
   Audit the use of Backup and Restore privilege\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
     it { should have_property 'FullPrivilegeAuditing' }
     its('FullPrivilegeAuditing') { should cmp == 0 }

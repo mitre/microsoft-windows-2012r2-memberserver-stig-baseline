@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26500' do
   title "Unauthorized accounts must not have the Profile single process user
   right."
@@ -33,8 +35,8 @@ control 'V-26500' do
   \"Profile single process\" to only include the following accounts or groups:
 
   Administrators"
-  
-    describe security_policy do
-      its('SeProfileSingleProcessPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeProfileSingleProcessPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

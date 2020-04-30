@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36718' do
   title "The Windows Remote Management (WinRM) service must not use Basic
   authentication."
@@ -26,7 +28,7 @@ control 'V-36718' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Remote Management
   (WinRM) -> WinRM Service -> \"Allow Basic authentication\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WinRM\\Service') do
     it { should have_property 'AllowBasic' }
     its('AllowBasic') { should cmp == 0 }

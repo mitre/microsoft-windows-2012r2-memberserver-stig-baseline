@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-21961' do
   title 'All Direct Access traffic must be routed through the internal network.'
   desc  "Routing all Direct Access  traffic through the internal network allows
@@ -25,9 +27,9 @@ control 'V-21961' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Network Connections -> \"Route all
   traffic through the internal network\" to \"Enabled: Enabled State\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition') do
     it { should have_property 'Force_Tunneling' }
-    its('Force_Tunneling') { should eq "Enabled" }
+    its('Force_Tunneling') { should eq 'Enabled' }
   end
 end

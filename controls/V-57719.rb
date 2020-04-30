@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-57719' do
   title "The operating system must, at a minimum, off-load audit records of
   interconnected systems in real time and off-load standalone systems weekly."
@@ -19,7 +21,7 @@ control 'V-57719' do
   tag "fix": "Configure the operating system to, at a minimum, off-load audit
   records of interconnected systems in real time and off-load standalone systems
   weekly."
-  
+
   describe "The operating system must, at a minimum, off-load audit records of
   interconnected systems in real time and off-load standalone systems weekly" do
     skip 'is a manual check'

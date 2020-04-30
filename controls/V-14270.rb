@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14270' do
   title 'The system must notify antivirus when file attachments are opened.'
   desc  "Attaching malicious files is a known avenue of attack.  This setting
@@ -27,7 +29,7 @@ control 'V-14270' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Attachment Manager ->
   \"Notify antivirus programs when opening attachments\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments') do
     it { should have_property 'ScanWithAntiVirus' }
     its('ScanWithAntiVirus') { should cmp == 3 }

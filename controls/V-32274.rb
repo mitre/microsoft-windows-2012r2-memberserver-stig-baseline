@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-32274' do
   title "The DoD Interoperability Root CA cross-certificates must be installed
   into the Untrusted Certificates Store on unclassified systems."
@@ -12,7 +14,7 @@ control 'V-32274' do
   tag "rid": 'SV-52957r5_rule'
   tag "stig_id": 'WN12-PK-000003'
   tag "fix_id": 'F-78949r1_fix'
-  tag "cci": ['CCI-000185', 'CCI-002470']
+  tag "cci": %w[CCI-000185 CCI-002470]
   tag "nist": ['SC-23 (5)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the DoD Interoperability cross-certificates are installed on unclassified systems as Untrusted Certificates.
@@ -23,7 +25,7 @@ Execute the following command:
 
 Get-ChildItem -Path Cert:Localmachine\disallowed | Where {$_.Issuer -Like \"*DoD Interoperability*\" -and $_.Subject -Like \"*DoD*\} | FL Subject, Issuer, Thumbprint, NotAfter
 
-If the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\", information is not displayed, this is finding. 
+If the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\", information is not displayed, this is finding.
 
 If an expired certificate (\"NotAfter\" date) is not listed in the results, this is not a finding.
 
@@ -79,7 +81,7 @@ Valid to: Saturday, January 22, 2022"
 
   Issued To - Issued By - Thumbprint
   DoD Root CA 2 - DoD Interoperability Root CA 1 - 22BBE981F0694D246CC1472ED2B021DC8540A22F
-  DoD Root CA 3 - DoD Interoperability Root CA 2 - AC06108CA348CC03B53795C64BF84403C1DBD341  
+  DoD Root CA 3 - DoD Interoperability Root CA 2 - AC06108CA348CC03B53795C64BF84403C1DBD341
 
   Administrators should run the Federal Bridge Certification Authority (FBCA)
   Cross-Certificate Removal Tool once as an administrator and once as the current
@@ -88,18 +90,18 @@ Valid to: Saturday, January 22, 2022"
   The FBCA Cross-Certificate Remover tool and user guide is available on IASE at
   http://iase.disa.mil/pki-pke/Pages/tools.aspx."
 
- if input('sensitive_system') == 'true'
+  if input('sensitive_system') == 'true'
     impact 0.0
     describe 'This Control is Not Applicable to sensitive systems.' do
       skip 'This Control is Not Applicable to sensitive systems.'
     end
-  else 
-   dod_interoperability_certificates = JSON.parse(input('dod_interoperability_certificates').to_json)
-   query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\disallowed  | Where {$_.Issuer -Like "*DoD Interoperability*" -and $_.Subject -Like "*DoD*"} | Select Subject, Issuer, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
- 
-  describe 'Verify the DoD Interoperability cross-certificates are installed on unclassified systems as Untrusted Certificates.' do
-    subject { query.params }
-    it { should be_in dod_interoperability_certificates }
+  else
+    dod_interoperability_certificates = JSON.parse(input('dod_interoperability_certificates').to_json)
+    query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\disallowed  | Where {$_.Issuer -Like "*DoD Interoperability*" -and $_.Subject -Like "*DoD*"} | Select Subject, Issuer, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
+
+    describe 'Verify the DoD Interoperability cross-certificates are installed on unclassified systems as Untrusted Certificates.' do
+      subject { query.params }
+      it { should be_in dod_interoperability_certificates }
+    end
   end
- end
 end

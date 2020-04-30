@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-28504' do
   title "Windows must be prevented from sending an error report when a device
   driver requests additional software during installation."
@@ -33,7 +35,7 @@ control 'V-28504' do
   Administrative Templates -> System -> Device Installation -> \"Prevent Windows
   from sending an error report when a device driver requests additional software
   during installation\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DeviceInstall\\Settings') do
     it { should have_property 'DisableSendRequestAdditionalSoftwareToWER' }
     its('DisableSendRequestAdditionalSoftwareToWER') { should cmp == 1 }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15687' do
   title "Users must not be presented with Privacy and Installation options on
   first use of Windows Media Player."
@@ -35,18 +37,19 @@ control 'V-15687' do
   tag "fix": "If Windows Media Player is installed, configure the policy value
   for Computer Configuration -> Administrative Templates -> Windows Components ->
   Windows Media Player -> \"Do Not Show First Use Dialog Boxes\" to \"Enabled\"."
-  
-  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\WindowsMediaPlayer') do
-    it { should have_property 'GroupPrivacyAcceptance' }
-    its('GroupPrivacyAcceptance') { should cmp == 1 }
-  end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
 
-  if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+  if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\WindowsMediaPlayer') do
+      it { should have_property 'GroupPrivacyAcceptance' }
+      its('GroupPrivacyAcceptance') { should cmp == 1 }
+    end
+  end
+
+  unless registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
     impact 0.0
     describe 'The system does not have Windows WindowsMediaPlayer installed' do
       skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not
       Applicable."
     end
   end
-
 end

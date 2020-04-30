@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3454' do
   title "Remote Desktop Services must be configured with the client connection
   encryption set to the required level."
@@ -10,7 +12,7 @@ control 'V-3454' do
   tag "rid": 'SV-52899r2_rule'
   tag "stig_id": 'WN12-CC-000100'
   tag "fix_id": 'F-45825r1_fix'
-  tag "cci": ['CCI-000068', 'CCI-002890']
+  tag "cci": %w[CCI-000068 CCI-002890]
   tag "cce": ['CCE-24932-6']
   tag "nist": ['AC-17 (2)', 'MA-4 (6)', 'Rev_4']
   tag "documentable": false
@@ -28,7 +30,7 @@ control 'V-3454' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Security -> \"Set client connection encryption
   level\" to \"Enabled\" and \"High Level\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'MinEncryptionLevel' }
     its('MinEncryptionLevel') { should cmp == 3 }

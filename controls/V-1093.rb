@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1093' do
   title 'Anonymous enumeration of shares must be restricted.'
   desc  "Allowing anonymous logon users (null session connections) to list all
@@ -11,7 +13,7 @@ control 'V-1093' do
   tag "fix_id": 'F-45773r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-24774-2']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -27,7 +29,7 @@ control 'V-1093' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Do not allow anonymous enumeration of SAM accounts and
   shares\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'RestrictAnonymous' }
     its('RestrictAnonymous') { should cmp == 1 }

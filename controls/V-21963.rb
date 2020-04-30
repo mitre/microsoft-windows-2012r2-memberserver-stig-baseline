@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-21963' do
   title "Windows Update must be prevented from searching for point and print
   drivers."

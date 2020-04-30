@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36712' do
   title "The Windows Remote Management (WinRM) client must not use Basic
   authentication."
@@ -27,7 +29,7 @@ control 'V-36712' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Remote Management
   (WinRM) -> WinRM Client -> \"Allow Basic authentication\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WinRM\\Client') do
     it { should have_property 'AllowBasic' }
     its('AllowBasic') { should cmp == 0 }

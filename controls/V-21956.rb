@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-21956' do
   title "IPv6 TCP data retransmissions must be configured to prevent resources
   from becoming exhausted."
@@ -12,7 +14,7 @@ control 'V-21956' do
   tag "fix_id": 'F-46107r2_fix'
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-25202-3']
-  tag "nist": ['SC-5', 'Rev_4']
+  tag "nist": %w[SC-5 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -31,7 +33,7 @@ control 'V-21956' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip6\\Parameters') do
     it { should have_property 'TcpMaxDataRetransmissions' }
     its('TcpMaxDataRetransmissions') { should cmp <= 3 }

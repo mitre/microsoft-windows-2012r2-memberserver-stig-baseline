@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-7002' do
   title 'Windows 2012/2012 R2 accounts must be configured to require passwords.'
   desc  "The lack of password protection enables anyone to gain access to the
@@ -11,7 +13,7 @@ control 'V-7002' do
   tag "stig_id": 'WN12-GE-000015'
   tag "fix_id": 'F-85581r1_fix'
   tag "cci": ['CCI-000764']
-  tag "nist": ['IA-2', 'Rev_4']
+  tag "nist": %w[IA-2 Rev_4]
   tag "documentable": false
   tag "check": "Review the password required status for enabled user accounts.
 
@@ -45,34 +47,31 @@ control 'V-7002' do
 
   domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
 
-   if domain_role == '4' || domain_role == '5'
-     list_of_accounts = json({ command: "Get-ADUser -Filter * -Properties PasswordNotRequired | Where-Object {$_.PasswordNotRequired -eq 'True' -and $_.Enabled -eq 'True'} Select -ExpandProperty Name | ConvertTo-Json" })
-     ad_accounts = list_of_accounts.params
-       describe 'AD Accounts' do
-         it 'AD should not have any Accounts that have Password Not Required' do
-         failure_message = "Users that have Password Not Required #{ad_accounts}"
-         expect(ad_accounts).to be_empty, failure_message
-        end
-       end
-   end
-   if domain_role != '4' || domain_role != '5'
-    local_users = json({ command: "Get-CimInstance -Class Win32_Useraccount -Filter PasswordRequired=False and LocalAccount=True | Select -ExpandProperty Name | ConvertTo-Json" })
-    local_users_list = local_users.params
-    if (local_users_list == ' ')
-      impact 0.0
-       describe 'The system does not have any accounts with a Password set, control is NA' do
-        skip 'The system does not have any accounts with a Password set,, controls is NA'
-       end
-    else
-      describe "Account or Accounts exists" do
-        it 'Server should not have Accounts with No Password Set' do
-        failure_message = "User or Users #{local_users_list} have no Password Set" 
-        expect(local_users_list).to be_empty, failure_message
-        end
+  if domain_role == '4' || domain_role == '5'
+    list_of_accounts = json({ command: "Get-ADUser -Filter * -Properties PasswordNotRequired | Where-Object {$_.PasswordNotRequired -eq 'True' -and $_.Enabled -eq 'True'} Select -ExpandProperty Name | ConvertTo-Json" })
+    ad_accounts = list_of_accounts.params
+    describe 'AD Accounts' do
+      it 'AD should not have any Accounts that have Password Not Required' do
+        failure_message = "Users that have Password Not Required #{ad_accounts}"
+        expect(ad_accounts).to be_empty, failure_message
       end
     end
   end
+  if domain_role != '4' || domain_role != '5'
+    local_users = json({ command: 'Get-CimInstance -Class Win32_Useraccount -Filter PasswordRequired=False and LocalAccount=True | Select -ExpandProperty Name | ConvertTo-Json' })
+    local_users_list = local_users.params
+    if local_users_list == ' '
+      impact 0.0
+      describe 'The system does not have any accounts with a Password set, control is NA' do
+        skip 'The system does not have any accounts with a Password set,, controls is NA'
+      end
+    else
+      describe 'Account or Accounts exists' do
+        it 'Server should not have Accounts with No Password Set' do
+          failure_message = "User or Users #{local_users_list} have no Password Set"
+          expect(local_users_list).to be_empty, failure_message
+        end
+      end
+    end
+ end
 end
-
-
- 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1105' do
   title 'The minimum password age must meet requirements.'
   desc  "Permitting passwords to be changed in immediate succession within the
@@ -25,7 +27,7 @@ control 'V-1105' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy ->
   \"Minimum password age\" to at least \"1\" day."
-  
+
   describe security_policy do
     its('MinimumPasswordAge') { should be >= input('min_pass_age') }
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1168' do
   title 'Members of the Backup Operators group must be documented.'
   desc  "Backup Operators are able to read and write to any file in the system,
@@ -23,8 +25,8 @@ control 'V-1168' do
   is a finding."
   tag "fix": "Create the necessary documentation that identifies the members of
   the Backup Operators group."
-  
-  backup_operators = input('backup_operators') 
+
+  backup_operators = input('backup_operators')
   backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   if backup_operators_group != []
     backup_operators_group.each do |user|

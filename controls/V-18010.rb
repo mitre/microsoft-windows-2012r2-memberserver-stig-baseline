@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-18010' do
   title 'Unauthorized accounts must not have the Debug programs user right.'
   desc  "Inappropriate granting of user rights can provide system,
@@ -39,7 +41,7 @@ Administrators"
   \"Debug programs\" to only include the following accounts or groups:
 
   Administrators"
-  
+
   describe security_policy do
     its('SeDebugPrivilege') { should eq ['S-1-5-32-544'] }
   end

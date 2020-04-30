@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15703' do
   title "Users must not be prompted to search Windows Update for device
   drivers."
@@ -31,7 +33,7 @@ control 'V-15703' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Driver Installation -> \"Turn off Windows
   Update device driver search prompt\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DriverSearching') do
     it { should have_property 'DontPromptForWindowsUpdate' }
     its('DontPromptForWindowsUpdate') { should cmp == 1 }

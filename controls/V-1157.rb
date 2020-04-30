@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1157' do
   title "The Smart Card removal option must be configured to Force Logoff or
   Lock Workstation."
@@ -34,7 +36,7 @@ control 'V-1157' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive logon: Smart card removal behavior\" to  \"Lock Workstation\" or
   \"Force Logoff\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'scremoveoption' }
   end

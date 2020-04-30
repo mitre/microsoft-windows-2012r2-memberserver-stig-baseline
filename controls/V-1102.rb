@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1102' do
   title "Unauthorized accounts must not have the Act as part of the operating
   system user right."

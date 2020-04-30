@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-4442' do
   title "The system must be configured to have password protection take effect
   within a limited time frame when the screen saver becomes active."

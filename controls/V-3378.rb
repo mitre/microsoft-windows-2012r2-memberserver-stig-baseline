@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3378' do
   title 'The system must be configured to use the Classic security model.'
   desc  "Windows includes two network-sharing security models - Classic and
@@ -12,7 +14,7 @@ control 'V-3378' do
   tag "fix_id": 'F-45817r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-22742-1']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -28,7 +30,7 @@ control 'V-3378' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Sharing and security model for local accounts\" to \"Classic
   - local users authenticate as themselves\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'ForceGuest' }
     its('ForceGuest') { should cmp == 0 }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3373' do
   title "The maximum age for machine account passwords must be set to
   requirements."
@@ -29,7 +31,7 @@ control 'V-3373' do
   Settings -> Security Settings -> Local Policies -> Security Options -> \"Domain
   member: Maximum machine account password age\" to \"30\" or less (excluding
   \"0\" which is unacceptable)."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
     it { should have_property 'MaximumPasswordAge' }
     its('MaximumPasswordAge') { should cmp <= input('comp_acct_max_pass_age') }

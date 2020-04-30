@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14260' do
   title 'Downloading print driver packages over HTTP must be prevented.'
   desc  "Some features may communicate with the vendor, sending system

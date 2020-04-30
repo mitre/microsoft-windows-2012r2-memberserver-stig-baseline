@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26482' do
   title "Unauthorized accounts must not have the Create symbolic links user
   right."
@@ -40,8 +42,8 @@ control 'V-26482' do
   Systems that have the Hyper-V role will also have \"Virtual Machines\" given
   this user right.  If this needs to be added manually, enter it as \"NT Virtual
   Machine\\Virtual Machines\"."
-  
-    describe security_policy do
-      its('SeCreateSymbolicLinkPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeCreateSymbolicLinkPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

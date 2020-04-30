@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15666' do
   title 'Windows Peer-to-Peer networking services must be turned off.'
   desc  "Peer-to-Peer applications can allow unauthorized access to a system
@@ -27,7 +29,7 @@ control 'V-15666' do
   Administrative Templates -> Network -> Microsoft Peer-to-Peer Networking
   Services -> \"Turn off Microsoft Peer-to-Peer Networking Services\" to
   \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Peernet') do
     it { should have_property 'Disabled' }
     its('Disabled') { should cmp == 1 }

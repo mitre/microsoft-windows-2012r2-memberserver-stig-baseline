@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-32282' do
   title "Standard user accounts must only have Read permissions to the Active
   Setup\\Installed Components registry key."
@@ -54,11 +56,11 @@ control 'V-32282' do
   raw_installed_comp = powershell(hklm_installed_comp).stdout.strip
   raw_wow_installed_comp = powershell(hklm_wow_installed_comp).stdout.strip
 
-   # clean results cleans up the extra line breaks
+  # clean results cleans up the extra line breaks
   clean_installed_comp = raw_installed_comp.lines.collect(&:strip)
   clean_wow_installed_comp = raw_wow_installed_comp.lines.collect(&:strip)
 
-   describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components' do
+  describe 'Verify the default registry permissions for the keys note below of the HKLM:\\Software\\Microsoft\\Active Setup\\Installed Components' do
     subject { clean_installed_comp }
     it { should cmp input('reg_install_comp_perms') }
   end

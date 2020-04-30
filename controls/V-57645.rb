@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-57645' do
   title "Systems requiring data at rest protections must employ cryptographic
   mechanisms to prevent unauthorized disclosure and modification of the
@@ -21,7 +23,7 @@ control 'V-57645' do
   tag "rid": 'SV-72055r1_rule'
   tag "stig_id": 'WN12-00-000020'
   tag "fix_id": 'F-62849r3_fix'
-  tag "cci": ['CCI-001199', 'CCI-002475', 'CCI-002476']
+  tag "cci": %w[CCI-001199 CCI-002475 CCI-002476]
   tag "nist": ['SC-28 (1)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify systems that require additional protections due to

@@ -1,4 +1,6 @@
-control "V-30016" do
+# frozen_string_literal: true
+
+control 'V-30016' do
   title "Unauthorized accounts must not have the Add workstations to domain
 user right."
   desc  "Inappropriate granting of user rights can provide system,
@@ -14,9 +16,9 @@ being added to a domain.
   tag "gid": 'V-30016'
   tag "rid": 'SV-51143r2_rule'
   tag "stig_id": 'WN12-UR-000044-DC'
-  tag "fix_id": "F-44300r2_fix"
-  tag "cci": ["CCE-23271-0", "CCI-002235"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "fix_id": 'F-44300r2_fix'
+  tag "cci": %w[CCE-23271-0 CCI-002235]
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -26,8 +28,8 @@ being added to a domain.
   tag "third_party_tools": nil
   tag "mitigation_controls": nil
   tag "responsibility": nil
-  tag "ia_controls:" 'ECLP-1'
-  tag "check:" "Verify the effective setting in Local Group Policy Editor.
+  tag 'ia_controls:' 'ECLP-1'
+  tag 'check:' "Verify the effective setting in Local Group Policy Editor.
 Run \"gpedit.msc\".
 
 Navigate to Local Computer Policy -> Computer Configuration -> Windows Settings
@@ -37,11 +39,9 @@ If any accounts or groups other than the following are granted the \"Add
 workstations to domain\" right, this is a finding:
 
 Administrators"
-  tag "fix:" "Configure the policy value for Computer Configuration -> Windows
+  tag 'fix:' "Configure the policy value for Computer Configuration -> Windows
 Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
 \"Add workstations to domain\" to only include the following accounts or groups:
 
 Administrators"
-
 end
-

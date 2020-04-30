@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1136' do
   title 'Users must be forcibly disconnected when their logon hours expire.'
   desc  "Users must not be permitted to remain logged on to the network after
@@ -15,7 +17,7 @@ control 'V-1136' do
   tag "fix_id": 'F-45786r1_fix'
   tag "cci": ['CCI-001133']
   tag "cce": ['CCE-24148-9']
-  tag "nist": ['SC-10', 'Rev_4']
+  tag "nist": %w[SC-10 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -31,7 +33,7 @@ control 'V-1136' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Microsoft network server: Disconnect clients when logon hours expire\" to
   \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'EnableForcedLogOff' }
     its('EnableForcedLogOff') { should cmp == 1 }

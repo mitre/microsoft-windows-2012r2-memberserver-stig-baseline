@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1127' do
   title "Only administrators responsible for the member server must have
   Administrator rights on the system."

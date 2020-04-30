@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26472' do
   title "Unauthorized accounts must not have the Allow log on locally user
   right."
@@ -15,7 +17,7 @@ control 'V-26472' do
   tag "fix_id": 'F-45135r1_fix'
   tag "cci": ['CCI-000213']
   tag "cci": ['CCE-25228-8']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -40,7 +42,7 @@ control 'V-26472' do
 
   Administrators"
 
-    describe security_policy do
-      its('SeInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
-    end
+  describe security_policy do
+    its('SeInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
+  end
 end

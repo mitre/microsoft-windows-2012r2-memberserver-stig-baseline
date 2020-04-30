@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36656' do
   title 'A screen saver must be enabled on the system.'
   desc  "Unattended systems are susceptible to unauthorized use and must be
@@ -10,7 +12,7 @@ control 'V-36656' do
   tag "rid": 'SV-51758r2_rule'
   tag "stig_id": 'WN12-UC-000001'
   tag "fix_id": 'F-44833r2_fix'
-  tag "cci": ['CCE-24055-6', 'CCI-000060']
+  tag "cci": %w[CCE-24055-6 CCI-000060]
   tag "cce": ['CCE-24055-6']
   tag "nist": ['AC-11 (1)', 'Rev_4']
   tag "documentable": false
@@ -35,8 +37,8 @@ control 'V-36656' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Control Panel -> Personalization -> \"Enable screen
   saver\" to \"Enabled\"."
-  
-  describe registry_key("HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop") do
+
+  describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop') do
     it { should have_property 'ScreenSaveActive' }
     its('ScreenSaveActive') { should cmp == 1 }
   end

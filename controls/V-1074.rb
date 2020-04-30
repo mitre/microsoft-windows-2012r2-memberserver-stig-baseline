@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1074' do
   title 'The Windows 2012 / 2012 R2 system must use an anti-virus program.'
   desc  "Malicious software can establish a base on individual desktops and
@@ -18,7 +20,7 @@ control 'V-1074' do
 
   If there is no anti-virus solution installed on the system, this is a finding."
   tag "fix": 'he Windows 2012 / 2012 R2 system must use an anti-virus program'
-  
+
   describe.one do
     describe registry_key('HKLM\SOFTWARE\Symantec\Symantec Endpoint Protection\CurrentVersion') do
       it { should exist }

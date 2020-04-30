@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-73523' do
   title "The Server Message Block (SMB) v1 protocol must be disabled on the SMB
   client."
@@ -72,21 +74,20 @@ control 'V-73523' do
 
   state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
 
-  if state == "Disabled"
-     impact 0.0
-     describe 'V-73805 is configured, this control is NA' do
+  if state == 'Disabled'
+    impact 0.0
+    describe 'V-73805 is configured, this control is NA' do
       skip 'V-73805 is configured, this control is NA'
-     end
+    end
   else
-   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
-    it { should have_property 'Start' }
-    its('Start') { should cmp == 4 }
-   end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10') do
+      it { should have_property 'Start' }
+      its('Start') { should cmp == 4 }
+    end
 
-   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation') do
-    it { should have_property 'DependOnService' }
-    its('DependOnService') { should_not eq 'MRxSmb10' }
-   end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation') do
+      it { should have_property 'DependOnService' }
+      its('DependOnService') { should_not eq 'MRxSmb10' }
+    end
   end
 end
-

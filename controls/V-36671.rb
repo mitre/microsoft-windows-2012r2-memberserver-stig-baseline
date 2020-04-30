@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36671' do
   title 'Audit data must be retained for at least one year.'
   desc  "Audit records are essential for investigating system activity after
@@ -16,7 +18,7 @@ control 'V-36671' do
   tag "check": "Determine whether audit data is retained for at least one year.
   If the audit data is not retained for at least a year, this is a finding."
   tag "fix": 'Ensure the audit data is retained for at least a year.'
-  
+
   describe 'A maual review is required to ensure audit data is retained for at least one year' do
     skip 'A maual review is required to ensure audit data is retained for at least one year'
   end

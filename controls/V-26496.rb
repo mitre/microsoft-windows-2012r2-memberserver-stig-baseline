@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26496' do
   title "Unauthorized accounts must not have the Manage auditing and security
   log user right."
@@ -14,8 +16,8 @@ control 'V-26496' do
   tag "rid": 'SV-53039r3_rule'
   tag "stig_id": 'WN12-UR-000032'
   tag "fix_id": 'F-45965r2_fix'
-  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164',
-              'CCI-000171', 'CCI-001914']
+  tag "cci": %w[CCI-000162 CCI-000163 CCI-000164
+                CCI-000171 CCI-001914]
   tag "cce": ['CCE-23456-7']
   tag "nist": ['AU-9', 'AU-12 b', 'AU-12 (3)', 'Rev_4']
   tag "documentable": false
@@ -44,8 +46,8 @@ control 'V-26496' do
   groups:
 
   Administrators"
- 
-    describe security_policy do
-      its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeSecurityPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

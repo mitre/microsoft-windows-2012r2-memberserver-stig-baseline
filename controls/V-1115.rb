@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1115' do
   title 'The built-in administrator account must be renamed.'
   desc  "The built-in administrator account is a well-known account subject to
@@ -25,7 +27,7 @@ control 'V-1115' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Accounts: Rename administrator account\" to a name other than
   \"Administrator\"."
-  
+
   describe user('Administrator') do
     it { should_not exist }
   end

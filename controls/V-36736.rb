@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36736' do
   title "The system must query the certification authority to determine whether
   a public key certificate has been revoked before accepting the certificate for
@@ -22,7 +24,7 @@ control 'V-36736' do
   is a finding."
   tag "fix": "Install software that provides certificate validation and
   revocation checking."
-  
+
   describe 'A manual review is required to ensure the system queries the certification authority to determine whether
   a public key certificate has been revoked before accepting the certificate for
   authentication purposes' do

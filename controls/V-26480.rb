@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26480' do
   title "Unauthorized accounts must not have the Create global objects user
   right."
@@ -47,7 +49,7 @@ control 'V-26480' do
   Local Service
   Network Service"
 
-    describe security_policy do
-      its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
-    end
+  describe security_policy do
+    its('SeCreateGlobalPrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+  end
 end

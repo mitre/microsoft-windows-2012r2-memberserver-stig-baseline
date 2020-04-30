@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36670' do
   title 'Audit data must be reviewed on a regular basis.'
   desc  "To be of value, audit logs from critical systems must be reviewed on a
@@ -19,7 +21,7 @@ control 'V-36670' do
   schedule.  If audit logs are not reviewed on a regular basis, this is a
   finding."
   tag "fix": 'Review audit logs on a predetermined scheduled.'
-  
+
   describe 'A manual review is required to ensure audit data is reviewed on a regular basis.' do
     skip 'A manual review is required to ensure audit data is reviewed on a regular basis.'
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26546' do
   title "The system must be configured to audit Policy Change - Audit Policy
   Change successes."
@@ -36,7 +38,7 @@ control 'V-26546' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Policy Change -> \"Audit Audit Policy Change\" with
   \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Audit Policy Change') { should eq 'Success' }

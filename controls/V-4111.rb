@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-4111' do
   title "The system must be configured to prevent Internet Control Message
   Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)
@@ -32,7 +34,7 @@ control 'V-4111' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'EnableICMPRedirect' }
     its('EnableICMPRedirect') { should cmp == 0 }

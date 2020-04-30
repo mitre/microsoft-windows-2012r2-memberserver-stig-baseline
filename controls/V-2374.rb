@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-2374' do
   title 'Autoplay must be disabled for all drives.'
   desc  "Allowing Autoplay to execute may introduce malicious code to a system.
@@ -30,7 +32,7 @@ control 'V-2374' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> AutoPlay Policies -> \"Turn
   off AutoPlay\" to \"Enabled:All Drives\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
     it { should have_property 'NoDriveTypeAutoRun' }
     its('NoDriveTypeAutoRun') { should cmp == 255 }

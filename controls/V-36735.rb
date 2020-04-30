@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36735' do
   title "The system must support automated patch management tools to facilitate
   flaw remediation."
@@ -19,7 +21,7 @@ control 'V-36735' do
   security-related software updates.  If it does not, this is a finding."
   tag "fix": "Establish a process to automatically install security-related
   software updates."
-  
+
   describe "A manual review is required to ensure the system supports automated patch management tools to facilitate
   flaw remediation." do
     skip 'A manual review is required to ensure the system supports automated patch management tools to facilitate

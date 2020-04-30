@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26469' do
   title "Unauthorized accounts must not have the Access Credential Manager as a
   trusted caller user right."
@@ -30,7 +32,7 @@ control 'V-26469' do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Access Credential Manager as a trusted caller\" to be defined but containing
   no entries (blank)."
-  
+
   describe security_policy do
     its('SeTrustedCredManAccessPrivilege') { should eq [] }
   end

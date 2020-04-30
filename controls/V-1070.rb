@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1070' do
   title "Server systems must be located in a controlled access area, accessible
   only to authorized personnel."

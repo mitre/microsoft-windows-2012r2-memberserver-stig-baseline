@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-21960' do
   title "Domain users must be required to elevate when setting a networks
   location."
@@ -13,7 +15,7 @@ control 'V-21960' do
   tag "fix_id": 'F-46108r1_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23388-2']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -28,7 +30,7 @@ control 'V-21960' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Network Connections -> \"Require domain
   users to elevate when setting a network's location\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Network Connections') do
     it { should have_property 'NC_StdDomainUserSetLocation' }
     its('NC_StdDomainUserSetLocation') { should cmp == 1 }

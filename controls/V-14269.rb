@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14269' do
   title "Mechanisms for removing zone information from file attachments must be
   hidden."

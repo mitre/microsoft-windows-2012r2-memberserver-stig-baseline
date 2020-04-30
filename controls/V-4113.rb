@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-4113' do
   title "The system must be configured to limit how often keep-alive packets
   are sent."
@@ -12,7 +14,7 @@ control 'V-4113' do
   tag "fix_id": 'F-45853r2_fix'
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-24310-5']
-  tag "nist": ['SC-5', 'Rev_4']
+  tag "nist": %w[SC-5 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -31,9 +33,9 @@ control 'V-4113' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'KeepAliveTime' }
-    its('KeepAliveTime') { should cmp <= 300000 }
+    its('KeepAliveTime') { should cmp <= 300_000 }
   end
 end

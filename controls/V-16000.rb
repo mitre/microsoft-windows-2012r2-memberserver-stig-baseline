@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-16000' do
   title "The system must be configured to ensure smart card devices can be
   redirected to the Remote Desktop session.  (Remote Desktop Services Role)."
@@ -28,7 +30,7 @@ control 'V-16000' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Device and Resource Redirection -> \"Do not
   allow smart card device redirection\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fEnableSmartCard' }
     its('fEnableSmartCard') { should cmp == 1 }

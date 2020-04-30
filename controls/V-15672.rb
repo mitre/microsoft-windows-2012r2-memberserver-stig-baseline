@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15672' do
   title 'Event Viewer Events.asp links must be turned off.'
   desc  "Viewing events is a function of administrators, who must not access
@@ -27,7 +29,7 @@ control 'V-15672' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off Event Viewer \"Events.asp\"
   links\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\EventViewer') do
     it { should have_property 'MicrosoftEventVwrDisableLinks' }
     its('MicrosoftEventVwrDisableLinks') { should cmp == 1 }

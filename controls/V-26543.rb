@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26543' do
   title "The system must be configured to audit Logon/Logoff - Special Logon
   successes."
@@ -37,7 +39,7 @@ control 'V-26543' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Logon/Logoff -> \"Audit Special Logon\" with \"Success\"
   selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Special Logon') { should eq 'Success' }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3344' do
   title "Local accounts with blank passwords must be restricted to prevent
   access from the network."
@@ -30,7 +32,7 @@ control 'V-3344' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Accounts: Limit local account use of blank passwords to console logon only\"
   to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
     it { should have_property 'Limitblankpassworduse' }
     its('Limitblankpassworduse') { should cmp == 1 }

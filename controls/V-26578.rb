@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26578' do
   title 'The Teredo IPv6 transition technology must be disabled.'
   desc  "IPv6 transition technologies, which tunnel packets through other
@@ -25,7 +27,7 @@ control 'V-26578' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> TCPIP Settings -> IPv6 Transition
   Technologies -> \"Set Teredo State\" to \"Enabled: Disabled State\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition') do
     it { should have_property 'Teredo_State' }
     its('Teredo_State') { should cmp 'Disabled' }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36684' do
   title 'Local users on domain-joined computers must not be enumerated.'
   desc  "The username is one part of logon credentials that could be used to
@@ -27,7 +29,7 @@ control 'V-36684' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Logon -> \"Enumerate local users on
   domain-joined computers\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\System') do
     it { should have_property 'EnumerateLocalUsers' }
     its('EnumerateLocalUsers') { should cmp == 0 }

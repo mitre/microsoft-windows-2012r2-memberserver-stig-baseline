@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-16008' do
   title "Windows must elevate all applications in User Account Control, not
   just signed ones."
@@ -13,7 +15,7 @@ control 'V-16008' do
   tag "fix_id": 'F-46068r2_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23880-8']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
 
@@ -35,7 +37,7 @@ control 'V-16008' do
   Control: Only elevate executables that are signed and validated\" to
   \"Disabled\"."
 
-   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
+  os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'
     impact 0.0

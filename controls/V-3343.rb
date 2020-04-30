@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3343' do
   title 'Solicited Remote Assistance must not be allowed.'
   desc  "Remote assistance allows another user to view or take control of the
@@ -12,7 +14,7 @@ control 'V-3343' do
   tag "fix_id": 'F-45811r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-25590-1']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -27,7 +29,7 @@ control 'V-3343' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Remote Assistance -> \"Configure
   Solicited Remote Assistance\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fAllowToGetHelp' }
     its('fAllowToGetHelp') { should cmp == 0 }

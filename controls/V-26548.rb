@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26548' do
   title "The system must be configured to audit Policy Change - Authentication
   Policy Change successes."
@@ -17,7 +19,7 @@ control 'V-26548' do
   tag "rid": 'SV-52981r1_rule'
   tag "stig_id": 'WN12-AU-000087'
   tag "fix_id": 'F-45907r1_fix'
-  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "cci": %w[CCI-000172 CCI-002234]
   tag "nist": ['AU-12 c', 'AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -37,7 +39,7 @@ control 'V-26548' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Policy Change -> \"Audit Authentication Policy Change\" with
   \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Authentication Policy Change') { should eq 'Success' }

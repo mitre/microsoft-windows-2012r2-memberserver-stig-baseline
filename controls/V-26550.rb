@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26550' do
   title "The system must be configured to audit Privilege Use - Sensitive
   Privilege Use failures."
@@ -18,7 +20,7 @@ control 'V-26550' do
   tag "rid": 'SV-52979r1_rule'
   tag "stig_id": 'WN12-AU-000102'
   tag "fix_id": 'F-45905r1_fix'
-  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "cci": %w[CCI-000172 CCI-002234]
   tag "nist": ['AU-12 c', 'AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -38,7 +40,7 @@ control 'V-26550' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Privilege Use -> \"Audit Sensitive Privilege Use\" with
   \"Failure\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Sensitive Privilege Use') { should eq 'Failure' }

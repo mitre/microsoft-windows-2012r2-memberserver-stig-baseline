@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1153' do
   title "The LanMan authentication level must be set to send NTLMv2 response
   only, and to refuse LM and NTLM."
@@ -31,7 +33,7 @@ control 'V-1153' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: LAN Manager authentication level\" to \"Send NTLMv2
   response only. Refuse LM & NTLM\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'LmCompatibilityLevel' }
     its('LmCompatibilityLevel') { should cmp == 5 }

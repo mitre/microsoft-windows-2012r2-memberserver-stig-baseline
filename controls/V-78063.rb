@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-78063' do
   title "Windows Server 2012/2012 R2 must be configured to audit System - Other
   System Events failures."
@@ -17,7 +19,7 @@ control 'V-78063' do
   tag "rid": 'SV-92781r1_rule'
   tag "stig_id": 'WN12-AU-000106'
   tag "fix_id": 'F-84799r1_fix'
-  tag "cci": ['CCI-000172', 'CCI-002234']
+  tag "cci": %w[CCI-000172 CCI-002234]
   tag "nist": ['AU-12 c', 'AC-6 (9)', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -39,7 +41,7 @@ control 'V-78063' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Advanced Audit Policy Configuration >> System Audit Policies >>
   System >> \"Audit Other System Events\" with \"Failure\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Other System Events') { should eq 'Failure' }

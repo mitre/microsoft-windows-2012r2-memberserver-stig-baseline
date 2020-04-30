@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1141' do
   title 'Unencrypted passwords must not be sent to third-party SMB Servers.'
   desc  "Some non-Microsoft SMB servers only support unencrypted (plain text)
@@ -30,7 +32,7 @@ control 'V-1141' do
   Settings >> Security Settings >> Local Policies >> Security Options >>
   \"Microsoft Network Client: Send unencrypted password to third-party SMB
   servers\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters') do
     it { should have_property 'EnablePlainTextPassword' }
     its('EnablePlainTextPassword') { should cmp == 0 }

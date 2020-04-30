@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26359' do
   title 'The Windows dialog box title for the legal banner must be configured.'
   desc  "Failure to display the logon banner prior to a logon attempt will
@@ -9,8 +11,8 @@ control 'V-26359' do
   tag "rid": 'SV-53121r2_rule'
   tag "stig_id": 'WN12-SO-000023'
   tag "fix_id": 'F-46047r1_fix'
-  tag "cci": ['CCI-000048', 'CCI-001384', 'CCI-001385',
-              'CCI-001386', 'CCI-001387', 'CCI-001388']
+  tag "cci": %w[CCI-000048 CCI-001384 CCI-001385
+                CCI-001386 CCI-001387 CCI-001388]
   tag "cce": ['CCE-24020-0']
   tag "nist": ['AC-8 a', 'AC-8 c 1', 'AC-8 c 2', 'AC-8 c 3', 'Rev_4']
   tag "documentable": false
@@ -42,16 +44,16 @@ control 'V-26359' do
 
   If a site-defined title is used, it can in no case contravene or modify the
   language of the banner text required in V-1089."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LegalNoticeCaption' }
-  end 
+  end
 
   key = registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System').LegalNoticeCaption.to_s
   legal_notice_caption = input('LegalNoticeCaption')
-  
+
   describe 'The required legal notice caption' do
-    subject { key.scan(/[\w().;,!]/).join}
-    it {should cmp legal_notice_caption.scan(/[\w().;,!]/).join }
+    subject { key.scan(/[\w().;,!]/).join }
+    it { should cmp legal_notice_caption.scan(/[\w().;,!]/).join }
   end
 end

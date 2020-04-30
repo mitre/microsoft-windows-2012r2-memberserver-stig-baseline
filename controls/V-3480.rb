@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-3480' do
   title "Windows Media Player must be configured to prevent automatic checking
   for updates."
@@ -31,13 +33,15 @@ control 'V-3480' do
   tag "fix": "If Windows Media Player is installed, configure the policy value
   for Computer Configuration -> Administrative Templates -> Windows Components ->
   Windows Media Player -> \"Prevent Automatic Updates\" to \"Enabled\"."
-  
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer') do
-    it { should have_property 'DisableAutoUpdate' }
-    its('DisableAutoUpdate') { should cmp == 1 }
-  end if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
 
-  if !registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+  if registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer') do
+      it { should have_property 'DisableAutoUpdate' }
+      its('DisableAutoUpdate') { should cmp == 1 }
+    end
+  end
+
+  unless registry_key('HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsMediaPlayer').exists?
     impact 0.0
     describe 'The system does not have Windows WindowsMediaPlayer installed' do
       skip "The system does not have Windows WindowsMediaPlayer installed, this requirement is Not

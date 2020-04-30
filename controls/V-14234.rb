@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14234' do
   title "User Account Control approval mode for the built-in Administrator must
   be enabled."
@@ -13,7 +15,7 @@ Admin Approval Mode."
   tag "fix_id": 'F-45872r2_fix'
   tag "cci": ['CCI-002038']
   tag "cce": ['CCE-24134-9']
-  tag "nist": ['IA-11', 'Rev_4']
+  tag "nist": %w[IA-11 Rev_4]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
 
@@ -35,7 +37,7 @@ Admin Approval Mode."
   Control: Admin Approval Mode for the Built-in Administrator account\" to
   \"Enabled\"."
 
- #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
+  # command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'

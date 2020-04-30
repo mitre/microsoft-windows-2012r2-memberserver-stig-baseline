@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26506' do
   title "Unauthorized accounts must not have the Take ownership of files or
   other objects user right."
@@ -41,7 +43,7 @@ control 'V-26506' do
 
   Administrators"
 
-    describe security_policy do
-      its('SeTakeOwnershipPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+  describe security_policy do
+    its('SeTakeOwnershipPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

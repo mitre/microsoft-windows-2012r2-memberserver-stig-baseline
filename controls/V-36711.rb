@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-36711' do
   title 'The Windows Store application must be turned off.'
   desc  "Uncontrolled installation of applications can introduce various
@@ -32,13 +34,15 @@ control 'V-36711' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Windows Components -> Store -> \"Turn off the Store application\"
   to \"Enabled\"."
-  
-  describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
-    it { should have_property 'RemoveWindowsStore' }
-    its('RemoveWindowsStore') { should cmp == 1 }
-  end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
 
-  if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
+      it { should have_property 'RemoveWindowsStore' }
+      its('RemoveWindowsStore') { should cmp == 1 }
+    end
+  end
+
+  unless registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
     impact 0.0
     describe 'The system does not have Windows Store installed' do
       skip "The system does not have Windows Store installed, this requirement is Not

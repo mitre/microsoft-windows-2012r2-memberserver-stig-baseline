@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-14232' do
   title 'IPSec Exemptions must be limited.'
   desc  "IPSec exemption filters allow specific traffic that may be needed by

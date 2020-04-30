@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-26499' do
   title "Unauthorized accounts must not have the Perform volume maintenance
   tasks user right."
@@ -34,8 +36,8 @@ control 'V-26499' do
   groups:
 
   Administrators"
-  
-    describe security_policy do
-      its('SeManageVolumePrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeManageVolumePrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

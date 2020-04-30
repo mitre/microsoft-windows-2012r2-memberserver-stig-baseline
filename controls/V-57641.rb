@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-57641' do
   title "Protection methods such as TLS, encrypted VPNs, or IPSEC must be
   implemented if the data owner has a strict requirement for ensuring data
@@ -25,7 +27,7 @@ control 'V-57641' do
   tag "rid": 'SV-72051r1_rule'
   tag "stig_id": 'WN12-00-000019'
   tag "fix_id": 'F-62843r3_fix'
-  tag "cci": ['CCI-002420', 'CCI-002422']
+  tag "cci": %w[CCI-002420 CCI-002422]
   tag "nist": ['SC-8 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the data owner has a strict requirement for ensuring data
@@ -37,7 +39,7 @@ control 'V-57641' do
   IPSEC when the data owner has a strict requirement for ensuring data integrity
   and confidentiality is maintained at every step of the data transfer and
   handling process to maintain the confidentiality and integrity."
-  
+
   describe "A manual review is required to ensure protection methods such as TLS, encrypted VPNs, or IPSEC are
   implemented if the data owner has a strict requirement for ensuring data
   integrity and confidentiality is maintained at every step of the data transfer

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-40172' do
   title 'Backups of system-level information must be protected.'
   desc  "A system backup will usually include sensitive information such as
@@ -18,7 +20,7 @@ control 'V-40172' do
   this is a finding."
   tag "fix": "Ensure system-level information backups are stored in a secure
   location and protected from destruction."
-  
+
   describe 'A manual review is required to ensure backups of system-level information is protected' do
     skip 'A manual review is required to ensure backups of system-level information is protected'
   end

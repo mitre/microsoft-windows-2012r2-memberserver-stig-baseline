@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-1097' do
   title "The number of allowed bad logon attempts must meet minimum
   requirements."

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'V-15674' do
   title 'The Internet File Association service must be turned off.'
   desc  "Some features may communicate with the vendor, sending system
@@ -32,7 +34,7 @@ control 'V-15674' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off Internet File Association
   service\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
     it { should have_property 'NoInternetOpenWith' }
     its('NoInternetOpenWith') { should cmp == 1 }
