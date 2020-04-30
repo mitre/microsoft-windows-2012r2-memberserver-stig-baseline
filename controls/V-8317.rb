@@ -61,7 +61,6 @@ partition then the directory server data files."
     add_tics = "('#{add_wildcard}')"
     # Gets Drive Letter Information
     drive_letter = json(command: "Get-SmbShare -Path| Where-Object {$_.Path -like #{add_tics} -and $_.Name -notlike '*$' -and $_.Name -notlike 'NETLOGON' -and $_.Name -notlike 'SYSVOL'} | Select Name | ConvertTo-Json").params
-
     if drive_letter.empty?
       describe 'File Shares are Set up correctly on AD Database Logical Drive' do
       subject { drive_letter}
