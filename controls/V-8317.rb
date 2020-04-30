@@ -66,8 +66,6 @@ partition then the directory server data files."
       describe 'File Shares are Set up correctly on AD Database Logical Drive' do
       subject { drive_letter}
       it { should be_empty }
-      #describe 'File Shares are Set up correctly on AD Database Logical Drive' do
-       # skip 'File Shares are Set up correctly on AD Database Logical Drive'
       end
     elsif
       describe 'File Shares' do
