@@ -48,8 +48,8 @@ renewal\" to a maximum of 7 days or less."
       its('MaxRenewAge') { should cmp <= 7 }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-2379 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2379 is NA'
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
    end
 end

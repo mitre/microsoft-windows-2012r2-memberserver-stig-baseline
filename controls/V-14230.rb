@@ -38,7 +38,7 @@ control 'V-14230' do
   audit policy category settings\" to \"Enabled\"."
 
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
-    it { should have_property 'scenoapplylegacyauditpolicy' }
-    its('scenoapplylegacyauditpolicy') { should cmp == 1 }
+    it { should have_property 'SCENoApplyLegacyAuditPolicy' }
+    its('SCENoApplyLegacyAuditPolicy') { should cmp == 1 }
   end
 end

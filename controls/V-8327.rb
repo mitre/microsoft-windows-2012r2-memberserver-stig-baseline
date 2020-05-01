@@ -80,8 +80,9 @@ implemented to start automatically)"
       end
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-8327 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-8327 is NA'
+    impact 0.0
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
   end
 end

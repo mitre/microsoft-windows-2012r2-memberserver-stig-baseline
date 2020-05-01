@@ -76,8 +76,8 @@ partition then the directory server data files."
     end
   end
      if domain_role != '4' || domain_role != '5'
-      describe 'Server is a Member Server or Standalone, Control V-8317 is NA' do
-        skip 'Server is a Member Server or Standalone, Control V-8317 is NA'
+      describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+        skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
       end
      end
 end

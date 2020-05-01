@@ -79,8 +79,9 @@ email from the domain controller."
       it { should eq true }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-8326 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-8326 is NA'
+    impact 0.0
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
   end
 end

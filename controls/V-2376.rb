@@ -51,8 +51,8 @@ Account Policies -> Kerberos Policy -> \"Enforce user logon restrictions\" to
       its('TicketValidateClient') { should eq 1 }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-2376 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2376 is NA'
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
  end
 end

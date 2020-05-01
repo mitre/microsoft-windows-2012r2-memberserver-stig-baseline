@@ -56,8 +56,8 @@ expire\"."
       its('MaxServiceAge') { should_not eq 0 }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-2377 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-2377 is NA'
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
  end
 end

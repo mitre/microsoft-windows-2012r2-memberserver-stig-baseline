@@ -51,8 +51,9 @@ domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRol
       its('SeMachineAccountPrivilege') { should eq ['S-1-5-32-544'] }
     end
   else
-    describe 'Server is a Member Server or Standalone, Control V-30016 is NA' do
-      skip 'Server is a Member Server or Standalone, Control V-30016 is NA'
+    impact 0.0
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
     end
   end
 end
