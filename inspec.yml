@@ -796,3 +796,21 @@ inputs:
       - NT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)
       - BUILTIN\\Administrators:(M,WDAC,WO)
       - CREATOR OWNER:(OI)(CI)(IO)(F)
+
+  - name: c_program_files_perm
+    desc: "Permissions on folder and file for C:\Program Files and C:\Program Files(x86) Directory"
+    type: Array
+    value:
+      - NT SERVICE\\TrustedInstaller:(F)
+      - NT SERVICE\\TrustedInstaller:(CI)(IO)(F)
+      - NT AUTHORITY\\SYSTEM:(M)
+      - NT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)
+      - BUILTIN\\Administrators:(M)
+      - BUILTIN\\Administrators:(OI)(CI)(IO)(F)
+      - BUILTIN\\Users:(RX)
+      - BUILTIN\\Users:(OI)(CI)(IO)(GR,GE)
+      - CREATOR OWNER:(OI)(CI)(IO)(F)
+      - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)
+      - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
+      - APPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)
+      - APPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
