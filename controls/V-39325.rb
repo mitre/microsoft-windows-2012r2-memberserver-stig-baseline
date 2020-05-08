@@ -22,19 +22,19 @@ the intruder."
   tag 'severity': nil
   tag 'gtitle': 'WINAU-000207-DC'
   tag 'gid': 'V-39325'
-  tag 'rid:' 'SV-51169r5_rule'
-  tag 'stig_id:' 'WN12-AU-000207-DC'
-  tag 'fix_id:' 'F-86713r2_fix'
+  tag 'rid': 'SV-51169r5_rule'
+  tag 'stig_id': 'WN12-AU-000207-DC'
+  tag 'fix_id': 'F-86713r2_fix'
   tag 'cci:' ["CCI-000172", "CCI-002234"]
-  tag 'nist:' ["AU-12 c", "AC-6 (9)", "Rev_4"]
-  tag 'false_negatives:' nil
-  tag 'false_positives:' nil
-  tag 'documentable:' false
-  tag 'mitigations:' nil
-  tag 'severity_override_guidance:' false
-  tag 'potential_impacts:' nil
-  tag 'third_party_tools:' nil
-  tag 'mitigation_controls:' nil
+  tag 'nist': ["AU-12 c", "AC-6 (9)", "Rev_4"]
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
   tag 'responsibility': nil
   tag 'ia_controls': nil
   tag 'check': "Review the auditing configuration for all Group Policy objects.

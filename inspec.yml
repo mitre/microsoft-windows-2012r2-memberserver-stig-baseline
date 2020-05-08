@@ -788,29 +788,57 @@ inputs:
     value:
       - NT AUTHORITY\Authenticated Users:(RX)
       - NT AUTHORITY\Authenticated Users:(OI)(CI)(IO)(GR,GE)
-      - BUILTIN\\Server Operators:(RX)
-      - BUILTIN\\Server Operators:(OI)(CI)(IO)(GR,GE)
-      - BUILTIN\\Administrators:(M,WDAC,WO)
-      - BUILTIN\\Administrators:(OI)(CI)(IO)(F)
-      - NT AUTHORITY\\SYSTEM:(F)
-      - NT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)
-      - BUILTIN\\Administrators:(M,WDAC,WO)
+      - BUILTIN\Server Operators:(RX)
+      - BUILTIN\Server Operators:(OI)(CI)(IO)(GR,GE)
+      - BUILTIN\Administrators:(M,WDAC,WO)
+      - BUILTIN\Administrators:(OI)(CI)(IO)(F)
+      - NT AUTHORITY\SYSTEM:(F)
+      - NT AUTHORITY\SYSTEM:(OI)(CI)(IO)(F)
+      - BUILTIN\Administrators:(M,WDAC,WO)
       - CREATOR OWNER:(OI)(CI)(IO)(F)
 
   - name: c_program_files_perm
     desc: "Permissions on folder and file for C:\Program Files and C:\Program Files(x86) Directory"
     type: Array
     value:
-      - NT SERVICE\\TrustedInstaller:(F)
-      - NT SERVICE\\TrustedInstaller:(CI)(IO)(F)
-      - NT AUTHORITY\\SYSTEM:(M)
-      - NT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)
-      - BUILTIN\\Administrators:(M)
-      - BUILTIN\\Administrators:(OI)(CI)(IO)(F)
-      - BUILTIN\\Users:(RX)
-      - BUILTIN\\Users:(OI)(CI)(IO)(GR,GE)
+      - NT SERVICE\TrustedInstaller:(F)
+      - NT SERVICE\TrustedInstaller:(CI)(IO)(F)
+      - NT AUTHORITY\SYSTEM:(M)
+      - NT AUTHORITY\SYSTEM:(OI)(CI)(IO)(F)
+      - BUILTIN\Administrators:(M)
+      - BUILTIN\Administrators:(OI)(CI)(IO)(F)
+      - BUILTIN\Users:(RX)
+      - BUILTIN\Users:(OI)(CI)(IO)(GR,GE)
       - CREATOR OWNER:(OI)(CI)(IO)(F)
-      - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)
-      - APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
-      - APPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)
-      - APPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
+      - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(RX)
+      - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
+      - APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
+
+  - name: c_perm
+    desc: "Permissions on folder and file for C:\ Directory"
+    type: Array
+    value:
+      - NT AUTHORITY\\SYSTEM:(OI)(CI)(F)
+      - BUILTIN\Administrators:(OI)(CI)(F)
+      - BUILTIN\Users:(OI)(CI)(RX)
+      - BUILTIN\Users:(CI)(AD)
+      - BUILTIN\Users:(CI)(IO)(WD)
+      - CREATOR OWNER:(OI)(CI)(IO)(F)
+
+  - name: c_windows_perm
+    desc: "Permissions on folder and file for C:\Windows Directory"
+    type: Array
+    value:
+      - NT SERVICE\TrustedInstaller:(F)
+      - NT SERVICE\TrustedInstaller:(CI)(IO)(F)
+      - NT AUTHORITY\SYSTEM:(M)
+      - NT AUTHORITY\SYSTEM:(OI)(CI)(IO)(F)
+      - BUILTIN\Administrators:(M)
+      - BUILTIN\Administrators:(OI)(CI)(IO)(F)
+      - BUILTIN\Users:(RX)
+      - BUILTIN\Users:(OI)(CI)(IO)(GR,GE)
+      - CREATOR OWNER:(OI)(CI)(IO)(F)
+      - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(RX)
+      - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)
+      - APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(RX)
+      - APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)

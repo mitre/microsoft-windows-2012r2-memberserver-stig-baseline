@@ -92,14 +92,9 @@ control 'V-40179' do
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
-  describe file('C:\\Windows') do
-    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('modify', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-    it { should be_allowed('execute', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-  end
+  c_windows_perm = json( command: "icacls 'C:\\Windows' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("C:\\Windows ", '') }
+    describe "C:\\Windows permissions are set correctly on folder structure" do
+      subject { c_windows_perm.eql? input('c_windows_perm') }
+      it { should eq true }
+    end
 end
