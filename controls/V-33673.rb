@@ -116,6 +116,10 @@ objects\" permission on the two default group policy objects: Default Domain
 Policy and Default Domain Controllers Policy.  They will have this permission
 on created group policy objects."
 
+#Checked Code in 2016 and it is not a validate way of checking permissions, Until a command is put together that can get all GPO's in a Domain and then check all permissions, this is manually
+describe 'A manual review is required to ensure all Group Policies have the correct permisions' do
+    skip 'A manual review is required to ensure all Group Policies have the correct permisions'
+  end
 
 end
 
