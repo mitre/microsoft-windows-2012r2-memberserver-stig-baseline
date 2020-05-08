@@ -19,14 +19,14 @@ systems throughout an AD domain.  The lack of proper auditing can result in
 insufficient forensic evidence needed to investigate an incident and prosecute
 the intruder."
   impact 0.5
-  tag 'severity:' nil
-  tag 'gtitle:' 'WINAU-000209-DC'
-  tag 'gid:' 'V-39327'
-  tag 'rid:' 'SV-51171r2_rule'
-  tag 'stig_id:' 'WN12-AU-000209-DC'
-  tag 'fix_id:' 'F-44328r1_fix'
-  tag 'cci:' ["CCI-000172", "CCI-002234"]
-  tag 'nist:' ["AU-12 c", "AC-6 (9)", "Rev_4"]
+  tag 'severity': nil
+  tag 'gtitle': 'WINAU-000209-DC'
+  tag 'gid': 'V-39327'
+  tag 'rid': 'SV-51171r2_rule'
+  tag 'stig_id': 'WN12-AU-000209-DC'
+  tag 'fix_id': 'F-44328r1_fix'
+  tag 'cci': ["CCI-000172", "CCI-002234"]
+  tag 'nist': ["AU-12 c", "AC-6 (9)", "Rev_4"]
   tag 'false_negatives': nil
   tag 'false_positives': nil
   tag 'documentable': false
