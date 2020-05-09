@@ -65,7 +65,8 @@ Clear the \"User must change password at next logon\" check box.
 The system will automatically change this to a system generated complex
 password."
 
- describe 'A manual review is required to reset password on account krbtgt' do
+  describe 'A manual review is required to reset password on account krbtgt' do
     skip 'A manual review is required to reset password on account krbtgt'
+  end
  end
 
