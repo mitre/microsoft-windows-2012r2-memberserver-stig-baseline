@@ -13,28 +13,27 @@ special attention.  In a distributed administration model (i.e., help desk), OU
 objects are more likely to have access permissions changed from the secure
 defaults.  If inappropriate access permissions are defined for OU objects, it
 could allow an intruder to add or delete users in the OU.  This could result in
-unauthorized access to data or a Denial of Service to authorized users.
-  "
+unauthorized access to data or a Denial of Service to authorized users."
   impact 0.7
-  tag severity: nil
-  tag gtitle: "WINAD-000005-DC"
-  tag gid: "V-39333"
-  tag rid: "SV-51179r3_rule"
-  tag stig_id: "WN12-AD-000005-DC"
-  tag fix_id: "F-44336r2_fix"
-  tag cci: ["CCI-002235"]
-  tag nist: ["AC-6 (10)", "Rev_4"]
-  tag false_negatives: nil
-  tag false_positives: nil
-  tag documentable: false
-  tag mitigations: nil
-  tag severity_override_guidance: false
-  tag potential_impacts: nil
-  tag third_party_tools: nil
-  tag mitigation_controls: nil
-  tag responsibility: nil
-  tag ia_controls: nil
-  tag check: "Verifying the permissions on domain defined OUs.
+  tag 'severity': nil
+  tag 'gtitle': 'WINAD-000005-DC'
+  tag 'gid': 'V-39333'
+  tag 'rid': 'SV-51179r3_rule'
+  tag 'stig_id': 'WN12-AD-000005-DC'
+  tag 'fix_id': 'F-44336r2_fix'
+  tag 'cci': ["CCI-002235"]
+  tag 'nist': ["AC-6 (10)", "Rev_4"]
+  tag 'false_negatives': nil
+  tag 'false_positives': nil
+  tag 'documentable': false
+  tag 'mitigations': nil
+  tag 'severity_override_guidance': false
+  tag 'potential_impacts': nil
+  tag 'third_party_tools': nil
+  tag 'mitigation_controls': nil
+  tag 'responsibility': nil
+  tag 'ia_controls': nil
+  tag 'check': "Verifying the permissions on domain defined OUs.
 
 Open \"Active Directory Users and Computers\".  (Available from various menus
 or run \"dsa.msc\".)
@@ -79,7 +78,7 @@ ENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions
 If an ISSO-approved distributed administration model (help desk or other user
 support staff) is implemented, permissions above Read may be allowed for groups
 documented by the ISSO."
-  tag fix: "Ensure the permissions on domain defined OUs are at least as
+  tag 'fix': "Ensure the permissions on domain defined OUs are at least as
 restrictive as the defaults below.
 
 Document any additional permissions above read with the ISSO if an approved
@@ -109,5 +108,122 @@ types.  If detailed permissions include any Create, Delete, Modify, or Write
 Permissions or Properties, this is a finding.
 
 ENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions"
+
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
+    if domain_role == '4' || domain_role == '5'
+       distinguishedName = json(command: '(Get-ADDomain).DistinguishedName | ConvertTo-Json').params
+       ou_list = json(command: "Get-ADOrganizationalUnit -filter * -SearchBase '#{distinguishedName}' | Select-Object -ExpandProperty distinguishedname | ConvertTo-Json").params
+       exclude_dc = json(command: "Get-ADOrganizationalUnit -filter * -SearchBase '#{distinguishedName}'  | Where-Object {$_.distinguishedname -like 'OU=Domain Controllers,#{distinguishedName}'} |  Select-Object -ExpandProperty distinguishedname | ConvertTo-Json").params
+       ou_list.delete(exclude_dc)
+       netbiosname = json(command: 'Get-ADDomain | Select NetBIOSName | ConvertTo-JSON').params['NetBIOSName']
+      ou_list.each do |ou|
+         acl_rules = json(command: "(Get-ACL -Audit -Path AD:'#{ou}').Access | ConvertTo-CSV | ConvertFrom-CSV | ConvertTo-JSON").params
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "NT AUTHORITY\\ENTERPRISE DOMAIN CONTROLLERS" }
+             its(['ActiveDirectoryRights']) { should cmp "GenericRead"}
+            end
+           end
+         end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "NT AUTHORITY\\Authenticated Users" }
+             its(['ActiveDirectoryRights']) { should cmp "GenericRead"}
+            end
+           end
+         end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "NT AUTHORITY\\SYSTEM" }
+             its(['ActiveDirectoryRights']) { should cmp "GenericAll"}
+            end
+           end
+         end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "BUILTIN\\Administrators" }
+             its(['ActiveDirectoryRights']) { should cmp "CreateChild, Self, WriteProperty, ExtendedRight, Delete, GenericRead, WriteDacl, WriteOwner"}
+            end
+           end
+          end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "BUILTIN\\Pre-Windows 2000 Compatible Access" }
+             its(['ActiveDirectoryRights']) { should cmp "ListChildren"}
+            end
+           end
+          end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "#{netbiosname}\\Domain Admins" }
+             its(['ActiveDirectoryRights']) { should cmp "GenericAll"}
+            end
+           end
+         end
+          describe.one do
+           acl_rules.each do |acl_rule|
+            describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+             subject { acl_rule }
+             its(['IdentityReference']) { should cmp "#{netbiosname}\\Enterprise Admins" }
+             its(['ActiveDirectoryRights']) { should cmp "GenericAll"}
+            end
+           end
+          end
+        describe.one do
+          acl_rules.each do |acl_rule|
+          describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+            subject { acl_rule }
+            its(['IdentityReference']) { should cmp "NT AUTHORITY\\SELF" }
+            its(['ActiveDirectoryRights']) { should cmp "ReadProperty, WriteProperty, ExtendedRight"}
+          end
+        end
+      end
+        describe.one do
+         acl_rules.each do |acl_rule|
+          describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+            subject { acl_rule }
+            its(['IdentityReference']) { should cmp "NT AUTHORITY\\SELF" }
+            its(['ActiveDirectoryRights']) { should cmp "ReadProperty, WriteProperty"}
+          end
+         end
+       end
+        describe.one do
+         acl_rules.each do |acl_rule|
+          describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+            subject { acl_rule }
+            its(['IdentityReference']) { should cmp "NT AUTHORITY\\SELF" }
+            its(['ActiveDirectoryRights']) { should cmp "WriteProperty"}
+          end
+         end
+        end
+        describe.one do
+         acl_rules.each do |acl_rule|
+          describe "Audit rule property for principal: #{acl_rule['IdentityReference']}" do
+            subject { acl_rule }
+            its(['IdentityReference']) { should cmp "NT AUTHORITY\\SELF" }
+            its(['ActiveDirectoryRights']) { should cmp "Self"}
+          end
+         end
+        end
+      end
+    else
+      impact 0.0
+      desc 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
+      describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+       skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
+     end
+    end
 end
 
