@@ -73,14 +73,9 @@ control 'V-21954' do
   Future encryption types"
 
   if registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists?
-    describe.one do
-      describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
-        its('SupportedEncryptionTypes') { should eq 2_147_483_647 }
+      describe registry_key('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
+        its('SupportedEncryptionTypes') { should eq 2_147_483_644 }
       end
-      describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
-        its('SupportedEncryptionTypes') { should eq 0 }
-      end
-    end
   else
     impact 0.0
     describe 'Registry Key for Kerberos Encryption does not exist, this control is NA' do
