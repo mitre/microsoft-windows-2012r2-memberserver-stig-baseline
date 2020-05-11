@@ -97,11 +97,11 @@ control 'V-57655' do
         # Gets raw format of creation date
         raw_day_created = powershell("Get-ADUser -Identity #{user} -Properties Created | Findstr /i 'Created'").stdout.strip
         # If statement checks for "/" in output to see where the first number for month starts
-        clean_month_created = if raw_day_created[21] == '/'
-                                raw_day_created[20]
-                              else
-                                raw_day_created[20..21]
-                               end
+       if raw_day_created[21] == '/'
+          clean_month_created = raw_day_created[20]
+       else
+          clean_month_created = raw_day_created[20..21]
+       end
         # If statement checks for "/" in output to see where the first number for Day starts
         if raw_day_created[21] == '/' && raw_day_created[23] == '/'
           clean_day_created = raw_day_created[22]
@@ -127,11 +127,11 @@ control 'V-57655' do
         raw_day_expire_date = powershell("Get-ADUser -Identity #{user} -Properties AccountExpirationDate | Findstr /i 'AccountExpirationDate'").stdout.strip
 
         # If statement checks for "/" in output to see where the first number for month starts
-        clean_month_expire_date = if raw_day_expire_date[25] == '/'
-                                    raw_day_expire_date[24]
-                                  else
-                                    raw_day_expire_date[24..25]
-                                  end
+        if raw_day_expire_date[25] == '/'
+           clean_month_expire_date = raw_day_expire_date[24]
+        else
+           clean_month_expire_date = raw_day_expire_date[24..25]
+        end
         # If statement checks for "/" in output to see where the first number for Day starts
         if raw_day_expire_date[25] == '/' && raw_day_expire_date[27] == '/'
           clean_day_expire_date = raw_day_expire_date[26]
@@ -167,7 +167,7 @@ control 'V-57655' do
               expect(date_expires_minus_password_last_set).to be_empty, failure_message
             end
           end
-            end
+        end
       end
     end
  end
@@ -185,11 +185,11 @@ control 'V-57655' do
         get_account_expires = powershell("Get-LocalUser -name #{user}  | Select-Object AccountExpires").stdout.strip
 
         # Gets Local Accounts Month of Expiration Date
-        clean_account_expires_month = if get_account_expires[47] == '/'
-                                        get_account_expires[46]
-                                      else
-                                        get_account_expires[46..47]
-                                      end
+        if get_account_expires[47] == '/'
+           clean_account_expires_month = get_account_expires[46]
+        else
+           clean_account_expires_month = get_account_expires[46..47]
+        end
 
         # If statement checks for "/" in output to see where the first number for Day starts
         if get_account_expires[47] == '/' && get_account_expires[49] == '/'
@@ -217,11 +217,11 @@ control 'V-57655' do
         # Gets Raw Password Last Set Date for Local Account
         get_password_last_set = powershell("Get-LocalUser -name #{user} | Select-Object PasswordLastSet").stdout.strip
         # Gets Local Accounts Month of Expiration Date
-        clean_account_last_pass_month = if get_password_last_set[43] == '/'
-                                          get_password_last_set[42]
-                                        else
-                                          get_password_last_set[42..43]
-                                        end
+        if get_password_last_set[43] == '/'
+            clean_account_last_pass_month = get_password_last_set[42]
+        else
+            clean_account_last_pass_month = get_password_last_set[42..43]
+        end
 
         # If statement checks for "/" in output to see where the first number for Day starts
         if get_password_last_set[43] == '/' && get_password_last_set[45] == '/'
@@ -259,8 +259,8 @@ control 'V-57655' do
               expect(date_expires_minus_password_last_set).to be_empty, failure_message
             end
           end
-           end
+        end
       end
- end
+   end
  end
 end
