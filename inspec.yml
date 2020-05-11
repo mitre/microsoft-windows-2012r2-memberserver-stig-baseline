@@ -178,11 +178,6 @@ inputs:
      - BUILTIN\Administrators Allow  FullControl
      - BUILTIN\Backup Operators Allow  ReadKey
 
-  - name: domain_sid
-    desc: "This is the SID for Domain"
-    type: String
-    value: ""
-
   - name: dod_root_certificates
     desc: "List of DoD CA Root Certificates"
     type: Array
