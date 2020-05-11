@@ -62,15 +62,25 @@ control 'V-26483' do
       its('SeDenyBatchLogonRight') { should eq ['S-1-5-32-546'] }
     end
   else
-    # Until the shell can handle wmic group where name = 'Domain Users' get SID, this is a add input domain_sid with current SID for Domain
-    # get_domain_sid = command('wmic useraccount get sid | FINDSTR /V SID | Select -First 2').stdout.strip
-    # domain_sid = get_domain_sid[9..40]
-    domain_sid = input('domain_sid')
-    describe security_policy do
-      its('SeDenyBatchLogonRight') { should include "S-1-5-21-#{domain_sid}-512" }
+    domain_query = <<-EOH
+              $group = New-Object System.Security.Principal.NTAccount('Domain Admins')
+              $sid = ($group.Translate([security.principal.securityidentifier])).value
+              $sid | ConvertTo-Json
+              EOH
+
+      domain_admin_sid = json(command: domain_query).params
+      enterprise_admin_query = <<-EOH
+              $group = New-Object System.Security.Principal.NTAccount('Enterprise Admins')
+              $sid = ($group.Translate([security.principal.securityidentifier])).value
+              $sid | ConvertTo-Json
+              EOH
+
+      enterprise_admin_sid = json(command: enterprise_admin_query).params
+       describe security_policy do
+          its('SeDenyRemoteInteractiveLogonRight') { should include "#{domain_admin_sid}" }
+       end
+       describe security_policy do
+          its('SeDenyRemoteInteractiveLogonRight') { should include "#{enterprise_admin_sid}" }
+       end
     end
-    describe security_policy do
-      its('SeDenyBatchLogonRight') { should include "S-1-5-21-#{domain_sid}-519" }
-    end
-  end
 end
