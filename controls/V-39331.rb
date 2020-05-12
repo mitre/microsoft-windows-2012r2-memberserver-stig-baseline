@@ -142,10 +142,17 @@ Access - Full control
 Inherited from - None
 Applies to - This folder, subfolders and files"
 
-sysvol_perm = json( command: "icacls 'c:\\Windows\\SYSVOL' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("c:\\Windows\\SYSVOL ", '') }
+domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
+  if domain_role == '4' || domain_role == '5'
+   sysvol_perm = json( command: "icacls 'c:\\Windows\\SYSVOL' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("c:\\Windows\\SYSVOL ", '') }
+   
     describe "c:\\ permissions are set correctly on folder structure" do
       subject { sysvol_perm.eql? input('c_windows_sysvol_perm') }
       it { should eq true }
     end
+  else
+    describe 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers' do
+      skip 'This system is not a domain controller, therefore this control is not applicable as it only applies to domain controllers'
+    end
+  end
 end
-
