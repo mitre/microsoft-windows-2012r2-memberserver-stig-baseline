@@ -65,8 +65,20 @@ Clear the \"User must change password at next logon\" check box.
 The system will automatically change this to a system generated complex
 password."
 
-  describe 'A manual review is required to reset password on account krbtgt' do
-    skip 'A manual review is required to reset password on account krbtgt'
-  end
+  password_set_date = json(command: 'Get-ADUser krbtgt -Property PasswordLastSet | Where-Object {$_.PasswordLastSet -lt ((Get-Date).AddDays(-180))} | Select -ExpandProperty PasswordLastSet | ConvertTo-Csv | ConvertFrom-Csv | ConvertTo-Json').params
+  date = password_set_date['Date']
+   if date.nil?
+      describe 'Administrator Account is within 180 days since password change' do
+        subject { date }
+        its(date) { should eq nil }
+      end
+    else
+      describe 'Password Last Set' do
+        it 'Administrator Account Password Last Set Date is' do
+          failure_message = "Password Date should not be more that 180 Days: #{date}"
+          expect(date).to be_empty, failure_message
+        end
+      end
+     end
  end
 

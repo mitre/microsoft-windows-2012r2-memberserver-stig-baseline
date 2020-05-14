@@ -126,11 +126,11 @@ inputs:
     desc: "Number of passwords remembered in the password history [24]"
     type: Numeric
     value: 24
-
-  - name: max_pass_lockout
+- name: max_pass_lockout
     desc: "Account lockout threshold is recommended to be 3 or less invalid logon attempts [3]"
     type: Numeric
     value: 3
+  
 
   - name: pass_expiry_warning
     desc: "Users must be warned in advance of their passwords expiring[14] or greater"
