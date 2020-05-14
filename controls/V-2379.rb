@@ -43,6 +43,7 @@ Computer Configuration ->  Policies -> Windows Settings -> Security Settings ->
 Account Policies -> Kerberos Policy -> \"Maximum lifetime for user ticket
 renewal\" to a maximum of 7 days or less."
 
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
   if domain_role == '4' || domain_role == '5'
     describe security_policy do
       its('MaxRenewAge') { should cmp <= 7 }

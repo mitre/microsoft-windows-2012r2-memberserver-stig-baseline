@@ -52,6 +52,7 @@ Security Settings -> Advanced Audit Policy Configuration -> System Audit
 Policies -> DS Access -> \"Directory Service Changes\" with \"Failure\"
 selected."
 
+domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
  if domain_role == '4' || domain_role == '5'
   describe.one do
    describe audit_policy do

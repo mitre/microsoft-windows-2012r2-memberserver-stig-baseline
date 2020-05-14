@@ -46,6 +46,7 @@ Computer Configuration -> Windows Settings -> Security Settings -> Account
 Policies -> Kerberos Policy -> \"Maximum tolerance for computer clock
 synchronization\" to a maximum of 5 minutes or less."
 
+ domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
   if domain_role == '4' || domain_role == '5'
     describe security_policy do
       its('MaxClockSkew') { should cmp <= 5 }

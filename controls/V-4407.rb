@@ -47,6 +47,7 @@ Value: 2"
 Settings -> Security Settings -> Local Policies -> Security Options -> \"Domain
 controller: LDAP server signing requirements\" to \"Require signing\"."
 
+domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
   if domain_role == '4' || domain_role == '5'
     describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\NTDS\\Parameters') do
       it { should have_property 'LDAPServerIntegrity' }
