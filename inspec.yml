@@ -172,11 +172,11 @@ inputs:
     desc: "This is the values of the winreg registry key"
     type: Array
     value:
-     - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
-     - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
-     - BUILTIN\Administrators Allow  268435456
-     - BUILTIN\Administrators Allow  FullControl
-     - BUILTIN\Backup Operators Allow  ReadKey
+      - NT AUTHORITY\LOCAL SERVICE Allow  -2147483648
+      - NT AUTHORITY\LOCAL SERVICE Allow  ReadKey
+      - BUILTIN\Administrators Allow  268435456
+      - BUILTIN\Administrators Allow  FullControl
+      - BUILTIN\Backup Operators Allow  ReadKey
 
   - name: dod_root_certificates
     desc: "List of DoD CA Root Certificates"
@@ -226,59 +226,59 @@ inputs:
     desc: "This is the values of the Installed Components registry key"
     type: Array
     value:
-    - BUILTIN\Users Allow  ReadKey
-    - BUILTIN\Users Allow  -2147483648
-    - BUILTIN\Administrators Allow  FullControl
-    - BUILTIN\Administrators Allow  268435456
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  268435456
-    - CREATOR OWNER Allow  268435456
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
+     - BUILTIN\Users Allow  ReadKey
+     - BUILTIN\Users Allow  -2147483648
+     - BUILTIN\Administrators Allow  FullControl
+     - BUILTIN\Administrators Allow  268435456
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  268435456
+     - CREATOR OWNER Allow  268435456
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
 
   - name: reg_wow6432_install_comp_perms
     desc: "This is the values of the Installed Components under WoW643Node registry key"
     type: Array
     value:
-    - BUILTIN\Users Allow  ReadKey
-    - BUILTIN\Administrators Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - CREATOR OWNER Allow  FullControl
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
+     - BUILTIN\Users Allow  ReadKey
+     - BUILTIN\Administrators Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - CREATOR OWNER Allow  FullControl
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
 
   - name: winevt_logs_application_perms
     desc: "This is the values of the Application.evtx file under system32"
     type: Array
     value:
-    - NT SERVICE\EventLog Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - BUILTIN\Administrators Allow  FullControl
+     - NT SERVICE\EventLog Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - BUILTIN\Administrators Allow  FullControl
 
   - name: winevt_logs_security_perms
     desc: "This is the values of the Security.evtx file under system32"
     type: Array
     value:
-    - NT SERVICE\EventLog Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - BUILTIN\Administrators Allow  FullControl
+     - NT SERVICE\EventLog Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - BUILTIN\Administrators Allow  FullControl
 
   - name: winevt_logs_system_perms
     desc: "This is the values of the System.evtx file under system32"
     type: Array
     value:
-    - NT SERVICE\EventLog Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - BUILTIN\Administrators Allow  FullControl
+     - NT SERVICE\EventLog Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - BUILTIN\Administrators Allow  FullControl
 
   - name: eventvwr_perms
     desc: "This is the values of the Eventvwr.exe file under system32"
     type: Array
     value:
-    - NT AUTHORITY\SYSTEM Allow  ReadAndExecute, Synchronize
-    - BUILTIN\Administrators Allow  ReadAndExecute, Synchronize
-    - BUILTIN\Users Allow  ReadAndExecute, Synchronize
-    - NT SERVICE\TrustedInstaller Allow  FullControl
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
+     - NT AUTHORITY\SYSTEM Allow  ReadAndExecute, Synchronize
+     - BUILTIN\Administrators Allow  ReadAndExecute, Synchronize
+     - BUILTIN\Users Allow  ReadAndExecute, Synchronize
+     - NT SERVICE\TrustedInstaller Allow  FullControl
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize
 
   - name: basic_window_services
     desc: "This is list of Windows Services That are Installed on OS"
@@ -753,16 +753,16 @@ inputs:
     desc: "This is the values of the Winlogon Registry Key"
     type: Array
     value:
-    - NT SERVICE\TrustedInstaller Allow  FullControl
-    - NT SERVICE\TrustedInstaller Allow  268435456
-    - NT AUTHORITY\SYSTEM Allow  FullControl
-    - NT AUTHORITY\SYSTEM Allow  268435456
-    - BUILTIN\Administrators Allow  FullControl
-    - BUILTIN\Administrators Allow  268435456
-    - BUILTIN\Users Allow  ReadKey
-    - BUILTIN\Users Allow  -2147483648
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
-    - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
+     - NT SERVICE\TrustedInstaller Allow  FullControl
+     - NT SERVICE\TrustedInstaller Allow  268435456
+     - NT AUTHORITY\SYSTEM Allow  FullControl
+     - NT AUTHORITY\SYSTEM Allow  268435456
+     - BUILTIN\Administrators Allow  FullControl
+     - BUILTIN\Administrators Allow  268435456
+     - BUILTIN\Users Allow  ReadKey
+     - BUILTIN\Users Allow  -2147483648
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadKey
+     - APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -2147483648
   
   - name: ntds_permissions
     desc: "Permissions on folder and file for NTDS Directory"
