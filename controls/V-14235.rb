@@ -55,15 +55,7 @@ control 'V-14235' do
   else
     describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
       it { should have_property 'ConsentPromptBehaviorAdmin' }
-      its('ConsentPromptBehaviorAdmin') { should cmp <= 4 }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-      it { should have_property 'ConsentPromptBehaviorAdmin' }
-      its('ConsentPromptBehaviorAdmin') { should cmp > 0 }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-      it { should have_property 'ConsentPromptBehaviorAdmin' }
-      its('ConsentPromptBehaviorAdmin') { should be_between(1,4)}
+      its('ConsentPromptBehaviorAdmin') { should be_between(1,4) }
     end
   end
 end
