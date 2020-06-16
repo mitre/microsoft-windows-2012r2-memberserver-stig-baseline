@@ -30,10 +30,14 @@ control 'V-1104' do
   \"Maximum password age\" to \"60\" days or less (excluding \"0\" which is
   unacceptable)."
 
+  #describe security_policy do
+  #  its('MaximumPasswordAge') { should be <= input('max_pass_age') }
+  #end
   describe security_policy do
-    its('MaximumPasswordAge') { should be <= input('max_pass_age') }
+    its('MaximumPasswordAge') { should be_between(1,input('max_pass_age')) }
   end
   describe security_policy do
     its('MaximumPasswordAge') { should be > 0 }
   end
 end
+be_between(1,input('max_pass_lockout'))
