@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-73805' do
   title "The Server Message Block (SMB) v1 protocol must be disabled on Windows
   2012 R2."
@@ -48,17 +51,22 @@ control 'V-73805' do
   De-select \"SMB 1.0/CIFS File Sharing Support\".
 
   The system must be restarted for the changes to take effect."
-  
+
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'System is not Windows 2012, control is NA' do
       skip 'System is not Windows 2012, control is NA'
     end
+  elsif registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters').has_property_value?('SMB1', :dword, 0)
+    impact 0.0
+    describe 'This control is not applicable, as controls V-73519 and V-73523 are configured' do
+      skip 'This control is not applicable, as controls V-73519 and V-73523 are configured'
+    end
   else
-   state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
-   describe 'SMB 1.0 Procotocl is disabled as part of Security Requirement' do
-    subject { state }
-    it { should_not eq "Enabled"}
-   end
+    state = powershell("(Get-WindowsOptionalFeature -Online | Where {$_.FeatureName -eq 'SMB1Protocol'}).State ").stdout.strip
+    describe 'SMB 1.0 Procotocl is disabled as part of Security Requirement' do
+      subject { state }
+      it { should_not eq 'Enabled' }
+    end
   end
 end

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1174' do
   title "The amount of idle time required before suspending a session must be
   properly set."
@@ -14,7 +17,7 @@ control 'V-1174' do
   tag "fix_id": 'F-45804r2_fix'
   tag "cci": ['CCI-002361']
   tag "cce": ['CCE-23897-2']
-  tag "nist": ['AC-12', 'Rev_4']
+  tag "nist": %w[AC-12 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -31,7 +34,7 @@ control 'V-1174' do
   Settings >> Security Settings >> Local Policies >> Security Options >>
   \"Microsoft Network Server: Amount of idle time required before suspending
   session\" to \"15\" minutes or less."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanServer\\Parameters') do
     it { should have_property 'AutoDisconnect' }
     its('AutoDisconnect') { should cmp <= 15 }

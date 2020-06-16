@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15706' do
   title "The user must be prompted to authenticate on resume from sleep
   (plugged in)."
@@ -12,7 +15,7 @@ control 'V-15706' do
   tag "fix_id": 'F-46058r1_fix'
   tag "cci": ['CCI-002038']
   tag "cce": ['CCE-23698-4']
-  tag "nist": ['IA-11', 'Rev_4']
+  tag "nist": %w[IA-11 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -29,8 +32,8 @@ control 'V-15706' do
   Administrative Templates -> System -> Power Management -> Sleep Settings ->
   \"Require a password when a computer wakes (plugged in)\" to \"Enabled\"."
 
-  #This test is not validate on a Windows Server, Servers don't go to sleep or you would have outages, this needs to be reviewed for validation.
-  
+  # This test is not validate on a Windows Server, Servers don't go to sleep or you would have outages, this needs to be reviewed for validation.
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51') do
     it { should have_property 'ACSettingIndex' }
     its('ACSettingIndex') { should cmp == 1 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3340' do
   title 'Network shares that can be accessed anonymously must not be allowed.'
   desc  "Anonymous access to network shares provides the potential for gaining
@@ -11,7 +14,7 @@ control 'V-3340' do
   tag "fix_id": 'F-45810r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-25592-7']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist, this is not a
   finding:
@@ -30,7 +33,7 @@ control 'V-3340' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Shares that can be accessed anonymously\" contains no entries
   (blank)."
-  
+
   describe.one do
     describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
       it { should have_property 'NullSessionShares' }

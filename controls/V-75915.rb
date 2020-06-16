@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-75915' do
   title "Orphaned security identifiers (SIDs) must be removed from user rights
   on Windows 2012 / 2012 R2."
@@ -32,7 +35,7 @@ control 'V-75915' do
   tag "fix": "Remove any unresolved SIDs found in User Rights assignments and
   determined to not be for currently valid accounts or groups by removing the
   accounts or groups from the appropriate group policy."
-  
+
   describe "A manual review is required to ensure orphaned security identifiers (SIDs) are removed from user rights
   on Windows 2012 / 2012 R2" do
     skip 'A manual review is required to ensure orphaned security identifiers (SIDs) are removed from user rights

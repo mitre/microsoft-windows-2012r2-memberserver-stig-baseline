@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15698' do
   title "The configuration of wireless devices using Windows Connect Now must
   be disabled."
@@ -32,7 +35,7 @@ control 'V-15698' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Windows Connect Now -> \"Configuration
   of wireless settings using Windows Connect Now\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WCN\\Registrars') do
     it { should have_property 'DisableInBand802DOT11Registrar' }
     its('DisableInBand802DOT11Registrar') { should cmp == 0 }

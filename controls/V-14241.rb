@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14241' do
   title "User Account Control must switch to the secure desktop when prompting
   for elevation."
@@ -13,7 +16,7 @@ control 'V-14241' do
   tag "fix_id": 'F-45878r2_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23656-2']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
 
@@ -34,8 +37,8 @@ control 'V-14241' do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Switch to the secure desktop when prompting for elevation\" to
   \"Enabled\"."
-  
-  #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
+
+  # command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'

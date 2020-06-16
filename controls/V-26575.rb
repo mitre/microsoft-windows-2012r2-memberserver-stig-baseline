@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26575' do
   title 'The 6to4 IPv6 transition technology must be disabled.'
   desc  "IPv6 transition technologies, which tunnel packets through other
@@ -25,7 +28,7 @@ control 'V-26575' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> TCPIP Settings -> IPv6 Transition
   Technologies -> \"Set 6to4 State\" to \"Enabled: Disabled State\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition') do
     it { should have_property '6to4_State' }
     its('6to4_State') { should cmp 'Disabled' }

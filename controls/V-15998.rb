@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15998' do
   title "Users must be prevented from mapping local LPT ports and redirecting
   data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop
@@ -29,7 +32,7 @@ control 'V-15998' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Device and Resource Redirection -> \"Do not
   allow LPT port redirection\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fDisableLPT' }
     its('fDisableLPT') { should cmp == 1 }

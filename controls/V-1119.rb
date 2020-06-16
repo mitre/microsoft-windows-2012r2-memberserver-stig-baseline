@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1119' do
   title 'The system must not boot into multiple operating systems (dual-boot).'
   desc  "Allowing a system to boot into multiple operating systems
@@ -24,11 +27,11 @@ control 'V-1119' do
   tag "fix": "Ensure Windows Server 2012 is the only operating system installed
   for the system to boot into.  Remove alternate operating systems."
 
- check_os = powershell('bcdedit | Findstr description | Findstr /v /C:"Windows Boot Manager" | ConvertTo-Json').stdout.strip
- result = check_os[25..43]
+  check_os = powershell('bcdedit | Findstr description | Findstr /v /C:"Windows Boot Manager" | ConvertTo-Json').stdout.strip
+  result = check_os[25..43]
 
   describe 'Verify the local system boots directly into Windows' do
-   subject {result}
-   it { should cmp "Windows Server 2012"}
+    subject { result }
+    it { should cmp 'Windows Server 2012' }
   end
 end

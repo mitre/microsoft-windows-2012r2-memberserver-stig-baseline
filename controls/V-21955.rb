@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-21955' do
   title "IPv6 source routing must be configured to the highest protection
   level."
@@ -31,7 +34,7 @@ control 'V-21955' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip6\\Parameters') do
     it { should have_property 'DisableIPSourceRouting' }
     its('DisableIPSourceRouting') { should cmp == 2 }

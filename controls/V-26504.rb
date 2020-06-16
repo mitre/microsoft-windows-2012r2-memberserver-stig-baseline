@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26504' do
   title "Unauthorized accounts must not have the Restore files and directories
   user right."
@@ -41,8 +44,8 @@ control 'V-26504' do
   groups:
 
   Administrators"
- 
-    describe security_policy do
-      its('SeRestorePrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeRestorePrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

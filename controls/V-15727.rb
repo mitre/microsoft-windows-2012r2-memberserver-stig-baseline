@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15727' do
   title 'Users must be prevented from sharing files in their profiles.'
   desc  "Allowing users to share files in their profiles may provide
@@ -26,7 +29,7 @@ control 'V-15727' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Network Sharing -> \"Prevent
   users from sharing files within their profile\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer') do
     it { should have_property 'NoInPlaceSharing' }
     its('NoInPlaceSharing') { should == 1 }

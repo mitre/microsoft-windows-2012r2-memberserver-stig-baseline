@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1171' do
   title 'Ejection of removable NTFS media must be restricted to Administrators.'
   desc  "Removable hard drives, if they are not properly configured, can be
@@ -27,7 +30,7 @@ control 'V-1171' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Devices: Allowed to format and eject removable media\" to \"Administrators\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'AllocateDASD' }
     its('AllocateDASD') { should cmp == 0 }

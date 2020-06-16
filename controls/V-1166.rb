@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1166' do
   title "The Windows SMB client must be enabled to perform SMB packet signing
   when possible."
@@ -11,7 +14,7 @@ control 'V-1166' do
   tag "rid": 'SV-52874r2_rule'
   tag "stig_id": 'WN12-SO-000029'
   tag "fix_id": 'F-45800r1_fix'
-  tag "cci": ['CCI-002418', 'CCI-002421']
+  tag "cci": %w[CCI-002418 CCI-002421]
   tag "cce": ['CCE-24740-3']
   tag "nist": ['SC-8', 'SC-8 (2)', 'Rev_4']
   tag "documentable": false
@@ -30,7 +33,7 @@ control 'V-1166' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Microsoft network client: Digitally sign communications (if server agrees)\"
   to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters') do
     it { should have_property 'EnableSecuritySignature' }
     its('EnableSecuritySignature') { should cmp == 1 }

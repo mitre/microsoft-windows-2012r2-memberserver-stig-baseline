@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3245' do
   title "Non system-created file shares on a system must limit access to groups
   that require it."
@@ -11,7 +14,7 @@ control 'V-3245' do
   tag "stig_id": 'WN12-GE-000018'
   tag "fix_id": 'F-45807r4_fix'
   tag "cci": ['CCI-001090']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If only system-created shares such as \"ADMIN$\", \"C$\", and
   \"IPC$\" exist on the system, this is NA.
@@ -45,7 +48,7 @@ control 'V-3245' do
   get.each do |share|
     loc_space = share.index(' ')
 
-    names = share[0..loc_space-1]
+    names = share[0..loc_space - 1]
 
     share_names.push(names)
     path = share[9..50]
@@ -57,7 +60,6 @@ control 'V-3245' do
   if share_names_string != 'ADMIN$,C$,IPC$'
 
     [share_paths, share_names].each do |path1, _name1|
-
       describe command("Get-Acl -Path '#{path1}' | Format-List | Findstr /i /C:'Everyone Allow'") do
         its('stdout') { should eq '' }
       end

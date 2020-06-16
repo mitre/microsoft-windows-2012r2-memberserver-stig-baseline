@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26470' do
   title "Unauthorized accounts must not have the Access this computer from the
   network user right on member servers."
@@ -15,7 +18,7 @@ control 'V-26470' do
   tag "fix_id": 'F-49518r2_fix'
   tag "cci": ['CCI-000213']
   tag "cci": ['CCE-24938-3']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "severity_override_guidance": "If an application requires this user
   right, this can be downgraded to not a finding if the following conditions are
@@ -50,8 +53,8 @@ control 'V-26470' do
   Systems dedicated to managing Active Directory (AD admin platforms, see V-36436
   in the Active Directory Domain STIG), must only allow Administrators, removing
   the Authenticated Users group."
- 
-    describe security_policy do
-      its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
-      end
+
+  describe security_policy do
+    its('SeNetworkLogonRight') { should eq ['S-1-5-11', 'S-1-5-32-544'] }
+  end
 end

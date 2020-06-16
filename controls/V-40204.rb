@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40204' do
   title "Only the default client printer must be redirected to the Remote
   Desktop Session Host.  (Remote Desktop Services Role)."
@@ -28,7 +31,7 @@ control 'V-40204' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Printer Redirection -> \"Redirect only the
   default client printer\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'RedirectOnlyDefaultClientPrinter' }
     its('RedirectOnlyDefaultClientPrinter') { should cmp == 1 }

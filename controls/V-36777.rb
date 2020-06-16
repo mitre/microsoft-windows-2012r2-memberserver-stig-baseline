@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36777' do
   title 'Toast notifications to the lock screen must be turned off.'
   desc  "Toast notifications that are displayed on the lock screen could
@@ -28,7 +31,7 @@ control 'V-36777' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Start Menu and Taskbar -> Notifications -> \"Turn
   off toast notifications on the lock screen\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications') do
     it { should have_property 'NoToastApplicationNotificationOnLockScreen' }
     its('NoToastApplicationNotificationOnLockScreen') { should cmp == 1 }

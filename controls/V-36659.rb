@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36659' do
   title "Users with Administrative privileges must have separate accounts for
   administrative duties and normal operational tasks."
@@ -22,7 +25,7 @@ control 'V-36659' do
   administrative functions and standard user functions, this is a finding."
   tag "fix": "Ensure each user with administrative privileges has a separate
   account for user duties and one for privileged duties."
-  
+
   administrators = input('administrators')
   administrator_group = command("net localgroup Administrators | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   administrator_group.each do |user|

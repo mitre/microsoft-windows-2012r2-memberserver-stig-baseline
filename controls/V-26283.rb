@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26283' do
   title 'Anonymous enumeration of SAM accounts must not be allowed.'
   desc  "Anonymous enumeration of SAM accounts allows anonymous log on users
@@ -27,7 +30,7 @@ control 'V-26283' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Do not allow anonymous enumeration of SAM accounts\" to
   \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'RestrictAnonymousSAM' }
     its('RestrictAnonymousSAM') { should cmp == 1 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26493' do
   title "Unauthorized accounts must not have the Load and unload device drivers
   user right."
@@ -34,8 +37,8 @@ control 'V-26493' do
   groups:
 
   Administrators"
- 
-    describe security_policy do
-      its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeLoadDriverPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

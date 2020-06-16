@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26489' do
   title "Unauthorized accounts must not have the Generate security audits user
   right."
@@ -43,7 +46,7 @@ control 'V-26489' do
   Local Service
   Network Service"
 
-    describe security_policy do
-      its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
-    end
+  describe security_policy do
+    its('SeAuditPrivilege') { should eq ['S-1-5-19', 'S-1-5-20'] }
+  end
 end

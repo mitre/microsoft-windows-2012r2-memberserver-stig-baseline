@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3338' do
   title "Named pipes that can be accessed anonymously must be configured to
   contain no values on member servers."
@@ -15,7 +18,7 @@ control 'V-3338' do
   tag "fix_id": 'F-44296r2_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-25466-4']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -36,7 +39,7 @@ control 'V-3338' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Named pipes that can be accessed anonymously\" to be defined
   but containing no entries (blank)."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'NullSessionPipes' }
     its('NullSessionPipes') { should eq [] }

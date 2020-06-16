@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15696' do
   title 'The Mapper I/O network protocol (LLTDIO) driver must be disabled.'
   desc  "The Mapper I/O network protocol (LLTDIO) driver allows the discovery
@@ -30,7 +33,7 @@ control 'V-15696' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Link-Layer Topology Discovery -> \"Turn
   on Mapper I/O (LLTDIO) driver\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\LLTD') do
     it { should have_property 'AllowLLTDIOOnDomain' }
     its('AllowLLTDIOOnDomain') { should cmp == 0 }

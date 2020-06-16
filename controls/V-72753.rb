@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-72753' do
   title 'WDigest Authentication must be disabled.'
   desc  "When the WDigest Authentication protocol is enabled, plain text
@@ -38,7 +41,7 @@ control 'V-72753' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\Wdigest') do
     it { should have_property 'UseLogonCredential' }
     its('UseLogonCredential') { should cmp == 0 }

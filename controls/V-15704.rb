@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15704' do
   title "Errors in handwriting recognition on tablet PCs must not be reported
   to Microsoft."
@@ -33,7 +36,7 @@ control 'V-15704' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication settings -> \"Turn off handwriting recognition error
   reporting\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\HandwritingErrorReports') do
     it { should have_property 'PreventHandwritingErrorReports' }
     its('PreventHandwritingErrorReports') { should cmp == 1 }

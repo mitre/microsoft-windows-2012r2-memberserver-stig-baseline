@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1151' do
   title "The print driver installation privilege must be restricted to
   administrators."
@@ -28,7 +31,7 @@ control 'V-1151' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Devices: Prevent users from installing printer drivers\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Print\\Providers\\LanMan Print Services\\Servers') do
     it { should have_property 'AddPrinterDrivers' }
     its('AddPrinterDrivers') { should cmp == 1 }

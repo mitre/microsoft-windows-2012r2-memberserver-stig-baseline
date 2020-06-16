@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14230' do
   title 'Audit policy using subcategories must be enabled.'
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -33,9 +36,9 @@ control 'V-14230' do
   Settings -> Security Settings -> Local Policies -> Security Options -> \"Audit:
   Force audit policy subcategory settings (Windows Vista or later) to override
   audit policy category settings\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\Currentcontrolset\\Control\\Lsa') do
-    it { should have_property 'scenoapplylegacyauditpolicy' }
-    its('scenoapplylegacyauditpolicy') { should cmp == 1 }
+    it { should have_property 'SCENoApplyLegacyAuditPolicy' }
+    its('SCENoApplyLegacyAuditPolicy') { should cmp == 1 }
   end
 end

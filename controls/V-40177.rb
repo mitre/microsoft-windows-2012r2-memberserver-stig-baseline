@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40177' do
   title "Permissions for program file directories must conform to minimum
   requirements."
@@ -91,22 +94,16 @@ control 'V-40177' do
   CREATOR OWNER - Full control - Subfolders and files only
   ALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files"
 
-   describe file("C:\\Program Files") do
-    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-  end
+    c_program_files_perm = json( command: "icacls 'C:\\Program Files' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("C:\\Program Files ", '') }
+    describe "c:\\Program Files permissions are set correctly on folder structure" do
+      subject { c_program_files_perm.eql? input('c_program_files_perm') }
+      it { should eq true }
+    end
 
-  describe file("C:\\Program Files (x86)") do
-    it { should be_allowed('write', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('write', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('full-control', by_user: 'NT SERVICE\\TrustedInstaller') }
-    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
-  end
-
+    c_program_filesx86_perm = json( command: "icacls 'C:\\Program Files (x86)' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("C:\\Program Files (x86) ", '') }
+    describe "c:\\Program Files(x86) permissions are set correctly on folder structure" do
+      subject { c_program_filesx86_perm.eql? input('c_program_files_perm') }
+      it { should eq true }
+    end
 end
+   

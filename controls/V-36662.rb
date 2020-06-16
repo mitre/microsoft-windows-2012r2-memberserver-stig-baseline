@@ -50,46 +50,46 @@ control 'V-36662' do
   password leaves the organization.
 
   It is recommended that system-managed service accounts be used where possible."
+
   application_accounts = input('application_accounts_domain')
   application_accounts_local = input('application_accounts_local')
-  # returns a hash of {'Enabled' => 'true' } 
-  is_domain_controller = json({ command: 'Get-ADDomainController | Select Enabled | ConvertTo-Json' })
 
-   if (is_domain_controller['Enabled'] == true)
-     application_accounts.each do |user|
-     password_set_date = json({ command: "Get-ADUser -Identity #{user} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
-     date = password_set_date["DateTime"]
-     if (date == nil)
-      describe "Application Accounts are all within 365 days since password change #{user}" do
-        skip "Application Accounts are all within 365 days since password change #{user}"
-      end
-    else
-       describe 'Password Last Set' do
-         it "Application Account #{user} Password Last Set Date is" do
-         failure_message = "Password Date should not be more that 365 Days: #{date}"
-         expect(date).to be_empty, failure_message
+  domain_role = command('wmic computersystem get domainrole | Findstr /v DomainRole').stdout.strip
+
+  if domain_role == '4' || domain_role == '5'
+    application_accounts.each do |user|
+      password_set_date = json({ command: "Get-ADUser -Identity #{user} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
+      date = password_set_date['DateTime']
+      if date.nil?
+        describe "Application Accounts are all within 365 days since password change #{user}" do
+          skip "Application Accounts are all within 365 days since password change #{user}"
+        end
+      else
+        describe 'Password Last Set' do
+          it "Application Account #{user} Password Last Set Date is" do
+            failure_message = "Password Date should not be more that 365 Days: #{date}"
+            expect(date).to be_empty, failure_message
+          end
         end
        end
-      end
-   end
-  end
-
-  if (is_domain_controller.params == {} )
-   application_accounts_local.each do |user|
-     local_password_set_date = json({ command: "Get-LocalUser -name #{user} | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
-     date = local_password_set_date["DateTime"]
-     if (date == nil)
-      describe "Application Accounts are all within 365 days since password change #{user}" do
-        skip "Application Accounts are all within 365 days since password change #{user}"
-      end
-    else
-       describe 'Password Last Set' do
-         it "Application Account #{user} Password Last Set Date is" do
-         failure_message = "Password Date should not be more that 365 Days: #{date}"
-         expect(date).to be_empty, failure_message
+    end
+ end
+  if domain_role != '4' || domain_role != '5'
+    application_accounts_local.each do |user|
+      local_password_set_date = json({ command: "Get-LocalUser -name #{user} | Where-Object {$_.PasswordLastSet -le (Get-Date).AddDays(-365)} | Select-Object -ExpandProperty PasswordLastSet | ConvertTo-Json" })
+      date = local_password_set_date['DateTime']
+      if date.nil?
+        describe "Application Accounts are all within 365 days since password change #{user}" do
+          skip "Application Accounts are all within 365 days since password change #{user}"
+        end
+      else
+        describe 'Password Last Set' do
+          it "Application Account #{user} Password Last Set Date is" do
+            failure_message = "Password Date should not be more that 365 Days: #{date}"
+            expect(date).to be_empty, failure_message
+          end
         end
        end
-      end
-   end
+    end
   end
 end

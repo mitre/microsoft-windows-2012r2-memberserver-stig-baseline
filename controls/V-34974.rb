@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-34974' do
   title "The Windows Installer Always install with elevated privileges option
   must be disabled."
@@ -27,7 +30,7 @@ control 'V-34974' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Installer -> \"Always
   install with elevated privileges\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Installer') do
     it { should have_property 'AlwaysInstallElevated' }
     its('AlwaysInstallElevated') { should cmp == 0 }

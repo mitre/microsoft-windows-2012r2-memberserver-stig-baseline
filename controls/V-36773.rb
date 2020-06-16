@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36773' do
   title "The machine inactivity limit must be set to 15 minutes, locking the
   system with the screensaver."
@@ -30,7 +33,7 @@ control 'V-36773' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive logon: Machine inactivity limit\" to \"900\" seconds\" or less."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'InactivityTimeoutSecs' }
     its('InactivityTimeoutSecs') { should cmp <= 900 }

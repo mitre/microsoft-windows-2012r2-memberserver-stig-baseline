@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1163' do
   title 'Outgoing secure channel traffic must be encrypted when possible.'
   desc  "Requests sent on the secure channel are authenticated, and sensitive
@@ -12,7 +15,7 @@ control 'V-1163' do
   tag "fix_id": 'F-45797r2_fix'
   tag "cci": ['CCI-002421']
   tag "cce": ['CCE-24414-5']
-  tag "nist": ['SC-8', 'Rev_4']
+  tag "nist": %w[SC-8 Rev_4]
   tag "nist": ['SC-8 (2)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
@@ -31,7 +34,7 @@ control 'V-1163' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Security Settings >> Local Policies >> Security Options >> \"Domain
   member: Digitally encrypt secure channel data (when possible)\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
     it { should have_property 'SealSecureChannel' }
     its('SealSecureChannel') { should cmp == 1 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36658' do
   title 'Users with administrative privilege must be documented.'
   desc  "Administrative accounts may perform any action on a system.  Users

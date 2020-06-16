@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36710' do
   title "Automatic download of updates from the Windows Store must be turned
   off."
@@ -55,20 +58,24 @@ control 'V-36710' do
   updates\" to \"Enabled\"."
 
   if os['release'].to_f >= 6.3
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
-      it { should have_property 'AutoDownload' }
-      its('AutoDownload') { should cmp == 2 }
-    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+    if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+      describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore') do
+        it { should have_property 'AutoDownload' }
+        its('AutoDownload') { should cmp == 2 }
+      end
+    end
   end
 
   if os['release'].to_f < 6.3
-    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
-      it { should have_property 'AutoDownload' }
-      its('AutoDownload') { should cmp == 2 }
-    end if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+    if registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+      describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\WindowsUpdate') do
+        it { should have_property 'AutoDownload' }
+        its('AutoDownload') { should cmp == 2 }
+      end
+    end
   end
 
-  if !registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
+  unless registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsStore').exists?
     impact 0.0
     describe 'The system does not have Windows Store installed' do
       skip "The system does not have Windows Store installed, this requirement is Not

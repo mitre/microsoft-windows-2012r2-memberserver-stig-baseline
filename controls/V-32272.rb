@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-32272' do
   title "The DoD Root CA certificates must be installed in the Trusted Root
   Store."
@@ -11,7 +14,7 @@ control 'V-32272' do
   tag "rid": 'SV-52961r5_rule'
   tag "stig_id": 'WN12-PK-000001'
   tag "fix_id": 'F-76901r2_fix'
-  tag "cci": ['CCI-000185', 'CCI-002470']
+  tag "cci": %w[CCI-000185 CCI-002470]
   tag "nist": ['SC-23 (5)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the DoD Root CA certificates are installed as Trusted Root Certification Authorities.
@@ -24,7 +27,7 @@ Execute the following command:
 
 Get-ChildItem -Path Cert:Localmachine\root | Where Subject -Like \"*DoD*\" | FL Subject, Thumbprint, NotAfter
 
-If the following certificate \"Subject\" and \"Thumbprint\" information is not displayed, this is finding. 
+If the following certificate \"Subject\" and \"Thumbprint\" information is not displayed, this is finding.
 
 If an expired certificate (\"NotAfter\" date) is not listed in the results, this is not a finding.
 
@@ -96,12 +99,12 @@ Valid to: Friday, June 14, 2041"
   The InstallRoot tool is available on IASE at
   http://iase.disa.mil/pki-pke/Pages/tools.aspx."
 
-dod_root_certificates = JSON.parse(input('dod_root_certificates').to_json)
+  dod_root_certificates = JSON.parse(input('dod_root_certificates').to_json)
 
-query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\root | Where {$_.Subject -Like "*DoD*"} | Select Subject, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
+  query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\root | Where {$_.Subject -Like "*DoD*"} | Select Subject, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
 
-    describe 'Verify the DoD Root CA certificates are installed as Trusted Root Certification Authorities.' do
-      subject { query.params }
-      it { should be_in dod_root_certificates }
-    end
+  describe 'Verify the DoD Root CA certificates are installed as Trusted Root Certification Authorities.' do
+    subject { query.params }
+    it { should be_in dod_root_certificates }
+  end
 end

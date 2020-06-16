@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1152' do
   title 'Anonymous access to the registry must be restricted.'
   desc  "The registry is integral to the function, security, and stability of
@@ -55,21 +58,15 @@ control 'V-1152' do
   # raw powershell output
   raw_winreg = powershell(hklm_winreg).stdout.strip
 
-   # clean results cleans up the extra line breaks
+  # clean results cleans up the extra line breaks
   clean_result_winreg = raw_winreg.lines.collect(&:strip)
 
   describe registry_key('HKLM\System\CurrentControlSet\Control\SecurePipeServers\Winreg') do
     it { should exist }
   end
 
-   describe 'Verify the default registry permissions for the keys note below of the HKLM:System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg' do
+  describe 'Verify the default registry permissions for the keys note below of the HKLM:System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg' do
     subject { clean_result_winreg }
     it { should be_in input('reg_winreg_perms') }
   end
-  #describe windows_registry("HKLM:\\System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg") do
-    #it { should be_allowed('read', by_user: 'NT AUTHORITY\\LOCAL SERVICE') }
-  #  it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-  #  it { should be_allowed('read', by_user: 'BUILTIN\\Backup Operators') }
- # end
-
 end

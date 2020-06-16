@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4112' do
   title "The system must be configured to disable the Internet Router Discovery
   Protocol (IRDP)."
@@ -13,7 +16,7 @@ control 'V-4112' do
   tag "fix_id": 'F-45852r2_fix'
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-23677-8']
-  tag "nist": ['SC-5', 'Rev_4']
+  tag "nist": %w[SC-5 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -32,7 +35,7 @@ control 'V-4112' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'PerformRouterDiscovery' }
     its('PerformRouterDiscovery') { should cmp == 0 }

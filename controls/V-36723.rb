@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36723' do
   title "Permissions for the Security event log must prevent access by
   nonprivileged accounts."
@@ -13,8 +16,8 @@ control 'V-36723' do
   tag "rid": 'SV-51571r1_rule'
   tag "stig_id": 'WN12-AU-000205'
   tag "fix_id": 'F-44700r2_fix'
-  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164']
-  tag "nist": ['AU-9', 'Rev_4']
+  tag "cci": %w[CCI-000162 CCI-000163 CCI-000164]
+  tag "nist": %w[AU-9 Rev_4]
   tag "documentable": false
   tag "ia_controls": 'ECTP-1'
   tag "check": "Verify the permissions on the Security event log
@@ -42,7 +45,7 @@ control 'V-36723' do
 
   If the location of the logs has been changed, when adding Eventlog to the
   permissions, it must be entered as \"NT Service\\Eventlog\"."
-  
+
   get_system_root = command('Get-ChildItem Env: | Findstr SystemRoot').stdout.strip
   system_root = get_system_root[11..get_system_root.length]
 
@@ -56,11 +59,11 @@ control 'V-36723' do
   # raw powershell output
   raw_logs_security = powershell(winevt_logs_security).stdout.strip
 
-   # clean results cleans up the extra line breaks
-  clean_logs_security  = raw_logs_security.lines.collect(&:strip)
+  # clean results cleans up the extra line breaks
+  clean_logs_security = raw_logs_security.lines.collect(&:strip)
 
-   describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Security.evtx' do
-    subject { clean_logs_security  }
+  describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Security.evtx' do
+    subject { clean_logs_security }
     it { should cmp input('winevt_logs_security_perms') }
   end
 end

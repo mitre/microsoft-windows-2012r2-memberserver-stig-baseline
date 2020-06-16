@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15700' do
   title "Remote access to the Plug and Play interface must be disabled for
   device installation."
@@ -28,7 +31,7 @@ control 'V-15700' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Device Installation -> \"Allow remote
   access to the Plug and Play interface\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\DeviceInstall\\Settings') do
     it { should have_property 'AllowRemoteRPC' }
     its('AllowRemoteRPC') { should cmp == 0 }

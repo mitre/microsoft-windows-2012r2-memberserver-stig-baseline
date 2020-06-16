@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14243' do
   title 'Administrator accounts must not be enumerated during elevation.'
   desc  "Enumeration of administrator accounts when elevating can provide part
@@ -12,7 +15,7 @@ control 'V-14243' do
   tag "fix_id": 'F-45881r2_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-24805-4']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -28,7 +31,7 @@ control 'V-14243' do
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> Windows Components >> Credential User Interface >>
   \"Enumerate administrator accounts on elevation\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI') do
     it { should have_property 'EnumerateAdministrators' }
     its('EnumerateAdministrators') { should cmp == 0 }

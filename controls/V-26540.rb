@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26540' do
   title "The system must be configured to audit Logon/Logoff - Logoff
   successes."
@@ -18,7 +21,7 @@ control 'V-26540' do
   tag "rid": 'SV-52996r2_rule'
   tag "stig_id": 'WN12-AU-000045'
   tag "fix_id": 'F-45923r1_fix'
-  tag "cci": ['CCI-000067', 'CCI-000172']
+  tag "cci": %w[CCI-000067 CCI-000172]
   tag "nist": ['AC-17 (1)', 'AU-12 c', 'Rev_4']
   tag "documentable": false
   tag "check": "Security Option \"Audit: Force audit policy subcategory
@@ -37,7 +40,7 @@ control 'V-26540' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Logon/Logoff -> \"Audit Logoff\" with \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Logoff') { should eq 'Success' }

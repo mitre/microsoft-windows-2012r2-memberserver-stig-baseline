@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3470' do
   title "The system must be configured to prevent unsolicited remote assistance
   offers."
@@ -13,7 +16,7 @@ control 'V-3470' do
   tag "fix_id": 'F-45843r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-23282-7']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -28,7 +31,7 @@ control 'V-3470' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Remote Assistance -> \"Configure Offer
   Remote Assistance\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fAllowUnsolicited' }
     its('fAllowUnsolicited') { should cmp == 0 }

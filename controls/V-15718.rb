@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15718' do
   title "Turning off File Explorer heap termination on corruption must be
   disabled."
@@ -11,7 +14,7 @@ control 'V-15718' do
   tag "fix_id": 'F-46063r1_fix'
   tag "cci": ['CCI-002385']
   tag "cce": ['CCE-23913-7']
-  tag "nist": ['SC-5', 'Rev_4']
+  tag "nist": %w[SC-5 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -26,7 +29,7 @@ control 'V-15718' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> File Explorer -> \"Turn off
   heap termination on corruption\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Explorer') do
     it { should have_property 'NoHeapTerminationOnCorruption' }
     its('NoHeapTerminationOnCorruption') { should cmp == 0 }

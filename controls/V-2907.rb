@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-2907' do
   title 'System files must be monitored for unauthorized changes.'
   desc  "Monitoring system files for changes against a baseline on a regular
@@ -23,7 +26,7 @@ control 'V-2907' do
   tag "fix": "Monitor system files (e.g., *.exe, *.bat, *.com, *.cmd, and
   *.dll) on servers for unauthorized changes against a baseline on a weekly
   basis.  This can be done with the use of various monitoring tools."
-  
+
   describe 'A manual review is required to ensure system files are monitored for unauthorized changes' do
     skip 'A manual review is required to ensure system files are monitored for unauthorized changes'
   end

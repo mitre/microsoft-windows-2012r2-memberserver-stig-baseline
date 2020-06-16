@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-16021' do
   title 'The Windows Help Experience Improvement Program must be disabled.'
   desc  "Some features may communicate with the vendor, sending system
@@ -31,7 +34,7 @@ control 'V-16021' do
   Administrative Templates -> System -> Internet Communication Management ->
   Internet Communication Settings -> \"Turn off Help Experience Improvement
   Program\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Assistance\\Client\\1.0') do
     it { should have_property 'NoImplicitFeedback' }
     its('NoImplicitFeedback') { should cmp == 1 }

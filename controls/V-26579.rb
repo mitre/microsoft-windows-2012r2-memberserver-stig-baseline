@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26579' do
   title "The Application event log size must be configured to 32768 KB or
   greater."
@@ -12,7 +15,7 @@ control 'V-26579' do
   tag "fix_id": 'F-71601r2_fix'
   tag "cci": ['CCI-001849']
   tag "cce": ['CCE-24277-6']
-  tag "nist": ['AU-4', 'Rev_4']
+  tag "nist": %w[AU-4 Rev_4]
   tag "documentable": false
   tag "check": "If the system is configured to write events directly to an
   audit server, this is NA.
@@ -31,9 +34,9 @@ control 'V-26579' do
   Administrative Templates >> Windows Components >> Event Log Service >>
   Application >> \"Specify the maximum log file size (KB)\" to \"Enabled\" with a
   \"Maximum Log Size (KB)\" of \"32768\" or greater."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application') do
     it { should have_property 'MaxSize' }
-    its('MaxSize') { should cmp >= 32768 }
+    its('MaxSize') { should cmp >= 32_768 }
   end
 end

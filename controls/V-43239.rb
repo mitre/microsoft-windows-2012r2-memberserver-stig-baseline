@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-43239' do
   title "Windows 2012 R2 must include command line data in process creation
   events."
@@ -38,7 +41,7 @@ control 'V-43239' do
   tag "fix": "Configure the policy value for Computer Configuration >>
   Administrative Templates >> System >> Audit Process Creation >> \"Include
   command line in process creation events\" to \"Enabled\"."
-  
+
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'Control not applicable' do

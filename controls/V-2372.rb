@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-2372' do
   title 'Reversible password encryption must be disabled.'
   desc  "Storing passwords using reversible encryption is essentially the same
@@ -24,7 +27,7 @@ control 'V-2372' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Account Policies -> Password Policy -> \"Store
   password using reversible encryption\" to \"Disabled\"."
-  
+
   describe security_policy do
     its('ClearTextPassword') { should eq 0 }
   end

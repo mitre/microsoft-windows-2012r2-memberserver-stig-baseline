@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36680' do
   title 'Access to the Windows Store must be turned off.'
   desc  "Uncontrolled installation of applications can introduce various
@@ -37,14 +40,14 @@ control 'V-36680' do
   This is located under \"User Interfaces and Infrastructure\" in the \"Add Roles
   and Features Wizard\".  The \\Windows\\WinStore directory may need to be
   manually deleted after this."
-  
+
   describe.one do
-   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
-    it { should have_property 'NoUseStoreOpenWith' }
-    its('NoUseStoreOpenWith') { should cmp == 1 }
-   end
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
-     it { should_not have_property 'NoUseStoreOpenWith' }
+      it { should have_property 'NoUseStoreOpenWith' }
+      its('NoUseStoreOpenWith') { should cmp == 1 }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer') do
+      it { should_not have_property 'NoUseStoreOpenWith' }
+    end
   end
- end
 end

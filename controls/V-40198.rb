@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40198' do
   title "Members of the Backup Operators group must have separate accounts for
   backup duties and normal operational tasks."
@@ -25,7 +28,7 @@ control 'V-40198' do
   backup functions and standard user functions, this is a finding."
   tag "fix": "Ensure each member of the Backup Operators group has separate
   accounts for backup functions and standard user functions."
-  
+
   backup_operators_group = command("net localgroup 'Backup Operators' | Format-List | Findstr /V 'Alias Name Comment Members - command'").stdout.strip.split("\r\n")
   backup_operators = input('backup_operators')
   if backup_operators_group.empty?

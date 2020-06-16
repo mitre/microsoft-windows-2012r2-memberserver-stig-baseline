@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36719' do
   title "The Windows Remote Management (WinRM) service must not allow
   unencrypted traffic."
@@ -10,7 +13,7 @@ control 'V-36719' do
   tag "rid": 'SV-51756r2_rule'
   tag "stig_id": 'WN12-CC-000127'
   tag "fix_id": 'F-44831r1_fix'
-  tag "cci": ['CCI-002890', 'CCI-003123']
+  tag "cci": %w[CCI-002890 CCI-003123]
   tag "cce": ['CCE-25102-5']
   tag "nist": ['MA-4 (6)', 'Rev_4']
   tag "documentable": false
@@ -27,7 +30,7 @@ control 'V-36719' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Remote Management
   (WinRM) -> WinRM Service -> \"Allow unencrypted traffic\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WinRM\\Service') do
     it { should have_property 'AllowUnencryptedTraffic' }
     its('AllowUnencryptedTraffic') { should cmp == 0 }

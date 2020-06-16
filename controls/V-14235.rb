@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14235' do
   title "User Account Control must, at minimum, prompt administrators for
   consent."
@@ -13,7 +16,7 @@ control 'V-14235' do
   tag "fix_id": 'F-45873r2_fix'
   tag "cci": ['CCI-001084']
   tag "cce": ['CCE-23877-4']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
 
@@ -40,8 +43,8 @@ control 'V-14235' do
 
   More secure options for this setting would also be acceptable (e.g., Prompt for
   credentials, Prompt for consent (or credentials) on the secure desktop)."
-  
-  #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
+
+  # command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'
@@ -52,11 +55,7 @@ control 'V-14235' do
   else
     describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
       it { should have_property 'ConsentPromptBehaviorAdmin' }
-      its('ConsentPromptBehaviorAdmin') { should cmp <= 4 }
-    end
-    describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-      it { should have_property 'ConsentPromptBehaviorAdmin' }
-      its('ConsentPromptBehaviorAdmin') { should cmp > 0 }
+      its('ConsentPromptBehaviorAdmin') { should be_between(1,4) }
     end
   end
 end

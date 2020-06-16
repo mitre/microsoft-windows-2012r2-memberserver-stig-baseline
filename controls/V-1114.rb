@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1114' do
   title 'The built-in guest account must be renamed.'
   desc  "The built-in guest account is a well-known user account on all Windows
@@ -25,7 +28,7 @@ control 'V-1114' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Accounts: Rename guest account\" to a name other than \"Guest\"."
-  
+
   describe user('Guest') do
     it { should_not exist }
   end

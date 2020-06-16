@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26494' do
   title "Unauthorized accounts must not have the Lock pages in memory user
   right."
@@ -35,7 +38,7 @@ control 'V-26494' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Lock pages in memory\" to be defined but containing no entries (blank)."
-  
+
   describe security_policy do
     its('SeLockMemoryPrivilege') { should eq [] }
   end

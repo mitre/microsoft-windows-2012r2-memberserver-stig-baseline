@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26602' do
   title 'The Microsoft FTP service must not be installed unless required.'
   desc  "Unnecessary services increase the attack surface of a system. Some of
@@ -29,7 +32,7 @@ control 'V-26602' do
   Select the appropriate server on the \"Server Selection\" page, click \"Next\".
   De-select \"FTP Server\" under \"Web Server (IIS).
   Click \"Next\" and \"Remove\" as prompted."
-  
+
   is_ftp_installed = command('Get-WindowsFeature Web-Ftp-Server | Select -Expand Installed').stdout.strip
 
   if is_ftp_installed == 'False'
@@ -41,7 +44,7 @@ control 'V-26602' do
     clean_startmode = startmode[22..29]
     describe 'Fax Service is installed and disabled' do
       subject { clean_startmode }
-      it { should eq 'Disabled'}
+      it { should eq 'Disabled' }
     end
   end
 end

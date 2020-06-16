@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3481' do
   title 'Media Player must be configured to prevent automatic Codec downloads.'
   desc  "The Windows Media Player uses software components, referred to as
@@ -29,7 +32,7 @@ control 'V-3481' do
   tag "fix": "Configure the policy value for User Configuration ->
   Administrative Templates -> Windows Components -> Windows Media Player ->
   Playback -> \"Prevent Codec Download\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer') do
     it { should have_property 'PreventCodecDownload' }
     its('PreventCodecDownload') { should cmp == 1 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14236' do
   title "User Account Control must automatically deny standard user requests
   for elevation."
@@ -13,7 +16,7 @@ control 'V-14236' do
   tag "fix_id": 'F-45874r2_fix'
   tag "cci": ['CCI-002038']
   tag "cce": ['CCE-24519-1']
-  tag "nist": ['IA-11', 'Rev_4']
+  tag "nist": %w[IA-11 Rev_4]
   tag "documentable": false
   tag "check": "UAC requirements are NA on Server Core installations.
 
@@ -34,8 +37,8 @@ control 'V-14236' do
   Security Settings -> Local Policies -> Security Options -> \"User Account
   Control: Behavior of the elevation prompt for standard users\" to
   \"Automatically deny elevation requests\"."
-  
-  #command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
+
+  # command checks to see if install is a Core or Gui Based install, if the result is false it is a server core build, if true it is a full install with gui
   os_type = command('Test-Path "$env:windir\explorer.exe"').stdout.strip
 
   if os_type == 'false'

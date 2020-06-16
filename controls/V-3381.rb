@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3381' do
   title "The system must be configured to the required LDAP client signing
   level."
@@ -28,7 +31,7 @@ control 'V-3381' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network security: LDAP client signing requirements\" to \"Negotiate signing\"
   at a minimum."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LDAP') do
     it { should have_property 'LDAPClientIntegrity' }
     its('LDAPClientIntegrity') { should cmp == 1 }

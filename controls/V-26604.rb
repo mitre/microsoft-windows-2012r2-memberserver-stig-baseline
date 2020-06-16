@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
 control 'V-26604' do
   title "The Peer Networking Identity Manager service must be disabled if

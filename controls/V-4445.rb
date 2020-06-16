@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4445' do
   title 'Optional Subsystems must not be permitted to operate on the system.'
   desc  "The POSIX subsystem is an Institute of Electrical and Electronic
@@ -36,7 +39,7 @@ control 'V-4445' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Local Policies -> Security Options -> \"System
   settings: Optional subsystems\" to \"Blank\" (Configured with no entries)."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\SubSystems') do
     it { should have_property 'Optional' }
     its('Optional') { should eq [] }

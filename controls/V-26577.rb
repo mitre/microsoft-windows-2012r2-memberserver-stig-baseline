@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26577' do
   title 'The ISATAP IPv6 transition technology must be disabled.'
   desc  "IPv6 transition technologies, which tunnel packets through other
@@ -25,7 +28,7 @@ control 'V-26577' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> TCPIP Settings -> IPv6 Transition
   Technologies -> \"Set ISATAP State\" to \"Enabled: Disabled State\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\TCPIP\\v6Transition') do
     it { should have_property 'ISATAP_State' }
     its('ISATAP_State') { should cmp 'Disabled' }

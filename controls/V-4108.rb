@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4108' do
   title "The system must generate an audit event when the audit log reaches a
   percentage of full threshold."
@@ -11,7 +14,7 @@ control 'V-4108' do
   tag "rid": 'SV-52923r2_rule'
   tag "stig_id": 'WN12-SO-000049'
   tag "fix_id": 'F-45849r2_fix'
-  tag "cci": ['CCI-000139', 'CCI-001855', 'CCI-001858']
+  tag "cci": %w[CCI-000139 CCI-001855 CCI-001858]
   tag "cce": ['CCE-25110-8']
   tag "nist": ['AU-5 a', 'AU-5 (1)', 'AU-5 (2)', 'Rev_4']
   tag "documentable": false
@@ -35,7 +38,7 @@ control 'V-4108' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security') do
     it { should have_property 'WarningLevel' }
     its('WarningLevel') { should cmp <= 90 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26580' do
   title "The Security event log size must be configured to 196608 KB or
   greater."
@@ -12,7 +15,7 @@ control 'V-26580' do
   tag "fix_id": 'F-71603r2_fix'
   tag "cci": ['CCI-001849']
   tag "cce": ['CCE-24572-0']
-  tag "nist": ['AU-4', 'Rev_4']
+  tag "nist": %w[AU-4 Rev_4]
   tag "documentable": false
   tag "check": "If the system is configured to write events directly to an
   audit server, this is NA.
@@ -31,9 +34,9 @@ control 'V-26580' do
   Administrative Templates >> Windows Components >> Event Log Service >> Security
   >> \"Specify the maximum log file size (KB)\" to \"Enabled\" with a \"Maximum
   Log Size (KB)\" of \"196608\" or greater."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security') do
     it { should have_property 'MaxSize' }
-    its('MaxSize') { should cmp >= 196608 }
+    its('MaxSize') { should cmp >= 196_608 }
   end
 end

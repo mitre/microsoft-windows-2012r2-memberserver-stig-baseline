@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26488' do
   title "Unauthorized accounts must not have the Force shutdown from a remote
   system user right."
@@ -33,8 +36,8 @@ control 'V-26488' do
   or groups:
 
   Administrators"
- 
-    describe security_policy do
-      its('SeRemoteShutdownPrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeRemoteShutdownPrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-43238' do
   title "The display of slide shows on the lock screen must be disabled
   (Windows 2012 R2)."
@@ -32,7 +35,7 @@ control 'V-43238' do
   Configure the policy value for Computer Configuration -> Administrative
   Templates -> Control Panel -> Personalization -> \"Prevent enabling lock screen
   slide show\" to \"Enabled\"."
-  
+
   if os['release'].to_f < 6.3
     impact 0.0
     describe 'Control not applicable' do

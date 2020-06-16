@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36668' do
   title "The system must be configured to audit Object Access - Removable
   Storage successes."
@@ -42,7 +45,7 @@ control 'V-36668' do
   Settings >> Security Settings >> Advanced Audit Policy Configuration >> System
   Audit Policies >> Object Access >> \"Audit Removable Storage\" with \"Success\"
   selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Removable Storage') { should eq 'Success' }

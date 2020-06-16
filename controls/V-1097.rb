@@ -1,3 +1,7 @@
+
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1097' do
   title "The number of allowed bad logon attempts must meet minimum
   requirements."
@@ -31,9 +35,6 @@ Settings -> Security Settings -> Account Policies -> Account Lockout Policy ->
 (excluding \"0\" which is unacceptable)."
 
   describe security_policy do
-    its('LockoutBadCount') { should be <= input('max_pass_lockout') }
-  end
-  describe security_policy do
-    its('LockoutBadCount') { should be > 0 }
+    its('LockoutBadCount') { should be_between(1,input('max_pass_lockout')) }
   end
 end

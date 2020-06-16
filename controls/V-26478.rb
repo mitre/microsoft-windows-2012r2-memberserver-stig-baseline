@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26478' do
   title 'Unauthorized accounts must not have the Create a pagefile user right.'
   desc  "Inappropriate granting of user rights can provide system,
@@ -31,8 +34,8 @@ control 'V-26478' do
   \"Create a pagefile\" to only include the following accounts or groups:
 
   Administrators"
-  
-    describe security_policy do
-      its('SeCreatePagefilePrivilege') { should eq ['S-1-5-32-544'] }
-    end
+
+  describe security_policy do
+    its('SeCreatePagefilePrivilege') { should eq ['S-1-5-32-544'] }
+  end
 end

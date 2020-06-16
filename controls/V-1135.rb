@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1135' do
   title "Nonadministrative user accounts or groups must only have print
   permissions on printer shares."
@@ -11,7 +14,7 @@ control 'V-1135' do
   tag "stig_id": 'WN12-GE-000012'
   tag "fix_id": 'F-45232r1_fix'
   tag "cci": ['CCI-000213']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "check": "Open \"Devices and Printers\" in Control Panel or through
   Search.
@@ -35,7 +38,7 @@ control 'V-1135' do
   tag "fix": "Configure the permissions on shared printers to restrict standard
   users to only have Print permissions.  This is typically given through the
   Everyone group by default."
-  
+
   get_printers = command("Get-Printer | Format-List | Findstr /v 'Name ---'")
   if get_printers == ''
     impact 0.0

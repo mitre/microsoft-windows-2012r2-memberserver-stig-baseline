@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26473' do
   title "The Allow log on through Remote Desktop Services user right must only
   be assigned to the Administrators group and other approved groups."
@@ -15,7 +18,7 @@ control 'V-26473' do
   tag "fix_id": 'F-74893r1_fix'
   tag "cci": ['CCI-000213']
   tag "cci": ['CCE-24406-1']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "check": "Verify the effective setting in Local Group Policy Editor.
   Run \"gpedit.msc\".
@@ -50,7 +53,7 @@ control 'V-26473' do
   Services access must be restricted to the accounts that require it.  This must
   be documented with the ISSO."
 
-    describe security_policy do
-      its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
-    end
+  describe security_policy do
+    its('SeRemoteInteractiveLogonRight') { should eq ['S-1-5-32-544'] }
+  end
 end

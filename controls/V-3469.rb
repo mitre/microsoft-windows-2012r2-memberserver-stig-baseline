@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3469' do
   title "Group Policies must be refreshed in the background if the user is
   logged on."
@@ -33,7 +36,7 @@ control 'V-3469' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Group Policy -> \"Turn off background
   refresh of Group Policy\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\system') do
     it { should have_property 'DisableBkGndGroupPolicy' }
     its('DisableBkGndGroupPolicy') { should cmp == 0 }

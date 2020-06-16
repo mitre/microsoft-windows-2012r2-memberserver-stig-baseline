@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26600' do
   title 'The Fax service must be disabled if installed.'
   desc  "Unnecessary services increase the attack surface of a system. Some of
@@ -21,7 +24,7 @@ control 'V-26600' do
 
   Fax (fax)"
   tag "fix": 'Remove or disable the Fax (fax) service.'
-  
+
   is_fax_installed = command('Get-WindowsFeature Fax | Select -Expand Installed').stdout.strip
 
   if is_fax_installed == 'False'
@@ -34,7 +37,7 @@ control 'V-26600' do
     clean_startmode = startmode[22..29]
     describe 'Fax Service is installed and disabled' do
       subject { clean_startmode }
-      it { should eq 'Disabled'}
+      it { should eq 'Disabled' }
     end
   end
 end

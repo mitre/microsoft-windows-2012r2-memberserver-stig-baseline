@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36439' do
   title "Local administrator accounts must have their privileged token filtered
   to prevent elevated privileges from being used over the network on domain
@@ -17,7 +20,7 @@ control 'V-36439' do
   tag "stig_id": 'WN12-RG-000003-MS'
   tag "fix_id": 'F-81023r1_fix'
   tag "cci": ['CCI-001084']
-  tag "nist": ['SC-3', 'Rev_4']
+  tag "nist": %w[SC-3 Rev_4]
   tag "documentable": false
   tag "check": "If the system is not a member of a domain, this is NA.
   If the following registry value does not exist or is not configured as
@@ -45,19 +48,18 @@ control 'V-36439' do
   included with the STIG package. \"SecGuide.admx\" and \"SecGuide.adml\" must be
   copied to the \\Windows\\PolicyDefinitions and
   \\Windows\\PolicyDefinitions\\en-US directories respectively."
-  
+
   is_domain = command('wmic computersystem get domain | FINDSTR /V Domain').stdout.strip
 
-   if is_domain == 'WORKGROUP'
+  if is_domain == 'WORKGROUP'
     impact 0.0
     describe 'This requirement is applicable to domain-joined systems, for standalone systems this is NA' do
       skip 'This requirement is applicable to domain-joined systems, for standalone systems this is NA'
     end
   else
     describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
-     it { should have_property 'LocalAccountTokenFilterPolicy' }
-     its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
-    end 
-  end
+      it { should have_property 'LocalAccountTokenFilterPolicy' }
+      its('LocalAccountTokenFilterPolicy') { should cmp == 0 }
+    end
+ end
 end
-

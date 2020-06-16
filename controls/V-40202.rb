@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40202' do
   title "The system must be configured to audit Object Access - Central Access
   Policy Staging successes."
@@ -39,7 +42,7 @@ control 'V-40202' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Object Access -> \"Audit Central Access Policy Staging\" with
   \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Central Policy Staging') { should eq 'Success' }

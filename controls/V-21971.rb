@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-21971' do
   title "The Application Compatibility Program Inventory must be prevented from
   collecting data and sending the information to Microsoft."
@@ -31,7 +34,7 @@ control 'V-21971' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Application Compatibility ->
   \"Turn off Inventory Collector\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\AppCompat') do
     it { should have_property 'DisableInventory' }
     its('DisableInventory') { should cmp == 1 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-3377' do
   title "The system must be configured to prevent anonymous users from having
   the same rights as the Everyone group."
@@ -29,7 +32,7 @@ control 'V-3377' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Let everyone permissions apply to anonymous users\" to
   \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Lsa') do
     it { should have_property 'EveryoneIncludesAnonymous' }
     its('EveryoneIncludesAnonymous') { should cmp == 0 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40178' do
   title "Permissions for system drive root directory (usually C:\\) must
   conform to minimum requirements."
@@ -80,11 +83,9 @@ control 'V-40178' do
   Users - Create files / write data - Subfolders only
   CREATOR OWNER - Full Control - Subfolders and files only"
 
-  describe file("C:\\") do
-    it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }
-    it { should be_allowed('full-control', by_user: 'BUILTIN\\Administrators') }
-    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('execute', by_user: 'BUILTIN\\Users') }
-    it { should be_allowed('append-data', by_user:  'BUILTIN\\Users') } 
-  end
+   c_perm = json( command: "icacls 'C:\\' | ConvertTo-Json").params.map { |e| e.strip }[0..-3].map{ |e| e.gsub("C:\\ ", '') }
+    describe "C:\\ permissions are set correctly on folder structure" do
+      subject { c_perm.eql? input('c_perm') }
+      it { should eq true }
+    end
 end

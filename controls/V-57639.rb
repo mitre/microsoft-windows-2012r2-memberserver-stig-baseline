@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-57639' do
   title "Users must be required to enter a password to access private keys
   stored on the computer."
@@ -40,7 +43,7 @@ control 'V-57639' do
   Settings >> Security Settings >> Local Policies >> Security Options >> \"System
   cryptography: Force strong key protection for user keys stored on the
   computer\" to \"User must enter a password each time they use a key\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Cryptography') do
     it { should have_property 'ForceKeyProtection' }
     its('ForceKeyProtection') { should cmp == 2 }

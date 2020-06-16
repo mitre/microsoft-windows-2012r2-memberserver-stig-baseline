@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26606' do
   title 'The Telnet service must be disabled if installed.'
   desc  "Unnecessary services increase the attack surface of a system. Some of
@@ -25,17 +28,17 @@ control 'V-26606' do
 
   is_telnetserver_installed = command('Get-WindowsFeature telnet-server | Select -Expand Installed').stdout.strip
 
-   startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "tlntsvr"} | Select StartMode | ConvertTo-Json').stdout.strip
-   clean_startmode = startmode[22..29]
+  startmode = powershell('Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "tlntsvr"} | Select StartMode | ConvertTo-Json').stdout.strip
+  clean_startmode = startmode[22..29]
 
-  if is_telnetserver_installed  == 'False'
+  if is_telnetserver_installed == 'False'
     describe 'The system does not have Telnet Server installed' do
       skip 'The system does not have Telnet Server installed, this requirement is Not Applicable.'
     end
   else
     describe 'Telnet Service is installed and disabled' do
-     subject { clean_startmode }
-     it { should eq 'Disabled'}
+      subject { clean_startmode }
+      it { should eq 'Disabled' }
     end
   end
 end

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-40237' do
   title "The US DoD CCEB Interoperability Root CA cross-certificate must be
   installed into the Untrusted Certificates Store on unclassified systems."
@@ -12,7 +15,7 @@ control 'V-40237' do
   tag "rid": 'SV-52196r4_rule'
   tag "stig_id": 'WN12-PK-000004'
   tag "fix_id": 'F-76905r2_fix'
-  tag "cci": ['CCI-000185', 'CCI-002470']
+  tag "cci": %w[CCI-000185 CCI-002470]
   tag "nist": ['IA-5 (2) (a)', 'SC-23 (5)', 'Rev_4']
   tag "documentable": false
   tag "check": "Verify the US DoD CCEB Interoperability Root CA cross-certificate is installed on unclassified systems as an Untrusted Certificate.
@@ -23,7 +26,7 @@ Execute the following command:
 
 Get-ChildItem -Path Cert:Localmachine\disallowed | Where Issuer -Like \"*CCEB Interoperability*\" | FL Subject, Issuer, Thumbprint, NotAfter
 
-If the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\", information is not displayed, this is finding. 
+If the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\", information is not displayed, this is finding.
 
 If an expired certificate (\"NotAfter\" date) is not listed in the results, this is not a finding.
 
@@ -83,9 +86,9 @@ Valid: Friday, September 27, 2019"
     describe 'This Control is Not Applicable to sensitive systems.' do
       skip 'This Control is Not Applicable to sensitive systems.'
     end
-  else 
-  dod_cceb_certificates = JSON.parse(input('dod_cceb_certificates').to_json)
-  query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where {$_.Issuer -Like "*CCEB Interoperability*"} | Select Subject, Issuer, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
+  else
+    dod_cceb_certificates = JSON.parse(input('dod_cceb_certificates').to_json)
+    query = json({ command: 'Get-ChildItem -Path Cert:Localmachine\\\\disallowed | Where {$_.Issuer -Like "*CCEB Interoperability*"} | Select Subject, Issuer, Thumbprint, @{Name=\'NotAfter\';Expression={"{0:dddd, MMMM dd, yyyy}" -f [datetime]$_.NotAfter}} | ConvertTo-Json' })
 
     describe 'Verify the DoD CCEB CA certificates are installed as Untrusted Certificate.' do
       subject { query.params }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15999' do
   title "Users must be prevented from redirecting Plug and Play devices to the
   Remote Desktop Session Host.  (Remote Desktop Services Role)."
@@ -28,7 +31,7 @@ control 'V-15999' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Device and Resource Redirection -> \"Do not
   allow supported Plug and Play device redirection\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fDisablePNPRedir' }
     its('fDisablePNPRedir') { should cmp == 1 }

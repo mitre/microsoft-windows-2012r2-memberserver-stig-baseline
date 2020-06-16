@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
 
 control 'V-1089' do
   title "The required legal notice must be configured to display before console
@@ -11,8 +13,8 @@ control 'V-1089' do
   tag "rid": 'SV-52845r3_rule'
   tag "stig_id": 'WN12-SO-000022'
   tag "fix_id": 'F-45771r3_fix'
-  tag "cci": ['CCE-25355-9', 'CCI-000048', 'CCI-000050', 'CCI-001384',
-              'CCI-001385', 'CCI-001386', 'CCI-001387', 'CCI-001388']
+  tag "cci": %w[CCE-25355-9 CCI-000048 CCI-000050 CCI-001384
+                CCI-001385 CCI-001386 CCI-001387 CCI-001388]
   tag "nist": ['AC-8 a', 'AC-8 b', 'AC-8 c 1', 'AC-8 c 2', 'AC-8 c 3', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
@@ -84,7 +86,7 @@ control 'V-1089' do
   by attorneys, psychotherapists, or clergy, and their assistants.  Such
   communications and work product are private and confidential.  See User
   Agreement for details."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System') do
     it { should have_property 'LegalNoticeText' }
   end
@@ -96,6 +98,6 @@ control 'V-1089' do
 
   describe 'The required legal notice text' do
     subject { k.scan(/[\w().;,!]/).join }
-    it {should cmp legal_notice_text.scan(/[\w().;,!]/).join }
+    it { should cmp legal_notice_text.scan(/[\w().;,!]/).join }
   end
 end

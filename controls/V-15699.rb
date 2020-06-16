@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15699' do
   title 'The Windows Connect Now wizards must be disabled.'
   desc  "Windows Connect Now provides wizards for tasks such as \"Set up a
@@ -27,7 +30,7 @@ control 'V-15699' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Network -> Windows Connect Now -> \"Prohibit access
   of the Windows Connect Now wizards\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WCN\\UI') do
     it { should have_property 'DisableWcnUi' }
     its('DisableWcnUi') { should cmp == 1 }

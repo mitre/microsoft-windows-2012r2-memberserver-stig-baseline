@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36666' do
   title "Policy must require that system administrators (SAs) be trained for
   the operating systems used by systems under their control."
@@ -21,7 +24,7 @@ control 'V-36666' do
   systems under their control, this is a finding."
   tag "fix": "Establish site policy that requires SAs be trained for all
   operating systems running on systems under their control."
-  
+
   describe "A manual review is required to ensure a policy requires that system administrators (SAs) be trained for
   the operating systems used by systems under their control" do
     skip 'A manual review is required to ensure a policy requires that system administrators (SAs) be trained for

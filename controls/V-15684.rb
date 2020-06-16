@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15684' do
   title "Users must be notified if a web-based program attempts to install
   software."
@@ -27,7 +30,7 @@ control 'V-15684' do
   Administrative Templates -> Windows Components -> Windows Installer ->
   \"Prevent Internet Explorer security prompt for Windows Installer scripts\" to
   \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Installer') do
     it { should have_property 'SafeForScripting' }
     its('SafeForScripting') { should cmp == 0 }

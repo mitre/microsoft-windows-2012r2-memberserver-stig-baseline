@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1081' do
   title 'Local volumes must use a format that supports NTFS attributes.'
   desc  "The ability to set access permissions and auditing is critical to
@@ -11,7 +14,7 @@ control 'V-1081' do
   tag "stig_id": 'WN12-GE-000005'
   tag "fix_id": 'F-81015r1_fix'
   tag "cci": ['CCI-000213']
-  tag "nist": ['AC-3', 'Rev_4']
+  tag "nist": %w[AC-3 Rev_4]
   tag "documentable": false
   tag "check": "Open \"Computer Management\".
 
@@ -25,7 +28,7 @@ control 'V-1081' do
   This does not apply to system partitions such as the Recovery and EFI System
   Partition."
   tag "fix": 'Format local volumes to use NTFS or ReFS.'
-  
+
   get_volumes = command("wmic logicaldisk get FileSystem | findstr /r /v '^$' |Findstr /v 'FileSystem'").stdout.strip.split("\r\n")
 
   get_volumes.each do |volume|

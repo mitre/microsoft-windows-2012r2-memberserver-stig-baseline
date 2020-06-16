@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4110' do
   title 'The system must be configured to prevent IP source routing.'
   desc  "Configuring the system to disable IP source routing protects against
@@ -30,7 +33,7 @@ control 'V-4110' do
 
   (See \"Updating the Windows Security Options File\" in the STIG Overview
   document if MSS settings are not visible in the system's policy tools.)"
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters') do
     it { should have_property 'DisableIPSourceRouting' }
     its('DisableIPSourceRouting') { should cmp == 2 }

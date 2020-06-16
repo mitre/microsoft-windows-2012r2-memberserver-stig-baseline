@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4448' do
   title "Group Policy objects must be reprocessed even if they have not
   changed."
@@ -30,7 +33,7 @@ control 'V-4448' do
   Administrative Templates -> System -> Group Policy -> \"Configure registry
   policy processing\" to \"Enabled\" and select the option \"Process even if the
   Group Policy objects have not changed\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Group Policy\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}') do
     it { should have_property 'NoGPOListChanges' }
     its('NoGPOListChanges') { should cmp == 0 }

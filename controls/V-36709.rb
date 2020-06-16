@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36709' do
   title 'Basic authentication for RSS feeds over HTTP must be turned off.'
   desc  "Basic authentication uses plain text passwords that could be used to
@@ -26,7 +29,7 @@ control 'V-36709' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> RSS Feeds -> \"Turn on Basic
   feed authentication over HTTP\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
     it { should have_property 'AllowBasicAuthInClear' }
     its('AllowBasicAuthInClear') { should cmp == 0 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15722' do
   title "Windows Media Digital Rights Management (DRM) must be prevented from
   accessing the Internet."
@@ -31,7 +34,7 @@ control 'V-15722' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Media Digital Rights
   Management -> \"Prevent Windows Media DRM Internet Access\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\WMDRM') do
     it { should have_property 'DisableOnline' }
     its('DisableOnline') { should cmp == 1 }

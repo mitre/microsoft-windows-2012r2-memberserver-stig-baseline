@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26481' do
   title "Unauthorized accounts must not have the Create permanent shared
   objects user right."
@@ -29,7 +32,7 @@ control 'V-26481' do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Create permanent shared objects\" to be defined but containing no entries
   (blank)."
-  
+
   describe security_policy do
     its('SeCreatePermanentPrivilege') { should eq [] }
   end

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15682' do
   title 'Attachments must be prevented from being downloaded from RSS feeds.'
   desc  "Attachments from RSS feeds may not be secure.  This setting will
@@ -25,7 +28,7 @@ control 'V-15682' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> RSS Feeds -> \"Prevent
   downloading of enclosures\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Internet Explorer\\Feeds') do
     it { should have_property 'DisableEnclosureDownload' }
     its('DisableEnclosureDownload') { should cmp == 1 }

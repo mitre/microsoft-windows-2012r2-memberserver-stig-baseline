@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-6834' do
   title 'Anonymous access to Named Pipes and Shares must be restricted.'
   desc  "Allowing anonymous access to named pipes or shares provides the
@@ -13,7 +16,7 @@ control 'V-6834' do
   tag "fix_id": 'F-45863r1_fix'
   tag "cci": ['CCI-001090']
   tag "cce": ['CCE-24564-7']
-  tag "nist": ['SC-4', 'Rev_4']
+  tag "nist": %w[SC-4 Rev_4]
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
@@ -29,7 +32,7 @@ control 'V-6834' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Network access: Restrict anonymous access to Named Pipes and Shares\" to
   \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\LanManServer\\Parameters') do
     it { should have_property 'restrictnullsessaccess' }
     its('restrictnullsessaccess') { should cmp == 1 }

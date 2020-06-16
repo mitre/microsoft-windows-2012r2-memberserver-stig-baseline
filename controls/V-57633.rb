@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-57633' do
   title "The system must be configured to audit Policy Change - Authorization
   Policy Change successes."
@@ -37,7 +40,7 @@ control 'V-57633' do
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Policy Change -> \"Audit Authorization Policy Change\" with
   \"Success\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('Authorization Policy Change') { should eq 'Success' }

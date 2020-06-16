@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-57637' do
   title "The operating system must employ a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs."
@@ -73,7 +76,7 @@ control 'V-57637' do
   Windows section of the following link:
 
   https://www.nsa.gov/ia/mitigation_guidance/security_configuration_guides/operating_systems.shtml"
-  
+
   describe "A manual review is required to ensure the operating system employs a deny-all, permit-by-exception
   policy to allow the execution of authorized software programs" do
     skip 'A manual review is required to ensure the operating system employs a deny-all, permit-by-exception

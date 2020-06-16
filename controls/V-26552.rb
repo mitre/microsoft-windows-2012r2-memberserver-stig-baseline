@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26552' do
   title 'The system must be configured to audit System - IPsec Driver failures.'
   desc  "Maintaining an audit trail of system activity logs can help identify
@@ -35,7 +38,7 @@ control 'V-26552' do
   tag "fix": "Configure the policy value for Computer Configuration -> Windows
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> System -> \"Audit IPsec Driver\" with \"Failure\" selected."
-  
+
   describe.one do
     describe audit_policy do
       its('IPsec Driver') { should eq 'Failure' }

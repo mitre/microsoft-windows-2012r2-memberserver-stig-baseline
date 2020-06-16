@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-21969' do
   title "Access to Windows Online Troubleshooting Service (WOTS) must be
   prevented."
@@ -35,7 +38,7 @@ control 'V-21969' do
   troubleshooting content on Microsoft servers from the Troubleshooting Control
   Panel (via the Windows Online Troubleshooting Service - WOTS)\" to
   \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy') do
     it { should have_property 'EnableQueryRemoteServer' }
     its('EnableQueryRemoteServer') { should cmp == 0 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36681' do
   title "Copying of user input methods to the system account for sign-in must
   be prevented."
@@ -28,7 +31,7 @@ control 'V-36681' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Locale Services -> \"Disallow copying of
   user input methods to the system account for sign-in\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Control Panel\\International') do
     it { should have_property 'BlockUserInputMethodsForSignIn' }
     its('BlockUserInputMethodsForSignIn') { should cmp == 1 }

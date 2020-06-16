@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26605' do
   title 'The Simple TCP/IP Services service must be disabled if installed.'
   desc  "Unnecessary services increase the attack surface of a system. Some of
@@ -25,7 +28,7 @@ control 'V-26605' do
 
   is_tcpip_installed = command('Get-WindowsFeature Simple-TCPIP | Select -Expand Installed').stdout.strip
 
-  if is_tcpip_installed  == 'False'
+  if is_tcpip_installed == 'False'
     describe 'The system does not have Simple TCP/IP installed' do
       skip 'The system does not have Simple TCP/IP installed, this requirement is Not Applicable.'
     end
@@ -34,7 +37,7 @@ control 'V-26605' do
     clean_startmode = startmode[22..29]
     describe 'Simple TCP/IP Service is installed and disabled' do
       subject { clean_startmode }
-      it { should eq 'Disabled'}
+      it { should eq 'Disabled' }
     end
   end
 end

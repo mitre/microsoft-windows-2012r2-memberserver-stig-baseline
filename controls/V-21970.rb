@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-21970' do
   title "Responsiveness events must be prevented from being aggregated and sent
   to Microsoft."
@@ -32,7 +35,7 @@ control 'V-21970' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> System -> Troubleshooting and Diagnostics ->
   Windows Performance PerfTrack -> \"Enable/Disable PerfTrack\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\WDI\\{9c5a40da-b965-4fc3-8781-88dd50a6299d}') do
     it { should have_property 'ScenarioExecutionEnabled' }
     its('ScenarioExecutionEnabled') { should cmp == 0 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-14261' do
   title "Windows must be prevented from using Windows Update to search for
   drivers."

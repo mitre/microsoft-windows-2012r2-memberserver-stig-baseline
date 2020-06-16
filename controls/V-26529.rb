@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26529' do
   title "The system must be configured to audit Account Logon - Credential
   Validation successes."
@@ -37,7 +40,7 @@ Auditpol.exe /get /category:*
   Settings -> Security Settings -> Advanced Audit Policy Configuration -> System
   Audit Policies -> Account Logon -> \"Audit Credential Validation\" with
   \"Success\" selected."
-    
+
   describe.one do
     describe audit_policy do
       its('Credential Validation') { should eq 'Success' }

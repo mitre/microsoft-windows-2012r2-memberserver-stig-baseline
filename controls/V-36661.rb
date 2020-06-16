@@ -20,8 +20,8 @@ control 'V-36661' do
   tag "fix": "Establish a site policy that requires application/service account
   passwords that are manually managed to be at least 15 characters in length.
   Ensure the policy is enforced."
-  
+
   describe 'Please Check all Accounts that are used for Services or Applications to validate they meet the Password Length Policy, Control is a Manual Check' do
-  skip 'Please Check all Accounts that are used for Services or Applications to validate they meet the Password Length Policy, Control is a Manual Check'
+    skip 'Please Check all Accounts that are used for Services or Applications to validate they meet the Password Length Policy, Control is a Manual Check'
   end
 end

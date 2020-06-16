@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1128' do
   title "Security configuration tools or equivalent processes must be used to
   configure and maintain platforms for security compliance."

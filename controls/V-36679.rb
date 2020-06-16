@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36679' do
   title "Early Launch Antimalware, Boot-Start Driver Initialization Policy must
   be enabled and configured to only Good and Unknown."

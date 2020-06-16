@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-4447' do
   title "The Remote Desktop Session Host must require secure RPC
   communications."
@@ -31,7 +34,7 @@ control 'V-4447' do
   Administrative Templates -> Windows Components -> Remote Desktop Services ->
   Remote Desktop Session Host -> Security -> \"Require secure RPC communication\"
   to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows NT\\Terminal Services') do
     it { should have_property 'fEncryptRPCTraffic' }
     its('fEncryptRPCTraffic') { should cmp == 1 }

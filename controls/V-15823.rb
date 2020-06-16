@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15823' do
   title "Software certificate installation files must be removed from Windows
   2012/2012 R2."
@@ -27,7 +30,7 @@ control 'V-15823' do
   This does not apply to server-based applications that have a requirement for
   certificate files or non-certificate installation files with the same
   extension."
-  
+
   describe command('where /R c: *.p12 *.pfx') do
     its('stdout') { should eq '' }
   end

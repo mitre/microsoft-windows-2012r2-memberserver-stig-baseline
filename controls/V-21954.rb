@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-21954' do
   title "The use of DES encryption suites must not be allowed for Kerberos
   encryption."
@@ -13,7 +16,7 @@ control 'V-21954' do
   tag "fix_id": 'F-66513r3_fix'
   tag "cci": ['CCI-000803']
   tag "cce": ['CCE-24147-1']
-  tag "nist": ['IA-7', 'Rev_4']
+  tag "nist": %w[IA-7 Rev_4]
   tag "documentable": false
   tag "check": "Verify whether the registry key below exists.  If it does not
   exist or the value is \"0\", this is not a finding.
@@ -70,18 +73,13 @@ control 'V-21954' do
   Future encryption types"
 
   if registry_key('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Server\ServerLevels').exists?
-  describe.one do
-    describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
-      its('SupportedEncryptionTypes') { should eq 2_147_483_647 }
+      describe registry_key('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
+        its('SupportedEncryptionTypes') { should eq 2_147_483_644 }
+      end
+  else
+    impact 0.0
+    describe 'Registry Key for Kerberos Encryption does not exist, this control is NA' do
+      skip 'Registry Key for Kerberos Encryption does not exist, this control is NA'
     end
-    describe registry_key('HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters') do
-      its('SupportedEncryptionTypes') { should eq 0 }
-    end
-  end
-else
-  impact 0.0
-  describe 'Registry Key for Kerberos Encryption does not exist, this control is NA' do
-    skip 'Registry Key for Kerberos Encryption does not exist, this control is NA'
-  end
  end
 end

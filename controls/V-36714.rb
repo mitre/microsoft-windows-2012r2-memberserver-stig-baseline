@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36714' do
   title "The Windows Remote Management (WinRM) client must not use Digest
   authentication."
@@ -27,7 +30,7 @@ control 'V-36714' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Remote Management
   (WinRM) -> WinRM Client -> \"Disallow Digest authentication\" to \"Enabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\WinRM\\Client') do
     it { should have_property 'AllowDigest' }
     its('AllowDigest') { should cmp == 0 }

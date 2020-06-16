@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-36722' do
   title "Permissions for the Application event log must prevent access by
   nonprivileged accounts."
@@ -13,7 +16,7 @@ control 'V-36722' do
   tag "rid": 'SV-51569r1_rule'
   tag "stig_id": 'WN12-AU-000204'
   tag "fix_id": 'F-44699r1_fix'
-  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164']
+  tag "cci": %w[CCI-000162 CCI-000163 CCI-000164]
   tag "nist": ['AC-6 (5)', 'Rev_4']
   tag "documentable": false
   tag "ia_controls": 'ECTP-1'
@@ -58,11 +61,11 @@ control 'V-36722' do
   # raw powershell output
   raw_logs_application = powershell(winevt_logs_application).stdout.strip
 
-   # clean results cleans up the extra line breaks
-  clean_logs_application  = raw_logs_application.lines.collect(&:strip)
+  # clean results cleans up the extra line breaks
+  clean_logs_application = raw_logs_application.lines.collect(&:strip)
 
-   describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Application.evtx' do
-    subject { clean_logs_application  }
+  describe 'Verify the default registry permissions for the keys note below of the C:\Windows\System32\WINEVT\LOGS\Application.evtx' do
+    subject { clean_logs_application }
     it { should cmp input('winevt_logs_application_perms') }
   end
 end

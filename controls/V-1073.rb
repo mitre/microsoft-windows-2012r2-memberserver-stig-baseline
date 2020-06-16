@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-1073' do
   title 'Systems must be maintained at a supported service pack level.'
   desc  "Systems at unsupported service packs or releases will not receive
@@ -29,12 +32,12 @@ control 'V-1073' do
   currentversion = os['release'].to_f
   release = os['release'].to_s[4..8]
 
-    describe 'Microsoft Windows 2012 R2 needs to be higher that current version 6.2' do
-      subject {currentversion}
-      it { should cmp >= 6.2 }
-    end
-    describe 'Microsoft Windows 2012 R2 needs to be higher that release 9200' do
-      subject {release}
-      it { should cmp >= 9200 }
-    end
+  describe 'Microsoft Windows 2012 R2 needs to be higher that current version 6.2' do
+    subject { currentversion }
+    it { should cmp >= 6.2 }
+  end
+  describe 'Microsoft Windows 2012 R2 needs to be higher that release 9200' do
+    subject { release }
+    it { should cmp >= 9200 }
+  end
 end

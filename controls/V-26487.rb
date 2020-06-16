@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26487' do
   title "Unauthorized accounts must not have the Enable computer and user
   accounts to be trusted for delegation user right on member servers."
@@ -30,7 +33,7 @@ control 'V-26487' do
   Settings -> Security Settings -> Local Policies -> User Rights Assignment ->
   \"Enable computer and user accounts to be trusted for delegation\" to be
   defined but containing no entries (blank)."
-  
+
   describe security_policy do
     its('SeEnableDelegationPrivilege') { should eq [] }
   end

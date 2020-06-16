@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-15685' do
   title 'Users must be prevented from changing installation options.'
   desc  "Installation options for applications are typically controlled by
@@ -26,7 +29,7 @@ control 'V-15685' do
   tag "fix": "Configure the policy value for Computer Configuration ->
   Administrative Templates -> Windows Components -> Windows Installer -> \"Allow
   user control over installs\" to \"Disabled\"."
-  
+
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\Installer') do
     it { should have_property 'EnableUserControl' }
     its('EnableUserControl') { should cmp == 0 }

@@ -1,3 +1,6 @@
+# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 control 'V-26490' do
   title "Unauthorized accounts must not have the Impersonate a client after
   authentication user right."
@@ -47,8 +50,8 @@ control 'V-26490' do
   Service
   Local Service
   Network Service"
-  
-    describe security_policy do
-      its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
-    end
+
+  describe security_policy do
+    its('SeImpersonatePrivilege') { should eq ['S-1-5-19', 'S-1-5-20', 'S-1-5-32-544', 'S-1-5-6'] }
+  end
 end
