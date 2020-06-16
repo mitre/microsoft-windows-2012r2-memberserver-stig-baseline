@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-6840' do
   title 'Windows 2012/2012 R2 passwords must be configured to expire.'
   desc  "Passwords that do not expire or are reused increase the exposure of a

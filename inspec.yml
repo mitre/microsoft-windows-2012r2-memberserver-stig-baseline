@@ -131,7 +131,6 @@ inputs:
     desc: "Account lockout threshold is recommended to be 3 or less invalid logon attempts [3]"
     type: Numeric
     value: 3
-  
 
   - name: pass_expiry_warning
     desc: "Users must be warned in advance of their passwords expiring[14] or greater"

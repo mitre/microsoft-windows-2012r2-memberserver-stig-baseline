@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-1172' do
   title 'Users must be warned in advance of their passwords expiring.'
   desc  "Creating strong passwords that can be remembered by users requires
@@ -32,7 +29,7 @@ control 'V-1172' do
   Settings -> Security Settings -> Local Policies -> Security Options ->
   \"Interactive Logon: Prompt user to change password before expiration\" to
   \"14\" days or more."
-
+  
   describe registry_key('HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon') do
     it { should have_property 'PasswordExpiryWarning' }
     its('PasswordExpiryWarning') { should cmp >= input('pass_expiry_warning') }

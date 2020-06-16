@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-3373' do
   title "The maximum age for machine account passwords must be set to
   requirements."

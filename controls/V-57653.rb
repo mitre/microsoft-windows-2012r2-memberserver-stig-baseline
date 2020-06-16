@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-57653' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable temporary
   user accounts after 72 hours."
@@ -262,3 +259,4 @@ control 'V-57653' do
    end
   end
 end
+

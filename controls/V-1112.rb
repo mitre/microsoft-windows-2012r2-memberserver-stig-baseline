@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-1112' do
   title "Outdated or unused accounts must be removed from the system or
   disabled."
@@ -95,5 +92,5 @@ control 'V-1112' do
         end
       end
    end
-end
+ end
 end
