@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-57655' do
   title "Windows 2012 / 2012 R2 must automatically remove or disable emergency
   accounts after the crisis is resolved or within 72 hours."

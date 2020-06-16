@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-6836' do
   title 'Passwords must, at a minimum, be 14 characters.'
   desc  "Information systems not protected with strong password schemes

@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-7002' do
   title 'Windows 2012/2012 R2 accounts must be configured to require passwords.'
   desc  "The lack of password protection enables anyone to gain access to the

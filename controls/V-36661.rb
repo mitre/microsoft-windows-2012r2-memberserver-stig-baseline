@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-36661' do
   title "Policy must require application account passwords be at least 15
   characters in length."

@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-36662' do
   title "Windows 2012/2012 R2 manually managed application account passwords
   must be changed at least annually or when a system administrator with knowledge

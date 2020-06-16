@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-1098' do
   title "The reset period for the account lockout counter must be configured to
   15 minutes or greater on Windows 2012."
@@ -15,7 +12,7 @@ control 'V-1098' do
   tag "rid": 'SV-52849r2_rule'
   tag "stig_id": 'WN12-AC-000003'
   tag "fix_id": 'F-81025r1_fix'
-  tag "cci": %w[CCI-000044 CCI-002238]
+  tag "cci": ['CCI-000044', 'CCI-002238']
   tag "cce": ['CCE-24840-1']
   tag "nist": ['AC-7 b', 'Rev_4']
   tag "documentable": false
@@ -30,7 +27,7 @@ control 'V-1098' do
   tag "fix": "Configure the policy value for Computer Configuration >> Windows
   Settings >> Security Settings >> Account Policies >> Account Lockout Policy >>
   \"Reset account lockout counter after\" to at least \"15\" minutes."
-
+  
   describe security_policy do
     its('ResetLockoutCount') { should be >= input('pass_lock_time') }
   end

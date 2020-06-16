@@ -1,6 +1,3 @@
-# -*- encoding : utf-8 -*-
-# frozen_string_literal: true
-
 control 'V-14225' do
   title "Windows 2012/2012 R2 password for the built-in Administrator account
   must be changed at least annually or when a member of the administrative team
