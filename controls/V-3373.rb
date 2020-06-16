@@ -37,8 +37,4 @@ control 'V-3373' do
     it { should have_property 'MaximumPasswordAge' }
     its('MaximumPasswordAge') { should be_between(1,input('comp_acct_max_pass_age')) }
   end
-  describe registry_key('HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters') do
-    it { should have_property 'MaximumPasswordAge' }
-    its('MaximumPasswordAge') { should cmp > 0 }
-  end
 end
