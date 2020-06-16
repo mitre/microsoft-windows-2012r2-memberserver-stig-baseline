@@ -167,7 +167,7 @@ control 'V-57653' do
               expect(date_expires_minus_password_last_set).to be_empty, failure_message
             end
           end
-            end
+        end
       end
     end
  end
@@ -257,8 +257,8 @@ control 'V-57653' do
               expect(date_expires_minus_password_last_set).to be_empty, failure_message
             end
           end
-           end
+        end
       end
- end
- end
+   end
+  end
 end
