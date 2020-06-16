@@ -40,4 +40,3 @@ control 'V-1104' do
     its('MaximumPasswordAge') { should be > 0 }
   end
 end
-be_between(1,input('max_pass_lockout'))
