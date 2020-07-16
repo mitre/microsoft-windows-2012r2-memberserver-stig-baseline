@@ -16,7 +16,7 @@ control 'V-3379' do
   tag "fix_id": 'F-45818r1_fix'
   tag "cci": ['CCI-000196']
   tag "cce": ['CCE-24150-5']
-  tag "nist": ['SC-6.1', 'Rev_4']
+  tag "nist": ['IA-5 (1) (c)', 'Rev_4']
   tag "documentable": false
   tag "check": "If the following registry value does not exist or is not
   configured as specified, this is a finding:
