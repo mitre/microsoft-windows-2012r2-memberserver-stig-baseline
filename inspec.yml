@@ -10,6 +10,7 @@ description: "Inspec testing for Windows 2012r2 member servers per the IASE DISA
 https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip"
   
 version: 2.17.0
+inspec_version: ">= 4.0"
 
 inputs:
   - name: av_approved_software
