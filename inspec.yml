@@ -1,15 +1,11 @@
-name: windows_2012r2_memberserver_stig
-title: Windows 2012r2 Member Server STIG
+name: microsoft-windows-2012r2-memberserver-stig-baseline
+title: microsoft-windows-2012r2-memberserver-stig-baseline
 maintainer: The MITRE Corporation
 copyright: The MITRE Corporation
 copyright_email: inspec@mitre.org
 license: Apache-2.0
-summary: Inspec profile testing STIG compliance of Windows Member Server 2012r2
-
-description: "Inspec testing for Windows 2012r2 member servers per the IASE DISA Windows 2012r2 v2r12 STIG at 
-https://iasecontent.disa.mil/stigs/zip/U_Windows_2012_and_2012_R2_MS_V2R12_STIG.zip"
-  
-version: 2.17.0
+summary: "Inspec Validation Profile for Microsoft Windows Member Server 2012r2 STIG"
+version: 2.17.1
 inspec_version: ">= 4.0"
 
 inputs:
@@ -37,17 +33,20 @@ inputs:
   - name: administrators
     desc: "List of authorized users in the local Administrators group"
     type: Array
+    sensitive: true
     value: 
       -
   
   - name: local_administrator
     desc: "Local Administrator Account on Windows Server"
     type: String
+    sensitive: true
     value: ""
     
   - name: administrators_domain
     desc: "List of authorized users in the local Administrators domain group"
     type: Array
+    sensitive: true
     value: 
       -
 
